@@ -17,7 +17,7 @@ public class SprintJumpState:State
         timePassed = 0f;
         character.animator.SetTrigger("sprintJump");
 
-        jumpTime = 1f;
+        jumpTime = 0f;
     }
 
 	public override void Exit()
@@ -30,6 +30,9 @@ public class SprintJumpState:State
     {
         
         base.LogicUpdate();
+        
+        jumpTime = (character.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length / character.animator.GetCurrentAnimatorStateInfo(0).speed - 0.1f);
+        
 		if (timePassed> jumpTime)
 		{
             character.animator.SetTrigger("move");

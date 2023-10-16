@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpingState:State
+public class FallingState : State
 {
     bool grounded;
 
@@ -10,59 +12,50 @@ public class JumpingState:State
 
     Vector3 airVelocity;
 
-    private float clipLength;
-    private float clipSpeed;
-    private float timePassed;
-    
-    public JumpingState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
-	{
-		character = _character;
-		stateMachine = _stateMachine;
-	}
+    public FallingState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
+    {
+        character = _character;
+        stateMachine = _stateMachine;
+    }
 
     public override void Enter()
-	{
-		base.Enter();
+    {
+        base.Enter();
 
-		grounded = false;
+        grounded = false;
         gravityValue = character.gravityValue;
         jumpHeight = character.jumpHeight;
         playerSpeed = character.playerSpeed;
         gravityVelocity.y = 0;
 
         character.animator.SetFloat("speed", 0);
-        character.animator.SetTrigger("jump");
+        character.animator.SetTrigger("fall");
+        
         Jump();
-
-        timePassed = 0f;
-	}
-	public override void HandleInput()
-	{
-		base.HandleInput();
+    }
+    public override void HandleInput()
+    {
+        base.HandleInput();
 
         input = moveAction.ReadValue<Vector2>();
     }
 
-	public override void LogicUpdate()
+    public override void LogicUpdate()
     {
         base.LogicUpdate();
 
         if (grounded)
-		{
-            stateMachine.ChangeState(character.landing);
-        }
-        
-        if (!grounded)
         {
-	        stateMachine.ChangeState((character.falling));
+            stateMachine.ChangeState(character.landing);
+            character.animator.SetTrigger("land");
         }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-		if (!grounded)
-		{
+        if (!grounded)
+        {
 
             velocity = character.playerVelocity;
             airVelocity = new Vector3(input.x, 0, input.y);
@@ -83,5 +76,5 @@ public class JumpingState:State
         gravityVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
     }
 
-}
 
+}

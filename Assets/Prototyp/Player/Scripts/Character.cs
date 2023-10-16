@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
     public AttackState attacking;
     public SpecialAttackState specialAttacking;
     public DashState dashing;
+    public FallingState falling;
 
     [HideInInspector]
     public float gravityValue = -9.81f;
@@ -69,6 +70,7 @@ public class Character : MonoBehaviour
         attacking = new AttackState(this, movementSM);
         specialAttacking = new SpecialAttackState(this, movementSM);
         dashing = new DashState(this, movementSM);
+        falling = new FallingState(this, movementSM);
 
         movementSM.Initialize(standing);
 

@@ -23,7 +23,7 @@ public class LandingState:State
     {
         
         base.LogicUpdate();
-		if (timePassed> landingTime)
+		if (timePassed >= landingTime)
 		{
             character.animator.SetTrigger("move");
             stateMachine.ChangeState(character.standing);

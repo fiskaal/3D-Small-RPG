@@ -11,6 +11,7 @@ public class StandingState: State
     bool sprint;
     float playerSpeed;
     private bool drawWeapon;
+    private bool falling;
 
     Vector3 cVelocity;
 
@@ -28,6 +29,7 @@ public class StandingState: State
         crouch = false;
         sprint = false;
         drawWeapon = false;
+        falling = false;
         input = Vector2.zero;
         velocity = Vector3.zero;
         currentVelocity = Vector3.zero;
@@ -91,7 +93,12 @@ public class StandingState: State
             stateMachine.ChangeState(character.combatting);
             character.animator.SetTrigger("drawWeapon");
         }
-        
+
+        if (falling)
+        {
+            stateMachine.ChangeState((character.falling));
+            character.animator.SetTrigger("fall");
+        }
     }
 
     public override void PhysicsUpdate()
@@ -104,6 +111,15 @@ public class StandingState: State
         if (grounded && gravityVelocity.y < 0)
         {
             gravityVelocity.y = 0f;
+        }
+
+        if (Physics.Raycast(character.transform.position, Vector3.down, 2))
+        {
+            falling = false;
+        }
+        else
+        {
+            falling = true;
         }
        
         currentVelocity = Vector3.SmoothDamp(currentVelocity, velocity,ref cVelocity, character.velocityDampTime);
