@@ -16,7 +16,7 @@ public class LandingState:State
 		base.Enter();
         timePassed = 0f;
         character.animator.SetTrigger("land");
-        landingTime = 0.5f;
+        landingTime = 0.2f;
     }
 
     public override void LogicUpdate()
