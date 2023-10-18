@@ -18,7 +18,8 @@ public class HealthSystem : MonoBehaviour
     {
         health -= damageAmount;
         animator.SetTrigger("damage");
-        CameraShake.Instance.ShakeCamera(2f, 0.2f);
+        //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+        
 
         if (health <= 0)
         {

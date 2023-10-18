@@ -20,11 +20,18 @@ public class Enemy : MonoBehaviour
     float timePassed;
     float newDestinationCD = 0.5f;
 
+    private bool dead;
+    private float timePassedAfterDeath;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
+        
+        animator.applyRootMotion = false;
+        dead = false;
+        timePassedAfterDeath = 0f;
     }
 
     // Update is called once per frame
@@ -41,19 +48,35 @@ public class Enemy : MonoBehaviour
         {
             if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
             {
+                animator.applyRootMotion = true;
                 animator.SetTrigger("attack");
                 timePassed = 0;
             }
         }
         timePassed += Time.deltaTime;
 
-        if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
+        if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
             newDestinationCD = 0.5f;
             agent.SetDestination(player.transform.position);
         }
         newDestinationCD -= Time.deltaTime;
-        transform.LookAt(player.transform);
+
+        if (!dead)
+        {
+            transform.LookAt(player.transform);
+        }
+
+        //waiting for death animation to be over
+        if (dead)
+        {
+            if (timePassedAfterDeath >= 3f)
+            {
+                Die();
+            }
+            timePassedAfterDeath += Time.deltaTime;
+        }
+       
     }
 
 	private void OnCollisionEnter(Collision collision)
@@ -67,19 +90,25 @@ public class Enemy : MonoBehaviour
 
 	void Die()
     {
-        Instantiate(ragdoll, transform.position,transform.rotation);
+        //Instantiate(ragdoll, transform.position,transform.rotation);
         Destroy(this.gameObject);
     }
 
     public void TakeDamage(float damageAmount)
     {
-        health -= damageAmount;
-        animator.SetTrigger("damage");
-        CameraShake.Instance.ShakeCamera(2f, 0.2f);
-
-        if (health <= 0)
+        if (!dead)
         {
-            Die();
+            health -= damageAmount;
+            animator.applyRootMotion = true;
+            animator.SetTrigger("damage");
+            //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+
+            if (health <= 0)
+            {
+                animator.SetTrigger("death");
+                dead = true;
+                //Die();
+            }
         }
     }
     public void StartDealDamage()
