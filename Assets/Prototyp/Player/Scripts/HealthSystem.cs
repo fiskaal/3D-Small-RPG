@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class HealthSystem : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
+
+   
 
     public void TakeDamage(float damageAmount)
     {
