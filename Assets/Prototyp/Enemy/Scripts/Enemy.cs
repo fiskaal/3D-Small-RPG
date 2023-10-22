@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class Enemy : MonoBehaviour
     private bool dead;
     private float timePassedAfterDeath;
 
+    private bool firstTimeSpotted;
+    private float screamTimePassed = 0;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -32,6 +36,8 @@ public class Enemy : MonoBehaviour
         animator.applyRootMotion = false;
         dead = false;
         timePassedAfterDeath = 0f;
+        firstTimeSpotted = true;
+        timePassed = attackCD;
     }
 
     // Update is called once per frame
@@ -57,14 +63,38 @@ public class Enemy : MonoBehaviour
 
         if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
-            newDestinationCD = 0.5f;
-            agent.SetDestination(player.transform.position);
+            float screamTime = 1f;
+            if (firstTimeSpotted)
+            {
+                animator.SetTrigger("enemySpotted");
+
+                if (screamTimePassed >= screamTime)
+                {
+                    firstTimeSpotted = false;
+                }
+
+                screamTimePassed += Time.deltaTime;
+                return;
+            }
+
+            if (!dead)
+            {
+
+                transform.LookAt(player.transform);
+            }
+
+            if (!firstTimeSpotted)
+            {
+                newDestinationCD = 0.5f;
+                agent.SetDestination(player.transform.position);
+            }
         }
         newDestinationCD -= Time.deltaTime;
 
-        if (!dead)
+        //if (!dead)
         {
-            transform.LookAt(player.transform);
+            
+            //transform.LookAt(player.transform);
         }
 
         //waiting for death animation to be over
