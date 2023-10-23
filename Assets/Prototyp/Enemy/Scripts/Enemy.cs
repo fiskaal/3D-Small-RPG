@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float health = 3;
     [SerializeField] GameObject hitVFX;
+    [SerializeField] GameObject hitVFX1;
     [SerializeField] GameObject ragdoll;
 
     [Header("Combat")]
@@ -154,6 +155,9 @@ public class Enemy : MonoBehaviour
     {
         GameObject hit = Instantiate(hitVFX, hitPosition, Quaternion.identity);
         Destroy(hit, 3f);
+        
+        GameObject hit1 = Instantiate(hitVFX1, hitPosition, Quaternion.identity);
+        Destroy(hit1, 3f);
     }
 
     private void OnDrawGizmos()
