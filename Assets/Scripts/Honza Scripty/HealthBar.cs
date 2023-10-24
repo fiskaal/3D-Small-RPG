@@ -12,7 +12,7 @@ public class HealthBar : MonoBehaviour
         if (healthSlider != null && playerHP != null)
         {
             // Update the slider value based on the player's health
-            healthSlider.value = MapHealthToSliderValue(playerHP.health);
+            healthSlider.value = MapHealthToSliderValue(playerHP.currentHealth);
         }
     }
 
