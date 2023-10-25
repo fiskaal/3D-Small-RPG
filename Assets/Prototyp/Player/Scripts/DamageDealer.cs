@@ -13,6 +13,7 @@ public class DamageDealer : MonoBehaviour
     List<GameObject> foundEnemies = new List<GameObject>(); // A list to keep track of found enemies
     [SerializeField] float aggroRange = 4f;
     private GameObject closestEnemy;
+    private bool attackedEnemySelected;
 
     private GameObject player;
     void Start()
@@ -22,6 +23,7 @@ public class DamageDealer : MonoBehaviour
         
         player = GameObject.FindGameObjectWithTag("Player");
         closestEnemy = null;
+        attackedEnemySelected = false;
         
         FindAndAddEnemies();
         
@@ -66,8 +68,12 @@ public class DamageDealer : MonoBehaviour
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
             }
-            
-            FindClosestEnemy();
+
+            if (!attackedEnemySelected)
+            {
+                FindClosestEnemy();
+            }
+
             LookAtEnemy();
         }
     }
@@ -77,7 +83,7 @@ public class DamageDealer : MonoBehaviour
         hasDealtDamage.Clear();
     }
 
-    private void FindClosestEnemy()
+    public void FindClosestEnemy()
     {
         float closestDistance = float.MaxValue;
         for (int i = 0; i < foundEnemies.Count; i++)
@@ -95,6 +101,7 @@ public class DamageDealer : MonoBehaviour
                 {
                     closestDistance = distance;
                     closestEnemy = foundEnemies[i];
+                    attackedEnemySelected = true;
                 }
             }
         }
@@ -111,6 +118,8 @@ public class DamageDealer : MonoBehaviour
     public void EndDealDamage()
     {
         canDealDamage = false;
+
+        attackedEnemySelected = false;
     }
 
     private void OnDrawGizmos()

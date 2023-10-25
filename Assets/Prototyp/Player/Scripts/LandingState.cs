@@ -17,6 +17,8 @@ public class LandingState:State
         timePassed = 0f;
         character.animator.SetTrigger("land");
         landingTime = 0.2f;
+        
+        //gravityVelocity.y += 5 * Time.deltaTime;
     }
 
     public override void LogicUpdate()

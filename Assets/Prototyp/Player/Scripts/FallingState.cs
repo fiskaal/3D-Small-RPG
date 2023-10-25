@@ -31,7 +31,7 @@ public class FallingState : State
         character.animator.SetFloat("speed", 0);
         character.animator.SetTrigger("fall");
         
-        Jump();
+        //Jump();
     }
     public override void HandleInput()
     {
