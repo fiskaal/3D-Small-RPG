@@ -71,6 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2995673596906374300}
+  - component: {fileID: 626898797822916575}
   - component: {fileID: 2995673596906374302}
   - component: {fileID: 2995673596906374299}
   - component: {fileID: 2995673596906374301}
@@ -103,6 +104,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &626898797822916575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2995673596906374298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa821db6be53c4479ba240c4f43a086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDamage: 1
+  lightingStrikeDamage: 1
 --- !u!114 &2995673596906374302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,7 +459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5859106833986492598, guid: d1ac8d5fbd3ff104f8512af943ec866d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5859106833986492599, guid: d1ac8d5fbd3ff104f8512af943ec866d, type: 3}
       propertyPath: coolDownTime

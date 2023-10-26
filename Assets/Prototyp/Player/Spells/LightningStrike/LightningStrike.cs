@@ -15,8 +15,8 @@ public class LightningStrike : MonoBehaviour
 
     [SerializeField] private float coolDownTime;
     private float timePassed;
-
-
+    
+    
     private void Start()
     {
         timePassed = 0f;
@@ -74,8 +74,11 @@ public class LightningStrike : MonoBehaviour
         {
             FindAndAddEnemies();
             FindClosestEnemy();
-            Instantiate(lightningPrefab, closestEnemy.transform);
-            timePassed = 0f;
+            if (closestEnemy != null)
+            {
+                Instantiate(lightningPrefab, closestEnemy.transform);
+                timePassed = 0f;
+            }
         }
 
         timePassed += Time.deltaTime;

@@ -16,8 +16,12 @@ public class DamageDealer : MonoBehaviour
     private bool attackedEnemySelected;
 
     private GameObject player;
+    private DamageOfEverything _damageOfEverything;
     void Start()
     {
+        //get weapon damage
+        _damageOfEverything = gameObject.GetComponentInParent<DamageOfEverything>();
+        
         canDealDamage = false;
         hasDealtDamage = new List<GameObject>();
         
@@ -63,7 +67,7 @@ public class DamageDealer : MonoBehaviour
             {
                 if (hit.transform.TryGetComponent(out Enemy enemy) && !hasDealtDamage.Contains(hit.transform.gameObject))
                 {
-                    enemy.TakeDamage(weaponDamage);
+                    enemy.TakeDamage(_damageOfEverything.weaponDamage);
                     enemy.HitVFX(hit.point);
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
