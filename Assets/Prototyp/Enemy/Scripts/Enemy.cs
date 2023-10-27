@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRange = 1f;
     [SerializeField] float aggroRange = 4f;
 
+    [Header("Loot")]
+    [SerializeField] GameObject[] lootItems;
+    [SerializeField] Vector2Int[] lootQuantities;
+
     GameObject player;
     NavMeshAgent agent;
     Animator animator;
@@ -33,7 +37,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        
+
         animator.applyRootMotion = false;
         dead = false;
         timePassedAfterDeath = 0f;
@@ -41,15 +45,14 @@ public class Enemy : MonoBehaviour
         timePassed = attackCD;
     }
 
-    // Update is called once per frame
     void Update()
     {
         animator.SetFloat("speed", agent.velocity.magnitude / agent.speed);
 
-		if (player == null)
-		{
+        if (player == null)
+        {
             return;
-		}
+        }
 
         if (timePassed >= attackCD)
         {
@@ -80,7 +83,6 @@ public class Enemy : MonoBehaviour
 
             if (!dead)
             {
-
                 transform.LookAt(player.transform);
             }
 
@@ -92,13 +94,6 @@ public class Enemy : MonoBehaviour
         }
         newDestinationCD -= Time.deltaTime;
 
-        //if (!dead)
-        {
-            
-            //transform.LookAt(player.transform);
-        }
-
-        //waiting for death animation to be over
         if (dead)
         {
             if (timePassedAfterDeath >= 3f)
@@ -107,23 +102,37 @@ public class Enemy : MonoBehaviour
             }
             timePassedAfterDeath += Time.deltaTime;
         }
-       
     }
 
-	private void OnCollisionEnter(Collision collision)
-	{
+    private void OnCollisionEnter(Collision collision)
+    {
         if (collision.gameObject.CompareTag("Player"))
         {
-            print(true);
             player = collision.gameObject;
         }
     }
 
-	void Die()
+    void Die()
     {
-        //Instantiate(ragdoll, transform.position,transform.rotation);
+        DropLoot();
         Destroy(this.gameObject);
     }
+
+    void DropLoot()
+    {
+        for (int i = 0; i < lootItems.Length; i++)
+        {
+            int quantity = Random.Range(lootQuantities[i].x, lootQuantities[i].y + 1); // Random quantity within the specified range
+            for (int j = 0; j < quantity; j++)
+            {
+                Vector2 randomOffset = Random.insideUnitCircle.normalized * Random.Range(1f, 3f);
+                Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, 0f, randomOffset.y); // Offset only in X and Z dimensions
+
+                Instantiate(lootItems[i], spawnPosition + Vector3.up, Quaternion.identity);
+            }
+        }
+    }
+
 
     public void TakeDamage(float damageAmount)
     {
@@ -132,20 +141,20 @@ public class Enemy : MonoBehaviour
             health -= damageAmount;
             animator.applyRootMotion = true;
             animator.SetTrigger("damage");
-            //CameraShake.Instance.ShakeCamera(2f, 0.2f);
 
             if (health <= 0)
             {
                 animator.SetTrigger("death");
                 dead = true;
-                //Die();
             }
         }
     }
+
     public void StartDealDamage()
     {
         GetComponentInChildren<EnemyDamageDealer>().StartDealDamage();
     }
+
     public void EndDealDamage()
     {
         GetComponentInChildren<EnemyDamageDealer>().EndDealDamage();
@@ -155,7 +164,7 @@ public class Enemy : MonoBehaviour
     {
         GameObject hit = Instantiate(hitVFX, hitPosition, Quaternion.identity);
         Destroy(hit, 3f);
-        
+
         GameObject hit1 = Instantiate(hitVFX1, hitPosition, Quaternion.identity);
         Destroy(hit1, 3f);
     }

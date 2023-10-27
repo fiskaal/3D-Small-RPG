@@ -73,60 +73,50 @@ public class UserCamera : MonoBehaviour {
 			inFirstPerson = true;
 		}	
 	}
-	
+
 	//Only Move camera after everything else has been updated
-	void LateUpdate () 
-	{ 
-
+	void LateUpdate()
+	{
 		// Don't do anything if target is not defined 
-		if (!target) 
+		if (!target)
 			return;
-		
-		Vector3 vTargetOffset3;
 
-		// mouse controlling the rotation of camera
-		xDeg += Input.GetAxis ("Mouse X") * xSpeed * 0.02f; 
-		yDeg -= Input.GetAxis ("Mouse Y") * ySpeed * 0.02f; 
-		
-		ClampAngle (yDeg); 
-		
-		// Set camera rotation 
-		Quaternion rotation = Quaternion.Euler (yDeg, xDeg, 0); 
-		
-		// Calculate the desired distance 
-		desiredDistance -= Input.GetAxis ("Mouse ScrollWheel") * Time.deltaTime * zoomRate * Mathf.Abs (desiredDistance); 
-		desiredDistance = Mathf.Clamp (desiredDistance, minDistance, maxDistance); 
-		correctedDistance = desiredDistance; 
-		
-		// Calculate desired camera position
-		Vector3 vTargetOffset = new Vector3 (0, -targetHeight, 0);
-		Vector3 position = target.position - (rotation * Vector3.forward * desiredDistance + vTargetOffset); 
-		
-		// Check for collision using the true target's desired registration point as set by user using height 
-		RaycastHit collisionHit; 
-		Vector3 trueTargetPosition = new Vector3 (target.position.x, target.position.y + targetHeight, target.position.z); 
-		
-		// If there was a collision, correct the camera position and calculate the corrected distance 
-		bool isCorrected = false; 
-		if (Physics.Linecast (trueTargetPosition, position,out collisionHit, collisionLayers)) 
-		{ 
-			correctedDistance = Vector3.Distance (trueTargetPosition, collisionHit.point) - offsetFromWall; 
+		// Handle camera rotation unless Ctrl key is held
+		if (!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.RightControl))
+		{
+			xDeg += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
+			yDeg -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+			ClampAngle(yDeg);
+		}
+
+		Quaternion rotation = Quaternion.Euler(yDeg, xDeg, 0);
+
+		desiredDistance -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * zoomRate * Mathf.Abs(desiredDistance);
+		desiredDistance = Mathf.Clamp(desiredDistance, minDistance, maxDistance);
+		correctedDistance = desiredDistance;
+
+		Vector3 vTargetOffset = new Vector3(0, -targetHeight, 0);
+		Vector3 position = target.position - (rotation * Vector3.forward * desiredDistance + vTargetOffset);
+
+		RaycastHit collisionHit;
+		Vector3 trueTargetPosition = new Vector3(target.position.x, target.position.y + targetHeight, target.position.z);
+
+		bool isCorrected = false;
+		if (Physics.Linecast(trueTargetPosition, position, out collisionHit, collisionLayers))
+		{
+			correctedDistance = Vector3.Distance(trueTargetPosition, collisionHit.point) - offsetFromWall;
 			isCorrected = true;
 		}
-		
-		// For smoothing, lerp distance only if either distance wasn't corrected, or correctedDistance is more than currentDistance 
-		currentDistance = !isCorrected || correctedDistance > currentDistance ? Mathf.Lerp (currentDistance, correctedDistance, Time.deltaTime * zoomDampening) : correctedDistance; 
-		
-		// Keep within limits
-		currentDistance = Mathf.Clamp (currentDistance, minDistance, maxDistance); 
-		
-		// Recalculate position based on the new currentDistance 
-		position = target.position - (rotation * Vector3.forward * currentDistance + vTargetOffset); 
-		
-		//Finally Set rotation and position of camera
-		transform.rotation = rotation; 
-		transform.position = position; 
-	} 
+
+		currentDistance = !isCorrected || correctedDistance > currentDistance ? Mathf.Lerp(currentDistance, correctedDistance, Time.deltaTime * zoomDampening) : correctedDistance;
+		currentDistance = Mathf.Clamp(currentDistance, minDistance, maxDistance);
+
+		position = target.position - (rotation * Vector3.forward * currentDistance + vTargetOffset);
+
+		transform.rotation = rotation;
+		transform.position = position;
+	}
+
 
 	void ClampAngle (float angle)
 	{

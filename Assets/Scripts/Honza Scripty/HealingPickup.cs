@@ -8,12 +8,12 @@ public class HealingPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerHP playerHealth = other.GetComponent<PlayerHP>();
+            HealthSystem playerHealth = other.GetComponent<HealthSystem>();
 
             if (playerHealth != null)
             {
                 // Increase player's health
-                playerHealth.currentHealth += healingAmount;
+                playerHealth.health += healingAmount;
 
                 // Clamp the player's health to a maximum value if needed
                 // playerHealth.health = Mathf.Clamp(playerHealth.health, 0f, maxHealth);

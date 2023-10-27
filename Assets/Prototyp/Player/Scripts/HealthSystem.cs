@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] float health = 100;
+    [SerializeField] public float health = 100;
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject ragdoll;
 

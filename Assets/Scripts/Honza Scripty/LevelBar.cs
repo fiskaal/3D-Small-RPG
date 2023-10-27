@@ -11,11 +11,9 @@ public class LevelBar : MonoBehaviour
         // Ensure the levelSlider and levelSystem references are not null
         if (levelSlider != null && levelSystem != null)
         {
-            // Set the slider max value to the initial experience threshold of the LevelSystem
-            levelSlider.maxValue = levelSystem.experienceThreshold;
-
-            // Update the slider value based on the player's current experience points
-            levelSlider.value = levelSystem.currentExperience;
+            // Set the slider value based on the relative progress from currentExperience to experienceThreshold
+            float progress = levelSystem.currentExperience / levelSystem.experienceThreshold;
+            levelSlider.value = progress;
         }
         else
         {
@@ -23,16 +21,18 @@ public class LevelBar : MonoBehaviour
         }
     }
 
+
     void Update()
     {
         // Ensure the levelSlider and levelSystem references are not null
         if (levelSlider != null && levelSystem != null)
         {
-            // Update the slider value based on the player's current experience points
-            levelSlider.value = levelSystem.currentExperience;
+            // Update the slider value based on the relative progress from currentExperience to experienceThreshold
+            float progress = levelSystem.currentExperience / levelSystem.experienceThreshold;
+            levelSlider.value = progress;
 
             // Optionally, you can update the max value of the slider if the experience threshold changes dynamically.
-            // levelSlider.maxValue = levelSystem.experienceThreshold;
+            // levelSlider.maxValue = 1f; // The slider max value is always 1 for representing progress
         }
     }
 }

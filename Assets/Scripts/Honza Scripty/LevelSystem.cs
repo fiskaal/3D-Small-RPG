@@ -57,10 +57,15 @@ public class LevelSystem : MonoBehaviour
     {
         if (upgradePanels != null)
         {
+            // Clear the list of activated indices at the beginning of the method
+            activatedIndices.Clear();
+
             int childCount = upgradePanels.transform.childCount;
 
-            // Activate 3 random child objects
-            for (int i = 0; i < 3; i++)
+            // Activate 3 random child objects or activate all if there are less than 3
+            int panelsToActivate = Mathf.Min(3, childCount);
+
+            for (int i = 0; i < panelsToActivate; i++)
             {
                 int randomChildIndex;
                 GameObject randomChild;
@@ -84,6 +89,8 @@ public class LevelSystem : MonoBehaviour
             Debug.LogError("UpgradePanels not assigned!");
         }
     }
+
+
 
     // Method to deactivate all child objects of upgradePanels
     void DeactivateAllUpgradePanels()

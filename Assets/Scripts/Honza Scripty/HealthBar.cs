@@ -4,15 +4,15 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider healthSlider; // Reference to the UI Slider representing the health bar
-    public PlayerHP playerHP; // Reference to the PlayerHP script
+    public HealthSystem healthSystem; // Reference to the PlayerHP script
 
     void Update()
     {
         // Ensure the healthSlider and playerHP references are not null
-        if (healthSlider != null && playerHP != null)
+        if (healthSlider != null && healthSystem != null)
         {
             // Update the slider value based on the player's health
-            healthSlider.value = MapHealthToSliderValue(playerHP.currentHealth);
+            healthSlider.value = MapHealthToSliderValue(healthSystem.health);
         }
     }
 

@@ -1441,6 +1441,12 @@ MonoBehaviour:
   attackCD: 3
   attackRange: 1
   aggroRange: 4
+  lootItems:
+  - {fileID: 2599361241298687333, guid: 5dee8169a360bce47b6aca4348603f75, type: 3}
+  - {fileID: 8692958704477054658, guid: ff7cda5ce1d7d5947b2dc75fba91f6b5, type: 3}
+  lootQuantities:
+  - {x: 1, y: 4}
+  - {x: 0, y: 2}
 --- !u!195 &8316419724781514155
 NavMeshAgent:
   m_ObjectHideFlags: 0
