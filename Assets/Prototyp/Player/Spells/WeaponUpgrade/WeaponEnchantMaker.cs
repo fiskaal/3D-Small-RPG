@@ -11,28 +11,28 @@ public class WeaponEnchantMaker : MonoBehaviour
    
    [SerializeField] private GameObject LightningHolder;
    [SerializeField] private GameObject LightningEnchantPreFab;
-   private bool lightningEnchatn = false;
+   private bool lightningEnchant = false;
 
 
    private float previousWeaponDamage;
-
+   
    private DamageOfEverything _damageOfEverything;
    private void Start()
    {
       _damageOfEverything = gameObject.GetComponentInParent<DamageOfEverything>();
-      
-      EnchanteFire();
+
+      EnchanteLightning();
    }
 
    private void EnchanteFire()
    {
+      
       if (!fireEnchant)
       {
          GameObject fire = Instantiate(FireEnchantPreFab, FireHolder.transform);
 
          previousWeaponDamage = _damageOfEverything.weaponDamage;
-         _damageOfEverything.weaponDamage =
-            _damageOfEverything.weaponDamage + _damageOfEverything.fireEnchantDamageBonus;
+         _damageOfEverything.weaponDamage = _damageOfEverything.weaponDamage + _damageOfEverything.fireEnchantDamageBonus;
          fireEnchant = true;
       }
       else
@@ -52,7 +52,27 @@ public class WeaponEnchantMaker : MonoBehaviour
    
    private void EnchanteLightning()
    {
-      GameObject Lightning = Instantiate(LightningEnchantPreFab, LightningHolder.transform);
+      if (!lightningEnchant)
+      {
+         GameObject lightning = Instantiate(LightningEnchantPreFab, FireHolder.transform);
+
+         previousWeaponDamage = _damageOfEverything.weaponDamage;
+         _damageOfEverything.weaponDamage = _damageOfEverything.weaponDamage + _damageOfEverything.lightningEnchantDamageBonus;
+         lightningEnchant = true;
+      }
+      else
+      {
+         KeepWeaponEnchanted();
+      }
+   }
+   
+   private void UnEnchantLightning()
+   {
+      Destroy(LightningEnchantPreFab);
+      _damageOfEverything.weaponDamage = previousWeaponDamage;
+      previousWeaponDamage = 0f;
+
+      lightningEnchant = false;
    }
 
 
@@ -62,6 +82,11 @@ public class WeaponEnchantMaker : MonoBehaviour
       if (fireEnchant)
       {
          Instantiate(FireEnchantPreFab, FireHolder.transform);
+      }
+      
+      if (lightningEnchant)
+      {
+         Instantiate(LightningEnchantPreFab, FireHolder.transform);
       }
    }
 }

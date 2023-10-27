@@ -13,27 +13,35 @@ public class EquipmentSystem : MonoBehaviour
     GameObject currentWeaponInSheath;
     void Start()
     {
-        currentWeaponInSheath = Instantiate(weapon, weaponSheath.transform);
+        weaponSheath.SetActive(true);
+        weaponHolder.SetActive(false);
+        //currentWeaponInSheath = Instantiate(weapon, weaponSheath.transform);
     }
 
     public void DrawWeapon()
     {
-        currentWeaponInHand = Instantiate(weapon, weaponHolder.transform);
-        Destroy(currentWeaponInSheath);
+        weaponSheath.SetActive(false);
+        weaponHolder.SetActive(true);
+        /*currentWeaponInHand = Instantiate(weapon, weaponHolder.transform);
+        Destroy(currentWeaponInSheath);*/
     }
 
     public void SheathWeapon()
     {
-        currentWeaponInSheath = Instantiate(weapon, weaponSheath.transform);
-        Destroy(currentWeaponInHand);
+        weaponSheath.SetActive(true);
+        weaponHolder.SetActive(false);
+        /*currentWeaponInSheath = Instantiate(weapon, weaponSheath.transform);
+        Destroy(currentWeaponInHand);*/
     }
 
     public void StartDealDamage()
     {
-        currentWeaponInHand.GetComponentInChildren<DamageDealer>().StartDealDamage();
+        weaponHolder.GetComponentInChildren<DamageDealer>().StartDealDamage();
+        //currentWeaponInHand.GetComponentInChildren<DamageDealer>().StartDealDamage();
     }
     public void EndDealDamage()
     {
-        currentWeaponInHand.GetComponentInChildren<DamageDealer>().EndDealDamage();
+        weaponHolder.GetComponentInChildren<DamageDealer>().EndDealDamage();
+        //currentWeaponInHand.GetComponentInChildren<DamageDealer>().EndDealDamage();
     }
 }

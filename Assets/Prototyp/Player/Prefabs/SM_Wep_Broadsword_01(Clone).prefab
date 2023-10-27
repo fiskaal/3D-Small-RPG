@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 5845241943691725298}
   - component: {fileID: 1653679217571896447}
   - component: {fileID: 4407209605293160839}
-  - component: {fileID: 2465493953240343555}
   m_Layer: 0
   m_Name: SM_Wep_Broadsword_01(Clone)
   m_TagString: Untagged
@@ -164,22 +163,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43873980847829622, guid: e79c25ba848da8945a25117a1a1ea059, type: 2}
---- !u!114 &2465493953240343555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7003983810912126619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9049e5421b83e7b42b4c69acf67c38ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FireHolder: {fileID: 5137295319134990659}
-  FireEnchantPreFab: {fileID: 190318572964310171, guid: a0109702f1fc1f34597748e5815972ce, type: 3}
-  LightningHolder: {fileID: 4064519588530413714}
-  LightningEnchantPreFab: {fileID: 5738800909994612697, guid: 978adccb080273d42ae3ce4b7ce1f4f2, type: 3}
 --- !u!1 &8224710184112419979
 GameObject:
   m_ObjectHideFlags: 0

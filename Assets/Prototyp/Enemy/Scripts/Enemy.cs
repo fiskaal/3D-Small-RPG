@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using CartoonFX;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float health = 3;
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject hitVFX1;
     [SerializeField] GameObject ragdoll;
 
     [Header("Combat")]
+    [SerializeField] float health = 3;
     [SerializeField] float attackCD = 3f;
     [SerializeField] float attackRange = 1f;
     [SerializeField] float aggroRange = 4f;
@@ -43,6 +44,7 @@ public class Enemy : MonoBehaviour
         timePassedAfterDeath = 0f;
         firstTimeSpotted = true;
         timePassed = attackCD;
+        
     }
 
     void Update()
@@ -141,7 +143,7 @@ public class Enemy : MonoBehaviour
             health -= damageAmount;
             animator.applyRootMotion = true;
             animator.SetTrigger("damage");
-
+            
             if (health <= 0)
             {
                 animator.SetTrigger("death");
