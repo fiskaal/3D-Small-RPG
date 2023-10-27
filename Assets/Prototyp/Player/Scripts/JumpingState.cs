@@ -13,6 +13,7 @@ public class JumpingState:State
     private float clipLength;
     private float clipSpeed;
     private float timePassed;
+    private float jumpingTime;
     
     public JumpingState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
 	{
@@ -35,6 +36,7 @@ public class JumpingState:State
         Jump();
 
         timePassed = 0f;
+        jumpingTime = 0.7f;
 	}
 	public override void HandleInput()
 	{
@@ -52,10 +54,14 @@ public class JumpingState:State
             stateMachine.ChangeState(character.landing);
         }
         
-        if (!grounded)
+        if (!grounded && timePassed >= jumpingTime)
         {
 	        stateMachine.ChangeState((character.falling));
         }
+
+        
+        
+        timePassed += Time.deltaTime;
     }
 
     public override void PhysicsUpdate()

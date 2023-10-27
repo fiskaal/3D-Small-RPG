@@ -10,23 +10,40 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] GameObject ragdoll;
 
     Animator animator;
+    
+    //shield spell
+    private PlayerShield _playerShield;
+    
+    
     void Start()
     {
         animator = GetComponent<Animator>();
+        
+        //shield spell
+        _playerShield = gameObject.GetComponentInChildren<PlayerShield>();
     }
 
    
 
     public void TakeDamage(float damageAmount)
     {
-        health -= damageAmount;
-        animator.SetTrigger("damage");
-        //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+        _playerShield = gameObject.GetComponentInChildren<PlayerShield>();
         
-
-        if (health <= 0)
+        if (_playerShield != null)
         {
-            Die();
+            _playerShield.TakeDamage(1);
+        }
+        else
+        {
+            health -= damageAmount;
+            animator.SetTrigger("damage");
+            //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+
+
+            if (health <= 0)
+            {
+                Die();
+            } 
         }
     }
 
