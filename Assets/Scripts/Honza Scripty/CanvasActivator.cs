@@ -3,6 +3,7 @@ using UnityEngine;
 public class CanvasActivator : MonoBehaviour
 {
     public GameObject targetGameObject; // Assign the specific GameObject you want to activate in the Inspector
+    public GameObject iconObject; // Public reference to the IconObject, assign it in the Inspector
     private bool isPlayerInsideCollider;
 
     void OnTriggerEnter(Collider other)
@@ -10,6 +11,7 @@ public class CanvasActivator : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInsideCollider = true;
+            ActivateIconObject();
         }
     }
 
@@ -17,7 +19,14 @@ public class CanvasActivator : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (targetGameObject != null)
+            {
+                targetGameObject.SetActive(false);
+            }
+
             isPlayerInsideCollider = false;
+            DeactivateIconObject();
+
         }
     }
 
@@ -30,6 +39,31 @@ public class CanvasActivator : MonoBehaviour
             {
                 targetGameObject.SetActive(true);
             }
+        }
+
+        // Check if the player presses the Escape key to close the targetGameObject
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (targetGameObject != null)
+            {
+                targetGameObject.SetActive(false);
+            }
+        }
+    }
+
+    void ActivateIconObject()
+    {
+        if (iconObject != null)
+        {
+            iconObject.SetActive(true);
+        }
+    }
+
+    void DeactivateIconObject()
+    {
+        if (iconObject != null)
+        {
+            iconObject.SetActive(false);
         }
     }
 }

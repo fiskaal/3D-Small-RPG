@@ -2,21 +2,27 @@ using UnityEngine;
 
 public class CursorVisibilityController : MonoBehaviour
 {
-    private bool isCtrlPressed = false;
+    public GameObject[] objectsToCheck;
 
     void Update()
     {
-        // Check if the Ctrl key is being held down
-        bool ctrlKeyPressedThisFrame = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+        bool shouldShowCursor = false;
 
-        // If Ctrl key is pressed this frame, set the flag to true
-        if (ctrlKeyPressedThisFrame)
+        // Check if any specific game object in the array is active
+        foreach (GameObject obj in objectsToCheck)
         {
-            isCtrlPressed = true;
+            if (obj.activeSelf)
+            {
+                shouldShowCursor = true;
+                break;
+            }
         }
 
-        // Set cursor visibility based on Ctrl key state
-        Cursor.visible = isCtrlPressed;
+        // Check if the Ctrl key is being held down
+        bool isCtrlPressed = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+
+        // Show cursor if any object is active or Ctrl key is held down
+        Cursor.visible = shouldShowCursor || isCtrlPressed;
 
         // Lock cursor if it's not visible
         if (!Cursor.visible)
@@ -27,8 +33,5 @@ public class CursorVisibilityController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
         }
-
-        // Reset the Ctrl key flag at the end of the frame
-        isCtrlPressed = false;
     }
 }

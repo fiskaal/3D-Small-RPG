@@ -19,6 +19,12 @@ public class Billboard : MonoBehaviour
             lookPos.y = 0; // Restrict rotation on the Y-axis only
             Quaternion rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = rotation;
+
+            // Mirror the object by applying a negative scale on the X-axis
+            if (transform.localScale.x > 0)
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
         }
         else
         {

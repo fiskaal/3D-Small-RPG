@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class UpgradeButton : MonoBehaviour
 {
     public GameObject objectToActivate; // Reference to the game object to activate
+    public GameObject objectToDeActivate; // Reference to the game object to De-activate
     public GameObject warningMessage; // Reference to the warning game object
     public int woodCost = 5; // Wood cost required for activation
     public int stoneCost = 3; // Stone cost required for activation
@@ -21,6 +22,8 @@ public class UpgradeButton : MonoBehaviour
 
             // Activate the game object
             objectToActivate.SetActive(true);
+            // Deactivate Other game object
+            objectToDeActivate.SetActive(false);
 
             // Deactivate the warning message if it was previously active
             if (warningMessage.activeSelf)

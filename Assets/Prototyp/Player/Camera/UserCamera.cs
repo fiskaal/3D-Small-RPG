@@ -34,7 +34,9 @@ public class UserCamera : MonoBehaviour {
 	
 	public GameObject userModel;
 	public bool inFirstPerson;
-		
+
+	public GameObject[] objectsToCheckRotation; // Array of objects to check for activity
+
 	void Start () { 
 
 		Vector3 angles = transform.eulerAngles; 
@@ -77,12 +79,24 @@ public class UserCamera : MonoBehaviour {
 	//Only Move camera after everything else has been updated
 	void LateUpdate()
 	{
-		// Don't do anything if target is not defined 
+		// Don't do anything if target is not defined
 		if (!target)
 			return;
 
-		// Handle camera rotation unless Ctrl key is held
-		if (!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.RightControl))
+		bool shouldRotate = true;
+
+		// Check if at least one object in the array is active
+		foreach (GameObject obj in objectsToCheckRotation)
+		{
+			if (obj.activeSelf)
+			{
+				shouldRotate = false;
+				break;
+			}
+		}
+
+		// Handle camera rotation unless Ctrl key is held or an object in the array is active
+		if (!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.RightControl) && shouldRotate)
 		{
 			xDeg += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
 			yDeg -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;

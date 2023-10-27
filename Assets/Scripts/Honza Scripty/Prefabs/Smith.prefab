@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 6443599628482689141}
   m_LocalRotation: {x: -0, y: 0.84027004, z: -0, w: 0.5421681}
   m_LocalPosition: {x: 340.25, y: 201.52, z: 30.03}
-  m_LocalScale: {x: 3.9675112, y: 3.9675112, z: 6.8138037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6443599627080485511}
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetGameObject: {fileID: 0}
+  iconObject: {fileID: 0}
 --- !u!65 &6443599628482689131
 BoxCollider:
   m_ObjectHideFlags: 0
