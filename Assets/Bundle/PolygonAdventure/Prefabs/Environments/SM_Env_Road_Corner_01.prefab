@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3349182}
   - component: {fileID: 2373034}
   - component: {fileID: 65640386116888804}
+  - component: {fileID: 3460738206665684925}
   m_Layer: 0
   m_Name: SM_Env_Road_Corner_01
   m_TagString: Untagged
@@ -95,5 +96,18 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.0834837, y: 0.052398443, z: 6.2430034}
-  m_Center: {x: -2.9620633, y: -0.026199222, z: 3.1167018}
+  m_Size: {x: 3.2992291, y: 0.18313724, z: 6.2430034}
+  m_Center: {x: -1.5699354, y: 0.039170176, z: 3.1167016}
+--- !u!65 &3460738206665684925
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155188}
+  m_Material: {fileID: 13400000, guid: 1c7b58ab43b40c6448584a03dc7a74cf, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.0987353, y: 0.18313724, z: 3.2795708}
+  m_Center: {x: -2.969689, y: 0.039170176, z: 4.598418}
