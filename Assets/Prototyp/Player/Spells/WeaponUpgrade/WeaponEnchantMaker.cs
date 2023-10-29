@@ -21,7 +21,7 @@ public class WeaponEnchantMaker : MonoBehaviour
    {
       _damageOfEverything = gameObject.GetComponentInParent<DamageOfEverything>();
 
-      EnchanteLightning();
+      EnchanteFire();
    }
 
    private void EnchanteFire()

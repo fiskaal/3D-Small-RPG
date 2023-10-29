@@ -33,6 +33,9 @@ public class Enemy : MonoBehaviour
     private bool firstTimeSpotted;
     private float screamTimePassed = 0;
 
+    //ocko projectile
+    private OckoProjectile _ockoProjectile;
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -45,6 +48,11 @@ public class Enemy : MonoBehaviour
         firstTimeSpotted = true;
         timePassed = attackCD;
         
+        //ocko projectile
+        if (GetComponent<OckoProjectile>() != null)
+        {
+            _ockoProjectile = GetComponent<OckoProjectile>();
+        }
     }
 
     void Update()
@@ -63,16 +71,27 @@ public class Enemy : MonoBehaviour
                 animator.applyRootMotion = true;
                 animator.SetTrigger("attack");
                 timePassed = 0;
+
+                if (_ockoProjectile != null)
+                {
+                    _ockoProjectile.FireProjectile(player.transform.position);
+                }
             }
         }
         timePassed += Time.deltaTime;
 
         if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
-            float screamTime = 1f;
+            float screamTime = 0.5f;
             if (firstTimeSpotted)
             {
-                animator.SetTrigger("enemySpotted");
+                bool spot = false;
+
+                if (!spot)
+                {
+                    animator.SetTrigger("enemySpotted");
+                    spot = true;
+                }
 
                 if (screamTimePassed >= screamTime)
                 {
