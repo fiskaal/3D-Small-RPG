@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
-    public GameObject objectToActivate; // Reference to the game object to activate
-    public GameObject objectToDeActivate; // Reference to the game object to De-activate
+    public GameObject[] objectsToActivate; // Array of game objects to activate
+    public GameObject[] objectsToDeactivate; // Array of game objects to deactivate
     public GameObject warningMessage; // Reference to the warning game object
     public int woodCost = 5; // Wood cost required for activation
     public int stoneCost = 3; // Stone cost required for activation
@@ -12,7 +12,7 @@ public class UpgradeButton : MonoBehaviour
 
     public void OnButtonClick()
     {
-        // Check if the player has enough resources to activate the object
+        // Check if the player has enough resources to activate the objects
         if (ManagerPickups.wood >= woodCost && ManagerPickups.stone >= stoneCost && ManagerPickups.iron >= ironCost)
         {
             // Deduct the cost from the resources
@@ -20,10 +20,17 @@ public class UpgradeButton : MonoBehaviour
             ManagerPickups.UpdateStoneCount(-stoneCost);
             ManagerPickups.UpdateIronCount(-ironCost);
 
-            // Activate the game object
-            objectToActivate.SetActive(true);
-            // Deactivate Other game object
-            objectToDeActivate.SetActive(false);
+            // Activate the game objects in the objectsToActivate array
+            foreach (GameObject obj in objectsToActivate)
+            {
+                obj.SetActive(true);
+            }
+
+            // Deactivate the game objects in the objectsToDeactivate array
+            foreach (GameObject obj in objectsToDeactivate)
+            {
+                obj.SetActive(false);
+            }
 
             // Deactivate the warning message if it was previously active
             if (warningMessage.activeSelf)
