@@ -47,10 +47,15 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    [Header("Death PopUp")] 
+    [SerializeField]private GameObject deathUIPopUp;
+    
     void Die()
     {
-        Instantiate(ragdoll, transform.position, transform.rotation);
-        Destroy(this.gameObject);
+        deathUIPopUp.SetActive(true);
+        animator.SetTrigger("death");
+        //Instantiate(ragdoll, transform.position, transform.rotation);
+        //Destroy(this.gameObject);
     }
     public void HitVFX(Vector3 hitPosition)
     {
