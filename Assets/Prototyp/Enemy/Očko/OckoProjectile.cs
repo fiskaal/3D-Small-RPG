@@ -14,7 +14,7 @@ public class OckoProjectile : MonoBehaviour
     {
         Vector3 forwardDirection = transform.forward;
         Vector3 spawnPosition = transform.position + forwardDirection * desiredZPosition;
-        spawnPosition.y = desiredHeight;
+        spawnPosition.y = desiredHeight +transform.position.y;
 
 // Instantiate the projectile
         GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
@@ -33,4 +33,6 @@ public class OckoProjectile : MonoBehaviour
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.velocity = direction * projectileSpeed;
     }
+    
+    
 }
