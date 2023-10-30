@@ -15,6 +15,8 @@ public class StandingState: State
 
     Vector3 cVelocity;
 
+    private float fallingTimer;
+
     public StandingState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
 	{
 		character = _character;
@@ -37,7 +39,9 @@ public class StandingState: State
 
         playerSpeed = character.playerSpeed;
         grounded = character.controller.isGrounded;
-        gravityValue = character.gravityValue;    
+        gravityValue = character.gravityValue;
+
+        fallingTimer = 0f;
     }
 
     public override void HandleInput()
@@ -96,8 +100,13 @@ public class StandingState: State
 
         if (falling)
         {
-            stateMachine.ChangeState((character.falling));
-            character.animator.SetTrigger("fall");
+            float fallTime = 1f;
+            if (fallTime <= fallingTimer)
+            {
+                stateMachine.ChangeState((character.falling));
+                character.animator.SetTrigger("fall");
+            }
+            fallingTimer += Time.deltaTime;
         }
     }
 
