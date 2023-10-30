@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488024, guid: 9d512b24ffbedb841a3b360fd5f32d6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.75
+      value: 6.688
       objectReference: {fileID: 0}
     - target: {fileID: 488024, guid: 9d512b24ffbedb841a3b360fd5f32d6c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2040,6 +2040,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 64002605032389842, guid: d9767e8a6cbda7941a4783dfd7c978ec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64319198795402072, guid: d9767e8a6cbda7941a4783dfd7c978ec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64863022793630596, guid: d9767e8a6cbda7941a4783dfd7c978ec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64864897025830408, guid: d9767e8a6cbda7941a4783dfd7c978ec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9767e8a6cbda7941a4783dfd7c978ec, type: 3}
 --- !u!1001 &602094998
@@ -2700,7 +2716,7 @@ TerrainCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708480613}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1c7b58ab43b40c6448584a03dc7a74cf, type: 2}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 87cf490fbf7e80648920fd479b0eeec0, type: 2}
   m_EnableTreeColliders: 1
