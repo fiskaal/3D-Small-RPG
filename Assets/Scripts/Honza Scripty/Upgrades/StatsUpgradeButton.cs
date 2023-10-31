@@ -22,6 +22,9 @@ public class StatsUpgradeButton : MonoBehaviour
     public void IncreaseAllStats()
     {
         playerHealthScript.health += healthIncreaseAmount;
+
+        playerHealthScript.health = Mathf.Clamp(playerHealthScript.health, 0f, 100);
+
         damageScript.weaponDamage += weaponDamageIncreaseAmount;
         damageScript.lightingStrikeDamage += lightningStrikeDamageIncreaseAmount;
         damageScript.fireEnchantDamageBonus += fireEnchantDamageBonusIncreaseAmount;

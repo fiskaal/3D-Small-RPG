@@ -1247,7 +1247,7 @@ MonoBehaviour:
   damageScript: {fileID: 626898797822916575}
   playerHealthScript: {fileID: 141578188}
   healthIncreaseAmount: 0
-  weaponDamageIncreaseAmount: 5
+  weaponDamageIncreaseAmount: 2
   lightningStrikeDamageIncreaseAmount: 0
   fireEnchantDamageBonusIncreaseAmount: 0
   lightningEnchantDamageBonusIncreaseAmount: 0
@@ -2364,7 +2364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDamage: 1
-  lightingStrikeDamage: 1
+  lightingStrikeDamage: 3
   fireEnchantDamageBonus: 10
   lightningEnchantDamageBonus: 1
   enchantedWeaponDamage: 0
@@ -4197,7 +4197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5859106833986492599, guid: d1ac8d5fbd3ff104f8512af943ec866d, type: 3}
       propertyPath: coolDownTime
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1ac8d5fbd3ff104f8512af943ec866d, type: 3}

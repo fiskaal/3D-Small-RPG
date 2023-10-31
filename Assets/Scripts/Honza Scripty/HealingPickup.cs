@@ -12,11 +12,12 @@ public class HealingPickup : MonoBehaviour
 
             if (playerHealth != null)
             {
+                
                 // Increase player's health
                 playerHealth.health += healingAmount;
 
-                // Clamp the player's health to a maximum value if needed
-                // playerHealth.health = Mathf.Clamp(playerHealth.health, 0f, maxHealth);
+                 //Clamp the player's health to a maximum value if needed
+                 playerHealth.health = Mathf.Clamp(playerHealth.health, 0f, 100);
 
                 // Destroy the healing pickup object after it's picked up
                 Destroy(gameObject);
