@@ -5,6 +5,7 @@ public class AttackState : State
     float clipLength;
     float clipSpeed;
     bool attack;
+    private bool dash;
     public AttackState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
     {
         character = _character;
@@ -16,6 +17,7 @@ public class AttackState : State
         base.Enter();
 
         attack = false;
+        dash = false;
         character.animator.applyRootMotion = true;
         timePassed = 0f;
         character.animator.SetTrigger("attack");
@@ -29,6 +31,11 @@ public class AttackState : State
         if (attackAction.triggered)
         {
             attack = true;
+        }
+
+        if (dashAction.triggered)
+        {
+            dash = true;
         }
     }
     public override void LogicUpdate()
@@ -49,6 +56,13 @@ public class AttackState : State
             character.animator.SetTrigger("move");
         }
 
+        /*
+        if (dash)
+        {
+            character.animator.SetTrigger("dash");
+            stateMachine.ChangeState(character.dashing);
+        }
+        */
     }
     public override void Exit()
     {

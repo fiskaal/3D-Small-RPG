@@ -17,6 +17,8 @@ public class DamageDealer : MonoBehaviour
 
     private GameObject player;
     private DamageOfEverything _damageOfEverything;
+
+    private bool enemyTargetted;
     void Start()
     {
         //get weapon damage
@@ -28,7 +30,8 @@ public class DamageDealer : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         closestEnemy = null;
         attackedEnemySelected = false;
-        
+
+        enemyTargetted = false;
         FindAndAddEnemies();
         
     }
@@ -73,16 +76,16 @@ public class DamageDealer : MonoBehaviour
                 }
             }
 
-            if (!attackedEnemySelected)
+            if (!attackedEnemySelected && !enemyTargetted)
             {
                 FindClosestEnemy();
+                LookAtEnemy();
             }
-
-            LookAtEnemy();
         }
     }
     public void StartDealDamage()
     {
+        enemyTargetted = false;
         canDealDamage = true;
         hasDealtDamage.Clear();
     }
@@ -117,6 +120,7 @@ public class DamageDealer : MonoBehaviour
         if (closestEnemy != null)
         {
             player.transform.LookAt(closestEnemy.transform);
+            enemyTargetted = true;
         }
     }
     public void EndDealDamage()

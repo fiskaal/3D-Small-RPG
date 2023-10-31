@@ -89,4 +89,13 @@ public class Character : MonoBehaviour
     {
         movementSM.currentState.PhysicsUpdate();
     }
+    
+    public void Move(Vector3 moveDirection, float moveSpeed)
+    {
+        // Calculate the character's movement vector
+        Vector3 movement = moveDirection.normalized * moveSpeed * Time.deltaTime;
+
+        // Move the character using the CharacterController
+        controller.Move(movement);
+    }
 }

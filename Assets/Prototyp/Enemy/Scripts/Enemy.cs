@@ -33,6 +33,8 @@ public class Enemy : MonoBehaviour
     private bool firstTimeSpotted;
     private float screamTimePassed = 0;
 
+    private HealthSystem playerHealthSystem;
+
     //ocko projectile
     private OckoProjectile _ockoProjectile;
     
@@ -41,6 +43,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHealthSystem = player.GetComponent<HealthSystem>();
 
         animator.applyRootMotion = false;
         dead = false;
@@ -68,13 +71,16 @@ public class Enemy : MonoBehaviour
         {
             if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
             {
-                animator.applyRootMotion = true;
-                animator.SetTrigger("attack");
-                timePassed = 0;
-
-                if (_ockoProjectile != null)
+                if (playerHealthSystem.health > 0)
                 {
-                    _ockoProjectile.FireProjectile(player.transform.position);
+                    animator.applyRootMotion = true;
+                    animator.SetTrigger("attack");
+                    timePassed = 0;
+
+                    if (_ockoProjectile != null)
+                    {
+                        _ockoProjectile.FireProjectile(player.transform.position);
+                    }
                 }
             }
         }

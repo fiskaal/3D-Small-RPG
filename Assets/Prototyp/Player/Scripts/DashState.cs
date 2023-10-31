@@ -1,3 +1,4 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,12 @@ public class DashState : State
     float clipLength;
     float clipSpeed;
     bool dash;
-    
+
     public DashState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
     {
         character = _character;
         stateMachine = _stateMachine;
+        character.animator.applyRootMotion = true;
     }
 
     public override void Enter()
@@ -20,7 +22,7 @@ public class DashState : State
         base.Enter();
 
         dash = false;
-        character.animator.applyRootMotion = true;
+        //character.animator.applyRootMotion = true;
         timePassed = 0f;
         character.animator.SetTrigger("dash");
         character.animator.SetFloat("speed", 0f);
@@ -58,5 +60,58 @@ public class DashState : State
     {
         base.Exit();
         character.animator.applyRootMotion = false;
+    }
+}
+*/
+
+using UnityEngine;
+
+public class DashState : State
+{
+    private float dashSpeed = 10.0f; // Adjust the dash speed as needed
+    private float dashDuration = 0.5f; // Adjust the dash duration as needed
+    private float dashTimer = 0f;
+    private Vector3 dashDirection = Vector3.zero;
+
+    public DashState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
+    {
+        character = _character;
+        stateMachine = _stateMachine;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        character.animator.SetTrigger("dash");
+
+        // Calculate the dash direction based on input
+        Vector2 input = moveAction.ReadValue<Vector2>();
+        dashDirection = character.cameraTransform.forward * input.y + character.cameraTransform.right * input.x;
+        dashDirection.y = 0f;
+        dashDirection.Normalize();
+
+        dashTimer = 0f;
+    }
+
+    public override void HandleInput()
+    {
+        base.HandleInput();
+    }
+
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+
+        // Perform the dash movement without root motion
+        character.Move(dashDirection, dashSpeed);
+
+        dashTimer += Time.deltaTime;
+
+        if (dashTimer >= dashDuration)
+        {
+            stateMachine.ChangeState(character.combatting); // Change to another state when the dash is complete
+            character.animator.SetTrigger("move");
+        }
     }
 }
