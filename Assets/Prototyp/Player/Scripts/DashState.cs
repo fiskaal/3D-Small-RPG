@@ -72,7 +72,10 @@ public class DashState : State
     private float dashDuration = 0.5f; // Adjust the dash duration as needed
     private float dashTimer = 0f;
     private Vector3 dashDirection = Vector3.zero;
-
+    
+    float gravityValue;
+    bool grounded;
+    
     public DashState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
     {
         character = _character;
@@ -92,6 +95,9 @@ public class DashState : State
         dashDirection.Normalize();
 
         dashTimer = 0f;
+        
+        grounded = character.controller.isGrounded;
+        gravityValue = character.gravityValue +500;
     }
 
     public override void HandleInput()
@@ -103,6 +109,8 @@ public class DashState : State
     {
         base.LogicUpdate();
 
+        // Apply gravity during the dash
+        character.Move(Vector3.down, gravityValue * Time.deltaTime);
         // Perform the dash movement without root motion
         character.Move(dashDirection, dashSpeed);
 

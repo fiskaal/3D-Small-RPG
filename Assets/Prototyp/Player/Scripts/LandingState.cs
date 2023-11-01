@@ -27,8 +27,17 @@ public class LandingState:State
         base.LogicUpdate();
 		if (timePassed >= landingTime)
 		{
-            character.animator.SetTrigger("move");
-            stateMachine.ChangeState(character.standing);
+			if (character.animator.GetBool("inCombat"))
+			{
+				character.animator.SetTrigger("move");
+				stateMachine.ChangeState(character.combatting);
+				character.combatJump = false;
+			}
+			else
+			{
+				character.animator.SetTrigger("move");
+				stateMachine.ChangeState(character.standing);
+			}
         }
         timePassed += Time.deltaTime;
     }

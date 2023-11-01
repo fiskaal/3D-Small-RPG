@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatState : State
+public class BlockingState : State
 {
     bool jump;   
     float gravityValue;
@@ -13,11 +13,12 @@ public class CombatState : State
     private bool attack;
     private bool specialAttack;
     private bool dash;
+
     private bool block;
 
     Vector3 cVelocity;
 
-    public CombatState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
+    public BlockingState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
     {
         character = _character;
         stateMachine = _stateMachine;
@@ -26,13 +27,7 @@ public class CombatState : State
     public override void Enter()
     {
         base.Enter();
-
-        block = false;
-        jump = false;
-        sheateWeapon = false;
-        attack = false;
-        specialAttack = false;
-        dash = false;
+        
         input = Vector2.zero;
         currentVelocity = Vector3.zero;
         gravityVelocity.y = 0;
@@ -41,50 +36,26 @@ public class CombatState : State
         playerSpeed = character.playerSpeed;
         grounded = character.controller.isGrounded;
         gravityValue = character.gravityValue;
-        
-        character.animator.SetBool("inCombat", true);
+
+        block = false;
+
     }
 
     public override void HandleInput()
     {
         base.HandleInput();
         
-        if (jumpAction.triggered)
-        {
-            jump = true;
-        }
-
-        if (drawWeaponAction.triggered)
-        {
-            sheateWeapon = true;
-        }
-
-        if (attackAction.triggered)
-        {
-            attack = true;
-        }
-
-        if (specialAttackAction.triggered)
-        {
-            specialAttack = true;
-        }
-
-        if (dashAction.triggered)
-        {
-            dash = true;
-        }
-
-        if (blockAction.triggered)
-        {
-            block = true;
-        }
-
         input = moveAction.ReadValue<Vector2>();
         velocity = new Vector3(input.x, 0, input.y);
 
         velocity = velocity.x * character.cameraTransform.right.normalized +
                    velocity.z * character.cameraTransform.forward.normalized;
         velocity.y = 0f;
+
+        if (blockAction.triggered)
+        {
+            block = true;
+        }
     }
 
     public override void LogicUpdate()
@@ -92,42 +63,11 @@ public class CombatState : State
         base.LogicUpdate();
         
         character.animator.SetFloat("speed", input.magnitude, character.speedDampTime, Time.deltaTime);
-
-        if (sheateWeapon)
-        {
-            character.animator.SetTrigger("sheatWeapon");
-            stateMachine.ChangeState(character.standing);
-        }
-
-        if (attack)
-        {
-            character.animator.SetTrigger("attack");
-            stateMachine.ChangeState(character.attacking); 
-        }
-
-        if (specialAttack)
-        {
-            character.animator.SetTrigger(("specialAttack"));
-            stateMachine.ChangeState(character.specialAttacking);
-        }
-
-        if (dash)
-        {
-            character.animator.SetTrigger(("dash"));
-            stateMachine.ChangeState(character.dashing);
-        }
         
-        if (jump)
-        {
-            character.combatJump = true;
-            character.animator.SetTrigger("jump");
-            stateMachine.ChangeState(character.jumping);
-        }
-
         if (block)
         {
-            character.animator.SetTrigger("block");
-            stateMachine.ChangeState(character.blocking);
+            stateMachine.ChangeState(character.combatting); 
+            character.animator.SetTrigger("move");
         }
     }
     

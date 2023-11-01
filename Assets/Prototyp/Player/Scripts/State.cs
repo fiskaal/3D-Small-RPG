@@ -19,6 +19,7 @@ public class State
     public InputAction attackAction;
     public InputAction specialAttackAction;
     public InputAction dashAction;
+    public InputAction blockAction;
 
     public State(Character _character, StateMachine _stateMachine)
 	{
@@ -34,6 +35,7 @@ public class State
         attackAction = character.playerInput.actions["Attack"];
         specialAttackAction = character.playerInput.actions["SpecialAttack"];
         dashAction = character.playerInput.actions["Dash"];
+        blockAction = character.playerInput.actions["Block"];
 
         if (crouchAction.triggered)
         {
@@ -48,6 +50,11 @@ public class State
         if (sprintAction.triggered)
         {
             Debug.Log("SprintTriggered");
+        }
+
+        if (blockAction.triggered)
+        {
+            Debug.Log("BlockTriggered");
         }
 
     }

@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour
 
     private HealthSystem playerHealthSystem;
 
+    [SerializeField] private GameObject preAttackWarningPrefab;
+
     //ocko projectile
     private OckoProjectile _ockoProjectile;
     
@@ -66,7 +68,8 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-
+        
+        
         if (timePassed >= attackCD)
         {
             if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
@@ -75,6 +78,7 @@ public class Enemy : MonoBehaviour
                 {
                     animator.applyRootMotion = true;
                     animator.SetTrigger("attack");
+                    Instantiate(preAttackWarningPrefab, transform);
                     timePassed = 0;
 
                     if (_ockoProjectile != null)
