@@ -31,7 +31,6 @@ public class LandingState:State
 			{
 				character.animator.SetTrigger("move");
 				stateMachine.ChangeState(character.combatting);
-				character.combatJump = false;
 			}
 			else
 			{

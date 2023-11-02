@@ -51,7 +51,7 @@ public class Character : MonoBehaviour
     public Vector3 playerVelocity;
 
     [Header("Controls")] 
-    public bool combatJump;
+    public bool blockingStateActive;
     
     // Start is called before the first frame update
     private void Start()

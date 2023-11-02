@@ -119,7 +119,6 @@ public class CombatState : State
         
         if (jump)
         {
-            character.combatJump = true;
             character.animator.SetTrigger("jump");
             stateMachine.ChangeState(character.jumping);
         }

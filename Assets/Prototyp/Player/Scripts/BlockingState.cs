@@ -39,6 +39,7 @@ public class BlockingState : State
 
         block = false;
 
+        character.blockingStateActive = true;
     }
 
     public override void HandleInput()
@@ -96,6 +97,8 @@ public class BlockingState : State
     public override void Exit()
     {
         base.Exit();
+
+        character.blockingStateActive = false;
 
         gravityVelocity.y = 0f;
         character.playerVelocity = new Vector3(input.x, 0, input.y);
