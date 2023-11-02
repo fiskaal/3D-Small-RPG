@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CombatState : State
 {
+    bool jump;   
     float gravityValue;
     Vector3 currentVelocity;
     bool grounded;
@@ -12,6 +13,7 @@ public class CombatState : State
     private bool attack;
     private bool specialAttack;
     private bool dash;
+    private bool block;
 
     Vector3 cVelocity;
 
@@ -25,6 +27,8 @@ public class CombatState : State
     {
         base.Enter();
 
+        block = false;
+        jump = false;
         sheateWeapon = false;
         attack = false;
         specialAttack = false;
@@ -37,11 +41,18 @@ public class CombatState : State
         playerSpeed = character.playerSpeed;
         grounded = character.controller.isGrounded;
         gravityValue = character.gravityValue;
+        
+        character.animator.SetBool("inCombat", true);
     }
 
     public override void HandleInput()
     {
         base.HandleInput();
+        
+        if (jumpAction.triggered)
+        {
+            jump = true;
+        }
 
         if (drawWeaponAction.triggered)
         {
@@ -61,6 +72,11 @@ public class CombatState : State
         if (dashAction.triggered)
         {
             dash = true;
+        }
+
+        if (blockAction.triggered)
+        {
+            block = true;
         }
 
         input = moveAction.ReadValue<Vector2>();
@@ -99,6 +115,18 @@ public class CombatState : State
         {
             character.animator.SetTrigger(("dash"));
             stateMachine.ChangeState(character.dashing);
+        }
+        
+        if (jump)
+        {
+            character.animator.SetTrigger("jump");
+            stateMachine.ChangeState(character.jumping);
+        }
+
+        if (block)
+        {
+            character.animator.SetTrigger("block");
+            stateMachine.ChangeState(character.blocking);
         }
     }
     

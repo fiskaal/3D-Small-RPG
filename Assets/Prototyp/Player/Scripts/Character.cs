@@ -34,9 +34,9 @@ public class Character : MonoBehaviour
     public SpecialAttackState specialAttacking;
     public DashState dashing;
     public FallingState falling;
+    public BlockingState blocking;
 
-    [HideInInspector]
-    public float gravityValue = -9.81f;
+    [HideInInspector] public float gravityValue = -9.81f;
     [HideInInspector]
     public float normalColliderHeight;
     [HideInInspector]
@@ -50,7 +50,9 @@ public class Character : MonoBehaviour
     [HideInInspector]
     public Vector3 playerVelocity;
 
-
+    [Header("Controls")] 
+    public bool blockingStateActive;
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -71,6 +73,7 @@ public class Character : MonoBehaviour
         specialAttacking = new SpecialAttackState(this, movementSM);
         dashing = new DashState(this, movementSM);
         falling = new FallingState(this, movementSM);
+        blocking = new BlockingState(this, movementSM);
 
         movementSM.Initialize(standing);
 

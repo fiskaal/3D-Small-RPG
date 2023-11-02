@@ -12,6 +12,7 @@ public class StandingState: State
     float playerSpeed;
     private bool drawWeapon;
     private bool falling;
+    private bool attack;
 
     Vector3 cVelocity;
 
@@ -27,6 +28,7 @@ public class StandingState: State
     {
         base.Enter();
 
+        attack = false;
         jump = false;
         crouch = false;
         sprint = false;
@@ -42,6 +44,8 @@ public class StandingState: State
         gravityValue = character.gravityValue;
 
         fallingTimer = 0f;
+        
+        character.animator.SetBool("inCombat", false);
     }
 
     public override void HandleInput()
@@ -63,6 +67,11 @@ public class StandingState: State
         if (drawWeaponAction.triggered)
         {
             drawWeapon = true;
+        }
+
+        if (attackAction.triggered)
+        {
+            attack = true;
         }
                 
         input = moveAction.ReadValue<Vector2>();
@@ -93,6 +102,12 @@ public class StandingState: State
         }
 
         if (drawWeapon)
+        {
+            stateMachine.ChangeState(character.combatting);
+            character.animator.SetTrigger("drawWeapon");
+        }
+
+        if (attack)
         {
             stateMachine.ChangeState(character.combatting);
             character.animator.SetTrigger("drawWeapon");

@@ -13,6 +13,7 @@ public class HealthSystem : MonoBehaviour
     
     //shield spell
     private PlayerShield _playerShield;
+    private Character _character;
     
     
     void Start()
@@ -21,6 +22,8 @@ public class HealthSystem : MonoBehaviour
         
         //shield spell
         _playerShield = gameObject.GetComponentInChildren<PlayerShield>();
+
+        _character = GetComponent<Character>();
     }
 
    
@@ -35,9 +38,16 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
-            health -= damageAmount;
-            animator.SetTrigger("damage");
-            //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+            if (_character.blockingStateActive)
+            {
+                animator.SetTrigger("blockDamage");
+            }
+            else
+            {
+                health -= damageAmount;
+                animator.SetTrigger("damage");
+                //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+            }
 
 
             if (health <= 0)

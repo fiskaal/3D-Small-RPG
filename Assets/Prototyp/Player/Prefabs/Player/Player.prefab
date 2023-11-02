@@ -2466,6 +2466,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 0}
   animator: {fileID: 0}
   playerVelocity: {x: 0, y: 0, z: 0}
+  blockingStateActive: 0
 --- !u!114 &2995673596906374288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2497,7 +2498,7 @@ MonoBehaviour:
   VFXSlashHolder1: {fileID: 0}
   VFXPrefabSlash1: {fileID: 1070822987037418716, guid: 26636ab853ffe8c4ea53cfa1c6fb070c, type: 3}
   VFXPrefabSlash2: {fileID: 2431205442844620636, guid: 027d6aa8cac58784697dc4331cbd9acb, type: 3}
-  VFXPrefabSlash3Impact: {fileID: 3432958286849152088, guid: 87ee7299dd44ed747af24dbb91bcd33b, type: 3}
+  VFXPrefabSlash3Impact: {fileID: 4230467961370026391, guid: 09eaf4093518c8047b7452dec5cde462, type: 3}
   VFXPrefabDash: {fileID: 3402726435248058664, guid: 95e58d993ec5e0e4b85a65da77dec534, type: 3}
 --- !u!114 &141578188
 MonoBehaviour:
@@ -2513,9 +2514,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   hitVFX: {fileID: 6823200998282874702, guid: 8f8fe12323625f5499b2853dd2ad3e58, type: 3}
-  ragdoll: {fileID: 7301130594140772909, guid: 4a8082a4647e5a445915de985796e1d8, type: 3}
+  ragdoll: {fileID: 7650963890995329670, guid: 0391a26472a45d64eb64a2642cc53d3e, type: 3}
   deathUIPopUp: {fileID: 26907467}
-  playerDestroy: {fileID: 0}
+  playerDestroy: {fileID: 3992257543363554625}
 --- !u!114 &6368506783640550396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4122,6 +4123,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31ec81dd4e5501b4d931889804791957, type: 3}
+--- !u!1 &3992257543363554625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 31ec81dd4e5501b4d931889804791957, type: 3}
+  m_PrefabInstance: {fileID: 4298176515159609360}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4335991972918376443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 31ec81dd4e5501b4d931889804791957, type: 3}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,8 @@ public class OckoProjectile : MonoBehaviour
     
     public float desiredHeight = 5.0f;
     public float desiredZPosition = 10.0f;
-
+    
+    
     public void FireProjectile(Vector3 targetPosition)
     {
         Vector3 forwardDirection = transform.forward;
@@ -25,14 +27,12 @@ public class OckoProjectile : MonoBehaviour
         projectileDamage.GetParent();
         projectile.transform.parent = null;
 
-
 // Calculate the direction to the target
         Vector3 direction = (targetPosition - transform.position).normalized;
 
 // Get the Rigidbody component and apply a force to the projectile
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.velocity = direction * projectileSpeed;
+        
     }
-    
-    
 }
