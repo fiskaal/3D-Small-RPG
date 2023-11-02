@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 337329520}
   - component: {fileID: 337329519}
   - component: {fileID: 337329522}
+  - component: {fileID: 5615439876589197945}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -318,6 +319,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6693782901b807647b9303179b6ae1dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5615439876589197945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337329517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3869bf2bb2221ac468951f95b06993b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &593862838
@@ -766,6 +779,7 @@ GameObject:
   - component: {fileID: 687303937082615819}
   - component: {fileID: 523958206595468571}
   - component: {fileID: 7183330205590655812}
+  - component: {fileID: 3953488912501210033}
   m_Layer: 5
   m_Name: Button_Upgrade
   m_TagString: Untagged
@@ -925,6 +939,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8062b1f938b28394d922fd76742d8754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3953488912501210033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687303937082615823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3869bf2bb2221ac468951f95b06993b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &687303937091703644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,7 +1041,6 @@ GameObject:
   m_Component:
   - component: {fileID: 687303937199664013}
   - component: {fileID: 687303937199664014}
-  - component: {fileID: 4538189930378048448}
   m_Layer: 5
   m_Name: LevelUpArray
   m_TagString: Untagged
@@ -1072,18 +1097,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &4538189930378048448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 687303937199664012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 578f2d21bae45e842b1f16c69caed72b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &687303937264822554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1111,7 @@ GameObject:
   - component: {fileID: 687303937264822534}
   - component: {fileID: 1267120581475272631}
   - component: {fileID: 1935036186451861404}
+  - component: {fileID: 2992579528601377201}
   m_Layer: 5
   m_Name: Button_Upgrade
   m_TagString: Untagged
@@ -1264,6 +1278,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8062b1f938b28394d922fd76742d8754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2992579528601377201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687303937264822554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3869bf2bb2221ac468951f95b06993b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &687303937347925511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,6 +1304,7 @@ GameObject:
   - component: {fileID: 687303937347925516}
   - component: {fileID: 3076016774154573066}
   - component: {fileID: 2739689214355306575}
+  - component: {fileID: 1367494286031851215}
   m_Layer: 5
   m_Name: Button_Upgrade
   m_TagString: Untagged
@@ -1442,6 +1469,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8062b1f938b28394d922fd76742d8754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1367494286031851215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687303937347925511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3869bf2bb2221ac468951f95b06993b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &687303937361597662
@@ -2561,10 +2600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fff45b6cdbb1747b5623d5e8ea43e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToCheck:
-  - {fileID: 687303937995111881}
-  - {fileID: 687303937511453975}
-  - {fileID: 687303938350502167}
+  objectsToCheck: []
 --- !u!1 &3040398678105076967
 GameObject:
   m_ObjectHideFlags: 0

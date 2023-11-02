@@ -43,6 +43,8 @@ public class LevelSystem : MonoBehaviour
 
         // Perform any other actions related to level up (e.g., unlocking new abilities, updating UI, etc.)
         Debug.Log("Level Up! New Level: " + playerLevel);
+
+        Time.timeScale = 0f;
     }
 
     // Method to calculate experience threshold for the next level (you can customize the formula)

@@ -65,11 +65,21 @@ public class HealthSystem : MonoBehaviour
         deathUIPopUp.SetActive(true);
         Instantiate(ragdoll, transform.position, transform.rotation);
         Destroy(playerDestroy);
+        FreezeGame();
     }
     public void HitVFX(Vector3 hitPosition)
     {
         GameObject hit = Instantiate(hitVFX, hitPosition, Quaternion.identity);
         Destroy(hit, 3f);
 
+    }
+
+    void FreezeGame()
+    {
+        // Freeze the game by setting timeScale to 0
+        Time.timeScale = 0f;
+
+        // Show the game cursor (it's hidden by default when playing in Unity Editor)
+        Cursor.visible = true;
     }
 }
