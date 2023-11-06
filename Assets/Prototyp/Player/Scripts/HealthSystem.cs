@@ -69,9 +69,15 @@ public class HealthSystem : MonoBehaviour
     }
     public void HitVFX(Vector3 hitPosition)
     {
-        GameObject hit = Instantiate(hitVFX, hitPosition, Quaternion.identity);
-        Destroy(hit, 3f);
-
+        if (_character.blockingStateActive)
+        {
+            
+        }
+        else
+        {
+            GameObject hit = Instantiate(hitVFX, hitPosition, Quaternion.identity);
+            Destroy(hit, 3f);
+        }
     }
 
     void FreezeGame()
