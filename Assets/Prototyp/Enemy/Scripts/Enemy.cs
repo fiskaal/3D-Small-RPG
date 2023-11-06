@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackCD = 3f;
     [SerializeField] float attackRange = 1f;
     [SerializeField] float aggroRange = 4f;
+    [SerializeField] private GameObject preAttackWarningPrefab;
 
     [Header("Loot")]
     [SerializeField] GameObject[] lootItems;
@@ -35,8 +36,9 @@ public class Enemy : MonoBehaviour
 
     private HealthSystem playerHealthSystem;
 
-    [SerializeField] private GameObject preAttackWarningPrefab;
-
+    //HpBar
+    [SerializeField] private EnemyHpBar _enemyHpBar;
+    
     //ocko projectile
     private OckoProjectile _ockoProjectile;
     
@@ -53,6 +55,9 @@ public class Enemy : MonoBehaviour
         firstTimeSpotted = true;
         timePassed = attackCD;
         
+        //hpBar
+        _enemyHpBar.SetMaxHP(health);
+            
         //ocko projectile
         if (GetComponent<OckoProjectile>() != null)
         {
@@ -172,6 +177,7 @@ public class Enemy : MonoBehaviour
             health -= damageAmount;
             animator.applyRootMotion = true;
             animator.SetTrigger("damage");
+            _enemyHpBar.SetHP(health);
             
             if (health <= 0)
             {
