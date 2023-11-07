@@ -42,7 +42,7 @@ public class BeamActivator : MonoBehaviour
     void ActivateObject()
     {
         // Check if enough time has passed since the last activation
-        if (Time.time - lastActivationTime >= 15f)
+        if (Time.time - lastActivationTime >= 10f)
         {
             // Deactivate the current object
             if (objectsToActivate.Length > 0)
