@@ -3151,6 +3151,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8198570256261921958}
     m_Modifications:
+    - target: {fileID: 1099392723605768545, guid: 6fe46a4a50eedf742bcd78deada7f2ce, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634463008618156615, guid: 6fe46a4a50eedf742bcd78deada7f2ce, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634463008618156615, guid: 6fe46a4a50eedf742bcd78deada7f2ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634463008618156615, guid: 6fe46a4a50eedf742bcd78deada7f2ce, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4653643708793264394, guid: 6fe46a4a50eedf742bcd78deada7f2ce, type: 3}
       propertyPath: m_Name
       value: HpBarHolder
@@ -3249,6 +3265,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fe46a4a50eedf742bcd78deada7f2ce, type: 3}
+--- !u!1 &2253760191530035614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4653643708793264394, guid: 6fe46a4a50eedf742bcd78deada7f2ce, type: 3}
+  m_PrefabInstance: {fileID: 6905116331717882004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4567529238257806380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2253760191530035614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a597ce7cb175854e946a3ffc0c3bb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2253760191530035615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4653643708793264395, guid: 6fe46a4a50eedf742bcd78deada7f2ce, type: 3}
@@ -3259,7 +3292,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6984482916601293867, guid: 6fe46a4a50eedf742bcd78deada7f2ce, type: 3}
   m_PrefabInstance: {fileID: 6905116331717882004}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2253760191530035614}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98d9126798ed9284fb6bff2919972a4e, type: 3}
