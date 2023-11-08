@@ -6925,7 +6925,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-15558
+  m_Name: pb_Mesh-1575214
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7600,6 +7600,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 626898797822916575, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: weaponDamage
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 626898797822916575, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: lightingStrikeDamage
       value: 25
@@ -8842,7 +8846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1270675715
 Transform:
   m_ObjectHideFlags: 0
@@ -14056,7 +14060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!198 &4358422251406675735
 ParticleSystem:
   m_ObjectHideFlags: 0
