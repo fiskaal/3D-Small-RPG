@@ -74,6 +74,13 @@ public class DamageDealer : MonoBehaviour
                     enemy.HitVFX(hit.point);
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
+                
+                if (hit.transform.TryGetComponent(out EnemyBoss enemyBoss) && !hasDealtDamage.Contains(hit.transform.gameObject))
+                {
+                    enemyBoss.TakeDamage(_damageOfEverything.weaponDamage);
+                    enemyBoss.HitVFX(hit.point);
+                    hasDealtDamage.Add(hit.transform.gameObject);
+                }
             }
 
             if (!attackedEnemySelected && !enemyTargetted)

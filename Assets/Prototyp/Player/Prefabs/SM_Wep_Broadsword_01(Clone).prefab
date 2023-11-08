@@ -173,7 +173,6 @@ GameObject:
   m_Component:
   - component: {fileID: 238433620782520870}
   - component: {fileID: 6789703027036082273}
-  - component: {fileID: 4895345057723593159}
   m_Layer: 0
   m_Name: DmgDealer
   m_TagString: Untagged
@@ -263,22 +262,3 @@ MonoBehaviour:
   - {fileID: 0}
   aggroRange: 4
   attackedEnemyPopUp: {fileID: 904662820145583817, guid: 019faff12646bd8438ea56e8e7861fd8, type: 3}
---- !u!114 &4895345057723593159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8224710184112419979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfa5e7f34ef306e40bcacfe3a7cc0851, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTransform: {fileID: 2995673596906374300, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  pushForce: 10
-  pushRadius: 10
-  pushDuration: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-public class Enemy : MonoBehaviour
+public class EnemyBoss : MonoBehaviour
 {
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject hitVFX1;
@@ -143,33 +143,6 @@ public class Enemy : MonoBehaviour
             }
             timePassedAfterDeath += Time.deltaTime;
         }
-        
-        //enemy roam
-        if (agent.remainingDistance <= agent.stoppingDistance)
-        {
-            Vector3 point;
-            if (RandomPoint(transform.position, aggroRange, out point))
-            {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                agent.SetDestination(point);
-            }
-        }
-    }
-    
-    //enemy roam
-    bool RandomPoint(Vector3 center, float range, out Vector3 result)
-    {
-        Vector3 ranndomPoint = center + Random.insideUnitSphere * range; //random point in sphere
-        NavMeshHit hit;
-        
-        if (NavMesh.SamplePosition(ranndomPoint, out hit, 1.0f, NavMesh.AllAreas))
-        {
-            result = hit.position;
-            return true;
-        }
-
-        result = Vector3.zero;
-        return false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -246,3 +219,4 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, aggroRange);
     }
 }
+
