@@ -116,12 +116,12 @@ public class Enemy : MonoBehaviour
                 screamTimePassed += Time.deltaTime;
                 return;
             }
-
+            /*
             if (!dead)
             {
                 transform.LookAt(player.transform);
             }
-
+            */
             if (!firstTimeSpotted)
             {
                 newDestinationCD = 0.5f;
@@ -129,6 +129,11 @@ public class Enemy : MonoBehaviour
             }
         }
         newDestinationCD -= Time.deltaTime;
+
+        if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
+        {
+            transform.LookAt(player.transform.position);
+        }
 
         if (dead)
         {
