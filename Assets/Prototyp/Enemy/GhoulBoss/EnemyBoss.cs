@@ -132,7 +132,15 @@ public class EnemyBoss : MonoBehaviour
 
         if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
-            transform.LookAt(player.transform.position);
+            // Calculate the direction from the enemy to the player
+            Vector3 directionToPlayer = player.transform.position - transform.position;
+            directionToPlayer.y = 0f; // Set the Y component to zero to avoid rotation in the Y-axis
+
+            if (directionToPlayer != Vector3.zero)
+            {
+                // Rotate the enemy to face the player's direction
+                transform.rotation = Quaternion.LookRotation(directionToPlayer);
+            }
         }
 
         if (dead)
