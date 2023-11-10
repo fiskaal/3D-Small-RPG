@@ -129,12 +129,20 @@ public class Enemy : MonoBehaviour
             }
         }
         newDestinationCD -= Time.deltaTime;
-
+        
         if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
-            transform.LookAt(player.transform.position);
-        }
+            // Calculate the direction from the enemy to the player
+            Vector3 directionToPlayer = player.transform.position - transform.position;
+            directionToPlayer.y = 0f; // Set the Y component to zero to avoid rotation in the Y-axis
 
+            if (directionToPlayer != Vector3.zero)
+            {
+                // Rotate the enemy to face the player's direction
+                transform.rotation = Quaternion.LookRotation(directionToPlayer);
+            }
+        }
+        
         if (dead)
         {
             if (timePassedAfterDeath >= 3f)
@@ -145,13 +153,16 @@ public class Enemy : MonoBehaviour
         }
         
         //enemy roam
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (!dead)
         {
-            Vector3 point;
-            if (RandomPoint(transform.position, aggroRange, out point))
+            if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                agent.SetDestination(point);
+                Vector3 point;
+                if (RandomPoint(transform.position, aggroRange, out point))
+                {
+                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                    agent.SetDestination(point);
+                }
             }
         }
     }
@@ -201,8 +212,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-    public void TakeDamage(float damageAmount)
+    
+    public void TakeDamage(float damageAmount, float knockBack)
     {
         if (!dead)
         {
@@ -210,6 +221,8 @@ public class Enemy : MonoBehaviour
             animator.applyRootMotion = true;
             animator.SetTrigger("damage");
             _enemyHpBar.SetHP(health);
+
+            agent.SetDestination(player.transform.position);
             
             if (health <= 0)
             {
@@ -218,6 +231,9 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    
+
+
 
     public void StartDealDamage()
     {
