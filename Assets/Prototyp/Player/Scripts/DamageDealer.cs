@@ -70,8 +70,15 @@ public class DamageDealer : MonoBehaviour
             {
                 if (hit.transform.TryGetComponent(out Enemy enemy) && !hasDealtDamage.Contains(hit.transform.gameObject))
                 {
-                    enemy.TakeDamage(_damageOfEverything.weaponDamage);
+                    enemy.TakeDamage(_damageOfEverything.weaponDamage, _damageOfEverything.knockBackForce);
                     enemy.HitVFX(hit.point);
+                    hasDealtDamage.Add(hit.transform.gameObject);
+                }
+                
+                if (hit.transform.TryGetComponent(out EnemyBoss enemyBoss) && !hasDealtDamage.Contains(hit.transform.gameObject))
+                {
+                    enemyBoss.TakeDamage(_damageOfEverything.weaponDamage);
+                    enemyBoss.HitVFX(hit.point);
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
             }

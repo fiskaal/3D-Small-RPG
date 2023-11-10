@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackCD = 3f;
     [SerializeField] float attackRange = 1f;
     [SerializeField] float aggroRange = 4f;
+    [SerializeField] private GameObject preAttackWarningPrefab;
 
     [Header("Loot")]
     [SerializeField] GameObject[] lootItems;
@@ -35,8 +36,9 @@ public class Enemy : MonoBehaviour
 
     private HealthSystem playerHealthSystem;
 
-    [SerializeField] private GameObject preAttackWarningPrefab;
-
+    //HpBar
+    [SerializeField] private EnemyHpBar _enemyHpBar;
+    
     //ocko projectile
     private OckoProjectile _ockoProjectile;
     
@@ -53,6 +55,9 @@ public class Enemy : MonoBehaviour
         firstTimeSpotted = true;
         timePassed = attackCD;
         
+        //hpBar
+        _enemyHpBar.SetMaxHP(health);
+            
         //ocko projectile
         if (GetComponent<OckoProjectile>() != null)
         {
@@ -111,12 +116,12 @@ public class Enemy : MonoBehaviour
                 screamTimePassed += Time.deltaTime;
                 return;
             }
-
+            /*
             if (!dead)
             {
                 transform.LookAt(player.transform);
             }
-
+            */
             if (!firstTimeSpotted)
             {
                 newDestinationCD = 0.5f;
@@ -124,7 +129,20 @@ public class Enemy : MonoBehaviour
             }
         }
         newDestinationCD -= Time.deltaTime;
+        
+        if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
+        {
+            // Calculate the direction from the enemy to the player
+            Vector3 directionToPlayer = player.transform.position - transform.position;
+            directionToPlayer.y = 0f; // Set the Y component to zero to avoid rotation in the Y-axis
 
+            if (directionToPlayer != Vector3.zero)
+            {
+                // Rotate the enemy to face the player's direction
+                transform.rotation = Quaternion.LookRotation(directionToPlayer);
+            }
+        }
+        
         if (dead)
         {
             if (timePassedAfterDeath >= 3f)
@@ -133,6 +151,36 @@ public class Enemy : MonoBehaviour
             }
             timePassedAfterDeath += Time.deltaTime;
         }
+        
+        //enemy roam
+        if (!dead)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                Vector3 point;
+                if (RandomPoint(transform.position, aggroRange, out point))
+                {
+                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                    agent.SetDestination(point);
+                }
+            }
+        }
+    }
+    
+    //enemy roam
+    bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    {
+        Vector3 ranndomPoint = center + Random.insideUnitSphere * range; //random point in sphere
+        NavMeshHit hit;
+        
+        if (NavMesh.SamplePosition(ranndomPoint, out hit, 1.0f, NavMesh.AllAreas))
+        {
+            result = hit.position;
+            return true;
+        }
+
+        result = Vector3.zero;
+        return false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -164,14 +212,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-    public void TakeDamage(float damageAmount)
+    
+    public void TakeDamage(float damageAmount, float knockBack)
     {
         if (!dead)
         {
             health -= damageAmount;
             animator.applyRootMotion = true;
             animator.SetTrigger("damage");
+            _enemyHpBar.SetHP(health);
+
+            agent.SetDestination(player.transform.position);
             
             if (health <= 0)
             {
@@ -180,6 +231,9 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    
+
+
 
     public void StartDealDamage()
     {
