@@ -50,8 +50,13 @@ public class Character : MonoBehaviour
     [HideInInspector]
     public Vector3 playerVelocity;
 
-    [Header("Controls")] 
+    [Header("Added controlls")] 
     public bool blockingStateActive;
+    public float dashCooldownTime;
+    public bool dashIsReady;
+    
+    //dash coolDownCalculator
+    public float dashTimePassed;
     
     // Start is called before the first frame update
     private void Start()
@@ -86,6 +91,17 @@ public class Character : MonoBehaviour
         movementSM.currentState.HandleInput();
 
         movementSM.currentState.LogicUpdate();
+
+        if (dashCooldownTime <= dashTimePassed)
+        {
+            dashIsReady = true;
+        }
+        else
+        {
+            dashIsReady = false;
+        }
+
+        dashTimePassed += Time.deltaTime;
     }
 
     private void FixedUpdate()

@@ -111,10 +111,14 @@ public class CombatState : State
             stateMachine.ChangeState(character.specialAttacking);
         }
 
-        if (dash)
+        if (dash && character.dashIsReady)
         {
             character.animator.SetTrigger(("dash"));
             stateMachine.ChangeState(character.dashing);
+        }
+        else
+        {
+            dash = false;
         }
         
         if (jump)

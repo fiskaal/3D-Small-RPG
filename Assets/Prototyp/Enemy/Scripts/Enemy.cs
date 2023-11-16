@@ -33,6 +33,8 @@ public class Enemy : MonoBehaviour
 
     private bool firstTimeSpotted;
     private float screamTimePassed = 0;
+    private bool enemyIsInRange;
+    private bool isAttacking;
 
     private HealthSystem playerHealthSystem;
 
@@ -73,6 +75,15 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+
+        if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
+        {
+            enemyIsInRange = true;
+        }
+        else
+        {
+            enemyIsInRange = false;
+        }
         
         
         if (timePassed >= attackCD)
@@ -81,6 +92,7 @@ public class Enemy : MonoBehaviour
             {
                 if (playerHealthSystem.health > 0)
                 {
+                    isAttacking = true;
                     animator.applyRootMotion = true;
                     animator.SetTrigger("attack");
                     Instantiate(preAttackWarningPrefab, transform);
@@ -97,36 +109,8 @@ public class Enemy : MonoBehaviour
 
         if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
-            float screamTime = 0.5f;
-            if (firstTimeSpotted)
-            {
-                bool spot = false;
-
-                if (!spot)
-                {
-                    animator.SetTrigger("enemySpotted");
-                    spot = true;
-                }
-
-                if (screamTimePassed >= screamTime)
-                {
-                    firstTimeSpotted = false;
-                }
-
-                screamTimePassed += Time.deltaTime;
-                return;
-            }
-            /*
-            if (!dead)
-            {
-                transform.LookAt(player.transform);
-            }
-            */
-            if (!firstTimeSpotted)
-            {
-                newDestinationCD = 0.5f;
-                agent.SetDestination(player.transform.position);
-            }
+            newDestinationCD = 0.5f;
+            agent.SetDestination(player.transform.position);
         }
         newDestinationCD -= Time.deltaTime;
         
@@ -153,7 +137,7 @@ public class Enemy : MonoBehaviour
         }
         
         //enemy roam
-        if (!dead)
+        if (!dead && !enemyIsInRange)
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
@@ -219,7 +203,10 @@ public class Enemy : MonoBehaviour
         {
             health -= damageAmount;
             animator.applyRootMotion = true;
-            animator.SetTrigger("damage");
+            if (!isAttacking)
+            {
+                animator.SetTrigger("damage");
+            }
             _enemyHpBar.SetHP(health);
 
             agent.SetDestination(player.transform.position);
@@ -260,5 +247,10 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, aggroRange);
+    }
+
+    public void OnAttackAnimationEnd()
+    {
+        isAttacking = false;
     }
 }
