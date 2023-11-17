@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] bool hasMoreAttacks;
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject hitVFX1;
     [SerializeField] GameObject ragdoll;
@@ -94,7 +95,25 @@ public class Enemy : MonoBehaviour
                 {
                     isAttacking = true;
                     animator.applyRootMotion = true;
-                    animator.SetTrigger("attack");
+
+                    if (hasMoreAttacks)
+                    {
+                        //choose random one attack
+                        float randomValue = Random.value;
+                        if (randomValue > 0.5f)
+                        {
+                            animator.SetTrigger("attack");
+                        }
+                        else
+                        {
+                            animator.SetTrigger("attack1");
+                        }
+                    }
+                    else
+                    {
+                        animator.SetTrigger("attack");
+                    }
+
                     Instantiate(preAttackWarningPrefab, transform);
                     timePassed = 0;
 
@@ -129,7 +148,7 @@ public class Enemy : MonoBehaviour
         
         if (dead)
         {
-            if (timePassedAfterDeath >= 3f)
+            if (timePassedAfterDeath >= 1f)
             {
                 Die();
             }
@@ -196,6 +215,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public GameObject deathVFX;
     
     public void TakeDamage(float damageAmount, float knockBack)
     {
@@ -215,6 +235,12 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetTrigger("death");
                 dead = true;
+
+                if (deathVFX != null)
+                {
+                    GameObject death = Instantiate(deathVFX, transform);
+                    death.transform.SetParent(null);
+                }
             }
         }
     }

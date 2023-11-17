@@ -54,6 +54,11 @@ public class Character : MonoBehaviour
     public bool blockingStateActive;
     public float dashCooldownTime;
     public bool dashIsReady;
+
+    [Header("VFX")] 
+    public GameObject blockVFX;
+    public Animation blockAnimation;
+
     
     //dash coolDownCalculator
     public float dashTimePassed;

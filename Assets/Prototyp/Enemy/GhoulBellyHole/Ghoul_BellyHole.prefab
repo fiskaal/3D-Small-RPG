@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054b08ba6685edb46850f5748bef2491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasMoreAttacks: 0
   hitVFX: {fileID: 6823200998282874702, guid: 8f8fe12323625f5499b2853dd2ad3e58, type: 3}
   hitVFX1: {fileID: 219217740888041541, guid: c01593394d44d1b44b4d11beff1c4eb6, type: 3}
   ragdoll: {fileID: 0}
@@ -146,6 +147,7 @@ MonoBehaviour:
   - {x: 1, y: 4}
   - {x: 0, y: 2}
   _enemyHpBar: {fileID: 1394658461581507824}
+  deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
 --- !u!195 &1031062533482400861
 NavMeshAgent:
   m_ObjectHideFlags: 0
