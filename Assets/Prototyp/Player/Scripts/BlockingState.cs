@@ -27,9 +27,8 @@ public class BlockingState : State
     public override void Enter()
     {
         base.Enter();
-        
+
         character.blockVFX.SetActive(true);
-        character.blockAnimation.Play("BlockIn");
         
         input = Vector2.zero;
         currentVelocity = Vector3.zero;
@@ -100,8 +99,9 @@ public class BlockingState : State
     public override void Exit()
     {
         base.Exit();
+
+        character.blockVFXScript.DisableAfterAnimation();
         
-        character.blockVFX.SetActive(false);
         character.blockingStateActive = false;
 
         gravityVelocity.y = 0f;

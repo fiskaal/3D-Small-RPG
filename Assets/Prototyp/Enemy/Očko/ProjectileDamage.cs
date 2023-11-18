@@ -8,13 +8,15 @@ public class ProjectileDamage : MonoBehaviour
 {
     private GameObject parent;
 
+    public Transform shooterTransform;
+
     [SerializeField] private float damage = 1f;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             HealthSystem playerHealth = other.GetComponent<HealthSystem>();
-            playerHealth.TakeDamage(damage);
+            playerHealth.TakeDamage(damage, shooterTransform);
             playerHealth.HitVFX(transform.position);
         }
         

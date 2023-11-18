@@ -148,11 +148,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6102880196853633987, guid: 0785f41bf1d89ff41883d144cf4369c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.324
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 6102880196853633987, guid: 0785f41bf1d89ff41883d144cf4369c2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.644
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6102880196853633987, guid: 0785f41bf1d89ff41883d144cf4369c2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -182,6 +182,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8384691196805963751, guid: 0785f41bf1d89ff41883d144cf4369c2, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2433.3496
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384691196805963751, guid: 0785f41bf1d89ff41883d144cf4369c2, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384691196805963751, guid: 0785f41bf1d89ff41883d144cf4369c2, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0785f41bf1d89ff41883d144cf4369c2, type: 3}
 --- !u!43 &212065005
@@ -190,7 +202,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27506
+  m_Name: pb_Mesh27512
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -427,6 +439,17 @@ Animation:
   m_CorrespondingSourceObject: {fileID: 3346113473987628538, guid: 0785f41bf1d89ff41883d144cf4369c2, type: 3}
   m_PrefabInstance: {fileID: 49959091}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &286444522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3180389316444704903, guid: 0785f41bf1d89ff41883d144cf4369c2, type: 3}
+  m_PrefabInstance: {fileID: 49959091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286444516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c12000657ea18b41b9965b4e496df99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &300117603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2794,6 +2817,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 141578188, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: angleThreshold
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 141578188, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: blockVFXScript
+      value: 
+      objectReference: {fileID: 286444522}
     - target: {fileID: 2995673596906374298, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2854,6 +2885,10 @@ PrefabInstance:
       propertyPath: blockAnimation
       value: 
       objectReference: {fileID: 286444518}
+    - target: {fileID: 2995673596906374303, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: blockVFXScript
+      value: 
+      objectReference: {fileID: 286444522}
     - target: {fileID: 2995673596906374303, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: dashCooldownTime
       value: 2

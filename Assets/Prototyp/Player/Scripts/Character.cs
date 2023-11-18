@@ -57,8 +57,7 @@ public class Character : MonoBehaviour
 
     [Header("VFX")] 
     public GameObject blockVFX;
-    public Animation blockAnimation;
-
+    public BlockVFX blockVFXScript;
     
     //dash coolDownCalculator
     public float dashTimePassed;
