@@ -14,6 +14,9 @@ public class HealthSystem : MonoBehaviour
     //shield spell
     private PlayerShield _playerShield;
     private Character _character;
+
+    [Header("Block")] 
+    [SerializeField]private BlockVFX blockVFXScript;
     
     
     void Start()
@@ -26,11 +29,25 @@ public class HealthSystem : MonoBehaviour
         _character = GetComponent<Character>();
     }
 
-   
 
-    public void TakeDamage(float damageAmount)
+    [SerializeField] private float angleThreshold;
+    public void TakeDamage(float damageAmount, Transform enemyTransform)
     {
         _playerShield = gameObject.GetComponentInChildren<PlayerShield>();
+        Transform highestParentTransform = GetHighestParentTransform(enemyTransform);
+
+        
+        // Get the direction from the player to the enemy
+        Vector3 directionToEnemy = (highestParentTransform.position - transform.position).normalized;
+
+        // Get the player's forward direction
+        Vector3 playerForward = transform.forward;
+
+        // Calculate the dot product between the player's forward direction and the direction to the enemy
+        float dotProduct = Vector3.Dot(directionToEnemy, playerForward);
+
+        // Define the angle threshold for the front area (e.g., 150 degrees)
+        //float angleThreshold = 150f;
         
         if (_playerShield != null)
         {
@@ -40,7 +57,19 @@ public class HealthSystem : MonoBehaviour
         {
             if (_character.blockingStateActive)
             {
-                animator.SetTrigger("blockDamage");
+                if (dotProduct < Mathf.Cos(angleThreshold * Mathf.Deg2Rad))
+                {
+                    // Enemy is behind the player
+                    health -= damageAmount;
+                    animator.SetTrigger("damage");
+                    //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+                }
+                else
+                {
+                    // Enemy is in front of the player, no damage or shield hit
+                    animator.SetTrigger("blockDamage");
+                    blockVFXScript.Damage();
+                }
             }
             else
             {
@@ -55,6 +84,16 @@ public class HealthSystem : MonoBehaviour
                 Die();
             } 
         }
+    }
+    
+    private Transform GetHighestParentTransform(Transform childTransform)
+    {
+        Transform parent = childTransform;
+        while (parent.parent != null)
+        {
+            parent = parent.parent;
+        }
+        return parent;
     }
 
     [Header("Death PopUp")] 
@@ -87,5 +126,26 @@ public class HealthSystem : MonoBehaviour
 
         // Show the game cursor (it's hidden by default when playing in Unity Editor)
         Cursor.visible = true;
+    }
+    
+    [SerializeField] private float visualizationDistance = 2f;
+
+    private void OnDrawGizmos()
+    {
+        // Draw a line to represent the player's forward direction
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * visualizationDistance);
+
+        // Calculate and draw two lines representing the front area
+        float halfAngle = angleThreshold / 2f;
+        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfAngle, Vector3.up);
+        Quaternion rightRayRotation = Quaternion.AngleAxis(halfAngle, Vector3.up);
+
+        Vector3 leftRayDirection = leftRayRotation * transform.forward;
+        Vector3 rightRayDirection = rightRayRotation * transform.forward;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + leftRayDirection * visualizationDistance);
+        Gizmos.DrawLine(transform.position, transform.position + rightRayDirection * visualizationDistance);
     }
 }

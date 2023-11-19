@@ -7,12 +7,16 @@ public class EnemyDamageDealer : MonoBehaviour
     bool canDealDamage;
     bool hasDealtDamage;
 
+    private Enemy _enemy;
+
     [SerializeField] float weaponLength;
     [SerializeField] float weaponDamage;
     void Start()
     {
         canDealDamage = false;
         hasDealtDamage = false;
+
+        _enemy = GetComponentInParent<Enemy>();
     }
 
     // Update is called once per frame
@@ -27,8 +31,8 @@ public class EnemyDamageDealer : MonoBehaviour
             {
                 if (hit.transform.TryGetComponent(out HealthSystem health))
                 {
-                    health.TakeDamage(weaponDamage);
-                    //health.HitVFX(hit.point);
+                    health.TakeDamage(weaponDamage, transform);
+                    health.HitVFX(hit.point);
                     hasDealtDamage = true;
                 }
             }
@@ -42,6 +46,8 @@ public class EnemyDamageDealer : MonoBehaviour
     public void EndDealDamage()
     {
         canDealDamage = false;
+        
+        _enemy.OnAttackAnimationEnd();
     }
 
     private void OnDrawGizmos()

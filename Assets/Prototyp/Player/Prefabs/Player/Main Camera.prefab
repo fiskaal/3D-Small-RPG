@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430988954756330378}
-  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: -0.12, y: 4, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -99,20 +99,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   targetHeight: 1.7
-  distance: 12
+  distance: 5
   offsetFromWall: 0.1
-  maxDistance: 20
-  minDistance: 0.6
+  maxDistance: 5
+  minDistance: 1
   xSpeed: 200
   ySpeed: 200
   yMinLimit: -80
   yMaxLimit: 80
   zoomRate: 40
   rotationDampening: 3
-  zoomDampening: 5
+  zoomDampening: 10
   lockToRearOfTarget: 0
   allowMouseInputX: 1
   allowMouseInputY: 1
   desiredDistance: 0
   userModel: {fileID: 0}
   inFirstPerson: 0
+  objectsToCheckRotation: []

@@ -87,7 +87,10 @@ public class DashState : State
         base.Enter();
 
         character.animator.SetTrigger("dash");
-
+        
+        //reset dash coolDownTimePassed
+        character.dashTimePassed = 0f;
+        
         // Calculate the dash direction based on input
         Vector2 input = moveAction.ReadValue<Vector2>();
         dashDirection = character.cameraTransform.forward * input.y + character.cameraTransform.right * input.x;

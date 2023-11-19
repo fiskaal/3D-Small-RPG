@@ -54,7 +54,8 @@ public class BossDamageDealer : MonoBehaviour
                 // Deal damage to enemies within the circular area
                 if (hit.transform.TryGetComponent(out HealthSystem player) && !hasDealtDamage.Contains(hit.transform.gameObject))
                 {
-                    player.TakeDamage(attackDamage);
+                    player.TakeDamage(attackDamage, transform);
+                    player.HitVFX(hit.point);
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
             }

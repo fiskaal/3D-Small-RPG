@@ -12,7 +12,7 @@ public class OckoProjectile : MonoBehaviour
     public float desiredZPosition = 10.0f;
     
     
-    public void FireProjectile(Vector3 targetPosition)
+    public void FireProjectile(Vector3 targetPosition, Transform shootreTransform)
     {
         Vector3 forwardDirection = transform.forward;
         Vector3 spawnPosition = transform.position + forwardDirection * desiredZPosition;
@@ -21,6 +21,8 @@ public class OckoProjectile : MonoBehaviour
 // Instantiate the projectile
         GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
 
+        ProjectileDamage projectileScript = projectile.GetComponent<ProjectileDamage>();
+        projectileScript.shooterTransform = shootreTransform;
 // Set the projectile's parent to the current GameObject (this)
         projectile.transform.parent = transform;
         ProjectileDamage projectileDamage = gameObject.GetComponentInChildren<ProjectileDamage>();

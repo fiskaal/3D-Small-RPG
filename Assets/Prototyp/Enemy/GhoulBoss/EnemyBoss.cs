@@ -535,7 +535,7 @@ public class EnemyBoss : MonoBehaviour
 
                     if (_ockoProjectile != null)
                     {
-                        _ockoProjectile.FireProjectile(player.transform.position);
+                        _ockoProjectile.FireProjectile(player.transform.position, transform);
                     }
                 }
                 timePassed = 0; // Reset the attack cooldown
