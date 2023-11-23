@@ -88,8 +88,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2778759646017259578, guid: 672f0f9cd27a53946bd69f769b5e3ba2, type: 3}
   projectileSpeed: 10
+  desiredZPosition: 0.7
   desiredHeight: 1.2
-  desiredZPosition: 0.5
+  desiredTargetHeight: 1
 --- !u!114 &6297033395205801718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,3 +397,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 12c7284b94a962a44a112a958da058b5, type: 3}
   m_PrefabInstance: {fileID: 6297033395440595837}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6603094349327568428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 12c7284b94a962a44a112a958da058b5, type: 3}
+  m_PrefabInstance: {fileID: 6297033395440595837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5317893012502978518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603094349327568428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

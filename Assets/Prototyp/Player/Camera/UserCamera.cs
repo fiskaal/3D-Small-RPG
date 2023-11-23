@@ -4,7 +4,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class UserCamera : MonoBehaviour {
+public class UserCamera : MonoBehaviour
+{
 
 	public Transform target; 							// Target to follow
 	public float targetHeight = 1.7f; 						// Vertical offset adjustment

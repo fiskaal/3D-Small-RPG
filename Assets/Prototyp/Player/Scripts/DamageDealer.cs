@@ -19,6 +19,8 @@ public class DamageDealer : MonoBehaviour
     private DamageOfEverything _damageOfEverything;
 
     private bool enemyTargetted;
+
+    private CameraRaycast _cameraRaycast;
     void Start()
     {
         //get weapon damage
@@ -33,7 +35,7 @@ public class DamageDealer : MonoBehaviour
 
         enemyTargetted = false;
         FindAndAddEnemies();
-        
+        _cameraRaycast = FindObjectOfType<CameraRaycast>();
     }
     
     void FindAndAddEnemies()
@@ -57,7 +59,7 @@ public class DamageDealer : MonoBehaviour
             }
         }
     }
-
+    
     void Update()
     {
         
@@ -90,6 +92,7 @@ public class DamageDealer : MonoBehaviour
             }
         }
     }
+    
     public void StartDealDamage()
     {
         enemyTargetted = false;
@@ -124,11 +127,14 @@ public class DamageDealer : MonoBehaviour
     public GameObject attackedEnemyPopUp;
     public void LookAtEnemy()
     {
+        //closestEnemy = _cameraRaycast.currentEnemy;
+        
         if (closestEnemy != null)
         {
             player.transform.LookAt(closestEnemy.transform);
             enemyTargetted = true;
         }
+        
     }
     public void EndDealDamage()
     {
