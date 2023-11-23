@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 342864814426260889}
   - component: {fileID: 8378607157557743077}
   - component: {fileID: 7697171847141645798}
+  - component: {fileID: 8844394836401865451}
   - component: {fileID: 6670631028866693609}
   - component: {fileID: 517651707450840796}
   - component: {fileID: 1949333609}
@@ -168,6 +169,9 @@ MonoBehaviour:
   basAttackCd: 3
   stompAttackCd: 4
   basicAttackRange: 2
+  spitAttackCd: 5
+  spitAttackRangeMin: 4
+  spitAttackRangeMax: 7
   aggroRange: 15
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
   lootItems:
@@ -176,9 +180,24 @@ MonoBehaviour:
   lootQuantities:
   - {x: 1, y: 4}
   - {x: 0, y: 2}
-  jumpAttackCd: 100000000
-  jumpAttackRadius: 15
   _enemyHpBar: {fileID: 3756692676918908178}
+--- !u!114 &8844394836401865451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402018793525180401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5cff542cf35f84cadb13b222c9cd64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2778759646017259578, guid: 672f0f9cd27a53946bd69f769b5e3ba2, type: 3}
+  projectileSpeed: 10
+  desiredZPosition: 0.7
+  desiredHeight: 2.5
+  desiredTargetHeight: 1
 --- !u!114 &6670631028866693609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5226,6 +5245,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2426d9f3450e3bd418cf24cd288bce8e, type: 3}
   m_PrefabInstance: {fileID: 3817056118528608313}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4051411731194066280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2426d9f3450e3bd418cf24cd288bce8e, type: 3}
+  m_PrefabInstance: {fileID: 3817056118528608313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6456487956029597890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4051411731194066280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &6111290277905692985
 PrefabInstance:
   m_ObjectHideFlags: 0

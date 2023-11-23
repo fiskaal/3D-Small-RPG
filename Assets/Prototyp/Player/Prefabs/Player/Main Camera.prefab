@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1430988954756330376}
   - component: {fileID: 1430988954756330377}
   - component: {fileID: 1430988954756330382}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -117,3 +118,19 @@ MonoBehaviour:
   userModel: {fileID: 0}
   inFirstPerson: 0
   objectsToCheckRotation: []
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430988954756330378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be22f3b05e1683141b259c6e67a631c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 1430988954756330376}
+  currentEnemy: {fileID: 0}
+  raycastSize: 525.2
+  raycastLength: 100
