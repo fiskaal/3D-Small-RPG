@@ -15,6 +15,12 @@ public class ShopButton : MonoBehaviour
     public string weaponNameInput;
     public string sheathNameInput;
 
+    // Reference to the game object to activate when the player has enough souls
+    public GameObject activatedObject;
+
+    // Reference to the game object to deactivate when the player has enough souls
+    public GameObject deactivatedObject;
+
     // Reference to the button component
     private Button button;
 
@@ -64,6 +70,17 @@ public class ShopButton : MonoBehaviour
                 ", EnchantedWeaponDamage: " + enchantedWeaponDamage +
                 ", WeaponNameInput: " + weaponNameInput +
                 ", SheathNameInput: " + sheathNameInput);
+
+            if (activatedObject != null)
+            {
+                activatedObject.SetActive(true);
+            }
+
+            // Deactivate the specified game object
+            if (deactivatedObject != null)
+            {
+                deactivatedObject.SetActive(false);
+            }
         }
         else
         {
