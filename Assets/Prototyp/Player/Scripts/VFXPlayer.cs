@@ -7,6 +7,8 @@ public class VFXPlayer : MonoBehaviour
 {
     [SerializeField] GameObject VFXSlashHolder;
     [SerializeField] GameObject VFXSlashHolder1;
+    [SerializeField] GameObject VFXSlashHolder2;
+
     [SerializeField] GameObject VFXPrefabSlash1;
     [SerializeField] GameObject VFXPrefabSlash2;
 
@@ -32,6 +34,11 @@ public class VFXPlayer : MonoBehaviour
     public void PlayVFX1()
     {
         Instantiate(VFXPrefabSlash2, VFXSlashHolder1.transform);
+    }
+    
+    public void PlayVFX2()
+    {
+        Instantiate(VFXPrefabSlash2, VFXSlashHolder2.transform);
     }
 
     public void PlayVFXSlash3Impact()
