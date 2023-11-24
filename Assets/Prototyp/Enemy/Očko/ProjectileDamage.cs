@@ -8,6 +8,8 @@ public class ProjectileDamage : MonoBehaviour
 {
     private GameObject parent;
 
+    public GameObject HitVFX;
+
     public Transform shooterTransform;
 
     [SerializeField] private float damage = 1f;
@@ -18,13 +20,21 @@ public class ProjectileDamage : MonoBehaviour
             HealthSystem playerHealth = other.GetComponent<HealthSystem>();
             playerHealth.TakeDamage(damage, shooterTransform);
             playerHealth.HitVFX(transform.position);
+            GameObject hit = Instantiate(HitVFX, transform);
+            hit.transform.SetParent(null);
+            Destroy(gameObject);
         }
         
         
         if (other.gameObject != parent)
         {
-            // Destroy the projectile when colliding with an object that is not its parent
-            Destroy(gameObject);
+            if (other.gameObject != gameObject)
+            {
+                GameObject hit = Instantiate(HitVFX, transform);
+                hit.transform.SetParent(null);
+                // Destroy the projectile when colliding with an object that is not its parent
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -33,5 +43,8 @@ public class ProjectileDamage : MonoBehaviour
         parent = transform.parent.gameObject;
     }
 
-   
+    public void OnDestroy()
+    {
+         
+    }
 }

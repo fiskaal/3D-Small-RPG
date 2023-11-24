@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
         }
         
         
-        if (timePassed >= attackCD)
+        if (timePassed >= attackCD && !dead)
         {
             if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
             {
@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
                     Instantiate(preAttackWarningPrefab, transform);
                     timePassed = 0;
 
-                    if (_ockoProjectile != null)
+                    if (_ockoProjectile != null )
                     {
                         _ockoProjectile.FireProjectile(player.transform.position, transform);
                     }

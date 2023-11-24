@@ -58,6 +58,11 @@ public class Character : MonoBehaviour
     [Header("VFX")] 
     public GameObject blockVFX;
     public BlockVFX blockVFXScript;
+    public bool blockIsUgraded;
+
+    [Header("Block")] 
+    public BlockBreaker _blockBreaker;
+    public bool blockBroken = false;
     
     //dash coolDownCalculator
     public float dashTimePassed;

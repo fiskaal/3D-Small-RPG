@@ -74,7 +74,7 @@ public class CombatState : State
             dash = true;
         }
 
-        if (blockAction.triggered)
+        if (blockActionStart.triggered)
         {
             block = true;
         }
@@ -129,8 +129,11 @@ public class CombatState : State
 
         if (block)
         {
-            character.animator.SetTrigger("block");
-            stateMachine.ChangeState(character.blocking);
+            if (!character.blockBroken)
+            {
+                character.animator.SetTrigger("block");
+                stateMachine.ChangeState(character.blocking);
+            }
         }
     }
     

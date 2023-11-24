@@ -19,7 +19,10 @@ public class BlockVFX : MonoBehaviour
 
     public void DisableAfterAnimation()
     {
-        StartCoroutine(PlayAnimationAndDisable());
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(PlayAnimationAndDisable());
+        }
     }
 
     private IEnumerator PlayAnimationAndDisable()

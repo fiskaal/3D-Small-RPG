@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
+    [SerializeField] private BlockBreaker _blockBreaker;
     [SerializeField] public float health = 100;
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject ragdoll;
@@ -69,6 +70,7 @@ public class HealthSystem : MonoBehaviour
                     // Enemy is in front of the player, no damage or shield hit
                     animator.SetTrigger("blockDamage");
                     blockVFXScript.Damage();
+                    _blockBreaker.BlockAttackCounter();
                 }
             }
             else

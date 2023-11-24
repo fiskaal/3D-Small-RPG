@@ -114,9 +114,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Block",
+                    "name": "BlockStart",
                     "type": "Button",
                     "id": "a2352e8c-0fea-495d-8494-30b9e861aba4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BlockEnd",
+                    "type": "Button",
+                    "id": "191227e0-6e98-4526-8bbd-004429fa5608",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -304,10 +313,21 @@
                     "name": "",
                     "id": "d3d6df98-c6af-4572-9cea-7ff696b39ae3",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Block",
+                    "action": "BlockStart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0877e6f6-3936-4c56-8a57-27b86932fcdd",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BlockEnd",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
