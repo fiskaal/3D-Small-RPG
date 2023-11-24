@@ -19,6 +19,8 @@ public class DamageDealer : MonoBehaviour
     private DamageOfEverything _damageOfEverything;
 
     private bool enemyTargetted;
+    
+    public GameObject trailVFX;
 
     private CameraRaycast _cameraRaycast;
     void Start()
@@ -98,6 +100,11 @@ public class DamageDealer : MonoBehaviour
         enemyTargetted = false;
         canDealDamage = true;
         hasDealtDamage.Clear();
+
+        if (trailVFX != null)
+        {
+            trailVFX.SetActive(true);
+        }
     }
 
     public void FindClosestEnemy()
@@ -124,7 +131,6 @@ public class DamageDealer : MonoBehaviour
         }
     }
 
-    public GameObject attackedEnemyPopUp;
     public void LookAtEnemy()
     {
         //closestEnemy = _cameraRaycast.currentEnemy;
@@ -141,6 +147,12 @@ public class DamageDealer : MonoBehaviour
         canDealDamage = false;
 
         attackedEnemySelected = false;
+        
+        
+        if (trailVFX != null)
+        {
+            trailVFX.SetActive(false);
+        }
     }
 
     private void OnDrawGizmos()
