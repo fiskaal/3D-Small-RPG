@@ -3113,6 +3113,7 @@ MonoBehaviour:
   stonePickupTag: Stone
   woodPickupTag: Wood
   ironPickupTag: Iron
+  soulPickupTag: MonsterCore
 --- !u!114 &5038354994267134333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3142,9 +3143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fff45b6cdbb1747b5623d5e8ea43e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToCheck: []
-  parentObject: {fileID: 687303937199664012}
-  userCamera: {fileID: 0}
+  objectTags: []
 --- !u!1 &3040398678105076967
 GameObject:
   m_ObjectHideFlags: 0
