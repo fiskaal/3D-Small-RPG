@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class WeaponManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -73,6 +75,7 @@ public class WeaponManager : MonoBehaviour
     private void Start()
     {
         InvokeRepeating("FindHolders", 0f, checkInterval);
+        FindHolders();
     }
 
     // You can add other WeaponManager functionality here
@@ -95,7 +98,7 @@ public class WeaponManager : MonoBehaviour
     }
 
     // Method to find the weapon and sheath holders associated with the player
-    private void FindHolders()
+    public void FindHolders()
     {
         // Find the player GameObject using the tag
         GameObject player = GameObject.FindGameObjectWithTag(playerTag);
@@ -201,6 +204,19 @@ public class WeaponManager : MonoBehaviour
         damageScript.enchantedWeaponDamage = enchantedWeaponDamage;
 
         // You can perform additional logic or modifications here if needed
+    }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe from the sceneLoaded event when the script is destroyed
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // Callback method for the sceneLoaded event
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Call FindHolders when a new scene is loaded
+        FindHolders();
     }
 
 }

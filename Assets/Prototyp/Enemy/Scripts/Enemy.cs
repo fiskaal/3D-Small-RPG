@@ -204,16 +204,24 @@ public class Enemy : MonoBehaviour
     {
         for (int i = 0; i < lootItems.Length; i++)
         {
-            int quantity = Random.Range(lootQuantities[i].x, lootQuantities[i].y + 1); // Random quantity within the specified range
+            int quantity = Random.Range(lootQuantities[i].x, lootQuantities[i].y + 1);
+
             for (int j = 0; j < quantity; j++)
             {
                 Vector2 randomOffset = Random.insideUnitCircle.normalized * Random.Range(1f, 3f);
-                Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, 0f, randomOffset.y); // Offset only in X and Z dimensions
+                Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, 0f, randomOffset.y);
 
-                Instantiate(lootItems[i], spawnPosition + Vector3.up, Quaternion.identity);
+                // Use NavMesh.SamplePosition to find a valid position on the NavMesh
+                if (NavMesh.SamplePosition(spawnPosition, out NavMeshHit hit, 2.0f, NavMesh.AllAreas))
+                {
+                    spawnPosition = hit.position + Vector3.up;
+                }
+
+                Instantiate(lootItems[i], spawnPosition, Quaternion.identity);
             }
         }
     }
+
 
     public GameObject deathVFX;
     

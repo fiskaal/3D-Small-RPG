@@ -1525,6 +1525,7 @@ GameObject:
   - component: {fileID: 5056879822034993235}
   - component: {fileID: 6316066573478993053}
   - component: {fileID: 162853452827898969}
+  - component: {fileID: 4772533511784030482}
   m_Layer: 5
   m_Name: Button_Yes
   m_TagString: Untagged
@@ -1665,12 +1666,24 @@ MonoBehaviour:
   fireEnchantDamageBonus: 0
   lightningEnchantDamageBonus: 0
   enchantedWeaponDamage: 0
-  weaponNameInput: SM_Wep_Broadsword_01(Clone)
-  sheathNameInput: SM_Wep_Broadsword_01(Clone)
+  weaponNameInput: ShortSword
+  sheathNameInput: ShortSword
   activatedObject: {fileID: 0}
   deactivatedObject: {fileID: 0}
   soulCost: 0
   warningMessage: {fileID: 0}
+--- !u!114 &4772533511784030482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6409648795120212761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaebdaf00e80f014995b6ce32d8de639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6554394122403556341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,6 +1777,7 @@ GameObject:
   - component: {fileID: 6581787834226406519}
   - component: {fileID: 6055854919899850668}
   - component: {fileID: 4427670674372381200}
+  - component: {fileID: 9123791627199149268}
   m_Layer: 5
   m_Name: Button_Yes
   m_TagString: Untagged
@@ -1910,6 +1924,18 @@ MonoBehaviour:
   deactivatedObject: {fileID: 0}
   soulCost: 0
   warningMessage: {fileID: 0}
+--- !u!114 &9123791627199149268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6693916139533940577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaebdaf00e80f014995b6ce32d8de639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6964701132350748673
 GameObject:
   m_ObjectHideFlags: 0
@@ -3021,6 +3047,7 @@ GameObject:
   - component: {fileID: 6964701132652922616}
   - component: {fileID: 6964701132652922619}
   - component: {fileID: 6964701132652922618}
+  - component: {fileID: 1770126157310237115}
   m_Layer: 5
   m_Name: Button_Yes
   m_TagString: Untagged
@@ -3155,18 +3182,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef191cbe403a3949ad6842e9c4257dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 0
+  weaponDamage: 3
   knockBackForce: 0
-  lightingStrikeDamage: 0
+  lightingStrikeDamage: 3
   fireEnchantDamageBonus: 0
   lightningEnchantDamageBonus: 0
   enchantedWeaponDamage: 0
-  weaponNameInput: SM_Wep_Broadsword_01(Clone)
-  sheathNameInput: SM_Wep_Broadsword_01(Clone)
+  weaponNameInput: ShortSword
+  sheathNameInput: ShortSword
   activatedObject: {fileID: 5432112201905579014}
   deactivatedObject: {fileID: 6964701134080739972}
   soulCost: 50
   warningMessage: {fileID: 0}
+--- !u!114 &1770126157310237115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6964701132652922620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaebdaf00e80f014995b6ce32d8de639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6964701132720765941
 GameObject:
   m_ObjectHideFlags: 0
@@ -5255,6 +5294,7 @@ GameObject:
   - component: {fileID: 6964701134253077132}
   - component: {fileID: 6964701134253077135}
   - component: {fileID: 6964701134253077134}
+  - component: {fileID: 3364515814986954955}
   m_Layer: 5
   m_Name: Button_Yes
   m_TagString: Untagged
@@ -5389,9 +5429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef191cbe403a3949ad6842e9c4257dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 0
+  weaponDamage: 3
   knockBackForce: 0
-  lightingStrikeDamage: 0
+  lightingStrikeDamage: 3
   fireEnchantDamageBonus: 0
   lightningEnchantDamageBonus: 0
   enchantedWeaponDamage: 0
@@ -5401,6 +5441,18 @@ MonoBehaviour:
   deactivatedObject: {fileID: 6964701132962825806}
   soulCost: 180
   warningMessage: {fileID: 0}
+--- !u!114 &3364515814986954955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6964701134253077136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaebdaf00e80f014995b6ce32d8de639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6964701134272436190
 GameObject:
   m_ObjectHideFlags: 0
