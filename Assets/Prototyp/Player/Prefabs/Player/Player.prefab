@@ -1636,7 +1636,7 @@ MonoBehaviour:
   damageScript: {fileID: 626898797822916575}
   playerHealthScript: {fileID: 141578188}
   healthIncreaseAmount: 0
-  weaponDamageIncreaseAmount: 3
+  weaponDamageIncreaseAmount: 1
   lightningStrikeDamageIncreaseAmount: 0
   fireEnchantDamageBonusIncreaseAmount: 0
   lightningEnchantDamageBonusIncreaseAmount: 0
@@ -2196,7 +2196,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MELEE DAMAGE + 5
+  m_Text: MELEE DAMAGE + 1
 --- !u!1 &687303937995111881
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,6 +2604,7 @@ GameObject:
   - component: {fileID: 2328741409428209493}
   - component: {fileID: 2328741409428209495}
   - component: {fileID: 2328741409428209492}
+  - component: {fileID: 2010581915834942910}
   m_Layer: 5
   m_Name: WarningMessage
   m_TagString: Untagged
@@ -2670,6 +2671,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2010581915834942910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2328741409428209490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f1f9ef147981446901877fb9318bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2810954202312928437
 GameObject:
   m_ObjectHideFlags: 0
@@ -3243,6 +3256,7 @@ MonoBehaviour:
   stonePickupTag: Stone
   woodPickupTag: Wood
   ironPickupTag: Iron
+  soulPickupTag: MonsterCore
 --- !u!114 &5038354994267134333
 MonoBehaviour:
   m_ObjectHideFlags: 0

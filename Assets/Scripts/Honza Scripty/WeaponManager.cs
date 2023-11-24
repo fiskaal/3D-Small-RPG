@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -23,6 +25,17 @@ public class WeaponManager : MonoBehaviour
     private GameObject weaponHolder;
     private GameObject sheathHolder;
 
+    // Reference to the DamageOfEverything script
+    private DamageOfEverything damageScript;
+
+    // Public variables to mirror the ones in DamageOfEverything
+    public float weaponDamage;
+    public float knockBackForce;
+    public float lightingStrikeDamage;
+    public float fireEnchantDamageBonus;
+    public float lightningEnchantDamageBonus;
+    public float enchantedWeaponDamage;
+
     private void Awake()
     {
         // Ensure there is only one instance of WeaponManager
@@ -34,8 +47,27 @@ public class WeaponManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;  // Exit the method to avoid further execution
+        }
+
+        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+
+        if (player != null)
+        {
+            // Get the DamageOfEverything script attached to the player
+            damageScript = player.GetComponent<DamageOfEverything>();
+
+            if (damageScript == null)
+            {
+                Debug.LogError("DamageOfEverything script not found on the player GameObject.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Player not found. Make sure the player has the tag: " + playerTag);
         }
     }
+
 
     // Start method to initiate the check for the holders
     private void Start()
@@ -50,7 +82,8 @@ public class WeaponManager : MonoBehaviour
     {
         EquippedWeaponName = newWeaponName;
 
-        // Add additional logic for handling the weapon change if needed
+        // Update damage values in WeaponManager
+        UpdateDamageValues();
     }
 
     // Example method to change the equipped sheath
@@ -137,6 +170,9 @@ public class WeaponManager : MonoBehaviour
         {
             Debug.LogWarning("Player not found. Make sure the player has the tag: " + playerTag);
         }
+
+        UpdateDamageValues();
+
     }
 
     private GameObject FindObjectInHierarchyByName(Transform parent, string objectName)
@@ -153,4 +189,18 @@ public class WeaponManager : MonoBehaviour
 
         return null;
     }
+
+    private void UpdateDamageValues()
+    {
+        // Update the values in DamageOfEverything with the corresponding variables from WeaponManager
+        damageScript.weaponDamage = weaponDamage;
+        damageScript.knockBackForce = knockBackForce;
+        damageScript.lightingStrikeDamage = lightingStrikeDamage;
+        damageScript.fireEnchantDamageBonus = fireEnchantDamageBonus;
+        damageScript.lightningEnchantDamageBonus = lightningEnchantDamageBonus;
+        damageScript.enchantedWeaponDamage = enchantedWeaponDamage;
+
+        // You can perform additional logic or modifications here if needed
+    }
+
 }
