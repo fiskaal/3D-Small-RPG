@@ -31,7 +31,7 @@ public class Character : MonoBehaviour
     public SprintJumpState sprintjumping;
     public CombatState combatting;
     public AttackState attacking;
-    public SpecialAttackState specialAttacking;
+    public HeavyAttackState heavyAttacking;
     public DashState dashing;
     public FallingState falling;
     public BlockingState blocking;
@@ -84,7 +84,7 @@ public class Character : MonoBehaviour
         sprintjumping = new SprintJumpState(this, movementSM);
         combatting = new CombatState(this, movementSM);
         attacking = new AttackState(this, movementSM);
-        specialAttacking = new SpecialAttackState(this, movementSM);
+        heavyAttacking = new HeavyAttackState(this, movementSM);
         dashing = new DashState(this, movementSM);
         falling = new FallingState(this, movementSM);
         blocking = new BlockingState(this, movementSM);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine.Utility;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
@@ -15,6 +16,9 @@ public class HealthSystem : MonoBehaviour
     //shield spell
     private PlayerShield _playerShield;
     private Character _character;
+    
+    //damage pupup
+    [SerializeField] private DamagePopUpGenerator _damagePopUpGenerator;
 
     [Header("Block")] 
     [SerializeField]private BlockVFX blockVFXScript;
@@ -32,7 +36,7 @@ public class HealthSystem : MonoBehaviour
 
 
     [SerializeField] private float angleThreshold;
-    public void TakeDamage(float damageAmount, Transform enemyTransform)
+    public void TakeDamage(float damageAmount, Transform enemyTransform, Transform hit)
     {
         _playerShield = gameObject.GetComponentInChildren<PlayerShield>();
         Transform highestParentTransform = GetHighestParentTransform(enemyTransform);
@@ -63,6 +67,7 @@ public class HealthSystem : MonoBehaviour
                     // Enemy is behind the player
                     health -= damageAmount;
                     animator.SetTrigger("damage");
+                    _damagePopUpGenerator.CreatePopUp(hit.position,  damageAmount.ToString());
                     //CameraShake.Instance.ShakeCamera(2f, 0.2f);
                 }
                 else
@@ -71,12 +76,14 @@ public class HealthSystem : MonoBehaviour
                     animator.SetTrigger("blockDamage");
                     blockVFXScript.Damage();
                     _blockBreaker.BlockAttackCounter();
+                    _damagePopUpGenerator.CreatePopUp(hit.position, 0.ToString());
                 }
             }
             else
             {
                 health -= damageAmount;
                 animator.SetTrigger("damage");
+                _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString());
                 //CameraShake.Instance.ShakeCamera(2f, 0.2f);
             }
 

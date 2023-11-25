@@ -70,7 +70,7 @@ public class StrikePrefab : MonoBehaviour
                 if (enemy != null)
                 {
                     float knockBackForce = 0f;
-                    enemy.TakeDamage(_damageOfEverything.lightingStrikeDamage, knockBackForce);
+                    enemy.TakeDamage(_damageOfEverything.lightingStrikeDamage, parentTransform);
                     enemy.HitVFX(hitPoint);
                     hasDealtDamage.Add(parentTransform.gameObject);
                 }

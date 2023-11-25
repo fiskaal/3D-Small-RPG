@@ -317,9 +317,10 @@ public class EnemyBoss : MonoBehaviour
     private float screamTimePassed = 0;
 
     private HealthSystem playerHealthSystem;
-    private Rigidbody rb;
 
     private BossDamageDealer _bossDamageDealer;
+
+    private DamagePopUpGenerator _damagePopUpGenerator;
     
     
     // Health bar
@@ -345,12 +346,13 @@ public class EnemyBoss : MonoBehaviour
         spitAttackTimePassed = spitAttackCd;
         
         _bossDamageDealer = GetComponentInChildren<BossDamageDealer>();
-
-        rb = GetComponent<Rigidbody>();
-        rb.isKinematic = true;
+        
         
         // Set max HP for the health bar
         _enemyHpBar.SetMaxHP(health);
+        
+        _damagePopUpGenerator = FindObjectOfType<DamagePopUpGenerator>();
+
 
         // Ocko projectile
         if (GetComponent<OckoProjectile>() != null)
@@ -517,11 +519,12 @@ public class EnemyBoss : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage(float damageAmount, Transform hit)
     {
         isIdle = false;
         if (!dead)
         {
+            _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString());
             health -= damageAmount;
             animator.applyRootMotion = true;
             if (isIdle)

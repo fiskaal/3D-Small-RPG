@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     private bool isAttacking;
 
     private HealthSystem playerHealthSystem;
+    [SerializeField] private DamagePopUpGenerator _damagePopUpGenerator;
 
     //HpBar
     [SerializeField] private EnemyHpBar _enemyHpBar;
@@ -60,6 +61,8 @@ public class Enemy : MonoBehaviour
         
         //hpBar
         _enemyHpBar.SetMaxHP(health);
+
+        _damagePopUpGenerator = FindObjectOfType<DamagePopUpGenerator>();
             
         //ocko projectile
         if (GetComponent<OckoProjectile>() != null)
@@ -217,10 +220,12 @@ public class Enemy : MonoBehaviour
 
     public GameObject deathVFX;
     
-    public void TakeDamage(float damageAmount, float knockBack)
+    public void TakeDamage(float damageAmount, Transform hit)
     {
         if (!dead)
         {
+            _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString());
+            
             health -= damageAmount;
             animator.applyRootMotion = true;
             if (!isAttacking)
