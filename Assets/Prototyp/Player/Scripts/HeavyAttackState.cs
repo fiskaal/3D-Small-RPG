@@ -1,12 +1,12 @@
 using UnityEngine;
-public class SpecialAttackState : State
+public class HeavyAttackState : State
 {
     float timePassed;
     float clipLength;
     float clipSpeed;
     bool attack;
     
-    public SpecialAttackState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
+    public HeavyAttackState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
     {
         character = _character;
         stateMachine = _stateMachine;
@@ -19,7 +19,7 @@ public class SpecialAttackState : State
         attack = false;
         character.animator.applyRootMotion = true;
         timePassed = 0f;
-        character.animator.SetTrigger("specialAttack");
+        character.animator.SetTrigger("attackHeavy");
         character.animator.SetFloat("speed", 0f);
     }
 
@@ -27,7 +27,7 @@ public class SpecialAttackState : State
     {
         base.HandleInput();
 
-        if (specialAttackAction.triggered)
+        if (heavyattackAction1.triggered)
         {
             attack = true;
         }
@@ -40,9 +40,9 @@ public class SpecialAttackState : State
         clipLength = character.animator.GetCurrentAnimatorClipInfo(1)[0].clip.length;
         clipSpeed = character.animator.GetCurrentAnimatorStateInfo(1).speed;
 
-        if (timePassed >= clipLength / clipSpeed && attack)
+        if (timePassed <= clipLength / 2 && attack)
         {
-            stateMachine.ChangeState(character.attacking);
+            stateMachine.ChangeState(character.heavyAttacking);
         }
         if (timePassed >= clipLength / clipSpeed)
         {

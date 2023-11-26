@@ -52,7 +52,7 @@ public class AttackState : State
         clipLength = character.animator.GetCurrentAnimatorClipInfo(1)[0].clip.length;
         clipSpeed = character.animator.GetCurrentAnimatorStateInfo(1).speed;
 
-        if (timePassed >= clipLength / clipSpeed && attack)
+        if (attack)
         {
             stateMachine.ChangeState(character.attacking);
         }

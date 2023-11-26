@@ -64,7 +64,7 @@ public class CombatState : State
             attack = true;
         }
 
-        if (specialAttackAction.triggered)
+        if (heavyattackAction.triggered)
         {
             specialAttack = true;
         }
@@ -108,7 +108,7 @@ public class CombatState : State
         if (specialAttack)
         {
             character.animator.SetTrigger(("specialAttack"));
-            stateMachine.ChangeState(character.specialAttacking);
+            stateMachine.ChangeState(character.heavyAttacking);
         }
 
         if (dash && character.dashIsReady)

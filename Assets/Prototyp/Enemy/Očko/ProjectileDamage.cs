@@ -18,7 +18,7 @@ public class ProjectileDamage : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             HealthSystem playerHealth = other.GetComponent<HealthSystem>();
-            playerHealth.TakeDamage(damage, shooterTransform);
+            playerHealth.TakeDamage(damage, shooterTransform, transform);
             playerHealth.HitVFX(transform.position);
             GameObject hit = Instantiate(HitVFX, transform);
             hit.transform.SetParent(null);
