@@ -35,12 +35,6 @@ public class EnemyDamageDealer : MonoBehaviour
                     health.HitVFX(hit.point);
                     hasDealtDamage = true;
                 }
-
-                if (hit.transform.gameObject.GetComponentInChildren<DamagePopUpGenerator>())
-                {
-                    string minus = "-";
-                    hit.transform.gameObject.GetComponentInChildren<DamagePopUpGenerator>().CreatePopUp(hit.point,   minus + weaponDamage.ToString());
-                }
             }
         }
     }
