@@ -369,20 +369,39 @@ public class EnemyBoss : MonoBehaviour
         {
             return;
         }
-
-        UpdateAttackState(basAttackCd, basicAttackRange, ref timePassedAttackCD);
-        //UpdateAttackState(jumpAttackCd, basicAttackRange + 1, ref timePassedAttackCD1);
-        UpdateAttackState(stompAttackCd, basicAttackRange, ref timePassedAttackCD2);
         
-        UpdateAttackState(spitAttackCd, spitAttackRangeMax, ref spitAttackTimePassed);
       
+        UpdateCoolDown(ref timePassedAttackCD);
+        UpdateCoolDown(ref timePassedAttackCD2);
+        UpdateCoolDown(ref spitAttackTimePassed);
+        
         if (!isAttacking)
         {
             UpdateDestination();
-            UpdateRotation();
+            UpdateRotation(5);
+            
+            Vector3 directionToPlayer = player.transform.position - transform.position;
+            // Calculate the angle between the enemy's forward direction and the direction to the player
+            float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+            // Define a threshold angle, for instance, 5 degrees
+            float angleThreshold = 5f;
+
+            if (angleToPlayer < angleThreshold)
+            {
+                UpdateAttackState(basAttackCd, basicAttackRange, ref timePassedAttackCD);
+                //UpdateAttackState(jumpAttackCd, basicAttackRange + 1, ref timePassedAttackCD1);
+                UpdateAttackState(stompAttackCd, basicAttackRange, ref timePassedAttackCD2);
+        
+                UpdateAttackState(spitAttackCd, spitAttackRangeMax, ref spitAttackTimePassed);
+            }
         }
         
         HandleDeath();
+    }
+
+    private void UpdateCoolDown(ref float timePassed)
+    {
+        timePassed += Time.deltaTime;
     }
     
     private void UpdateAttackState(float attackCooldown, float currentAttackRange, ref float timePassed)
@@ -394,12 +413,9 @@ public class EnemyBoss : MonoBehaviour
             {
                 if (playerHealthSystem.health > 0)
                 {
-                    animator.applyRootMotion = true;
 
                     if (attackCooldown == basAttackCd)
                     {
-                        UpdateRotation();
-
                         isIdle = false;
                         currentAttackDamage = handAttackDamage;
                         currentAttackRadius = handAttackRadius;
@@ -407,8 +423,6 @@ public class EnemyBoss : MonoBehaviour
                     }
                     else if (attackCooldown == stompAttackCd)
                     {
-                        UpdateRotation();
-
                         isIdle = false;
                         currentAttackRadius = legAttackRadius;
                         currentAttackDamage = legAttackDamage;
@@ -416,8 +430,6 @@ public class EnemyBoss : MonoBehaviour
                     }
                     else if (attackCooldown == spitAttackCd)
                     {
-                        UpdateRotation();
-
                         isIdle = false;
                         currentAttackRadius = 0;
                         currentAttackDamage = 0;
@@ -434,11 +446,11 @@ public class EnemyBoss : MonoBehaviour
                 timePassed = 0; // Reset the attack cooldown
             }
         }
-        timePassed += Time.deltaTime;
     }
 
     private void Attack(string triggerName)
     {
+        animator.applyRootMotion = true;
         animator.SetTrigger(triggerName);
         animator.SetBool("isAttacking", true);
     }
@@ -447,6 +459,7 @@ public class EnemyBoss : MonoBehaviour
     {
         animator.SetBool("isAttacking", false);
         isAttacking = false;
+        animator.applyRootMotion = false;
     }
 
     private void UpdateDestination()
@@ -464,7 +477,7 @@ public class EnemyBoss : MonoBehaviour
         }
     }
 
-    private void UpdateRotation()
+    private void UpdateRotation(float rotationSpeed)
     {
         if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
@@ -473,7 +486,9 @@ public class EnemyBoss : MonoBehaviour
 
             if (directionToPlayer != Vector3.zero)
             {
-                transform.rotation = Quaternion.LookRotation(directionToPlayer);
+                //transform.rotation = Quaternion.LookRotation(directionToPlayer);
+                
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToPlayer), rotationSpeed * Time.deltaTime);
             }
         }
     }

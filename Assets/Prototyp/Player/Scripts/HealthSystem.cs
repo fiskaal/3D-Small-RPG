@@ -76,7 +76,7 @@ public class HealthSystem : MonoBehaviour
                     animator.SetTrigger("blockDamage");
                     blockVFXScript.Damage();
                     _blockBreaker.BlockAttackCounter();
-                    _damagePopUpGenerator.CreatePopUp(hit.position, 0.ToString());
+                    _damagePopUpGenerator.CreatePopUp(hit.position, "Blocked");
                 }
             }
             else

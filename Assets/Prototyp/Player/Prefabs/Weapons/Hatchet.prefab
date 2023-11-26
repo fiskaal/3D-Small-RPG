@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644878703392836692}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.484, z: 0}
+  m_LocalPosition: {x: 0, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f502ea8656775204785dc5d0f13ca579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponLength: 1.16
+  weaponLength: 1.4
   weaponDamage: 1
   enemy:
   - {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   aggroRange: 4
-  attackedEnemyPopUp: {fileID: 904662820145583817, guid: 019faff12646bd8438ea56e8e7861fd8, type: 3}
+  trailVFX: {fileID: 0}
 --- !u!1 &2009799225478364740
 GameObject:
   m_ObjectHideFlags: 0

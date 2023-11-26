@@ -8,6 +8,7 @@ public class DamageDealer : MonoBehaviour
 
     [SerializeField] float weaponLength;
     [SerializeField] float weaponDamage;
+    private float finalDamage;
     
     [SerializeField] GameObject[] enemy;
     List<GameObject> foundEnemies = new List<GameObject>(); // A list to keep track of found enemies
@@ -74,14 +75,14 @@ public class DamageDealer : MonoBehaviour
             {
                 if (hit.transform.TryGetComponent(out Enemy enemy) && !hasDealtDamage.Contains(hit.transform.gameObject))
                 {
-                    enemy.TakeDamage(_damageOfEverything.weaponDamage, hit.transform);
+                    enemy.TakeDamage(finalDamage, hit.transform);
                     enemy.HitVFX(hit.point);
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
                 
                 if (hit.transform.TryGetComponent(out EnemyBoss enemyBoss) && !hasDealtDamage.Contains(hit.transform.gameObject))
                 {
-                    enemyBoss.TakeDamage(_damageOfEverything.weaponDamage, hit.transform);
+                    enemyBoss.TakeDamage(finalDamage, hit.transform);
                     enemyBoss.HitVFX(hit.point);
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
@@ -95,8 +96,19 @@ public class DamageDealer : MonoBehaviour
         }
     }
     
-    public void StartDealDamage()
+    public void StartDealDamage(int damageAmplification)
     {
+        if (damageAmplification != 0)
+        {
+            finalDamage = _damageOfEverything.weaponDamage;
+            finalDamage = damageAmplification * finalDamage;
+        }
+        else
+        {
+            finalDamage = _damageOfEverything.weaponDamage;
+        }
+        
+        
         enemyTargetted = false;
         canDealDamage = true;
         hasDealtDamage.Clear();

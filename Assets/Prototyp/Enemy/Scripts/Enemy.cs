@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRange = 1f;
     [SerializeField] float aggroRange = 4f;
     [SerializeField] private GameObject preAttackWarningPrefab;
+    [SerializeField] float rotationSpeed = 4f;
+
 
     [Header("Loot")]
     [SerializeField] GameObject[] lootItems;
@@ -89,44 +91,56 @@ public class Enemy : MonoBehaviour
             enemyIsInRange = false;
         }
         
-        
-        if (timePassed >= attackCD && !dead)
-        {
-            if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
-            {
-                if (playerHealthSystem.health > 0)
-                {
-                    isAttacking = true;
-                    animator.applyRootMotion = true;
+        //attack
+        // Calculate the direction from the enemy to the player
+        Vector3 directionToPlayer = player.transform.position - transform.position;
+        directionToPlayer.y = 0f; // Set the Y component to zero to avoid rotation in the Y-axis
+        // Calculate the angle between the enemy's forward direction and the direction to the player
+        float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+        // Define a threshold angle, for instance, 5 degrees
+        float angleThreshold = 5f;
 
-                    if (hasMoreAttacks)
+        if (angleToPlayer < angleThreshold)
+        {
+            if (timePassed >= attackCD && !dead)
+            {
+                if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
+                {
+                    if (playerHealthSystem.health > 0)
                     {
-                        //choose random one attack
-                        float randomValue = Random.value;
-                        if (randomValue > 0.5f)
+                        isAttacking = true;
+                        animator.applyRootMotion = true;
+
+                        if (hasMoreAttacks)
                         {
-                            animator.SetTrigger("attack");
+                            //choose random one attack
+                            float randomValue = Random.value;
+                            if (randomValue > 0.5f)
+                            {
+                                animator.SetTrigger("attack");
+                            }
+                            else
+                            {
+                                animator.SetTrigger("attack1");
+                            }
                         }
                         else
                         {
-                            animator.SetTrigger("attack1");
+                            animator.SetTrigger("attack");
                         }
-                    }
-                    else
-                    {
-                        animator.SetTrigger("attack");
-                    }
 
-                    Instantiate(preAttackWarningPrefab, transform);
-                    timePassed = 0;
+                        Instantiate(preAttackWarningPrefab, transform);
+                        timePassed = 0;
 
-                    if (_ockoProjectile != null )
-                    {
-                        _ockoProjectile.FireProjectile(player.transform.position, transform);
+                        if (_ockoProjectile != null)
+                        {
+                            _ockoProjectile.FireProjectile(player.transform.position, transform);
+                        }
                     }
                 }
             }
         }
+
         timePassed += Time.deltaTime;
 
         if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
@@ -139,13 +153,13 @@ public class Enemy : MonoBehaviour
         if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
             // Calculate the direction from the enemy to the player
-            Vector3 directionToPlayer = player.transform.position - transform.position;
-            directionToPlayer.y = 0f; // Set the Y component to zero to avoid rotation in the Y-axis
+            //its done up there
 
             if (directionToPlayer != Vector3.zero)
             {
                 // Rotate the enemy to face the player's direction
-                transform.rotation = Quaternion.LookRotation(directionToPlayer);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToPlayer), rotationSpeed * Time.deltaTime);
+                
             }
         }
         
