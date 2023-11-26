@@ -326,6 +326,7 @@ MonoBehaviour:
   health: 100
   hitVFX: {fileID: 6823200998282874702, guid: 8f8fe12323625f5499b2853dd2ad3e58, type: 3}
   ragdoll: {fileID: 7650963890995329670, guid: 0391a26472a45d64eb64a2642cc53d3e, type: 3}
+  _damagePopUpGenerator: {fileID: 6624477393686710825}
   blockVFXScript: {fileID: 410327260356725852}
   angleThreshold: 90
   deathUIPopUp: {fileID: 26907467}
@@ -1759,6 +1760,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8671247605592068985, guid: 0d860def7bb6566499e0772f7ae565e2, type: 3}
   m_PrefabInstance: {fileID: 7533635787853924533}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6624477393686710825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3702529278164419228, guid: 0d860def7bb6566499e0772f7ae565e2, type: 3}
+  m_PrefabInstance: {fileID: 7533635787853924533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2d404ce198ffc44965999884238d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7596706172558909780
 PrefabInstance:
   m_ObjectHideFlags: 0
