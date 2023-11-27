@@ -23,7 +23,8 @@ public class DamageDealer : MonoBehaviour
     
     public GameObject trailVFX;
 
-    private CameraRaycast _cameraRaycast;
+    [SerializeField] private EnemyTarget _enemyTarget;
+    
     void Start()
     {
         //get weapon damage
@@ -38,7 +39,7 @@ public class DamageDealer : MonoBehaviour
 
         enemyTargetted = false;
         FindAndAddEnemies();
-        _cameraRaycast = FindObjectOfType<CameraRaycast>();
+        _enemyTarget = FindObjectOfType<EnemyTarget>();
     }
     
     void FindAndAddEnemies()
@@ -90,7 +91,7 @@ public class DamageDealer : MonoBehaviour
 
             if (!attackedEnemySelected && !enemyTargetted)
             {
-                FindClosestEnemy();
+                //FindClosestEnemy();
                 LookAtEnemy();
             }
         }
@@ -118,7 +119,7 @@ public class DamageDealer : MonoBehaviour
             trailVFX.SetActive(true);
         }
     }
-
+    /*
     public void FindClosestEnemy()
     {
         float closestDistance = float.MaxValue;
@@ -142,15 +143,19 @@ public class DamageDealer : MonoBehaviour
             }
         }
     }
-
+    */
     public void LookAtEnemy()
     {
-        //closestEnemy = _cameraRaycast.currentEnemy;
+        closestEnemy = _enemyTarget.currentTarget;
         
         if (closestEnemy != null)
         {
             player.transform.LookAt(closestEnemy.transform);
             enemyTargetted = true;
+        }
+        else
+        {
+            
         }
         
     }

@@ -6030,6 +6030,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 1430988954756330376, guid: 68ec650a9113982449239062459a8dd3, type: 3}
   m_PrefabInstance: {fileID: 1430988954603822843}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &963194231 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1430988954756330383, guid: 68ec650a9113982449239062459a8dd3, type: 3}
+  m_PrefabInstance: {fileID: 1430988954603822843}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1073205481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21730,6 +21735,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7973166751640041752, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 963194231}
+    - target: {fileID: 7973166751640041752, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 963194231}
     - target: {fileID: 9178692185875325878, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
