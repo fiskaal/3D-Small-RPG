@@ -246,7 +246,7 @@ public class Enemy : MonoBehaviour
     {
         if (!dead)
         {
-            _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString());
+            _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.white);
             
             health -= damageAmount;
             animator.applyRootMotion = true;

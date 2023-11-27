@@ -540,7 +540,7 @@ public class EnemyBoss : MonoBehaviour
         isIdle = false;
         if (!dead)
         {
-            _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString());
+            _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.white);
             health -= damageAmount;
             animator.applyRootMotion = true;
             if (isIdle)

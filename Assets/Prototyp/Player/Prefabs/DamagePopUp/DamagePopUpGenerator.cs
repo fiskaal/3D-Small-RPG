@@ -16,19 +16,13 @@ public class DamagePopUpGenerator : MonoBehaviour
         current = this;
     }
 
-    private void Update()
+    public void CreatePopUp(Vector3 position, string text, Color color)
     {
-        if (Input.GetKeyDown(KeyCode.F10))
-        {
-            CreatePopUp(transform.position, 100.ToString());
-        }
-    }
-
-    public void CreatePopUp(Vector3 position, string text)
-    {
-        var popup = Instantiate(prefab, position, quaternion.identity);
+        var popup = Instantiate(prefab, position, Quaternion.identity);
         var temp = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         temp.text = "-" + text;
+        DamagePopUpAnimation popupScript = popup.transform.GetComponent<DamagePopUpAnimation>();
+        popupScript.color = color;
         
         //destroy timer
         Destroy(popup, 1f);
