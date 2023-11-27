@@ -94,7 +94,6 @@ public class WeaponManager : MonoBehaviour
         FindHolders();
 
         // Load saved values or set defaults
-        LoadValues();
     }
 
     public void EquipWeapon(string newWeaponName)
@@ -121,6 +120,8 @@ public class WeaponManager : MonoBehaviour
             {
                 Debug.Log("Found weapon holder with name: " + weaponHolderNameToFind);
                 ActivateChildBasedOnEquipped(weaponHolder, EquippedWeaponName);
+
+                UpdateDamageValues();
             }
             else
             {
@@ -141,8 +142,6 @@ public class WeaponManager : MonoBehaviour
         {
             Debug.LogWarning("Player not found. Make sure the player has the tag: " + playerTag);
         }
-
-        UpdateDamageValues();
     }
 
     private void UpdateDamageValues()
@@ -163,6 +162,23 @@ public class WeaponManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+
+        if (player != null)
+        {
+            damageScript = player.GetComponent<DamageOfEverything>();
+
+            if (damageScript == null)
+            {
+                Debug.LogError("DamageOfEverything script not found on the player GameObject.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Player not found. Make sure the player has the tag: " + playerTag);
+        }
+
+        //LoadValues();
         FindHolders();
     }
 
@@ -249,7 +265,7 @@ public class WeaponManager : MonoBehaviour
         // Set default values for weapon-related variables
         weaponDamage = 1.0f;
         knockBackForce = 0.0f; // Set your default value here
-        lightingStrikeDamage = 1.0f; // Set your default value here
+        lightingStrikeDamage = 3.0f; // Set your default value here
         fireEnchantDamageBonus = 0.0f; // Set your default value here
         lightningEnchantDamageBonus = 0.0f; // Set your default value here
         enchantedWeaponDamage = 0.0f; // Set your default value here
