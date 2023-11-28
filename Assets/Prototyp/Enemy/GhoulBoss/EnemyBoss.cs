@@ -426,7 +426,15 @@ public class EnemyBoss : MonoBehaviour
                         isIdle = false;
                         currentAttackRadius = legAttackRadius;
                         currentAttackDamage = legAttackDamage;
-                        Attack("attackStomp");
+                        float randomValue = Random.value;
+                        if (randomValue > 0.5f)
+                        {
+                            Attack("attackStomp");
+                        }
+                        else
+                        {
+                            Attack("attackStompFlipped");
+                        }
                     }
                     else if (attackCooldown == spitAttackCd)
                     {
@@ -482,8 +490,9 @@ public class EnemyBoss : MonoBehaviour
         if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
             Vector3 directionToPlayer = player.transform.position - transform.position;
-            directionToPlayer = directionToPlayer.normalized;
             directionToPlayer.y = 0f;
+            directionToPlayer = directionToPlayer.normalized;
+            
 
             if (directionToPlayer != Vector3.zero)
             {
