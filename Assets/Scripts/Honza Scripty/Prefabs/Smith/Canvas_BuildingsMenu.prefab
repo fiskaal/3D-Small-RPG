@@ -1015,7 +1015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6791821386712762267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1234,7 +1234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6044648990640358435
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3198,6 +3198,7 @@ MonoBehaviour:
   deactivatedObject: {fileID: 6964701134080739972}
   soulCost: 50
   warningMessage: {fileID: 0}
+  swordIndex: 1
 --- !u!1 &6964701132720765941
 GameObject:
   m_ObjectHideFlags: 0
@@ -5435,8 +5436,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatedObject: {fileID: 6010043865502759539}
   deactivatedObject: {fileID: 6964701132962825806}
-  soulCost: 10
+  soulCost: 150
   warningMessage: {fileID: 0}
+  swordIndex: 2
 --- !u!1 &6964701134272436190
 GameObject:
   m_ObjectHideFlags: 0
