@@ -19,7 +19,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float aggroRange = 4f;
     [SerializeField] private GameObject preAttackWarningPrefab;
     [SerializeField] float rotationSpeed = 4f;
+    [SerializeField] private float angleThreshold = 5f;
 
+    [Header("ocko adittional attack chance")]
+    [SerializeField]private float attackChance = 0.5f;
 
     [Header("Loot")]
     [SerializeField] GameObject[] lootItems;
@@ -98,7 +101,6 @@ public class Enemy : MonoBehaviour
         // Calculate the angle between the enemy's forward direction and the direction to the player
         float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
         // Define a threshold angle, for instance, 5 degrees
-        float angleThreshold = 5f;
 
         if (angleToPlayer < angleThreshold)
         {
@@ -135,6 +137,13 @@ public class Enemy : MonoBehaviour
                         if (_ockoProjectile != null)
                         {
                             _ockoProjectile.FireProjectile(player.transform.position, transform);
+                            
+                            float randomValue = Random.value;
+                            attackChance = 0.5f;
+                            if (randomValue <= attackChance)
+                            {
+                                StartCoroutine(TriggerAttackAfterDelay());
+                            }
                         }
                     }
                 }
@@ -186,6 +195,19 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    
+    IEnumerator TriggerAttackAfterDelay()
+    {
+        float delay = 0.5f; // Time delay before triggering the attack
+
+        yield return new WaitForSeconds(delay);
+
+        // Trigger the attack after the delay
+        Instantiate(preAttackWarningPrefab, transform);
+        animator.SetTrigger("attack");
+        _ockoProjectile.FireProjectile(player.transform.position, transform);
+    }
+
     
     //enemy roam
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
