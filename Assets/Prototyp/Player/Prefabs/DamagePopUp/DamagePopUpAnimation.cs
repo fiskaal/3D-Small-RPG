@@ -10,7 +10,7 @@ public class DamagePopUpAnimation : MonoBehaviour
     public AnimationCurve scaleCurve;
     public AnimationCurve heightCurve;
 
-    
+    public Color color= Color.white;
     private TextMeshProUGUI tmp;
     private float time = 0;
     private Vector3 origin;
@@ -24,13 +24,12 @@ public class DamagePopUpAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        tmp.color = new Color(1, 1, 1, opacituCurve.Evaluate(time));
+        tmp.color = new Color(color.r, color.g, color.b, opacituCurve.Evaluate(time));
         transform.localScale = Vector3.one * scaleCurve.Evaluate(time);
         transform.position = origin + new Vector3(0, 1 + heightCurve.Evaluate(time), 0);
         time += Time.deltaTime;

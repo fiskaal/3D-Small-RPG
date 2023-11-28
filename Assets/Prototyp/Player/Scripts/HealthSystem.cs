@@ -67,7 +67,7 @@ public class HealthSystem : MonoBehaviour
                     // Enemy is behind the player
                     health -= damageAmount;
                     animator.SetTrigger("damage");
-                    _damagePopUpGenerator.CreatePopUp(hit.position,  damageAmount.ToString());
+                    _damagePopUpGenerator.CreatePopUp(hit.position,  damageAmount.ToString(), Color.red);
                     //CameraShake.Instance.ShakeCamera(2f, 0.2f);
                 }
                 else
@@ -76,14 +76,14 @@ public class HealthSystem : MonoBehaviour
                     animator.SetTrigger("blockDamage");
                     blockVFXScript.Damage();
                     _blockBreaker.BlockAttackCounter();
-                    _damagePopUpGenerator.CreatePopUp(hit.position, "Blocked");
+                    _damagePopUpGenerator.CreatePopUp(hit.position, "Blocked", Color.cyan);
                 }
             }
             else
             {
                 health -= damageAmount;
                 animator.SetTrigger("damage");
-                _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString());
+                _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
                 //CameraShake.Instance.ShakeCamera(2f, 0.2f);
             }
 

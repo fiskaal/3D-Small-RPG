@@ -384,7 +384,7 @@ public class EnemyBoss : MonoBehaviour
             // Calculate the angle between the enemy's forward direction and the direction to the player
             float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
             // Define a threshold angle, for instance, 5 degrees
-            float angleThreshold = 5f;
+            float angleThreshold = 10f;
 
             if (angleToPlayer < angleThreshold)
             {
@@ -482,13 +482,14 @@ public class EnemyBoss : MonoBehaviour
         if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
             Vector3 directionToPlayer = player.transform.position - transform.position;
+            directionToPlayer = directionToPlayer.normalized;
             directionToPlayer.y = 0f;
 
             if (directionToPlayer != Vector3.zero)
             {
                 //transform.rotation = Quaternion.LookRotation(directionToPlayer);
                 
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToPlayer), rotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation.normalized, Quaternion.LookRotation(directionToPlayer), rotationSpeed * Time.deltaTime);
             }
         }
     }
@@ -539,7 +540,7 @@ public class EnemyBoss : MonoBehaviour
         isIdle = false;
         if (!dead)
         {
-            _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString());
+            _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.white);
             health -= damageAmount;
             animator.applyRootMotion = true;
             if (isIdle)
