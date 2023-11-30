@@ -68,7 +68,8 @@ public class Enemy : MonoBehaviour
         _enemyHpBar.SetMaxHP(health);
 
         _damagePopUpGenerator = FindObjectOfType<DamagePopUpGenerator>();
-            
+        damageDealers = GetComponentsInChildren<EnemyDamageDealer>();    
+        
         //ocko projectile
         if (GetComponent<OckoProjectile>() != null)
         {
@@ -296,7 +297,7 @@ public class Enemy : MonoBehaviour
     
 
 
-
+/*
     public void StartDealDamage()
     {
         GetComponentInChildren<EnemyDamageDealer>().StartDealDamage();
@@ -305,6 +306,27 @@ public class Enemy : MonoBehaviour
     public void EndDealDamage()
     {
         GetComponentInChildren<EnemyDamageDealer>().EndDealDamage();
+    }
+*/
+
+    public EnemyDamageDealer[] damageDealers;
+
+    // Assign the EnemyDamageDealer instances to the array slots in the Inspector
+
+    public void StartDealDamage()
+    {
+        foreach (var dealer in damageDealers)
+        {
+            dealer.StartDealDamage();
+        }
+    }
+
+    public void EndDealDamage()
+    {
+        foreach (var dealer in damageDealers)
+        {
+            dealer.EndDealDamage();
+        }
     }
 
     public void HitVFX(Vector3 hitPosition)
