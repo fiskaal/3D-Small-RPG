@@ -18,6 +18,9 @@ public class UnlockButton : MonoBehaviour
     // Reference to the warning message game object
     public GameObject warningMessage;
 
+    // Index of the sword to set the bought status
+    public int swordIndex;
+
     private void Start()
     {
         // Get the Button component on this GameObject
@@ -45,6 +48,17 @@ public class UnlockButton : MonoBehaviour
             if (deactivatedObject != null)
             {
                 deactivatedObject.SetActive(false);
+            }
+
+            // Set the bought status using the specified index
+            ShopManager shopManager = FindObjectOfType<ShopManager>();
+            if (shopManager != null)
+            {
+                shopManager.SetSwordBoughtStatus(swordIndex, true);
+            }
+            else
+            {
+                Debug.LogError("ShopManager not found in the scene");
             }
         }
         else

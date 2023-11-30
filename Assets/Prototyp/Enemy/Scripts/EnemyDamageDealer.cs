@@ -49,7 +49,32 @@ public class EnemyDamageDealer : MonoBehaviour
         
         _enemy.OnAttackAnimationEnd();
     }
-
+    /*
+    //if enemy has 2 DamageDealers
+    public void StartDealDamageR()
+    {
+        canDealDamage = true;
+        hasDealtDamage = false;
+    }
+    public void EndDealDamageR()
+    {
+        canDealDamage = false;
+        
+        _enemy.OnAttackAnimationEnd();
+    }
+    
+    public void StartDealDamageL()
+    {
+        canDealDamage = true;
+        hasDealtDamage = false;
+    }
+    public void EndDealDamageL()
+    {
+        canDealDamage = false;
+        
+        _enemy.OnAttackAnimationEnd();
+    }
+    */
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

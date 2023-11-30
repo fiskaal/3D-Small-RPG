@@ -104,8 +104,8 @@ MonoBehaviour:
   offsetFromWall: 0.1
   maxDistance: 5
   minDistance: 1
-  xSpeed: 200
-  ySpeed: 200
+  xSpeed: 100
+  ySpeed: 100
   yMinLimit: -80
   yMaxLimit: 80
   zoomRate: 40
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be22f3b05e1683141b259c6e67a631c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rayCastingIsActive: 0
   mainCamera: {fileID: 1430988954756330376}
   currentEnemy: {fileID: 0}
   raycastSize: 525.2

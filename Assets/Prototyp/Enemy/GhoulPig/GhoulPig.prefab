@@ -1695,10 +1695,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.89
-  m_Height: 1.25
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.69, z: 0.36}
+  m_Radius: 0.8
+  m_Height: 2.19
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.8, z: 0.25}
 --- !u!114 &6954173819776923858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1715,17 +1715,21 @@ MonoBehaviour:
   hitVFX: {fileID: 2476692309955958946, guid: 0a3856a1d321c2b42a6131b3d277a058, type: 3}
   hitVFX1: {fileID: 219217740888041541, guid: c01593394d44d1b44b4d11beff1c4eb6, type: 3}
   ragdoll: {fileID: 0}
-  health: 6
+  health: 25
   attackCD: 3
   attackRange: 2
   aggroRange: 10
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
+  rotationSpeed: 4
   lootItems:
   - {fileID: 2599361241298687333, guid: 5dee8169a360bce47b6aca4348603f75, type: 3}
   - {fileID: 8692958704477054658, guid: ff7cda5ce1d7d5947b2dc75fba91f6b5, type: 3}
+  - {fileID: 4440475420537621230, guid: 9c2fb36324d1ded459edf53b82312231, type: 3}
   lootQuantities:
   - {x: 1, y: 4}
   - {x: 0, y: 2}
+  - {x: 8, y: 14}
+  _damagePopUpGenerator: {fileID: 0}
   _enemyHpBar: {fileID: 6898398297246044920}
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
 --- !u!195 &1435499926516851692

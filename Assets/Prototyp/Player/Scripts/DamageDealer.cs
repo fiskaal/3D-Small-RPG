@@ -146,22 +146,21 @@ public class DamageDealer : MonoBehaviour
     */
     public void LookAtEnemy()
     {
-        closestEnemy = _enemyTarget.currentTarget;
-        Vector3 target = closestEnemy.transform.position - player.transform.position;
-        target.y = 0f;
-        
-        if (closestEnemy != null)
+        if (_enemyTarget.currentTarget != null)
         {
-            //player.transform.LookAt(closestEnemy.transform);
-            
-            player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.LookRotation(target), 40 * Time.deltaTime);
-            enemyTargetted = true;
+            closestEnemy = _enemyTarget.currentTarget;
+            Vector3 target = closestEnemy.transform.position - player.transform.position;
+            target.y = 0f;
+
+            if (closestEnemy != null)
+            {
+                //player.transform.LookAt(closestEnemy.transform);
+
+                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.LookRotation(target),
+                    40 * Time.deltaTime);
+                enemyTargetted = true;
+            }
         }
-        else
-        {
-            
-        }
-        
     }
     public void EndDealDamage()
     {
