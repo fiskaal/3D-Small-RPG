@@ -7,6 +7,9 @@ using UnityEngine;
 public class LvlQuestManager : MonoBehaviour
 {
     [SerializeField] private GameObject clearedLevel;
+    [SerializeField] private GameObject clearedTimeGlow;
+    [SerializeField] private GameObject clearedDamageGlow;
+
     
     [Header("Damage Quest")] 
     [SerializeField] private TextMeshProUGUI damageText;
@@ -39,6 +42,8 @@ public class LvlQuestManager : MonoBehaviour
         if (clearedLevel.activeSelf)
         {
             StopTimer();
+            clearedTimeGlow.SetActive(true);
+            clearedDamageGlow.SetActive(true);
         }
     }
 
