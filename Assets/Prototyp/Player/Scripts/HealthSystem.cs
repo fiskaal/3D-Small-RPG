@@ -22,10 +22,15 @@ public class HealthSystem : MonoBehaviour
 
     [Header("Block")] 
     [SerializeField]private BlockVFX blockVFXScript;
+
+    [Header("Damgage Quest")] 
+    private LvlQuestManager _lvlQuestManager;
+
     
     
     void Start()
     {
+        _lvlQuestManager = FindObjectOfType<LvlQuestManager>();
         animator = GetComponent<Animator>();
         
         //shield spell
@@ -69,6 +74,9 @@ public class HealthSystem : MonoBehaviour
                     animator.SetTrigger("damage");
                     _damagePopUpGenerator.CreatePopUp(hit.position,  damageAmount.ToString(), Color.red);
                     //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+                    
+                    //quest
+                    _lvlQuestManager.UpdateDamageQuest(damageAmount);
                 }
                 else
                 {
@@ -85,6 +93,9 @@ public class HealthSystem : MonoBehaviour
                 animator.SetTrigger("damage");
                 _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
                 //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+                
+                //quest
+                _lvlQuestManager.UpdateDamageQuest(damageAmount);
             }
 
 
