@@ -15903,6 +15903,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1319074301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7930576844689401519, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+  m_PrefabInstance: {fileID: 2995673596927462504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1349696177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21664,6 +21669,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 141578188, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: playerDestroy
+      value: 
+      objectReference: {fileID: 1319074301}
     - target: {fileID: 2995673596906374298, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -21716,34 +21725,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
-    - target: {fileID: 3729690394047643848, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3729690394047643848, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3729690394047643848, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3729690394047643848, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3729690394047643848, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3729690394047643848, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973166751640041752, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 963194231}
     - target: {fileID: 7973166751640041752, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: cameraTransform
       value: 

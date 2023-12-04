@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 483858}
   - component: {fileID: 3329910}
   - component: {fileID: 2347912}
-  - component: {fileID: 3019922649257278076}
+  - component: {fileID: 2664173884466401751}
   m_Layer: 0
   m_Name: SD_Env_Undead_Wall_03
   m_TagString: Untagged
@@ -84,16 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3019922649257278076
-BoxCollider:
+--- !u!64 &2664173884466401751
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112780}
-  m_Material: {fileID: 13400000, guid: 1c7b58ab43b40c6448584a03dc7a74cf, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 1.07798}
-  m_Center: {x: -2.5, y: 2.5, z: 0.53899}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 54e3dd0595d296a4ebdea322faba1c3f, type: 3}
