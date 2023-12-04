@@ -385,7 +385,21 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.98651254
+      - time: 0.16738196
+        functionName: PreFallAttackPlayVFX
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4334764
+        functionName: NewEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
         functionName: EndFallAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -421,8 +435,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9691716
-        functionName: ResetIsAttacking
+      - time: 0.073428944
+        functionName: PreFallAttackPlayVFX
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -435,8 +449,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.52407277
+        functionName: FallAttackPlayVFX
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.8131022
         functionName: EndDealDamage
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9691716
+        functionName: ResetIsAttacking
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
