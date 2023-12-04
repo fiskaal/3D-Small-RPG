@@ -7,7 +7,11 @@ public class BossVFX : MonoBehaviour
     [SerializeField] private GameObject handAttackVFX;
     [SerializeField] private GameObject legAttackVFX;
     [SerializeField] private GameObject prelegAttackVFX;
+    [SerializeField] private GameObject fallAttackVFX;
+    [SerializeField] private GameObject PreFallAttackVFX;
 
+
+    
 
     public void HandAttackPlayVFX()
     {
@@ -21,6 +25,16 @@ public class BossVFX : MonoBehaviour
     public void PreLegAttackPlayVFX()
     {
         Instantiate(prelegAttackVFX, transform);
+    }
+    
+    public void FallAttackPlayVFX()
+    {
+        Instantiate(fallAttackVFX, transform);
+    }
+    
+    public void PreFallAttackPlayVFX()
+    {
+        Instantiate(PreFallAttackVFX, transform);
     }
 
 }
