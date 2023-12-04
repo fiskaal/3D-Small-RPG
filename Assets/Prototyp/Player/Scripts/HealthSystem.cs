@@ -127,7 +127,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private GameObject playerDestroy;
     void Die()
     {
-        deathUIPopUp.SetActive(true);
+        //deathUIPopUp.SetActive(true);
         animator.SetTrigger("death");
         //Instantiate(ragdoll, transform.position, transform.rotation);
         //Destroy(playerDestroy);
@@ -153,6 +153,7 @@ public class HealthSystem : MonoBehaviour
         // Freeze the game by setting timeScale to 0
         Time.timeScale = 0f;
 
+        deathUIPopUp.SetActive(true);
         // Show the game cursor (it's hidden by default when playing in Unity Editor)
         Cursor.visible = true;
     }
