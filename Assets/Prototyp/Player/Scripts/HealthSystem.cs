@@ -76,7 +76,10 @@ public class HealthSystem : MonoBehaviour
                     //CameraShake.Instance.ShakeCamera(2f, 0.2f);
                     
                     //quest
-                    _lvlQuestManager.UpdateDamageQuest(damageAmount);
+                    if (_lvlQuestManager != null)
+                    {
+                        _lvlQuestManager.UpdateDamageQuest(damageAmount);
+                    }
                 }
                 else
                 {
@@ -95,7 +98,10 @@ public class HealthSystem : MonoBehaviour
                 //CameraShake.Instance.ShakeCamera(2f, 0.2f);
                 
                 //quest
-                _lvlQuestManager.UpdateDamageQuest(damageAmount);
+                if (_lvlQuestManager != null)
+                {
+                    _lvlQuestManager.UpdateDamageQuest(damageAmount);
+                }
             }
 
 
@@ -122,9 +128,11 @@ public class HealthSystem : MonoBehaviour
     void Die()
     {
         deathUIPopUp.SetActive(true);
-        Instantiate(ragdoll, transform.position, transform.rotation);
-        Destroy(playerDestroy);
-        FreezeGame();
+        animator.SetTrigger("death");
+        //Instantiate(ragdoll, transform.position, transform.rotation);
+        //Destroy(playerDestroy);
+        StartCoroutine(FreezeGameAfterDelay(5f));
+        
     }
     public void HitVFX(Vector3 hitPosition)
     {
@@ -139,8 +147,9 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    void FreezeGame()
+    IEnumerator FreezeGameAfterDelay(float delay)
     {
+        yield return new WaitForSecondsRealtime(delay);
         // Freeze the game by setting timeScale to 0
         Time.timeScale = 0f;
 
