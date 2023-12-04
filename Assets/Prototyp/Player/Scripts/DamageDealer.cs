@@ -8,6 +8,7 @@ public class DamageDealer : MonoBehaviour
 
     [SerializeField] float weaponLength;
     [SerializeField] float weaponDamage;
+    private float finalDamage;
     
     [SerializeField] GameObject[] enemy;
     List<GameObject> foundEnemies = new List<GameObject>(); // A list to keep track of found enemies
@@ -19,6 +20,11 @@ public class DamageDealer : MonoBehaviour
     private DamageOfEverything _damageOfEverything;
 
     private bool enemyTargetted;
+    
+    public GameObject trailVFX;
+
+    [SerializeField] private EnemyTarget _enemyTarget;
+    
     void Start()
     {
         //get weapon damage
@@ -33,7 +39,7 @@ public class DamageDealer : MonoBehaviour
 
         enemyTargetted = false;
         FindAndAddEnemies();
-        
+        _enemyTarget = FindObjectOfType<EnemyTarget>();
     }
     
     void FindAndAddEnemies()
@@ -57,7 +63,7 @@ public class DamageDealer : MonoBehaviour
             }
         }
     }
-
+    
     void Update()
     {
         
@@ -70,14 +76,14 @@ public class DamageDealer : MonoBehaviour
             {
                 if (hit.transform.TryGetComponent(out Enemy enemy) && !hasDealtDamage.Contains(hit.transform.gameObject))
                 {
-                    enemy.TakeDamage(_damageOfEverything.weaponDamage, _damageOfEverything.knockBackForce);
+                    enemy.TakeDamage(finalDamage, hit.transform);
                     enemy.HitVFX(hit.point);
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
                 
                 if (hit.transform.TryGetComponent(out EnemyBoss enemyBoss) && !hasDealtDamage.Contains(hit.transform.gameObject))
                 {
-                    enemyBoss.TakeDamage(_damageOfEverything.weaponDamage);
+                    enemyBoss.TakeDamage(finalDamage, hit.transform);
                     enemyBoss.HitVFX(hit.point);
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
@@ -85,18 +91,35 @@ public class DamageDealer : MonoBehaviour
 
             if (!attackedEnemySelected && !enemyTargetted)
             {
-                FindClosestEnemy();
+                //FindClosestEnemy();
                 LookAtEnemy();
             }
         }
     }
-    public void StartDealDamage()
+    
+    public void StartDealDamage(int damageAmplification)
     {
+        if (damageAmplification != 0)
+        {
+            finalDamage = _damageOfEverything.weaponDamage;
+            finalDamage = damageAmplification * finalDamage;
+        }
+        else
+        {
+            finalDamage = _damageOfEverything.weaponDamage;
+        }
+        
+        
         enemyTargetted = false;
         canDealDamage = true;
         hasDealtDamage.Clear();
-    }
 
+        if (trailVFX != null)
+        {
+            trailVFX.SetActive(true);
+        }
+    }
+    /*
     public void FindClosestEnemy()
     {
         float closestDistance = float.MaxValue;
@@ -120,14 +143,23 @@ public class DamageDealer : MonoBehaviour
             }
         }
     }
-
-    public GameObject attackedEnemyPopUp;
+    */
     public void LookAtEnemy()
     {
-        if (closestEnemy != null)
+        if (_enemyTarget.currentTarget != null)
         {
-            player.transform.LookAt(closestEnemy.transform);
-            enemyTargetted = true;
+            closestEnemy = _enemyTarget.currentTarget;
+            Vector3 target = closestEnemy.transform.position - player.transform.position;
+            target.y = 0f;
+
+            if (closestEnemy != null)
+            {
+                //player.transform.LookAt(closestEnemy.transform);
+
+                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.LookRotation(target),
+                    40 * Time.deltaTime);
+                enemyTargetted = true;
+            }
         }
     }
     public void EndDealDamage()
@@ -135,6 +167,12 @@ public class DamageDealer : MonoBehaviour
         canDealDamage = false;
 
         attackedEnemySelected = false;
+        
+        
+        if (trailVFX != null)
+        {
+            trailVFX.SetActive(false);
+        }
     }
 
     private void OnDrawGizmos()

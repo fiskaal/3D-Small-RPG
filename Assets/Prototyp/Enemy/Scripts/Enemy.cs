@@ -18,6 +18,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRange = 1f;
     [SerializeField] float aggroRange = 4f;
     [SerializeField] private GameObject preAttackWarningPrefab;
+    [SerializeField] float rotationSpeed = 4f;
+    [SerializeField] private float angleThreshold = 5f;
+
+    [Header("ocko adittional attack chance")]
+    [SerializeField]private float attackChance = 0.5f;
 
     [Header("Loot")]
     [SerializeField] GameObject[] lootItems;
@@ -38,6 +43,7 @@ public class Enemy : MonoBehaviour
     private bool isAttacking;
 
     private HealthSystem playerHealthSystem;
+    [SerializeField] private DamagePopUpGenerator _damagePopUpGenerator;
 
     //HpBar
     [SerializeField] private EnemyHpBar _enemyHpBar;
@@ -60,7 +66,10 @@ public class Enemy : MonoBehaviour
         
         //hpBar
         _enemyHpBar.SetMaxHP(health);
-            
+
+        _damagePopUpGenerator = FindObjectOfType<DamagePopUpGenerator>();
+        damageDealers = GetComponentsInChildren<EnemyDamageDealer>();    
+        
         //ocko projectile
         if (GetComponent<OckoProjectile>() != null)
         {
@@ -86,44 +95,62 @@ public class Enemy : MonoBehaviour
             enemyIsInRange = false;
         }
         
-        
-        if (timePassed >= attackCD)
-        {
-            if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
-            {
-                if (playerHealthSystem.health > 0)
-                {
-                    isAttacking = true;
-                    animator.applyRootMotion = true;
+        //attack
+        // Calculate the direction from the enemy to the player
+        Vector3 directionToPlayer = player.transform.position - transform.position;
+        directionToPlayer.y = 0f; // Set the Y component to zero to avoid rotation in the Y-axis
+        // Calculate the angle between the enemy's forward direction and the direction to the player
+        float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+        // Define a threshold angle, for instance, 5 degrees
 
-                    if (hasMoreAttacks)
+        if (angleToPlayer < angleThreshold)
+        {
+            if (timePassed >= attackCD && !dead)
+            {
+                if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
+                {
+                    if (playerHealthSystem.health > 0)
                     {
-                        //choose random one attack
-                        float randomValue = Random.value;
-                        if (randomValue > 0.5f)
+                        isAttacking = true;
+                        animator.applyRootMotion = true;
+
+                        if (hasMoreAttacks)
                         {
-                            animator.SetTrigger("attack");
+                            //choose random one attack
+                            float randomValue = Random.value;
+                            if (randomValue > 0.5f)
+                            {
+                                animator.SetTrigger("attack");
+                            }
+                            else
+                            {
+                                animator.SetTrigger("attack1");
+                            }
                         }
                         else
                         {
-                            animator.SetTrigger("attack1");
+                            animator.SetTrigger("attack");
                         }
-                    }
-                    else
-                    {
-                        animator.SetTrigger("attack");
-                    }
 
-                    Instantiate(preAttackWarningPrefab, transform);
-                    timePassed = 0;
+                        Instantiate(preAttackWarningPrefab, transform);
+                        timePassed = 0;
 
-                    if (_ockoProjectile != null)
-                    {
-                        _ockoProjectile.FireProjectile(player.transform.position, transform);
+                        if (_ockoProjectile != null)
+                        {
+                            _ockoProjectile.FireProjectile(player.transform.position, transform);
+                            
+                            float randomValue = Random.value;
+                            attackChance = 0.5f;
+                            if (randomValue <= attackChance)
+                            {
+                                StartCoroutine(TriggerAttackAfterDelay());
+                            }
+                        }
                     }
                 }
             }
         }
+
         timePassed += Time.deltaTime;
 
         if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
@@ -136,13 +163,13 @@ public class Enemy : MonoBehaviour
         if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
             // Calculate the direction from the enemy to the player
-            Vector3 directionToPlayer = player.transform.position - transform.position;
-            directionToPlayer.y = 0f; // Set the Y component to zero to avoid rotation in the Y-axis
+            //its done up there
 
             if (directionToPlayer != Vector3.zero)
             {
                 // Rotate the enemy to face the player's direction
-                transform.rotation = Quaternion.LookRotation(directionToPlayer);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToPlayer), rotationSpeed * Time.deltaTime);
+                
             }
         }
         
@@ -169,6 +196,19 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    
+    IEnumerator TriggerAttackAfterDelay()
+    {
+        float delay = 0.5f; // Time delay before triggering the attack
+
+        yield return new WaitForSeconds(delay);
+
+        // Trigger the attack after the delay
+        Instantiate(preAttackWarningPrefab, transform);
+        animator.SetTrigger("attack");
+        _ockoProjectile.FireProjectile(player.transform.position, transform);
+    }
+
     
     //enemy roam
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
@@ -204,23 +244,33 @@ public class Enemy : MonoBehaviour
     {
         for (int i = 0; i < lootItems.Length; i++)
         {
-            int quantity = Random.Range(lootQuantities[i].x, lootQuantities[i].y + 1); // Random quantity within the specified range
+            int quantity = Random.Range(lootQuantities[i].x, lootQuantities[i].y + 1);
+
             for (int j = 0; j < quantity; j++)
             {
                 Vector2 randomOffset = Random.insideUnitCircle.normalized * Random.Range(1f, 3f);
-                Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, 0f, randomOffset.y); // Offset only in X and Z dimensions
+                Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, 0f, randomOffset.y);
 
-                Instantiate(lootItems[i], spawnPosition + Vector3.up, Quaternion.identity);
+                // Use NavMesh.SamplePosition to find a valid position on the NavMesh
+                if (NavMesh.SamplePosition(spawnPosition, out NavMeshHit hit, 2.0f, NavMesh.AllAreas))
+                {
+                    spawnPosition = hit.position + Vector3.up;
+                }
+
+                Instantiate(lootItems[i], spawnPosition, Quaternion.identity);
             }
         }
     }
 
+
     public GameObject deathVFX;
     
-    public void TakeDamage(float damageAmount, float knockBack)
+    public void TakeDamage(float damageAmount, Transform hit)
     {
         if (!dead)
         {
+            _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.white);
+            
             health -= damageAmount;
             animator.applyRootMotion = true;
             if (!isAttacking)
@@ -247,7 +297,7 @@ public class Enemy : MonoBehaviour
     
 
 
-
+/*
     public void StartDealDamage()
     {
         GetComponentInChildren<EnemyDamageDealer>().StartDealDamage();
@@ -256,6 +306,27 @@ public class Enemy : MonoBehaviour
     public void EndDealDamage()
     {
         GetComponentInChildren<EnemyDamageDealer>().EndDealDamage();
+    }
+*/
+
+    public EnemyDamageDealer[] damageDealers;
+
+    // Assign the EnemyDamageDealer instances to the array slots in the Inspector
+
+    public void StartDealDamage()
+    {
+        foreach (var dealer in damageDealers)
+        {
+            dealer.StartDealDamage();
+        }
+    }
+
+    public void EndDealDamage()
+    {
+        foreach (var dealer in damageDealers)
+        {
+            dealer.EndDealDamage();
+        }
     }
 
     public void HitVFX(Vector3 hitPosition)

@@ -96,9 +96,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SpecialAttack",
+                    "name": "HeavyAttack",
                     "type": "Button",
                     "id": "95e1f1d3-a9f2-4b35-999d-8a8e74340c97",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HeavyAttack1",
+                    "type": "Button",
+                    "id": "0fd2e2b6-205c-4ad5-b278-f0a9931558d4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -114,9 +123,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Block",
+                    "name": "BlockStart",
                     "type": "Button",
                     "id": "a2352e8c-0fea-495d-8494-30b9e861aba4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BlockEnd",
+                    "type": "Button",
+                    "id": "191227e0-6e98-4526-8bbd-004429fa5608",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -271,7 +289,7 @@
                     "name": "",
                     "id": "e2302033-501f-4d62-9c4a-fefe45a3571d",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Tap(pressPoint=0.4)",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
@@ -280,12 +298,12 @@
                 },
                 {
                     "name": "",
-                    "id": "664037df-239f-4531-9f25-673e510258c4",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
+                    "id": "1bc0b09f-a41d-448b-a0ee-4364788b6f11",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
-                    "action": "SpecialAttack",
+                    "action": "HeavyAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -304,10 +322,32 @@
                     "name": "",
                     "id": "d3d6df98-c6af-4572-9cea-7ff696b39ae3",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Block",
+                    "action": "BlockStart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0877e6f6-3936-4c56-8a57-27b86932fcdd",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BlockEnd",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57afd842-0cd3-4c6d-872f-5e0b5a341eea",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HeavyAttack1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

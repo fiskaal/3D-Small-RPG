@@ -34,9 +34,9 @@ public class EquipmentSystem : MonoBehaviour
         Destroy(currentWeaponInHand);*/
     }
 
-    public void StartDealDamage()
+    public void StartDealDamage(int damageAmplyfication)
     {
-        weaponHolder.GetComponentInChildren<DamageDealer>().StartDealDamage();
+        weaponHolder.GetComponentInChildren<DamageDealer>().StartDealDamage(damageAmplyfication);
         //currentWeaponInHand.GetComponentInChildren<DamageDealer>().StartDealDamage();
     }
     public void EndDealDamage()

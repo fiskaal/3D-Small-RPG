@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine.Utility;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
+    [SerializeField] private BlockBreaker _blockBreaker;
     [SerializeField] public float health = 100;
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject ragdoll;
@@ -14,13 +16,21 @@ public class HealthSystem : MonoBehaviour
     //shield spell
     private PlayerShield _playerShield;
     private Character _character;
+    
+    //damage pupup
+    [SerializeField] private DamagePopUpGenerator _damagePopUpGenerator;
 
     [Header("Block")] 
     [SerializeField]private BlockVFX blockVFXScript;
+
+    [Header("Damgage Quest")] 
+    private LvlQuestManager _lvlQuestManager;
+
     
     
     void Start()
     {
+        _lvlQuestManager = FindObjectOfType<LvlQuestManager>();
         animator = GetComponent<Animator>();
         
         //shield spell
@@ -31,7 +41,7 @@ public class HealthSystem : MonoBehaviour
 
 
     [SerializeField] private float angleThreshold;
-    public void TakeDamage(float damageAmount, Transform enemyTransform)
+    public void TakeDamage(float damageAmount, Transform enemyTransform, Transform hit)
     {
         _playerShield = gameObject.GetComponentInChildren<PlayerShield>();
         Transform highestParentTransform = GetHighestParentTransform(enemyTransform);
@@ -62,20 +72,30 @@ public class HealthSystem : MonoBehaviour
                     // Enemy is behind the player
                     health -= damageAmount;
                     animator.SetTrigger("damage");
+                    _damagePopUpGenerator.CreatePopUp(hit.position,  damageAmount.ToString(), Color.red);
                     //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+                    
+                    //quest
+                    _lvlQuestManager.UpdateDamageQuest(damageAmount);
                 }
                 else
                 {
                     // Enemy is in front of the player, no damage or shield hit
                     animator.SetTrigger("blockDamage");
                     blockVFXScript.Damage();
+                    _blockBreaker.BlockAttackCounter();
+                    _damagePopUpGenerator.CreatePopUp(hit.position, "Blocked", Color.cyan);
                 }
             }
             else
             {
                 health -= damageAmount;
                 animator.SetTrigger("damage");
+                _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
                 //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+                
+                //quest
+                _lvlQuestManager.UpdateDamageQuest(damageAmount);
             }
 
 

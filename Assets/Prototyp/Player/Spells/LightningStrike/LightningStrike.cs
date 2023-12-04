@@ -74,12 +74,14 @@ public class LightningStrike : MonoBehaviour
         {
             FindAndAddEnemies();
             FindClosestEnemy();
-
-            float distance = Vector3.Distance(this.transform.position, closestEnemy.transform.position);
-            if (closestEnemy != null && distance <= aggroRange)
+            if (closestEnemy != null)
             {
-                Instantiate(lightningPrefab, closestEnemy.transform);
-                timePassed = 0f;
+                float distance = Vector3.Distance(this.transform.position, closestEnemy.transform.position);
+                if (distance <= aggroRange)
+                {
+                    Instantiate(lightningPrefab, closestEnemy.transform);
+                    timePassed = 0f;
+                }
             }
         }
 

@@ -285,6 +285,9 @@ public class EnemyBoss : MonoBehaviour
     [FormerlySerializedAs("attackCD")] [SerializeField] private float basAttackCd = 3f;       // Basic attack cooldown
     [FormerlySerializedAs("stumpAttackCd")] [SerializeField] private float stompAttackCd = 4;
     [FormerlySerializedAs("attackRange")] [SerializeField] private float basicAttackRange = 1f;
+    [SerializeField] private float spitAttackCd = 3f;
+    [SerializeField] private float spitAttackRangeMin = 5f;
+    [SerializeField] private float spitAttackRangeMax = 7f;
     [SerializeField] private float aggroRange = 4f;
     [SerializeField] private GameObject preAttackWarningPrefab;
 
@@ -294,6 +297,7 @@ public class EnemyBoss : MonoBehaviour
     private float timePassedAttackCD;
     private float jumpAttackTimePassed;
     private float timePassedAttackCD2;
+    private float spitAttackTimePassed;
 
     [Header("Loot")]
     [SerializeField] private GameObject[] lootItems;
@@ -313,18 +317,11 @@ public class EnemyBoss : MonoBehaviour
     private float screamTimePassed = 0;
 
     private HealthSystem playerHealthSystem;
-    private Rigidbody rb;
 
     private BossDamageDealer _bossDamageDealer;
+
+    private DamagePopUpGenerator _damagePopUpGenerator;
     
-    //jump attack
-    [FormerlySerializedAs("attackCD1")] [SerializeField] private float jumpAttackCd = 8f;      // Jump attack cooldown
-    [SerializeField] private float jumpAttackRadius = 15f; // Jump attack radius
-    private bool isJumpAttacking;
-    private bool isFalling;
-    private Vector3 targetPosition;
-    private bool isGrounded;
-    private bool fallImpactVFXPlayed;
     
     // Health bar
     [SerializeField] private EnemyHpBar _enemyHpBar;
@@ -334,7 +331,7 @@ public class EnemyBoss : MonoBehaviour
 
     void Start()
     {
-        isGrounded = true;
+        
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -346,15 +343,16 @@ public class EnemyBoss : MonoBehaviour
         firstTimeSpotted = true;
         timePassed = basAttackCd;
         timePassedAttackCD = basAttackCd; //basic
-        jumpAttackTimePassed = jumpAttackCd; //jump 
-
+        spitAttackTimePassed = spitAttackCd;
+        
         _bossDamageDealer = GetComponentInChildren<BossDamageDealer>();
-
-        rb = GetComponent<Rigidbody>();
-        rb.isKinematic = true;
+        
         
         // Set max HP for the health bar
         _enemyHpBar.SetMaxHP(health);
+        
+        _damagePopUpGenerator = FindObjectOfType<DamagePopUpGenerator>();
+
 
         // Ocko projectile
         if (GetComponent<OckoProjectile>() != null)
@@ -371,137 +369,41 @@ public class EnemyBoss : MonoBehaviour
         {
             return;
         }
-
-        UpdateAttackState(basAttackCd, basicAttackRange, ref timePassedAttackCD);
-        //UpdateAttackState(jumpAttackCd, basicAttackRange + 1, ref timePassedAttackCD1);
-        UpdateAttackState(stompAttackCd, basicAttackRange, ref timePassedAttackCD2);
         
-        // Check for conditions to initiate the jump attack
-        if (!isJumpAttacking && !isFalling && jumpAttackTimePassed >= jumpAttackCd 
-            && Vector3.Distance(player.transform.position, transform.position) <= jumpAttackRadius && isIdle)
+      
+        UpdateCoolDown(ref timePassedAttackCD);
+        UpdateCoolDown(ref timePassedAttackCD2);
+        UpdateCoolDown(ref spitAttackTimePassed);
+        
+        if (!isAttacking)
         {
+            UpdateDestination();
+            UpdateRotation(5);
+            
             Vector3 directionToPlayer = player.transform.position - transform.position;
-            directionToPlayer.y = 0f;
+            // Calculate the angle between the enemy's forward direction and the direction to the player
+            float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+            // Define a threshold angle, for instance, 5 degrees
+            float angleThreshold = 10f;
 
-            if (directionToPlayer != Vector3.zero)
+            if (angleToPlayer < angleThreshold)
             {
-                transform.rotation = Quaternion.LookRotation(directionToPlayer);
+                UpdateAttackState(basAttackCd, basicAttackRange, ref timePassedAttackCD);
+                //UpdateAttackState(jumpAttackCd, basicAttackRange + 1, ref timePassedAttackCD1);
+                UpdateAttackState(stompAttackCd, basicAttackRange, ref timePassedAttackCD2);
+        
+                UpdateAttackState(spitAttackCd, spitAttackRangeMax, ref spitAttackTimePassed);
             }
-
-            rb.isKinematic = false;
-            isIdle = false;
-            agent.Stop();
-            agent.enabled = false;
-            isJumpAttacking = true;
-            StartCoroutine(ExecuteJumpAttack());
-        }
-        jumpAttackTimePassed += Time.deltaTime;
-
-        //jump attack fall impact 
-        // Cast a ray downwards to check if the boss has hit the ground
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.5f) && isFalling)
-        {
-            if (hit.collider.CompareTag("Ground")) // Assuming the ground has a tag named "Ground"
-            {
-                isGrounded = true;
-                if (!fallImpactVFXPlayed)
-                {
-                    Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
-
-                    // Calculate the position 0.2 units closer to the player from the boss's position
-                    Vector3 newPosition = transform.position + directionToPlayer * 0.5f;
-
-                    // Instantiate the effect at the new position
-                    InstantiateAndDestroyVFX(fallImpactVFX, newPosition);                   
-                    fallImpactVFXPlayed = true;
-                }
-                // Boss has hit the ground
-            }
-        }
-        else
-        {
-            isGrounded = false;
-            // Boss is not touching the ground
         }
         
-        UpdateDestination();
-
-        UpdateRotation();
-
         HandleDeath();
     }
+
+    private void UpdateCoolDown(ref float timePassed)
+    {
+        timePassed += Time.deltaTime;
+    }
     
-    
-    private IEnumerator ExecuteJumpAttack()
-    {
-        
-        currentAttackDamage = fallImpactAttackDamage;
-        currentAttackRadius = fallImpactAttackRadius;
-        
-        fallImpactVFXPlayed = false;
-        agent.enabled = false;
-
-        isAttacking = true;
-        // Jump Animation
-        animator.SetTrigger("Jump");
-
-        // Wait for the jump animation to complete
-        yield return new WaitForSeconds(3.39f);
-        if (rb != null)
-        {
-            // Apply a force to make the boss jump
-            rb.AddForce(Vector3.up * 50, ForceMode.Impulse);
-        }
-        else
-        {
-            Debug.LogError("Rigidbody component not found on the boss GameObject.");
-            yield break; // Exit the coroutine if Rigidbody is not found
-        }
-        
-        // Play the fall animation and initiate the fall
-        animator.SetTrigger("Fall");
-        isFalling = true;
-        
-        yield return new WaitForSeconds(1); // wait for falling to end
-        StartFallAttack();
-    }
-
-// Called from the animation event at the end of the Fall animation
-    public void StartFallAttack() 
-    {
-        StartDealDamage();
-        // Set the boss's position to the target position (player's position)
-        // Calculate the position to fall
-        Vector3 offset = new Vector3(0f, 0f, 2f); // Adjust the Z-axis offset as needed
-
-        targetPosition = player.transform.position + offset;
-        targetPosition.y = transform.position.y;
-        transform.position = targetPosition;
-        
-        rb.AddForce(Vector3.down * 100, ForceMode.Impulse);
-
-
-        // Play the fall-attack animation
-        animator.SetTrigger("FallAttack");
-        
-        // Deal damage or perform other actions as the boss falls
-        // Implement the necessary logic here
-    }
-
-// Called from the animation event at the end of the Fall-Attack animation
-    public void EndFallAttack()
-    {
-        // Reset the flags and cooldown for the next jump attack
-        EndDealDamage();
-        isJumpAttacking = false;
-        isFalling = false;
-        jumpAttackTimePassed = 0f;
-        isAttacking = false;
-        rb.isKinematic = true;
-        agent.enabled = true;
-    }
-
     private void UpdateAttackState(float attackCooldown, float currentAttackRange, ref float timePassed)
     {
         if (timePassed >= attackCooldown && Vector3.Distance(player.transform.position, transform.position) <= currentAttackRange)
@@ -511,7 +413,6 @@ public class EnemyBoss : MonoBehaviour
             {
                 if (playerHealthSystem.health > 0)
                 {
-                    animator.applyRootMotion = true;
 
                     if (attackCooldown == basAttackCd)
                     {
@@ -525,27 +426,39 @@ public class EnemyBoss : MonoBehaviour
                         isIdle = false;
                         currentAttackRadius = legAttackRadius;
                         currentAttackDamage = legAttackDamage;
-                        Attack("attackStomp");
+                        float randomValue = Random.value;
+                        if (randomValue > 0.5f)
+                        {
+                            Attack("attackStomp");
+                        }
+                        else
+                        {
+                            Attack("attackStompFlipped");
+                        }
+                    }
+                    else if (attackCooldown == spitAttackCd)
+                    {
+                        isIdle = false;
+                        currentAttackRadius = 0;
+                        currentAttackDamage = 0;
+                        Attack("attackSpit");
+                        OckoProjectile projectile = GetComponent<OckoProjectile>();
+                        projectile.FireProjectile(player.transform.position, transform);
                     }
 
                     Instantiate(preAttackWarningPrefab, transform);
 
                     isAttacking = true;
                     attackingTime = animator.GetCurrentAnimatorClipInfo(0).Length;
-
-                    if (_ockoProjectile != null)
-                    {
-                        _ockoProjectile.FireProjectile(player.transform.position, transform);
-                    }
                 }
                 timePassed = 0; // Reset the attack cooldown
             }
         }
-        timePassed += Time.deltaTime;
     }
 
     private void Attack(string triggerName)
     {
+        animator.applyRootMotion = true;
         animator.SetTrigger(triggerName);
         animator.SetBool("isAttacking", true);
     }
@@ -554,6 +467,7 @@ public class EnemyBoss : MonoBehaviour
     {
         animator.SetBool("isAttacking", false);
         isAttacking = false;
+        animator.applyRootMotion = false;
     }
 
     private void UpdateDestination()
@@ -571,16 +485,20 @@ public class EnemyBoss : MonoBehaviour
         }
     }
 
-    private void UpdateRotation()
+    private void UpdateRotation(float rotationSpeed)
     {
-        if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead && !isAttacking)
+        if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
         {
             Vector3 directionToPlayer = player.transform.position - transform.position;
             directionToPlayer.y = 0f;
+            directionToPlayer = directionToPlayer.normalized;
+            
 
             if (directionToPlayer != Vector3.zero)
             {
-                transform.rotation = Quaternion.LookRotation(directionToPlayer);
+                //transform.rotation = Quaternion.LookRotation(directionToPlayer);
+                
+                transform.rotation = Quaternion.Slerp(transform.rotation.normalized, Quaternion.LookRotation(directionToPlayer), rotationSpeed * Time.deltaTime);
             }
         }
     }
@@ -626,11 +544,12 @@ public class EnemyBoss : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage(float damageAmount, Transform hit)
     {
         isIdle = false;
         if (!dead)
         {
+            _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.white);
             health -= damageAmount;
             animator.applyRootMotion = true;
             if (isIdle)

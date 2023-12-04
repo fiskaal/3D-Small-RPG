@@ -28,8 +28,11 @@ public class BlockingState : State
     {
         base.Enter();
 
-        character.blockVFX.SetActive(true);
-        
+        if (character.blockIsUgraded)
+        {
+            character.blockVFX.SetActive(true);
+        }
+
         input = Vector2.zero;
         currentVelocity = Vector3.zero;
         gravityVelocity.y = 0;
@@ -42,6 +45,7 @@ public class BlockingState : State
         block = false;
 
         character.blockingStateActive = true;
+        character._blockBreaker.blocking = true;
     }
 
     public override void HandleInput()
@@ -54,8 +58,14 @@ public class BlockingState : State
         velocity = velocity.x * character.cameraTransform.right.normalized +
                    velocity.z * character.cameraTransform.forward.normalized;
         velocity.y = 0f;
+        
+        /*
+        float newYRotation = character.cameraTransform.rotation.eulerAngles.y;
+        // Set the player's rotation to match the camera's y-axis rotation
+        character.transform.rotation = Quaternion.Euler(0f, newYRotation, 0f);
+        */
 
-        if (blockAction.triggered)
+        if (blockActionEnd.triggered)
         {
             block = true;
         }
@@ -69,7 +79,13 @@ public class BlockingState : State
         
         if (block)
         {
-            stateMachine.ChangeState(character.combatting); 
+            stateMachine.ChangeState(character.combatting);
+            character.animator.SetTrigger("move");
+        }
+
+        if (character.blockBroken)
+        {
+            stateMachine.ChangeState(character.combatting);
             character.animator.SetTrigger("move");
         }
     }
@@ -87,21 +103,27 @@ public class BlockingState : State
         }
        
         currentVelocity = Vector3.SmoothDamp(currentVelocity, velocity,ref cVelocity, character.velocityDampTime);
-        character.controller.Move(currentVelocity * Time.deltaTime * playerSpeed + gravityVelocity * Time.deltaTime);
-  
+        character.controller.Move(currentVelocity * Time.deltaTime * (playerSpeed/2) + gravityVelocity * Time.deltaTime);
+        
         if (velocity.sqrMagnitude>0)
         {
             character.transform.rotation = Quaternion.Slerp(character.transform.rotation, Quaternion.LookRotation(velocity),character.rotationDampTime);
         }
         
+        //character.transform.rotation = Quaternion.Slerp(character.transform.rotation, Quaternion.LookRotation(velocity),character.rotationDampTime);
+
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        character.blockVFXScript.DisableAfterAnimation();
+        if (character.blockIsUgraded)
+        {
+            character.blockVFXScript.DisableAfterAnimation();
+        }
         
+        character._blockBreaker.blocking = false;
         character.blockingStateActive = false;
 
         gravityVelocity.y = 0f;

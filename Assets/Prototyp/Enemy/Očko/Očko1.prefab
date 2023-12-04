@@ -5407,7 +5407,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3531618
+  m_Radius: 0.4
   m_Height: 1.49
   m_Direction: 1
   m_Center: {x: 0, y: 1.13, z: 0}
@@ -5425,8 +5425,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2778759646017259578, guid: 672f0f9cd27a53946bd69f769b5e3ba2, type: 3}
   projectileSpeed: 10
+  desiredZPosition: 0.7
   desiredHeight: 1.2
-  desiredZPosition: 0.5
+  desiredTargetHeight: 1
 --- !u!114 &3860345131816903371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5448,12 +5449,16 @@ MonoBehaviour:
   attackRange: 6
   aggroRange: 15
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
+  rotationSpeed: 4
   lootItems:
   - {fileID: 2599361241298687333, guid: 5dee8169a360bce47b6aca4348603f75, type: 3}
   - {fileID: 8692958704477054658, guid: ff7cda5ce1d7d5947b2dc75fba91f6b5, type: 3}
+  - {fileID: 4440475420537621230, guid: 9c2fb36324d1ded459edf53b82312231, type: 3}
   lootQuantities:
   - {x: 1, y: 4}
   - {x: 0, y: 2}
+  - {x: 5, y: 7}
+  _damagePopUpGenerator: {fileID: 0}
   _enemyHpBar: {fileID: 894791611960810378}
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
 --- !u!195 &5114797098418043381
@@ -5704,8 +5709,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: ockodry
       objectReference: {fileID: 0}
+    - target: {fileID: 4644297669644122051, guid: 1de5919caa4f3484aa7076b9ff99cd90, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.739
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1de5919caa4f3484aa7076b9ff99cd90, type: 3}
+--- !u!1 &136102741271191598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1de5919caa4f3484aa7076b9ff99cd90, type: 3}
+  m_PrefabInstance: {fileID: 946566713835527551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3398800160548498753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136102741271191598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &767960580477516436 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1de5919caa4f3484aa7076b9ff99cd90, type: 3}

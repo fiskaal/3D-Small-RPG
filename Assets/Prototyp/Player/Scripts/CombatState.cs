@@ -64,7 +64,7 @@ public class CombatState : State
             attack = true;
         }
 
-        if (specialAttackAction.triggered)
+        if (heavyattackAction.triggered)
         {
             specialAttack = true;
         }
@@ -74,7 +74,7 @@ public class CombatState : State
             dash = true;
         }
 
-        if (blockAction.triggered)
+        if (blockActionStart.triggered)
         {
             block = true;
         }
@@ -108,7 +108,7 @@ public class CombatState : State
         if (specialAttack)
         {
             character.animator.SetTrigger(("specialAttack"));
-            stateMachine.ChangeState(character.specialAttacking);
+            stateMachine.ChangeState(character.heavyAttacking);
         }
 
         if (dash && character.dashIsReady)
@@ -129,8 +129,11 @@ public class CombatState : State
 
         if (block)
         {
-            character.animator.SetTrigger("block");
-            stateMachine.ChangeState(character.blocking);
+            if (!character.blockBroken)
+            {
+                character.animator.SetTrigger("block");
+                stateMachine.ChangeState(character.blocking);
+            }
         }
     }
     
