@@ -97,6 +97,8 @@ public class DashState : State
         dashDirection.y = 0f;
         dashDirection.Normalize();
 
+        character.transform.rotation = Quaternion.Slerp(character.transform.rotation, Quaternion.LookRotation(dashDirection), 100 * Time.deltaTime);
+        
         dashTimer = 0f;
         
         grounded = character.controller.isGrounded;

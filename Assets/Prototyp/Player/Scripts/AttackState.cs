@@ -6,6 +6,10 @@ public class AttackState : State
     float clipSpeed;
     bool attack;
     private bool dash;
+    private bool block;
+    private float numberOfAttacks = 2;
+    private float attackNumber;
+
     public AttackState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
     {
         character = _character;
@@ -15,13 +19,17 @@ public class AttackState : State
     public override void Enter()
     {
         base.Enter();
-        
+
+        block = false;
         attack = false;
         dash = false;
         character.animator.applyRootMotion = true;
         timePassed = 0f;
         character.animator.SetTrigger("attack");
         character.animator.SetFloat("speed", 0f);
+
+
+        
 
         /*
         float newYRotation = character.cameraTransform.rotation.eulerAngles.y;
@@ -43,6 +51,11 @@ public class AttackState : State
         {
             dash = true;
         }
+        
+        if (blockActionStart.triggered)
+        {
+            block = true;
+        }
     }
     public override void LogicUpdate()
     {
@@ -52,23 +65,37 @@ public class AttackState : State
         clipLength = character.animator.GetCurrentAnimatorClipInfo(1)[0].clip.length;
         clipSpeed = character.animator.GetCurrentAnimatorStateInfo(1).speed;
 
-        if (attack)
+        if (attack && timePassed >= clipLength / clipSpeed && attackNumber < numberOfAttacks)
         {
             stateMachine.ChangeState(character.attacking);
+            attackNumber += 1;
         }
+        
         if (timePassed >= clipLength / clipSpeed)
         {
             stateMachine.ChangeState(character.combatting);
             character.animator.SetTrigger("move");
+            attackNumber = 0;
+        }
+        
+        if (block)
+        {
+            character.animator.SetTrigger("block");
+            stateMachine.ChangeState(character.blocking);
+            attackNumber = 0;
         }
 
-        /*
-        if (dash)
+        
+        if (dash && character.dashIsReady)
         {
-            character.animator.SetTrigger("dash");
+            //character.animator.SetTrigger("dash");
             stateMachine.ChangeState(character.dashing);
+            attackNumber = 0;
         }
-        */
+        else
+        {
+            dash = false;
+        }
     }
     public override void Exit()
     {

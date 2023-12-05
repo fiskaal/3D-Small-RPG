@@ -101,14 +101,14 @@ public class CombatState : State
 
         if (attack)
         {
-            character.animator.SetTrigger("attack");
+            //character.animator.SetTrigger("attack");
             stateMachine.ChangeState(character.attacking); 
         }
 
         if (specialAttack)
         {
-            character.animator.SetTrigger(("specialAttack"));
-            stateMachine.ChangeState(character.heavyAttacking);
+            //character.animator.SetTrigger(("specialAttack"));
+            //stateMachine.ChangeState(character.heavyAttacking);
         }
 
         if (dash && character.dashIsReady)
