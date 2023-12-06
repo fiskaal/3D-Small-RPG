@@ -18,7 +18,7 @@ public class EnemyBoss : MonoBehaviour
     [Header("Attack Hit Radius")] 
     public float legAttackRadius;
     public float handAttackRadius;
-    public float jumpImpactAttackRadius = 5;
+    public float fallImpactAttackRadius;
     public float currentAttackRadius;
     
 
@@ -39,8 +39,6 @@ public class EnemyBoss : MonoBehaviour
     [SerializeField] private float spitAttackCd = 3f;
     [SerializeField] private float spitAttackRangeMin = 5f;
     [SerializeField] private float spitAttackRangeMax = 7f;
-    [SerializeField] private float jumpAttackRange = 2f;
-    [SerializeField] private float jumpAttackCD = 20f;
     [SerializeField] private float aggroRange = 4f;
     [SerializeField] private GameObject preAttackWarningPrefab;
 
@@ -51,7 +49,6 @@ public class EnemyBoss : MonoBehaviour
     private float jumpAttackTimePassed;
     private float timePassedAttackCD2;
     private float spitAttackTimePassed;
-    
 
     [Header("Loot")]
     [SerializeField] private GameObject[] lootItems;
@@ -98,7 +95,6 @@ public class EnemyBoss : MonoBehaviour
         timePassed = basAttackCd;
         timePassedAttackCD = basAttackCd; //basic
         spitAttackTimePassed = spitAttackCd;
-        jumpAttackTimePassed = jumpAttackCD;
         
         _bossDamageDealer = GetComponentInChildren<BossDamageDealer>();
         
@@ -129,8 +125,6 @@ public class EnemyBoss : MonoBehaviour
         UpdateCoolDown(ref timePassedAttackCD);
         UpdateCoolDown(ref timePassedAttackCD2);
         UpdateCoolDown(ref spitAttackTimePassed);
-        UpdateCoolDown(ref jumpAttackTimePassed);
-
         
         if (!isAttacking)
         {
@@ -150,8 +144,6 @@ public class EnemyBoss : MonoBehaviour
                 UpdateAttackState(stompAttackCd, basicAttackRange, ref timePassedAttackCD2);
         
                 UpdateAttackState(spitAttackCd, spitAttackRangeMax, ref spitAttackTimePassed);
-                
-                UpdateAttackState(jumpAttackCD, jumpAttackRange, ref jumpAttackTimePassed);
             }
         }
         
@@ -178,7 +170,6 @@ public class EnemyBoss : MonoBehaviour
                         isIdle = false;
                         currentAttackDamage = handAttackDamage;
                         currentAttackRadius = handAttackRadius;
-                        _bossDamageDealer.heavyDamage = false;
                         Attack("attack");
                     }
                     else if (attackCooldown == stompAttackCd)
@@ -186,7 +177,6 @@ public class EnemyBoss : MonoBehaviour
                         isIdle = false;
                         currentAttackRadius = legAttackRadius;
                         currentAttackDamage = legAttackDamage;
-                        _bossDamageDealer.heavyDamage = false;
                         float randomValue = Random.value;
                         if (randomValue > 0.5f)
                         {
@@ -202,18 +192,9 @@ public class EnemyBoss : MonoBehaviour
                         isIdle = false;
                         currentAttackRadius = 0;
                         currentAttackDamage = 0;
-                        _bossDamageDealer.heavyDamage = false;
                         Attack("attackSpit");
                         OckoProjectile projectile = GetComponent<OckoProjectile>();
                         projectile.FireProjectile(player.transform.position, transform);
-                    }
-                    else if (attackCooldown == jumpAttackCD)
-                    {
-                        isIdle = false;
-                        currentAttackRadius = jumpImpactAttackRadius;
-                        currentAttackDamage = fallImpactAttackDamage;
-                        _bossDamageDealer.heavyDamage = true;
-                        Attack("jumpAttack");
                     }
 
                     Instantiate(preAttackWarningPrefab, transform);

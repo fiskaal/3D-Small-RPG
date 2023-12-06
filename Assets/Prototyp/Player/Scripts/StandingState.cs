@@ -39,8 +39,6 @@ public class StandingState: State
         currentVelocity = Vector3.zero;
         gravityVelocity.y = 0;
 
-        character.animator.applyRootMotion = false;
-        
         playerSpeed = character.playerSpeed;
         grounded = character.controller.isGrounded;
         gravityValue = character.gravityValue;

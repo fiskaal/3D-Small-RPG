@@ -37,8 +37,6 @@ public class CombatState : State
         currentVelocity = Vector3.zero;
         gravityVelocity.y = 0;
 
-        character.animator.applyRootMotion = false;
-        
         velocity = character.playerVelocity;
         playerSpeed = character.playerSpeed;
         grounded = character.controller.isGrounded;

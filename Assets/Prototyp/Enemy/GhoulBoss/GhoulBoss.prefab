@@ -29,9 +29,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4408548750915580373}
-  - {fileID: 2136475963788542897}
+  m_Children: []
   m_Father: {fileID: 3707114699378946002}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,9 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 20
   rayCount: 12
-  circleRadius: 5
+  circleRadius: 1
   warningEffect: {fileID: 0}
-  heavyDamage: 0
   enemyBoss: {fileID: 0}
 --- !u!111 &164848549
 Animation:
@@ -161,7 +158,7 @@ MonoBehaviour:
   currentAttackDamage: 0
   legAttackRadius: 1
   handAttackRadius: 1.2
-  jumpImpactAttackRadius: 5
+  fallImpactAttackRadius: 3
   currentAttackRadius: 0
   hitVFX: {fileID: 4047385913798380573, guid: 1283d85035ecf224fb9c2a2bd4f82c5f, type: 3}
   hitVFX1: {fileID: 219217740888041541, guid: c01593394d44d1b44b4d11beff1c4eb6, type: 3}
@@ -174,8 +171,6 @@ MonoBehaviour:
   spitAttackCd: 5
   spitAttackRangeMin: 4
   spitAttackRangeMax: 7
-  jumpAttackRange: 2
-  jumpAttackCD: 10
   aggroRange: 15
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
   lootItems:
@@ -219,10 +214,6 @@ MonoBehaviour:
   handAttackVFX: {fileID: 0}
   legAttackVFX: {fileID: 1837992651369066725, guid: da212c8b85fe14f4aa1ef9ce670d9ebe, type: 3}
   prelegAttackVFX: {fileID: 0}
-  fallAttackVFX: {fileID: 1589242962888738191, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-  PreFallAttackVFX: {fileID: 5858718436440280155, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-  damageDealerTransform: {fileID: 164848547}
-  bossTransform: {fileID: 2139842355180489987}
 --- !u!195 &517651707450840796
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5112,138 +5103,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1001 &845149081097628176
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 164848547}
-    m_Modifications:
-    - target: {fileID: 1589242962888738191, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_Name
-      value: BossFall_VFX
-      objectReference: {fileID: 0}
-    - target: {fileID: 1589242962888738191, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
---- !u!4 &2136475963788542897 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1593389218234935713, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-  m_PrefabInstance: {fileID: 845149081097628176}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &2646654510600315739
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 164848547}
-    m_Modifications:
-    - target: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858718436440280155, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_Name
-      value: BossFallAttackWarning
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858718436440280155, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
---- !u!4 &4408548750915580373 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1843241060303950478, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
-  m_PrefabInstance: {fileID: 2646654510600315739}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3817056118528608313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5361,11 +5220,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2426d9f3450e3bd418cf24cd288bce8e, type: 3}
---- !u!4 &2139842355180489987 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -6247945034147084998, guid: 2426d9f3450e3bd418cf24cd288bce8e, type: 3}
-  m_PrefabInstance: {fileID: 3817056118528608313}
-  m_PrefabAsset: {fileID: 0}
 --- !u!137 &2275295977152131382 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -6094617201381852913, guid: 2426d9f3450e3bd418cf24cd288bce8e, type: 3}

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ProjectileDamage : MonoBehaviour
@@ -19,7 +18,7 @@ public class ProjectileDamage : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             HealthSystem playerHealth = other.GetComponent<HealthSystem>();
-            playerHealth.TakeDamage(damage, shooterTransform, transform, false);
+            playerHealth.TakeDamage(damage, shooterTransform, transform);
             playerHealth.HitVFX(transform.position);
             GameObject hit = Instantiate(HitVFX, transform);
             hit.transform.SetParent(null);
@@ -31,13 +30,10 @@ public class ProjectileDamage : MonoBehaviour
         {
             if (other.gameObject != gameObject)
             {
-                if (other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
-                {
-                    GameObject hit = Instantiate(HitVFX, transform);
-                    hit.transform.SetParent(null);
-                    // Destroy the projectile when colliding with an object that is not its parent
-                    Destroy(gameObject);
-                }
+                GameObject hit = Instantiate(HitVFX, transform);
+                hit.transform.SetParent(null);
+                // Destroy the projectile when colliding with an object that is not its parent
+                Destroy(gameObject);
             }
         }
     }

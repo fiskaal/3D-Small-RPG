@@ -10,8 +10,7 @@ public class BossDamageDealer : MonoBehaviour
     [SerializeField] int rayCount = 12; // Number of raycasts for the circle
     [SerializeField] float circleRadius = 3f; // Radius of the circular area
     [SerializeField] ParticleSystem warningEffect; // Particle system for warning effect
-    
-    public bool heavyDamage = false;
+
     public EnemyBoss enemyBoss;
     void Start()
     {
@@ -55,7 +54,7 @@ public class BossDamageDealer : MonoBehaviour
                 // Deal damage to enemies within the circular area
                 if (hit.transform.TryGetComponent(out HealthSystem player) && !hasDealtDamage.Contains(hit.transform.gameObject))
                 {
-                    player.TakeDamage(attackDamage, transform, hit.transform, heavyDamage);
+                    player.TakeDamage(attackDamage, transform, hit.transform);
                     player.HitVFX(hit.point);
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
