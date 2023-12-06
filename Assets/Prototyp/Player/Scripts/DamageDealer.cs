@@ -157,7 +157,7 @@ public class DamageDealer : MonoBehaviour
                 //player.transform.LookAt(closestEnemy.transform);
 
                 player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.LookRotation(target),
-                    40 * Time.deltaTime);
+                    50 * Time.deltaTime);
                 enemyTargetted = true;
             }
         }

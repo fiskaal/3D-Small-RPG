@@ -41,7 +41,7 @@ public class HealthSystem : MonoBehaviour
 
 
     [SerializeField] private float angleThreshold;
-    public void TakeDamage(float damageAmount, Transform enemyTransform, Transform hit)
+    public void TakeDamage(float damageAmount, Transform enemyTransform, Transform hit, bool heavyDamage)
     {
         _playerShield = gameObject.GetComponentInChildren<PlayerShield>();
         Transform highestParentTransform = GetHighestParentTransform(enemyTransform);
@@ -71,10 +71,20 @@ public class HealthSystem : MonoBehaviour
                 {
                     // Enemy is behind the player
                     health -= damageAmount;
-                    animator.SetTrigger("damage");
-                    _damagePopUpGenerator.CreatePopUp(hit.position,  damageAmount.ToString(), Color.red);
-                    //CameraShake.Instance.ShakeCamera(2f, 0.2f);
-                    
+                    if (heavyDamage != true)
+                    {
+                        animator.SetTrigger("damage");
+                        _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
+                        //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+                    }
+                    else
+                    {
+                        animator.applyRootMotion = true;
+                        animator.SetTrigger("heavyDamage");
+                        _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
+                        //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+                    }
+
                     //quest
                     if (_lvlQuestManager != null)
                     {
@@ -93,10 +103,20 @@ public class HealthSystem : MonoBehaviour
             else
             {
                 health -= damageAmount;
-                animator.SetTrigger("damage");
-                _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
-                //CameraShake.Instance.ShakeCamera(2f, 0.2f);
-                
+                if (heavyDamage != true)
+                {
+                    animator.SetTrigger("damage");
+                    _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
+                    //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+                }
+                else
+                {
+                    animator.applyRootMotion = true;
+                    animator.SetTrigger("heavyDamage");
+                    _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
+                    //CameraShake.Instance.ShakeCamera(2f, 0.2f);
+                }
+
                 //quest
                 if (_lvlQuestManager != null)
                 {
@@ -127,6 +147,8 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private GameObject playerDestroy;
     void Die()
     {
+        Character character = GetComponent<Character>();
+        character.enabled = false;
         //deathUIPopUp.SetActive(true);
         animator.SetTrigger("death");
         //Instantiate(ragdoll, transform.position, transform.rotation);

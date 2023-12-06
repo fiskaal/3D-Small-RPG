@@ -9,6 +9,9 @@ public class BossVFX : MonoBehaviour
     [SerializeField] private GameObject prelegAttackVFX;
     [SerializeField] private GameObject fallAttackVFX;
     [SerializeField] private GameObject PreFallAttackVFX;
+    
+    [SerializeField] private Transform damageDealerTransform;
+    [SerializeField] private Transform bossTransform;
 
 
     
@@ -29,12 +32,14 @@ public class BossVFX : MonoBehaviour
     
     public void FallAttackPlayVFX()
     {
-        Instantiate(fallAttackVFX, transform);
+        GameObject VFX = Instantiate(fallAttackVFX, new Vector3(damageDealerTransform.position.x, bossTransform.position.y, damageDealerTransform.position.z), Quaternion.identity);
+        VFX.transform.SetParent(null);
     }
     
     public void PreFallAttackPlayVFX()
     {
-        Instantiate(PreFallAttackVFX, transform);
+        GameObject VFXwarning = Instantiate(PreFallAttackVFX, new Vector3(damageDealerTransform.position.x, bossTransform.position.y, damageDealerTransform.position.z), Quaternion.identity);
+        VFXwarning.transform.SetParent(null);
     }
 
 }
