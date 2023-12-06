@@ -2311,7 +2311,7 @@ PrefabInstance:
     - target: {fileID: 1430988954756330382, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: userModel
       value: 
-      objectReference: {fileID: 1004628098}
+      objectReference: {fileID: 0}
     - target: {fileID: 1430988954756330383, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7202,6 +7202,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2183918505590756922, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: spellBought
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2995673596906374298, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7306,13 +7310,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2183918505590756922, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+    - {fileID: 8063214724040552569, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+    - {fileID: 614139466275053668, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
---- !u!1 &1004628098 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3992257543363554625, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-  m_PrefabInstance: {fileID: 1004628097}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1004628099 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2995673596906374300, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
