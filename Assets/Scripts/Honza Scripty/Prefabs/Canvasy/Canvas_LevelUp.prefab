@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3121921973498116186}
   - component: {fileID: 3121921973498116184}
   - component: {fileID: 3121921973498116187}
+  - component: {fileID: 8197868358377497917}
   m_Layer: 5
   m_Name: Panel_Damage
   m_TagString: Menu
@@ -155,6 +156,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8197868358377497917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121921973498116189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fd9d731fcaaac46ab60b7e10e52c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellBought: 0
 --- !u!1 &3121921973516933464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,6 +1239,7 @@ GameObject:
   - component: {fileID: 3121921975164039296}
   - component: {fileID: 3121921975164039358}
   - component: {fileID: 3121921975164039297}
+  - component: {fileID: 8124900177099053888}
   m_Layer: 5
   m_Name: Panel_HP
   m_TagString: Menu
@@ -1293,6 +1308,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8124900177099053888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121921975164039299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fd9d731fcaaac46ab60b7e10e52c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellBought: 0
 --- !u!1 &3121921975239282670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,6 +1492,7 @@ GameObject:
   - component: {fileID: 3121921975343406170}
   - component: {fileID: 3121921975343406168}
   - component: {fileID: 3121921975343406171}
+  - component: {fileID: 1174297292205850592}
   m_Layer: 5
   m_Name: Panel_Spell_Lightning
   m_TagString: Menu
@@ -1532,6 +1561,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1174297292205850592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121921975343406173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fd9d731fcaaac46ab60b7e10e52c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellBought: 0
 --- !u!1 &5057293530816417330
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,89 +1,100 @@
+// LevelSystem.cs
+
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class LevelSystem : MonoBehaviour
 {
-    public int playerLevel = 1; // Current level of the player
-    public float experienceThreshold = 100f; // Experience points required to level up
-    public float currentExperience = 0f; // Current experience points of the player
-    public GameObject upgradePanels; // Reference to the parent object containing UpgradePanels
-    public Text levelText; // Reference to the Text component for displaying player level
+    public int playerLevel = 1;
+    public float experienceThreshold = 100f;
+    public float currentExperience = 0f;
+    public GameObject upgradePanels;
+    public Text levelText;
 
-    // List to store indices of activated child objects to avoid duplication
-    List<int> activatedIndices = new List<int>();
+    // Update this list to have unique keys for each BooleanSpell
+    public List<string> booleanSpellKeys;
 
-    // Method to increase player's experience points
     public void GainExperience(float experiencePoints)
     {
         currentExperience += experiencePoints;
 
-        // Check if the player has enough experience points to level up
         if (currentExperience >= experienceThreshold)
         {
             LevelUp();
         }
     }
 
-    // Method to handle player level up
     void LevelUp()
     {
-        playerLevel++; // Increase player level by 1
-        currentExperience = 0f; // Reset current experience points
-        experienceThreshold = CalculateExperienceThreshold(); // Calculate new experience threshold for the next level
-
-        // Clear the list of activated indices for the next level up
-        activatedIndices.Clear();
-
-        // Activate random UpgradePanels for the next level
+        playerLevel++;
+        currentExperience = 0f;
+        experienceThreshold = CalculateExperienceThreshold();
         ActivateRandomUpgradePanels();
-
-        // Update the level text to display the new player level
         UpdateLevelText();
-
-        // Perform any other actions related to level up (e.g., unlocking new abilities, updating UI, etc.)
         Debug.Log("Level Up! New Level: " + playerLevel);
-
         Time.timeScale = 0f;
     }
 
-    // Method to calculate experience threshold for the next level (you can customize the formula)
     float CalculateExperienceThreshold()
     {
-        // Example: Experience threshold doubles with each level
-        return experienceThreshold * 2f; // Return a float value
+        return experienceThreshold * 2f;
     }
 
-    // Method to activate 3 random child UpgradePanels
     void ActivateRandomUpgradePanels()
     {
         if (upgradePanels != null)
         {
-            // Clear the list of activated indices at the beginning of the method
-            activatedIndices.Clear();
-
             int childCount = upgradePanels.transform.childCount;
 
-            // Activate 3 random child objects or activate all if there are less than 3
-            int panelsToActivate = Mathf.Min(3, childCount);
+            // Collect a list of indices representing panels with SpellBought set to true
+            List<int> trueIndices = new List<int>();
+            for (int i = 0; i < childCount; i++)
+            {
+                GameObject panelObject = upgradePanels.transform.GetChild(i)?.gameObject;
+                if (panelObject != null)
+                {
+                    BooleanSpell booleanSpellComponent = panelObject.GetComponent<BooleanSpell>();
 
+                    // Check if the panel has the BooleanSpell component and SpellBought is true
+                    if (booleanSpellComponent != null && booleanSpellComponent.SpellBought)
+                    {
+                        trueIndices.Add(i);
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Panel object at index " + i + " is null!");
+                }
+            }
+
+            // Activate a maximum of 3 panels with SpellBought set to true
+            int panelsToActivate = Mathf.Min(3, trueIndices.Count);
             for (int i = 0; i < panelsToActivate; i++)
             {
-                int randomChildIndex;
-                GameObject randomChild;
-
-                // Ensure the selected child is not already activated
-                do
+                if (trueIndices.Count == 0)
                 {
-                    randomChildIndex = Random.Range(0, childCount);
-                } while (activatedIndices.Contains(randomChildIndex));
+                    Debug.LogWarning("Not enough panels with SpellBought set to true.");
+                    break;
+                }
 
-                // Mark the index as activated to avoid duplication
-                activatedIndices.Add(randomChildIndex);
+                int randomIndex = Random.Range(0, trueIndices.Count);
+                int panelIndex = trueIndices[randomIndex];
 
-                // Activate the random child object
-                randomChild = upgradePanels.transform.GetChild(randomChildIndex).gameObject;
-                randomChild.SetActive(true);
+                GameObject panelObject = upgradePanels.transform.GetChild(panelIndex)?.gameObject;
+
+                // Ensure the panel object is not null
+                if (panelObject != null)
+                {
+                    panelObject.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogError("Activated panel object is null!");
+                }
+
+                // Remove the index from the list to avoid duplication
+                trueIndices.RemoveAt(randomIndex);
             }
         }
         else
@@ -94,34 +105,13 @@ public class LevelSystem : MonoBehaviour
 
 
 
-    // Method to deactivate all child objects of upgradePanels
-    void DeactivateAllUpgradePanels()
-    {
-        if (upgradePanels != null)
-        {
-            foreach (Transform child in upgradePanels.transform)
-            {
-                child.gameObject.SetActive(false);
-            }
-        }
-    }
 
-    // Method to update the level text
+
     void UpdateLevelText()
     {
         if (levelText != null)
         {
             levelText.text = playerLevel.ToString();
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Deactivate all child objects of upgradePanels at the start
-        DeactivateAllUpgradePanels();
-
-        // Update the level text at the start
-        UpdateLevelText();
     }
 }
