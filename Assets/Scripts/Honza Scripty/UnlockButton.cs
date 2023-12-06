@@ -18,8 +18,8 @@ public class UnlockButton : MonoBehaviour
     // Reference to the warning message game object
     public GameObject warningMessage;
 
-    // Index of the sword to set the bought status
-    public int swordIndex;
+    // Index of the shop to set the bought status
+    public int shopArrayIndex;
 
     private void Start()
     {
@@ -54,7 +54,7 @@ public class UnlockButton : MonoBehaviour
             ShopManager shopManager = FindObjectOfType<ShopManager>();
             if (shopManager != null)
             {
-                shopManager.SetSwordBoughtStatus(swordIndex, true);
+                shopManager.SetSwordBoughtStatus(shopArrayIndex, true);
             }
             else
             {
