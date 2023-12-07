@@ -68,7 +68,7 @@ public class CombatState : State
 
         if (heavyattackAction.triggered)
         {
-            specialAttack = true;
+            character.animator.SetTrigger("spellThrow");
         }
 
         if (dashAction.triggered)
