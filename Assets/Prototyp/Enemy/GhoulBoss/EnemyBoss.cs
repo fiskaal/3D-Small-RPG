@@ -180,6 +180,16 @@ public class EnemyBoss : MonoBehaviour
                         currentAttackRadius = handAttackRadius;
                         _bossDamageDealer.heavyDamage = false;
                         Attack("attack");
+                        agent.ResetPath();
+                    }
+                    else if (attackCooldown == jumpAttackCD)
+                    {
+                        isIdle = false;
+                        currentAttackRadius = jumpImpactAttackRadius;
+                        currentAttackDamage = fallImpactAttackDamage;
+                        _bossDamageDealer.heavyDamage = true;
+                        Attack("jumpAttack");
+                        agent.ResetPath();
                     }
                     else if (attackCooldown == stompAttackCd)
                     {
@@ -196,6 +206,7 @@ public class EnemyBoss : MonoBehaviour
                         {
                             Attack("attackStompFlipped");
                         }
+                        agent.ResetPath();
                     }
                     else if (attackCooldown == spitAttackCd)
                     {
@@ -214,6 +225,7 @@ public class EnemyBoss : MonoBehaviour
                         currentAttackDamage = fallImpactAttackDamage;
                         _bossDamageDealer.heavyDamage = true;
                         Attack("jumpAttack");
+                        agent.ResetPath();
                     }
 
                     Instantiate(preAttackWarningPrefab, transform);

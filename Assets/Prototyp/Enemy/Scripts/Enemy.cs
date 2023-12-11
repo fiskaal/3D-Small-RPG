@@ -74,6 +74,8 @@ public class Enemy : MonoBehaviour
         
         //hpBar
         _enemyHpBar.SetMaxHP(health);
+        _enemyHpBar.SetHP(health);
+
 
         _damagePopUpGenerator = FindObjectOfType<DamagePopUpGenerator>();
         damageDealers = GetComponentsInChildren<EnemyDamageDealer>();    

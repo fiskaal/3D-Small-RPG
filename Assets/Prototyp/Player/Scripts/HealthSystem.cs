@@ -9,7 +9,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private BlockBreaker _blockBreaker;
     [SerializeField] public float health = 100;
     [SerializeField] GameObject hitVFX;
-    [SerializeField] GameObject ragdoll;
+    [SerializeField] GameObject deathVFX;
 
     Animator animator;
     
@@ -145,6 +145,9 @@ public class HealthSystem : MonoBehaviour
     [Header("Death PopUp")] 
     [SerializeField]private GameObject deathUIPopUp;
     [SerializeField] private GameObject playerDestroy;
+    [SerializeField] private Transform deathVFXHolder;
+
+    
     void Die()
     {
         Character character = GetComponent<Character>();
@@ -154,7 +157,7 @@ public class HealthSystem : MonoBehaviour
         //Instantiate(ragdoll, transform.position, transform.rotation);
         //Destroy(playerDestroy);
         StartCoroutine(FreezeGameAfterDelay(5f));
-        
+        Instantiate(deathVFX, deathVFXHolder);
     }
     public void HitVFX(Vector3 hitPosition)
     {

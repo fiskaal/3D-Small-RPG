@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2253760191530035615, guid: 2e301ce9dea83064ab3237c4fbac8ab6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7900389488163119827, guid: 2e301ce9dea83064ab3237c4fbac8ab6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -352,7 +356,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35574
+  m_Name: pb_Mesh221300
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6492,7 +6496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 928276375337082192, guid: d2f4a168e7cc8374da0ad1c7fc71f8db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.09
+      value: 6.8
       objectReference: {fileID: 0}
     - target: {fileID: 928276375337082192, guid: d2f4a168e7cc8374da0ad1c7fc71f8db, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6500,7 +6504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 928276375337082192, guid: d2f4a168e7cc8374da0ad1c7fc71f8db, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.9
+      value: 18.3
       objectReference: {fileID: 0}
     - target: {fileID: 928276375337082192, guid: d2f4a168e7cc8374da0ad1c7fc71f8db, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16483,6 +16487,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhoulPig (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2397068592968219245, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397068592968219245, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397068592968219245, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
 --- !u!1 &1591862088 stripped
@@ -16724,6 +16740,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhoulPig (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2397068592968219245, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397068592968219245, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397068592968219245, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
 --- !u!1 &2057559145
@@ -16911,6 +16939,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1591971987985556732, guid: 921fc328251bdc6478c1e83d3df7c247, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591971987985556732, guid: 921fc328251bdc6478c1e83d3df7c247, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591971987985556732, guid: 921fc328251bdc6478c1e83d3df7c247, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4917992738789906648, guid: 921fc328251bdc6478c1e83d3df7c247, type: 3}
       propertyPath: m_Name
       value: "O\u010Dko1"
@@ -22032,10 +22072,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3958384553994911631, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: projectileSpeed
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 7973166751640041752, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: cameraTransform
       value: 
@@ -27089,6 +27125,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhoulPig
       objectReference: {fileID: 0}
+    - target: {fileID: 2397068592968219245, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397068592968219245, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397068592968219245, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b7de768d2dc674cb38838544ef59b5, type: 3}
 --- !u!1001 &5486316221658328087
@@ -27234,7 +27282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4580827357477076031, guid: e37132e6389cf994f8294f60ea807e3f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -52.02
+      value: 19.2
       objectReference: {fileID: 0}
     - target: {fileID: 4580827357477076031, guid: e37132e6389cf994f8294f60ea807e3f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27264,6 +27312,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5644543069195253260, guid: e37132e6389cf994f8294f60ea807e3f, type: 3}
+      propertyPath: damageDealers.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8265372847127258099, guid: e37132e6389cf994f8294f60ea807e3f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -27273,6 +27325,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8265372847127258099, guid: e37132e6389cf994f8294f60ea807e3f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613496548249747306, guid: e37132e6389cf994f8294f60ea807e3f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613496548249747306, guid: e37132e6389cf994f8294f60ea807e3f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613496548249747306, guid: e37132e6389cf994f8294f60ea807e3f, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}

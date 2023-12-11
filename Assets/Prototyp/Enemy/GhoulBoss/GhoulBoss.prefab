@@ -174,8 +174,8 @@ MonoBehaviour:
   spitAttackCd: 5
   spitAttackRangeMin: 4
   spitAttackRangeMax: 7
-  jumpAttackRange: 2
-  jumpAttackCD: 10
+  jumpAttackRange: 3
+  jumpAttackCD: 15
   aggroRange: 15
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
   lootItems:
@@ -220,7 +220,7 @@ MonoBehaviour:
   legAttackVFX: {fileID: 1837992651369066725, guid: da212c8b85fe14f4aa1ef9ce670d9ebe, type: 3}
   prelegAttackVFX: {fileID: 0}
   fallAttackVFX: {fileID: 1589242962888738191, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-  PreFallAttackVFX: {fileID: 5858718436440280155, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
+  PreFallAttackVFX: {fileID: 0}
   damageDealerTransform: {fileID: 164848547}
   bossTransform: {fileID: 2139842355180489987}
 --- !u!195 &517651707450840796
