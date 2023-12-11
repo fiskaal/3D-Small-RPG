@@ -5065,7 +5065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2392654, guid: c4dfcc5f47794ea4c9d6ea7f64fcc8e6, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2392654, guid: c4dfcc5f47794ea4c9d6ea7f64fcc8e6, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -11148,6 +11148,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1582830186136623511, guid: 68ec650a9113982449239062459a8dd3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6732135273299626105, guid: 68ec650a9113982449239062459a8dd3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68ec650a9113982449239062459a8dd3, type: 3}
 --- !u!1001 &1507251635
@@ -12454,6 +12462,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6896572968012939382, guid: cf582dfce5a38e84e962b80aed595122, type: 3}
+      propertyPath: m_MotionVectors
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896572968012939382, guid: cf582dfce5a38e84e962b80aed595122, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896572968012939382, guid: cf582dfce5a38e84e962b80aed595122, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896572968012939382, guid: cf582dfce5a38e84e962b80aed595122, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908611520270287836, guid: cf582dfce5a38e84e962b80aed595122, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908611520270287836, guid: cf582dfce5a38e84e962b80aed595122, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6910304087430058452, guid: cf582dfce5a38e84e962b80aed595122, type: 3}
       propertyPath: m_Type
       value: 1
@@ -14831,7 +14863,7 @@ WindZone:
   m_Radius: 20
   m_WindMain: 0.5
   m_WindTurbulence: 0.1
-  m_WindPulseMagnitude: 0.8
+  m_WindPulseMagnitude: 0.5
   m_WindPulseFrequency: 0.5
 --- !u!4 &1979002437
 Transform:
