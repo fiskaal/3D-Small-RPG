@@ -87,8 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2778759646017259578, guid: 672f0f9cd27a53946bd69f769b5e3ba2, type: 3}
-  initialProjectileSpeed: 10
-  maxProjectileSpeed: 100
+  projectileSpeed: 10
   desiredZPosition: 0.7
   desiredHeight: 1.2
   desiredTargetHeight: 1
@@ -115,15 +114,18 @@ MonoBehaviour:
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
   rotationSpeed: 4
   angleThreshold: 10
+  attackChance: 0.5
   lootItems:
   - {fileID: 2599361241298687333, guid: 5dee8169a360bce47b6aca4348603f75, type: 3}
   - {fileID: 8692958704477054658, guid: ff7cda5ce1d7d5947b2dc75fba91f6b5, type: 3}
   lootQuantities:
   - {x: 1, y: 4}
   - {x: 0, y: 2}
+  firstEncounter: 1
   _damagePopUpGenerator: {fileID: 0}
   _enemyHpBar: {fileID: 7970190231732567991}
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
+  damageDealers: []
 --- !u!195 &2596981799061986760
 NavMeshAgent:
   m_ObjectHideFlags: 0

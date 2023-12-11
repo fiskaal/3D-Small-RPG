@@ -143,6 +143,8 @@ MonoBehaviour:
   aggroRange: 6
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
   rotationSpeed: 4
+  angleThreshold: 5
+  attackChance: 0.5
   lootItems:
   - {fileID: 2599361241298687333, guid: 5dee8169a360bce47b6aca4348603f75, type: 3}
   - {fileID: 8692958704477054658, guid: ff7cda5ce1d7d5947b2dc75fba91f6b5, type: 3}
@@ -151,9 +153,13 @@ MonoBehaviour:
   - {x: 1, y: 4}
   - {x: 0, y: 2}
   - {x: 3, y: 5}
+  firstEncounter: 0
+  timeSinceLastSighting: 0
+  chillingDelay: 50
   _damagePopUpGenerator: {fileID: 0}
   _enemyHpBar: {fileID: 1394658461581507824}
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
+  damageDealers: []
 --- !u!195 &1031062533482400861
 NavMeshAgent:
   m_ObjectHideFlags: 0
