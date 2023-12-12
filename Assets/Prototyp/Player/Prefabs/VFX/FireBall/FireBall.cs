@@ -22,20 +22,18 @@ public class FireBall : MonoBehaviour
             }
         }
         
-        
-        if (!other.CompareTag("Player"))
+        if (other.gameObject != gameObject)
         {
-            if (other.gameObject != gameObject)
+            if (other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
             {
-                if (other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
+                if (!other.CompareTag("Player"))
                 {
                     Destroy(gameObject);
                 }
             }
         }
-        
     }
-
+    
     private void OnDestroy()
     {
         Instantiate(DestroyVFX, transform.position, transform.rotation);
