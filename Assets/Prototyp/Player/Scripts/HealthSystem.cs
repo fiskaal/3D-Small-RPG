@@ -122,13 +122,12 @@ public class HealthSystem : MonoBehaviour
                 {
                     _lvlQuestManager.UpdateDamageQuest(damageAmount);
                 }
+                
+                if (health <= 0)
+                {
+                    Die();
+                } 
             }
-
-
-            if (health <= 0)
-            {
-                Die();
-            } 
         }
     }
     
@@ -182,6 +181,15 @@ public class HealthSystem : MonoBehaviour
         // Show the game cursor (it's hidden by default when playing in Unity Editor)
         Cursor.visible = true;
     }
+
+    public void HeavyDamageIn()
+    {
+        _character.enabled = false;
+    }
+    public void HeavyDamageOut()
+    {
+        _character.enabled = true;
+    }
     
     [SerializeField] private float visualizationDistance = 2f;
 
@@ -203,4 +211,6 @@ public class HealthSystem : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + leftRayDirection * visualizationDistance);
         Gizmos.DrawLine(transform.position, transform.position + rightRayDirection * visualizationDistance);
     }
+    
+    
 }

@@ -26,8 +26,9 @@ public class EnemyBoss : MonoBehaviour
     [Header("Visual Effects")]
     [SerializeField] private GameObject hitVFX;
     [SerializeField] private GameObject hitVFX1;
-    [SerializeField] private GameObject ragdoll;
+    [SerializeField] private GameObject toxicSmoke;
     [SerializeField] private GameObject fallImpactVFX;
+    
 
 
 
@@ -51,6 +52,28 @@ public class EnemyBoss : MonoBehaviour
     private float jumpAttackTimePassed;
     private float timePassedAttackCD2;
     private float spitAttackTimePassed;
+
+    [Header("RageMode")] 
+    [SerializeField] private float rageModeBonusHealth = 20f;
+    [SerializeField] private bool rageMode = false;
+    [SerializeField] private bool rage = false;
+    [SerializeField] private ParticleSystem rageSmoke;
+    [SerializeField] private float halfOfHealth;
+    // color change
+    public Material bossMaterial;
+    public Color startColor = Color.white; // FFFFFF
+    public Color endColor = new Color(1f, 0.467f, 0.467f); // FF7777
+    public float transitionDuration = 5.0f; // Duration for the color transition in seconds
+
+    private float startTime;
+    
+    public Color particleStartColor = Color.white; // Initial color of the particle system
+    public float particleTransitionDuration = 3.0f; // Duration for particle color transition in seconds
+    public float emissionRate = 20f; // Starting emission rate
+
+    private float particleStartTime;
+
+
     
 
     [Header("Loot")]
@@ -101,7 +124,12 @@ public class EnemyBoss : MonoBehaviour
         jumpAttackTimePassed = jumpAttackCD;
         
         _bossDamageDealer = GetComponentInChildren<BossDamageDealer>();
-        
+
+        bossMaterial.color = startColor;
+        halfOfHealth = health / 2;
+        startTime = Time.time;
+        particleStartTime = Time.time;
+
         
         // Set max HP for the health bar
         _enemyHpBar.SetMaxHP(health);
@@ -124,7 +152,34 @@ public class EnemyBoss : MonoBehaviour
         {
             return;
         }
-        
+
+        if (health <= halfOfHealth && !rage && !isAttacking)
+        {
+            rage = true;
+            agent.SetDestination(transform.position);
+            agent.ResetPath();
+            RageModeActive();
+        }
+
+        if (rageMode)
+        {
+            // Material color change
+            float lerpFactor = Mathf.Clamp01((Time.time - startTime) / transitionDuration);
+            Color lerpedColor = Color.Lerp(startColor, endColor, lerpFactor);
+            bossMaterial.color = lerpedColor;
+
+            // Particle system color change
+            float particleLerpFactor = Mathf.Clamp01((Time.time - particleStartTime) / particleTransitionDuration);
+            Color particleLerpedColor = Color.Lerp(particleStartColor, endColor, particleLerpFactor);
+
+            // Modify particle system color
+            var mainModule = rageSmoke.main;
+            mainModule.startColor = particleLerpedColor;
+
+            // Modify emission rate
+            var emissionModule = rageSmoke.emission;
+            emissionModule.rateOverTime = emissionRate;
+        }
       
         UpdateCoolDown(ref timePassedAttackCD);
         UpdateCoolDown(ref timePassedAttackCD2);
@@ -150,8 +205,11 @@ public class EnemyBoss : MonoBehaviour
                 UpdateAttackState(stompAttackCd, basicAttackRange, ref timePassedAttackCD2);
         
                 UpdateAttackState(spitAttackCd, spitAttackRangeMax, ref spitAttackTimePassed);
-                
-                UpdateAttackState(jumpAttackCD, jumpAttackRange, ref jumpAttackTimePassed);
+
+                if (rageMode)
+                {
+                    UpdateAttackState(jumpAttackCD, jumpAttackRange, ref jumpAttackTimePassed);
+                }
             }
         }
         
@@ -237,7 +295,7 @@ public class EnemyBoss : MonoBehaviour
             }
         }
     }
-
+    
     private void Attack(string triggerName)
     {
         animator.applyRootMotion = true;
@@ -250,6 +308,24 @@ public class EnemyBoss : MonoBehaviour
         animator.SetBool("isAttacking", false);
         isAttacking = false;
         animator.applyRootMotion = false;
+    }
+
+    public void RageModeActive()
+    {
+        health =+ rageModeBonusHealth;
+        isIdle = false;
+        currentAttackDamage = handAttackDamage;
+        currentAttackRadius = handAttackRadius;
+        _bossDamageDealer.heavyDamage = false;
+        Attack("roar");
+    }
+
+    public void RageModeParticleChange()
+    {
+        if (rageSmoke != null)
+        {
+            rageMode = true;
+        }
     }
 
     private void UpdateDestination()
@@ -343,6 +419,7 @@ public class EnemyBoss : MonoBehaviour
             if (health <= 0)
             {
                 animator.SetTrigger("death");
+                animator.SetBool("dead", true);
                 dead = true;
             }
         }

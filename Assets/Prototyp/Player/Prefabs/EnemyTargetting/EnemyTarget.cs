@@ -52,8 +52,11 @@ public class EnemyTarget : MonoBehaviour
 
             if (currentTarget != lastTarget)
             {
-                currentTarget.GetComponentInChildren<Outline>().SetOutlineWidth(5);
-                
+                if (currentTarget != null)
+                {
+                    currentTarget.GetComponentInChildren<Outline>().SetOutlineWidth(5);
+                }
+
                 if (lastTarget != null)
                 {
                     lastTarget.GetComponentInChildren<Outline>().SetOutlineWidth(0);
