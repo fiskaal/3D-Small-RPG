@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class EquipmentManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            // Register the SceneLoaded method to be called when a scene is loaded
+            SceneManager.sceneLoaded += SceneLoaded;
         }
         else
         {
@@ -82,6 +86,26 @@ public class EquipmentManager : MonoBehaviour
         };
 
         return externalItems;
+    }
+
+    void SceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Find the player GameObject using the "Player" tag
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        // Get the PlayerEquipment script attached to the player GameObject
+        playerEquipment = playerObject.GetComponent<PlayerEquipment>();
+
+        if (playerEquipment == null)
+        {
+            Debug.LogError("PlayerEquipment script not found on the player GameObject.");
+        }
+    }
+
+    void OnDestroy()
+    {
+        // Unregister the SceneLoaded method to prevent memory leaks
+        SceneManager.sceneLoaded -= SceneLoaded;
     }
 
     [System.Serializable]

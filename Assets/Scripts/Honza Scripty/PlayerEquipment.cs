@@ -31,6 +31,8 @@ public class PlayerEquipment : MonoBehaviour
         }
     }
 
+    
+
     // Helper method to update equipment state and activate/deactivate objects
     private void UpdateEquipmentState(PlayerArmorEquipmentItem equipmentItem, bool isEquipped)
     {
