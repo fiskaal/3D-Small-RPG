@@ -4283,6 +4283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background_Sky
       objectReference: {fileID: 0}
+    - target: {fileID: 1232900140510610892, guid: 7591a91188b15914382495ac17237c66, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1232900140510610893, guid: 7591a91188b15914382495ac17237c66, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -5739,7 +5743,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
@@ -11148,6 +11152,10 @@ PrefabInstance:
     - target: {fileID: 1430988954756330378, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: m_Name
       value: 'Main Camera '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430988954756330378, guid: 68ec650a9113982449239062459a8dd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1430988954756330382, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: target
