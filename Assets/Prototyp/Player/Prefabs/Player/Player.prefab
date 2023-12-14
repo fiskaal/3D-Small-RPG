@@ -326,12 +326,13 @@ MonoBehaviour:
   _blockBreaker: {fileID: 4510063061906293845}
   health: 100
   hitVFX: {fileID: 6823200998282874702, guid: 8f8fe12323625f5499b2853dd2ad3e58, type: 3}
-  ragdoll: {fileID: 7650963890995329670, guid: 0391a26472a45d64eb64a2642cc53d3e, type: 3}
+  deathVFX: {fileID: 2603646526891431164, guid: 325042a6bbab8c04dba3e5169e38c43c, type: 3}
   _damagePopUpGenerator: {fileID: 6624477393686710825}
   blockVFXScript: {fileID: 410327260356725852}
   angleThreshold: 90
   deathUIPopUp: {fileID: 26907467}
   playerDestroy: {fileID: 7930576844689401519}
+  deathVFXHolder: {fileID: 5296911345598463174}
   visualizationDistance: 2
 --- !u!114 &4510063061906293845
 MonoBehaviour:
@@ -365,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec39250d233a19a479be5dc906017db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 15
+  projectileSpeed: 25
   projectilePrefab: {fileID: 5761864145744174575, guid: 50b59d043e440eb478855f784bbeffb5, type: 3}
   projectileHolder: {fileID: 2820816708856422676}
   enemyTarget: {fileID: 7973166751640041752}
@@ -3133,6 +3134,11 @@ GameObject:
 --- !u!4 &4067584750770825113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6538257478312197223, guid: 79ae054ddca306f43aad344fa0fc2f07, type: 3}
+  m_PrefabInstance: {fileID: 7119760340269358078}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5296911345598463174 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3119886798139598648, guid: 79ae054ddca306f43aad344fa0fc2f07, type: 3}
   m_PrefabInstance: {fileID: 7119760340269358078}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7297169724542434325 stripped

@@ -13,7 +13,6 @@ Material:
   - LOD_FADE_CROSSFADE
   m_InvalidKeywords:
   - _FLATCOLOURSWITCH_ON
-  - _LEAFFLATCOLOURSWITCH_ON
   - _LOD_FADE_CROSSFADE_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -190,10 +189,10 @@ Material:
     - _Big_WindAmount: 1.22
     - _Big_Windspeed: 1.84
     - _BumpScale: 1
-    - _ColourNoiseLargeScale: 0.186
+    - _ColourNoiseLargeScale: 0.193
     - _ColourNoiseScale: 0.108
-    - _ColourNoiseSmallScale: 0.459
-    - _Cutoff: 0.3
+    - _ColourNoiseSmallScale: 0.407
+    - _Cutoff: 0.75
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissiveAmount: 0
@@ -220,7 +219,7 @@ Material:
     - _LOD_FADE_CROSSFADE_out: 1
     - _LeafBigNoiseAmount: 0.459
     - _LeafBigNoiseScale: 0
-    - _LeafFlatColourSwitch: 1
+    - _LeafFlatColourSwitch: 0
     - _LeafMetallic: 0
     - _LeafNoiseAmount: 0.371
     - _LeafNoiseScale: 1
@@ -284,13 +283,13 @@ Material:
     - _FrostingColour: {r: 0, g: 0, b: 0, a: 0}
     - _GustHighlight: {r: 0, g: 0, b: 0, a: 0}
     - _GustSmoothing: {r: 0.5, g: 0.5, b: 0.5, a: 0}
-    - _LeafBaseColour: {r: 0.5254902, g: 0.5294118, b: 0.21568629, a: 1}
+    - _LeafBaseColour: {r: 0.5254902, g: 0.5294118, b: 0.21568623, a: 1}
     - _LeafNoiseColour: {r: 0.5058824, g: 0.5137255, b: 0.21176472, a: 1}
-    - _LeafNoiseLargeColour: {r: 0.49411768, g: 0.5019608, b: 0.20000002, a: 1}
+    - _LeafNoiseLargeColour: {r: 0.49411762, g: 0.5019608, b: 0.19999999, a: 1}
     - _LeafTint: {r: 0.07843138, g: 0.02015968, b: 0, a: 0}
     - _SnowColour: {r: 1, g: 1, b: 1, a: 0}
     - _Tint: {r: 0, g: 0, b: 0, a: 0}
-    - _TrunkBaseColour: {r: 0.07843138, g: 0.02015968, b: 0, a: 0}
+    - _TrunkBaseColour: {r: 0, g: 0, b: 0, a: 0}
     - _TrunkEmissiveColour: {r: 0, g: 0, b: 0, a: 0}
     - _TrunkNoiseColour: {r: 0, g: 0, b: 0, a: 0}
     - _TrunkTint: {r: 0.07843138, g: 0.02015968, b: 0, a: 0}

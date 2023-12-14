@@ -42,6 +42,11 @@ public class Enemy : MonoBehaviour
     private bool enemyIsInRange;
     private bool isAttacking;
 
+    public bool firstEncounter = false;
+    private Vector3 originalPosition;
+    [SerializeField]private float timeSinceLastSighting = 0f;
+    [SerializeField]private float chillingDelay = 10f;
+
     private HealthSystem playerHealthSystem;
     [SerializeField] private DamagePopUpGenerator _damagePopUpGenerator;
 
@@ -58,6 +63,9 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealthSystem = player.GetComponent<HealthSystem>();
 
+        animator.SetTrigger("chilling");
+        originalPosition = transform.position;
+        
         animator.applyRootMotion = false;
         dead = false;
         timePassedAfterDeath = 0f;
@@ -66,6 +74,8 @@ public class Enemy : MonoBehaviour
         
         //hpBar
         _enemyHpBar.SetMaxHP(health);
+        _enemyHpBar.SetHP(health);
+
 
         _damagePopUpGenerator = FindObjectOfType<DamagePopUpGenerator>();
         damageDealers = GetComponentsInChildren<EnemyDamageDealer>();    
@@ -89,87 +99,137 @@ public class Enemy : MonoBehaviour
         if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
         {
             enemyIsInRange = true;
+            timeSinceLastSighting = 0f; // Reset timer since the player is spotted
+            
+            if (!firstEncounter)
+            {
+                firstEncounter = true;
+                animator.SetTrigger("enemySpotted");
+            }
         }
         else
         {
             enemyIsInRange = false;
-        }
-        
-        //attack
-        // Calculate the direction from the enemy to the player
-        Vector3 directionToPlayer = player.transform.position - transform.position;
-        directionToPlayer.y = 0f; // Set the Y component to zero to avoid rotation in the Y-axis
-        // Calculate the angle between the enemy's forward direction and the direction to the player
-        float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-        // Define a threshold angle, for instance, 5 degrees
 
-        if (angleToPlayer < angleThreshold)
-        {
-            if (timePassed >= attackCD && !dead)
+            if (firstEncounter)
             {
-                if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
+                // Increment timer if the player is not spotted
+                timeSinceLastSighting += Time.deltaTime;
+
+                // If the timer reaches the delay, trigger chilling animation and return to original position
+                if (timeSinceLastSighting >= chillingDelay)
                 {
-                    if (playerHealthSystem.health > 0)
+                    // Check if the enemy reached its original position
+                    if (Vector3.Distance(transform.position, originalPosition) < 2f)
                     {
-                        isAttacking = true;
-                        animator.applyRootMotion = true;
-
-                        if (hasMoreAttacks)
-                        {
-                            //choose random one attack
-                            float randomValue = Random.value;
-                            if (randomValue > 0.5f)
-                            {
-                                animator.SetTrigger("attack");
-                            }
-                            else
-                            {
-                                animator.SetTrigger("attack1");
-                            }
-                        }
-                        else
-                        {
-                            animator.SetTrigger("attack");
-                        }
-
-                        Instantiate(preAttackWarningPrefab, transform);
-                        timePassed = 0;
-
-                        if (_ockoProjectile != null)
-                        {
-                            _ockoProjectile.FireProjectile(player.transform.position, transform);
-                            
-                            float randomValue = Random.value;
-                            attackChance = 0.5f;
-                            if (randomValue <= attackChance)
-                            {
-                                StartCoroutine(TriggerAttackAfterDelay());
-                            }
-                        }
+                        // Trigger chilling animation when back to original position
+                        animator.SetTrigger("chilling");
+                        timeSinceLastSighting = 0f; // Reset timer after triggering "chilling"
+                        firstEncounter = false;
+                    }
+                    else
+                    {
+                        agent.SetDestination(originalPosition);
                     }
                 }
             }
         }
 
-        timePassed += Time.deltaTime;
+        if (firstEncounter)
+        {
 
-        if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
-        {
-            newDestinationCD = 0.5f;
-            agent.SetDestination(player.transform.position);
-        }
-        newDestinationCD -= Time.deltaTime;
-        
-        if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
-        {
+            //attack
             // Calculate the direction from the enemy to the player
-            //its done up there
+            Vector3 directionToPlayer = player.transform.position - transform.position;
+            directionToPlayer.y = 0f; // Set the Y component to zero to avoid rotation in the Y-axis
+            // Calculate the angle between the enemy's forward direction and the direction to the player
+            float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+            // Define a threshold angle, for instance, 5 degrees
 
-            if (directionToPlayer != Vector3.zero)
+            if (angleToPlayer < angleThreshold)
             {
-                // Rotate the enemy to face the player's direction
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionToPlayer), rotationSpeed * Time.deltaTime);
-                
+                if (timePassed >= attackCD && !dead)
+                {
+                    if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
+                    {
+                        if (playerHealthSystem.health > 0)
+                        {
+                            isAttacking = true;
+                            animator.applyRootMotion = true;
+
+                            if (hasMoreAttacks)
+                            {
+                                //choose random one attack
+                                float randomValue = Random.value;
+                                if (randomValue > 0.5f)
+                                {
+                                    animator.SetTrigger("attack");
+                                }
+                                else
+                                {
+                                    animator.SetTrigger("attack1");
+                                }
+                            }
+                            else
+                            {
+                                animator.SetTrigger("attack");
+                            }
+
+                            Instantiate(preAttackWarningPrefab, transform);
+                            timePassed = 0;
+
+                            if (_ockoProjectile != null)
+                            {
+                                _ockoProjectile.FireProjectile(player.transform.position, transform);
+
+                                float randomValue = Random.value;
+                                attackChance = 0.5f;
+                                if (randomValue <= attackChance)
+                                {
+                                    StartCoroutine(TriggerAttackAfterDelay());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            timePassed += Time.deltaTime;
+
+            if (newDestinationCD <= 0 &&
+                Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
+            {
+                newDestinationCD = 0.5f;
+                agent.SetDestination(player.transform.position);
+            }
+
+            newDestinationCD -= Time.deltaTime;
+
+            if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
+            {
+                // Calculate the direction from the enemy to the player
+                //its done up there
+
+                if (directionToPlayer != Vector3.zero)
+                {
+                    // Rotate the enemy to face the player's direction
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(directionToPlayer), rotationSpeed * Time.deltaTime);
+
+                }
+            }
+            //enemy roam
+            if (!dead && !enemyIsInRange)
+            {
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    Vector3 point;
+                    if (RandomPoint(transform.position, aggroRange, out point))
+                    {
+                        Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                        agent.SetDestination(point);
+                    }
+                }
             }
         }
         
@@ -179,21 +239,8 @@ public class Enemy : MonoBehaviour
             {
                 Die();
             }
+
             timePassedAfterDeath += Time.deltaTime;
-        }
-        
-        //enemy roam
-        if (!dead && !enemyIsInRange)
-        {
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                Vector3 point;
-                if (RandomPoint(transform.position, aggroRange, out point))
-                {
-                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                    agent.SetDestination(point);
-                }
-            }
         }
     }
     
@@ -291,6 +338,12 @@ public class Enemy : MonoBehaviour
                     GameObject death = Instantiate(deathVFX, transform);
                     death.transform.SetParent(null);
                 }
+            }
+            
+            if (!firstEncounter)
+            {
+                firstEncounter = true;
+                //animator.SetTrigger("enemySpotted");
             }
         }
     }

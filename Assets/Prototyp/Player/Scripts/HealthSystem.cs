@@ -9,7 +9,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private BlockBreaker _blockBreaker;
     [SerializeField] public float health = 100;
     [SerializeField] GameObject hitVFX;
-    [SerializeField] GameObject ragdoll;
+    [SerializeField] GameObject deathVFX;
 
     Animator animator;
     
@@ -122,13 +122,12 @@ public class HealthSystem : MonoBehaviour
                 {
                     _lvlQuestManager.UpdateDamageQuest(damageAmount);
                 }
+                
+                if (health <= 0)
+                {
+                    Die();
+                } 
             }
-
-
-            if (health <= 0)
-            {
-                Die();
-            } 
         }
     }
     
@@ -145,6 +144,9 @@ public class HealthSystem : MonoBehaviour
     [Header("Death PopUp")] 
     [SerializeField]private GameObject deathUIPopUp;
     [SerializeField] private GameObject playerDestroy;
+    [SerializeField] private Transform deathVFXHolder;
+
+    
     void Die()
     {
         Character character = GetComponent<Character>();
@@ -154,7 +156,7 @@ public class HealthSystem : MonoBehaviour
         //Instantiate(ragdoll, transform.position, transform.rotation);
         //Destroy(playerDestroy);
         StartCoroutine(FreezeGameAfterDelay(5f));
-        
+        Instantiate(deathVFX, deathVFXHolder);
     }
     public void HitVFX(Vector3 hitPosition)
     {
@@ -179,6 +181,15 @@ public class HealthSystem : MonoBehaviour
         // Show the game cursor (it's hidden by default when playing in Unity Editor)
         Cursor.visible = true;
     }
+
+    public void HeavyDamageIn()
+    {
+        _character.enabled = false;
+    }
+    public void HeavyDamageOut()
+    {
+        _character.enabled = true;
+    }
     
     [SerializeField] private float visualizationDistance = 2f;
 
@@ -200,4 +211,6 @@ public class HealthSystem : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + leftRayDirection * visualizationDistance);
         Gizmos.DrawLine(transform.position, transform.position + rightRayDirection * visualizationDistance);
     }
+    
+    
 }

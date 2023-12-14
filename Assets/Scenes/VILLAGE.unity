@@ -20,12 +20,12 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 50
   m_LinearFogEnd: 200
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
-  m_AmbientEquatorColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientEquatorColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_AmbientGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientIntensity: 1.1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: ddbcbb3899687ea469ed4a5fce1532df, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -2906,11 +2906,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fa6ec1e26b47c4044aeea5861ea6c0a1, type: 3}
   m_PrefabInstance: {fileID: 1392579822}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &444939404 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5998145921185292192, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-  m_PrefabInstance: {fileID: 582028115}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &456312327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3940,7 +3935,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5070
+  m_Name: pb_Mesh-533772
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4356,22 +4351,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3004198187881320972, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3054176856221966654, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: KnightLegs.itemObject
-      value: 
-      objectReference: {fileID: 444939404}
-    - target: {fileID: 3054176856221966654, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: KnightBoots.itemObject
-      value: 
-      objectReference: {fileID: 1731655118}
-    - target: {fileID: 3054176856221966654, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: KnightChestplate.defaultObject
-      value: 
-      objectReference: {fileID: 1883037218}
     - target: {fileID: 3729690394047643848, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4396,14 +4375,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5998145921185292192, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8342079524664509430, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 3958384553994911631, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 5761864145744174575, guid: 50b59d043e440eb478855f784bbeffb5, type: 3}
     - target: {fileID: 9178692185875325878, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6553,10 +6528,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Guard_Tower_01
       objectReference: {fileID: 0}
-    - target: {fileID: 142138, guid: 0ec2efc55179aac459a75ecbcec67d83, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 449342, guid: 0ec2efc55179aac459a75ecbcec67d83, type: 3}
       propertyPath: m_RootOrder
       value: 36
@@ -6604,7 +6575,7 @@ PrefabInstance:
     - target: {fileID: 2377622, guid: 0ec2efc55179aac459a75ecbcec67d83, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fa8eda4ec55ee1a4e99ca991c5828dbf, type: 2}
+      objectReference: {fileID: 2100000, guid: eb83b2b658dfc194e8b26c4421e3c748, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ec2efc55179aac459a75ecbcec67d83, type: 3}
 --- !u!1001 &822953102
@@ -7279,7 +7250,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.923124, b: 0.7122642, a: 1}
-  m_Intensity: 0.53
+  m_Intensity: 0.49
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -11185,26 +11156,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1582830186136623511, guid: 68ec650a9113982449239062459a8dd3, type: 3}
-      propertyPath: m_ShowToolkit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582830186136623511, guid: 68ec650a9113982449239062459a8dd3, type: 3}
-      propertyPath: antialiasingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582830186136623511, guid: 68ec650a9113982449239062459a8dd3, type: 3}
-      propertyPath: m_ShowCustomSorter
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582830186136623511, guid: 68ec650a9113982449239062459a8dd3, type: 3}
-      propertyPath: volumeLayer.m_Bits
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582830186136623511, guid: 68ec650a9113982449239062459a8dd3, type: 3}
-      propertyPath: fastApproximateAntialiasing.keepAlpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6732135273299626105, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -12201,10 +12152,6 @@ MonoBehaviour:
     isBought: 0
     boughtObjectName: LIGHTNING_BOUGHT
     notBoughtObjectName: LIGHTNING_BUY
-  - PlayerPrefsKey: 4
-    isBought: 0
-    boughtObjectName: HeavyHelm_EQUIP
-    notBoughtObjectName: HeavyHelm_BUY
 --- !u!4 &1615058504
 Transform:
   m_ObjectHideFlags: 0
@@ -12618,10 +12565,6 @@ PrefabInstance:
     - target: {fileID: 6910304087986377233, guid: cf582dfce5a38e84e962b80aed595122, type: 3}
       propertyPath: m_DrawHalo
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6910304087986377233, guid: cf582dfce5a38e84e962b80aed595122, type: 3}
-      propertyPath: m_Intensity
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6910304087986377233, guid: cf582dfce5a38e84e962b80aed595122, type: 3}
       propertyPath: m_CookieSize
@@ -13126,11 +13069,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1731655118 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3004198187881320972, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-  m_PrefabInstance: {fileID: 582028115}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1732781333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14206,11 +14144,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 954d5b0641aca3b4da80d82212a18e28, type: 3}
---- !u!1 &1883037218 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3423513395511200883, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-  m_PrefabInstance: {fileID: 582028115}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1883462490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15610,63 +15543,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.4935484, y: 13.458069, z: 19.240112}
   m_Center: {x: 6.3925033, y: 7.611499, z: -0.5450673}
---- !u!1 &2064814906
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2064814908}
-  - component: {fileID: 2064814907}
-  m_Layer: 0
-  m_Name: ArmorManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2064814907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064814906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99acf4e4f91b67c47a71e67b1f485537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ExternalKnightHelmet:
-    variableName: KnightHelmet
-    activateEquipment: 0
-  ExternalKnightChestplate:
-    variableName: KnightChestplate
-    activateEquipment: 0
-  ExternalKnightLegs:
-    variableName: KnightLegs
-    activateEquipment: 0
-  ExternalKnightBoots:
-    variableName: KnightBoots
-    activateEquipment: 0
-  playerEquipment: {fileID: 0}
---- !u!4 &2064814908
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064814906}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.559597, y: 1.3973849, z: -25.430794}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 31
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2077384071 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 41f43001efd01f040a399cbc8bb7f649, type: 3}

@@ -21,6 +21,11 @@ public class PlayerFireProjectile : MonoBehaviour
 
     public void FireProjectile()
     {
+        if (currentProjectile == null)
+        {
+            return;
+        }
+        
         currentProjectile.transform.SetParent(null);
 
         if (enemyTarget.currentTarget == null)

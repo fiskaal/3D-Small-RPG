@@ -65,6 +65,8 @@ Animation:
   m_Animation: {fileID: 0}
   m_Animations:
   - {fileID: 7400000, guid: 50eab910fe9eeaf4983260c108808f70, type: 2}
+  - {fileID: 7400000, guid: 8c7419d3c82d9cc44990344c1aaa75ec, type: 2}
+  - {fileID: 7400000, guid: b4d28039f40bad140a7dc9f899d83c28, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -139,7 +141,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.45
+  m_Radius: 0.6
   m_Height: 4.01
   m_Direction: 1
   m_Center: {x: 0, y: 1.86, z: 0}
@@ -165,7 +167,7 @@ MonoBehaviour:
   currentAttackRadius: 0
   hitVFX: {fileID: 4047385913798380573, guid: 1283d85035ecf224fb9c2a2bd4f82c5f, type: 3}
   hitVFX1: {fileID: 219217740888041541, guid: c01593394d44d1b44b4d11beff1c4eb6, type: 3}
-  ragdoll: {fileID: 0}
+  toxicSmoke: {fileID: 7958341603830991569}
   fallImpactVFX: {fileID: 1589242962888738191, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
   health: 50
   basAttackCd: 3
@@ -174,10 +176,22 @@ MonoBehaviour:
   spitAttackCd: 5
   spitAttackRangeMin: 4
   spitAttackRangeMax: 7
-  jumpAttackRange: 2
-  jumpAttackCD: 10
+  jumpAttackRange: 3
+  jumpAttackCD: 15
   aggroRange: 15
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
+  rageModeBonusHealth: 20
+  rageMode: 0
+  rage: 0
+  rageSmoke: {fileID: 4555962804809651388}
+  halfOfHealth: 0
+  bossMaterial: {fileID: 2100000, guid: 8cacca7986ab18f46ae62be8ec05f3ea, type: 2}
+  startColor: {r: 1, g: 1, b: 1, a: 1}
+  endColor: {r: 1, g: 0.467, b: 0.467, a: 1}
+  transitionDuration: 10
+  particleStartColor: {r: 1, g: 1, b: 1, a: 1}
+  particleTransitionDuration: 5
+  emissionRate: 20
   lootItems:
   - {fileID: 2599361241298687333, guid: 5dee8169a360bce47b6aca4348603f75, type: 3}
   - {fileID: 8692958704477054658, guid: ff7cda5ce1d7d5947b2dc75fba91f6b5, type: 3}
@@ -201,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2778759646017259578, guid: 672f0f9cd27a53946bd69f769b5e3ba2, type: 3}
   projectileSpeed: 10
-  desiredZPosition: 0.7
+  desiredZPosition: 1
   desiredHeight: 2.5
   desiredTargetHeight: 1
 --- !u!114 &6670631028866693609
@@ -513,8 +527,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.14901961, g: 0.1764706, b: 0.18823531, a: 1}
-      maxColor: {r: 0.7490196, g: 0.83921576, b: 0.8588236, a: 1}
+      minColor: {r: 0.046939667, g: 0.33962262, b: 0, a: 1}
+      maxColor: {r: 0.5467544, g: 0.8962264, b: 0.6077371, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1605,16 +1619,16 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 1, b: 0.02294755, a: 0}
-        key1: {r: 1, g: 1, b: 1, a: 0.5882353}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 1, b: 1, a: 0}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
+        ctime1: 64571
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -1623,7 +1637,7 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 29876
-        atime2: 65535
+        atime2: 50693
         atime3: 65535
         atime4: 0
         atime5: 0
@@ -1631,7 +1645,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 3
+        m_NumAlphaKeys: 4
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5311,6 +5325,22 @@ PrefabInstance:
       propertyPath: m_LocalRotation.y
       value: -0.18533564
       objectReference: {fileID: 0}
+    - target: {fileID: -6094617201381852913, guid: 2426d9f3450e3bd418cf24cd288bce8e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6094617201381852913, guid: 2426d9f3450e3bd418cf24cd288bce8e, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6094617201381852913, guid: 2426d9f3450e3bd418cf24cd288bce8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8cacca7986ab18f46ae62be8ec05f3ea, type: 2}
+    - target: {fileID: -6094617201381852913, guid: 2426d9f3450e3bd418cf24cd288bce8e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8cacca7986ab18f46ae62be8ec05f3ea, type: 2}
     - target: {fileID: -1071936788571594219, guid: 2426d9f3450e3bd418cf24cd288bce8e, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.2146801
