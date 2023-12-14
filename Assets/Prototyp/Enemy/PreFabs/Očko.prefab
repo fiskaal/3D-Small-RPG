@@ -121,7 +121,9 @@ MonoBehaviour:
   lootQuantities:
   - {x: 1, y: 4}
   - {x: 0, y: 2}
-  firstEncounter: 1
+  firstEncounter: 0
+  timeSinceLastSighting: 0
+  chillingDelay: 10
   _damagePopUpGenerator: {fileID: 0}
   _enemyHpBar: {fileID: 7970190231732567991}
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
