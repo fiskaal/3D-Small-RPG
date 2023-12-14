@@ -80,7 +80,7 @@ public class EnemyBoss : MonoBehaviour
     [SerializeField] private GameObject[] lootItems;
     [SerializeField] private Vector2Int[] lootQuantities;
 
-    private GameObject player;
+    private GameObject player;  
     private NavMeshAgent agent;
     private Animator animator;
     private float timePassed;
@@ -312,12 +312,14 @@ public class EnemyBoss : MonoBehaviour
 
     public void RageModeActive()
     {
-        health =+ rageModeBonusHealth;
+        health = health + rageModeBonusHealth;
         isIdle = false;
         currentAttackDamage = handAttackDamage;
         currentAttackRadius = handAttackRadius;
         _bossDamageDealer.heavyDamage = false;
         Attack("roar");
+        isAttacking = true;
+        attackingTime = animator.GetCurrentAnimatorClipInfo(0).Length;
     }
 
     public void RageModeParticleChange()
