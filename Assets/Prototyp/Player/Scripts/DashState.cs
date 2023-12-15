@@ -69,7 +69,7 @@ using UnityEngine;
 public class DashState : State
 {
     private float dashSpeed = 10.0f; // Adjust the dash speed as needed
-    private float dashDuration = 0.5f; // Adjust the dash duration as needed
+    private float dashDuration = 0.6f; // Adjust the dash duration as needed
     private float dashTimer = 0f;
     private Vector3 dashDirection = Vector3.zero;
     

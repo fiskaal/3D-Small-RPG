@@ -51,12 +51,23 @@ public class JumpingState:State
 
         if (grounded)
 		{
-            stateMachine.ChangeState(character.landing);
+            //stateMachine.ChangeState(character.landing);
+            if (character.animator.GetBool("inCombat"))
+            {
+	            stateMachine.ChangeState(character.combatting);
+            }
+            else
+            {
+	            stateMachine.ChangeState(character.standing);
+            }
+
+            character.animator.SetTrigger("land");
+
         }
         
         if (!grounded && timePassed >= jumpingTime)
         {
-	        stateMachine.ChangeState((character.falling));
+	        //stateMachine.ChangeState((character.falling));
         }
 
         
