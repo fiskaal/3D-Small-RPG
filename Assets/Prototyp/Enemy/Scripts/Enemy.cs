@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject[] lootItems;
     [SerializeField] Vector2Int[] lootQuantities;
 
-    GameObject player;
+    public GameObject player;
     NavMeshAgent agent;
     Animator animator;
     float timePassed;
@@ -180,7 +180,7 @@ public class Enemy : MonoBehaviour
 
                             if (_ockoProjectile != null)
                             {
-                                _ockoProjectile.FireProjectile(player.transform.position, transform);
+                                //_ockoProjectile.FireProjectile(player.transform.position, transform);
 
                                 float randomValue = Random.value;
                                 attackChance = 0.5f;
@@ -253,7 +253,7 @@ public class Enemy : MonoBehaviour
         // Trigger the attack after the delay
         Instantiate(preAttackWarningPrefab, transform);
         animator.SetTrigger("attack");
-        _ockoProjectile.FireProjectile(player.transform.position, transform);
+        //_ockoProjectile.FireProjectile(player.transform.position, transform);
     }
 
     

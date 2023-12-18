@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1501238348361133199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5314520600676782836}
+  m_Layer: 0
+  m_Name: boneCopy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5314520600676782836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501238348361133199}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0006, y: -0.0076, z: -0.0016}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4580637509901923676}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2788015853161725157
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,6 +67,7 @@ Transform:
   m_Children:
   - {fileID: 5830252764935967894}
   - {fileID: 5684391212084251287}
+  - {fileID: 6737692327518767386}
   - {fileID: 5057005235911167085}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -88,9 +120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2778759646017259578, guid: 672f0f9cd27a53946bd69f769b5e3ba2, type: 3}
   projectileSpeed: 10
-  desiredZPosition: 0.7
-  desiredHeight: 1.2
   desiredTargetHeight: 1
+  projectileHolder: {fileID: 6737692327518767386}
+  boneProjectileHolderCopy: {fileID: 5314520600676782836}
+  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &6297033395205801718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +156,7 @@ MonoBehaviour:
   - {x: 1, y: 4}
   - {x: 0, y: 2}
   - {x: 0, y: 2}
+  player: {fileID: 0}
   firstEncounter: 0
   timeSinceLastSighting: 0
   chillingDelay: 10
@@ -168,6 +202,37 @@ MonoBehaviour:
   objectsToActivate:
   - {fileID: 143311247139581000}
   rangeThreshold: 15
+--- !u!1 &7818075555009430589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6737692327518767386}
+  m_Layer: 0
+  m_Name: projectileHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6737692327518767386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7818075555009430589}
+  m_LocalRotation: {x: -0.77627945, y: -0.002208697, z: 0.05164221, w: 0.6282663}
+  m_LocalPosition: {x: 0.0068359375, y: 1.2447883, z: 0.51724243}
+  m_LocalScale: {x: 29.231995, y: 29.231956, z: 29.23196}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2784529378381057221}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1042042340014347164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,7 +356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6022461085753545002, guid: 89857c975707d4046b767af672626a89, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6022461085753545002, guid: 89857c975707d4046b767af672626a89, type: 3}
       propertyPath: m_LocalPosition.x
@@ -402,6 +467,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12c7284b94a962a44a112a958da058b5, type: 3}
+--- !u!4 &4580637509901923676 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1661196003240671711, guid: 12c7284b94a962a44a112a958da058b5, type: 3}
+  m_PrefabInstance: {fileID: 6297033395440595837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5830252764935967894 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 12c7284b94a962a44a112a958da058b5, type: 3}

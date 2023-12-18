@@ -80,7 +80,7 @@ public class EnemyBoss : MonoBehaviour
     [SerializeField] private GameObject[] lootItems;
     [SerializeField] private Vector2Int[] lootQuantities;
 
-    private GameObject player;  
+    public GameObject player;  
     private NavMeshAgent agent;
     private Animator animator;
     private float timePassed;
@@ -274,7 +274,7 @@ public class EnemyBoss : MonoBehaviour
                         _bossDamageDealer.heavyDamage = false;
                         Attack("attackSpit");
                         OckoProjectile projectile = GetComponent<OckoProjectile>();
-                        projectile.FireProjectile(player.transform.position, transform);
+                        //projectile.FireProjectile(player.transform.position, transform);
                     }
                     else if (attackCooldown == jumpAttackCD)
                     {
