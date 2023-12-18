@@ -109,8 +109,8 @@ MonoBehaviour:
   ragdoll: {fileID: 0}
   health: 5
   attackCD: 4
-  attackRange: 14
-  aggroRange: 15
+  attackRange: 15
+  aggroRange: 20
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
   rotationSpeed: 4
   angleThreshold: 10
@@ -118,8 +118,10 @@ MonoBehaviour:
   lootItems:
   - {fileID: 2599361241298687333, guid: 5dee8169a360bce47b6aca4348603f75, type: 3}
   - {fileID: 8692958704477054658, guid: ff7cda5ce1d7d5947b2dc75fba91f6b5, type: 3}
+  - {fileID: 4440475420537621230, guid: 9c2fb36324d1ded459edf53b82312231, type: 3}
   lootQuantities:
   - {x: 1, y: 4}
+  - {x: 0, y: 2}
   - {x: 0, y: 2}
   firstEncounter: 0
   timeSinceLastSighting: 0
@@ -142,7 +144,7 @@ NavMeshAgent:
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 13
+  m_StoppingDistance: 14
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
