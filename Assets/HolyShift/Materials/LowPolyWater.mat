@@ -12,9 +12,9 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 5
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 2800
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -42,8 +42,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _DistortionTex:
         m_Texture: {fileID: 2800000, guid: b01980ff2ae464fadaac446f66f5558f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 1, y: 1}
     - _Fresnel:
         m_Texture: {fileID: 2800000, guid: 5b5c5575fd4c74abd9f7b30862fb76a3, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -127,11 +127,11 @@ Material:
     - _Shininess: 500
     - _ShoreTiling: 56.862743
     - _Speed: 0.4137931
-    - _TargetValue: 0.5
-    - _TimeScale1: 2.93
-    - _TimeScale2: 2.3
+    - _TargetValue: 0.226
+    - _TimeScale1: 2.5
+    - _TimeScale2: 5
     - _TresholdDensity: 15
-    - _TresholdFalloff: 0.5
+    - _TresholdFalloff: 1
     - _TreshouldDensity: 15
     - _TreshouldFalloff: 1.57
     - _WaterDepth: 40.98077
@@ -141,10 +141,10 @@ Material:
     - _WavesDensity: 6
     m_Colors:
     - WaveSpeed: {r: 1.086165, g: 4.440575, b: 12.105146, a: -3.0206447}
-    - _AnimationDirection: {r: 0, g: 0, b: 0, a: 0}
-    - _AnimationTiling: {r: 0, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 0.36690098, g: 0.7871827, b: 0.9150943, a: 0.14901961}
-    - _BumpDirection: {r: 0, g: 0, b: 0, a: 0}
+    - _AnimationDirection: {r: 2.91, g: 3.34, b: 3.24, a: 1.8}
+    - _AnimationTiling: {r: 2.88, g: 1.89, b: 2.2, a: 1.89}
+    - _BaseColor: {r: 0.6179246, g: 0.7499143, b: 1, a: 0.28235295}
+    - _BumpDirection: {r: 8.98, g: 3.34, b: 2.25, a: 2.27}
     - _BumpMap_ST: {r: 1, g: 1, b: 0, a: 0}
     - _BumpTiling: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -152,21 +152,21 @@ Material:
     - _DepthColorFade: {r: 0.8880597, g: 0.27834705, b: 0.44463244, a: 0.22352941}
     - _Displacement: {r: 6.6371665, g: 20.353983, b: -1, a: -0.681416}
     - _DisplacementXz: {r: 0.6499999, g: -2.9203715, b: 1.6599998, a: -3.9363046}
-    - _DistortParams: {r: 0, g: 0, b: 1, a: 0.1}
+    - _DistortParams: {r: 1, g: 1, b: 1, a: 0.5}
     - _Extinction: {r: 4.5, g: 75, b: 300, a: 1}
     - _Foam: {r: 0.42666668, g: 0.48666668, b: 0, a: 0}
     - _FoamWaveParams: {r: 0, g: 0.24918434, b: 3.3395782, a: 1}
     - _Fresnel_ST: {r: 1, g: 1, b: 0, a: 0}
-    - _GAmplitude: {r: 0, g: -0.001, b: 0, a: 0}
-    - _GDirectionAB: {r: 2.71, g: 1.53, b: 2.04, a: 2.85}
-    - _GDirectionCD: {r: 3.03, g: 2.8, b: 0.52, a: 0.6}
+    - _GAmplitude: {r: 0.0005, g: 0.0005, b: 0, a: 0}
+    - _GDirectionAB: {r: 0, g: 1.53, b: 2.04, a: 2.85}
+    - _GDirectionCD: {r: 1, g: 2.8, b: 1, a: 0}
     - _GFrequency: {r: 0, g: 0, b: 0, a: 0.45}
-    - _GSpeed: {r: 2.25, g: 2.14, b: 3.83, a: 0.1}
-    - _GSteepness: {r: 0, g: 0, b: 2.29, a: 10.13}
+    - _GSpeed: {r: 1, g: 1, b: 1, a: 0.1}
+    - _GSteepness: {r: 0, g: 0, b: 0, a: 0}
     - _HorizonColor: {r: 0.052907113, g: 0.24486735, b: 0.2835821, a: 1}
-    - _InvFadeParemeter: {r: 0, g: 0, b: 0, a: 0}
+    - _InvFadeParemeter: {r: 2.82, g: 2.02, b: 2.17, a: 0.96}
     - _MainTex_ST: {r: 1, g: 1, b: 0, a: 0}
-    - _ReflectionColor: {r: 0.22797254, g: 0.3036619, b: 0.44339618, a: 1}
+    - _ReflectionColor: {r: 0.32974362, g: 0.47003466, b: 0.735849, a: 1}
     - _ReflectionTex_ST: {r: 1, g: 1, b: 0, a: 0}
     - _ReflectiveColorCube_ST: {r: 1, g: 1, b: 0, a: 0}
     - _ReflectiveColor_ST: {r: 1, g: 1, b: 0, a: 0}
@@ -177,12 +177,12 @@ Material:
     - _ShoreColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShorePerturbation: {r: 0, g: 0, b: 0, a: 0}
     - _ShoreTiling: {r: 1, g: 1, b: 0.1, a: 0.1}
-    - _SpecularColor: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _UnderwaterColor: {r: 0.6950323, g: 0.89552236, b: 0.7502397, a: 1}
     - _WaveOffset: {r: 1, g: 1, b: -0.01, a: -0.01}
     - _WaveScale4: {r: 0.1, g: 0.1, b: 0.01, a: 0.01}
-    - _WavesColor: {r: 1, g: 1, b: 1, a: 0.11372549}
-    - _WorldLightDir: {r: 0.22, g: 0.11, b: 0.17, a: -0.05}
+    - _WavesColor: {r: 1, g: 1, b: 1, a: 0.23921569}
+    - _WorldLightDir: {r: 0.22, g: 0.11, b: 0.17, a: -3.26}
   m_BuildTextureStacks: []
 --- !u!1002 &2100001
 EditorExtensionImpl:
