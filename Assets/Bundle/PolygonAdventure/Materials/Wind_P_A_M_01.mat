@@ -15,7 +15,7 @@ Material:
   - _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -35,6 +35,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -121,6 +125,7 @@ Material:
     - _BumpScale: 1
     - _ColourNoiseLargeScale: 0
     - _ColourNoiseSmallScale: 0
+    - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -132,16 +137,16 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.2
     - _GlossyReflections: 1
-    - _GustAmount: 0.5
-    - _GustLargeFreq: 0.5
-    - _GustScale: 0.5
-    - _GustSmallFreq: 1
+    - _GustAmount: 0
+    - _GustLargeFreq: 0
+    - _GustScale: 0
+    - _GustSmallFreq: 0
     - _JitterAmount: 0.5
     - _JitterFreq: 0
     - _LOD_FADE_CROSSFADE_in: 1
     - _LOD_FADE_CROSSFADE_out: 1
-    - _LeafBigNoiseAmount: 0.5
-    - _LeafBigNoiseScale: 1
+    - _LeafBigNoiseAmount: 0
+    - _LeafBigNoiseScale: 0
     - _LeafFlatColourSwitch: 0
     - _LeafMetallic: 0.13
     - _LeafNormalAmount: 0.5
@@ -154,15 +159,16 @@ Material:
     - _SpecularHighlights: 1
     - _SquashAmount: 1
     - _SrcBlend: 1
-    - _TotalWindAmount: 0.5
+    - _TotalWindAmount: 0
     - _TrunkFlatColourSwitch: 0
     - _TrunkMetallic: 0
-    - _TrunkNormalAmount: 0.5
-    - _TrunkSmoothness: 0.2
+    - _TrunkNormalAmount: 0
+    - _TrunkSmoothness: 0
     - _UVSec: 0
     - _WindBaseline: 0
     - _WindDirection: 0
-    - _Y_multiplier: 0.2
+    - _WindQuality: 0
+    - _Y_multiplier: 0.02
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
@@ -173,6 +179,7 @@ Material:
     - _EmissiveColour: {r: 0, g: 0, b: 0, a: 0}
     - _FrostingColour: {r: 1, g: 1, b: 1, a: 0}
     - _GustHighlight: {r: 0, g: 0, b: 0, a: 0}
+    - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _LeafBaseColour: {r: 0.078431346, g: 0.02015968, b: 0, a: 0}
     - _LeafNoiseColour: {r: 0.078431346, g: 0.02015968, b: 0, a: 0}
     - _LeafNoiseLargeColour: {r: 0.078431346, g: 0.02015968, b: 0, a: 0}
