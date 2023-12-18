@@ -17,7 +17,7 @@ public class State
     public InputAction sprintAction;
     public InputAction drawWeaponAction;
     public InputAction attackAction;
-    public InputAction heavyattackAction;
+    public InputAction specialAttackSlotAction;
     public InputAction heavyattackAction1;
     public InputAction dashAction;
     public InputAction blockActionStart;
@@ -36,7 +36,7 @@ public class State
         sprintAction = character.playerInput.actions["Sprint"];
         drawWeaponAction = character.playerInput.actions["DrawWeapon"];
         attackAction = character.playerInput.actions["Attack"];
-        heavyattackAction = character.playerInput.actions["HeavyAttack"];
+        specialAttackSlotAction = character.playerInput.actions["HeavyAttack"];
         heavyattackAction1 = character.playerInput.actions["HeavyAttack1"];
         dashAction = character.playerInput.actions["Dash"];
         blockActionStart = character.playerInput.actions["BlockStart"];
