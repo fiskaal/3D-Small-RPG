@@ -63,6 +63,10 @@ public class Character : MonoBehaviour
     [Header("Block")] 
     public BlockBreaker _blockBreaker;
     public bool blockBroken = false;
+
+    [Header("SpecialAttackActions")] 
+    public string currentSpecialAttackAction;
+    public string fireBall = "spellThrow";
     
     //dash coolDownCalculator
     public float dashTimePassed;

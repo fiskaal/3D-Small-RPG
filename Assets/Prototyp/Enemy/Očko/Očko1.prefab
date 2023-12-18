@@ -4856,7 +4856,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4917992738789906648}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 12c7284b94a962a44a112a958da058b5, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 1de5919caa4f3484aa7076b9ff99cd90, type: 3}
   m_Controller: {fileID: 9100000, guid: ff022292b5f43e243a09e06b9b1607c5, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -4916,8 +4916,8 @@ MonoBehaviour:
   ragdoll: {fileID: 0}
   health: 5
   attackCD: 4
-  attackRange: 6
-  aggroRange: 15
+  attackRange: 20
+  aggroRange: 30
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
   rotationSpeed: 4
   angleThreshold: 5
@@ -4930,7 +4930,7 @@ MonoBehaviour:
   - {x: 1, y: 4}
   - {x: 0, y: 2}
   - {x: 5, y: 7}
-  firstEncounter: 1
+  firstEncounter: 0
   timeSinceLastSighting: 0
   chillingDelay: 10
   _damagePopUpGenerator: {fileID: 4677955194112830423}
@@ -4951,7 +4951,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 6
+  m_StoppingDistance: 19
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

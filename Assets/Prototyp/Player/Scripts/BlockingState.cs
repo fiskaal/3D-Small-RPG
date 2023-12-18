@@ -43,6 +43,7 @@ public class BlockingState : State
         gravityValue = character.gravityValue;
 
         block = false;
+        character.animator.SetBool("moveFromBlock", false);
 
         character.blockingStateActive = true;
         character._blockBreaker.blocking = true;
@@ -86,12 +87,14 @@ public class BlockingState : State
         {
             stateMachine.ChangeState(character.combatting);
             character.animator.SetTrigger("move");
+            character.animator.SetBool("moveFromBlock", true);
         }
 
         if (character.blockBroken)
         {
             stateMachine.ChangeState(character.combatting);
             character.animator.SetTrigger("move");
+            character.animator.SetBool("moveFromBlock", true);
         }
     }
     
