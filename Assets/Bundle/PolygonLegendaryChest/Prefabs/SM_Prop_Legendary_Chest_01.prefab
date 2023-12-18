@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4442307812637095377}
   - component: {fileID: 1892294844911304987}
   - component: {fileID: 6283655062025166305}
+  - component: {fileID: 3537044221834086933}
   m_Layer: 0
   m_Name: SM_Prop_Legendary_Chest_01
   m_TagString: Chest
@@ -103,9 +104,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fae915a8f6df2042bd7921852228314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpriteE: {fileID: 0}
   chestAnimation: {fileID: 7440501509303699723}
   particleSystemObject: {fileID: 1324940742244553355}
   interactKey: 101
+  lootItems: []
+  lootQuantities: []
+--- !u!65 &3537044221834086933
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90692471701528782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6011363, y: 0.90272504, z: 0.88161707}
+  m_Center: {x: 0.004061609, y: 0.51422566, z: -0.000000029681274}
 --- !u!1 &854876952930337222
 GameObject:
   m_ObjectHideFlags: 0
