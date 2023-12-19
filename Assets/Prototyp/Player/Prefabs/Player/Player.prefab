@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 2995673596906374301}
   - component: {fileID: 2995673596906374303}
   - component: {fileID: 2995673596906374288}
+  - component: {fileID: 1861894801500918527}
   - component: {fileID: 2099638364}
   - component: {fileID: 141578188}
   - component: {fileID: 4510063061906293845}
@@ -278,7 +279,9 @@ MonoBehaviour:
   _blockBreaker: {fileID: 4510063061906293845}
   blockBroken: 0
   currentSpecialAttackAction: 
-  fireBall: spellThrow
+  currentSpecialAttackCooldown: 0
+  currentSpecialAttackisReady: 0
+  currentSpecialAttackTimePassed: 0
   dashTimePassed: 0
 --- !u!114 &2995673596906374288
 MonoBehaviour:
@@ -295,6 +298,21 @@ MonoBehaviour:
   weaponHolder: {fileID: 7814343517359269243}
   weapon: {fileID: 7003983810912126619, guid: 2fcbd89c966a4dc41b2df9da10df1c2a, type: 3}
   weaponSheath: {fileID: 3097190161072116011}
+--- !u!114 &1861894801500918527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2995673596906374298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8dd6005e6f3d4f4bb2a2c96032cb5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character: {fileID: 2995673596906374303}
+  fireBall: spellThrow
+  fireballCoolDown: 5
 --- !u!114 &2099638364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,8 +369,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blocking: 0
   maxNumberOfBlocks: 3
+  upgradedMaxNumberOfBlocks: 5
   blockableAttacks: 3
   character: {fileID: 2995673596906374303}
+  blockBrokenVFX: {fileID: 0}
+  popUpGenerator: {fileID: 0}
   blockRegenerationRate: 2
   blockRegenerationTimer: 0
   blockBreakCooldownTime: 20
@@ -1366,6 +1387,10 @@ PrefabInstance:
       propertyPath: blockBreaker
       value: 
       objectReference: {fileID: 4510063061906293845}
+    - target: {fileID: 2059652851387259923, guid: 2b1ab78846088f649960ca9b2e07ef99, type: 3}
+      propertyPath: _character
+      value: 
+      objectReference: {fileID: 2995673596906374303}
     - target: {fileID: 2176525850215563555, guid: 2b1ab78846088f649960ca9b2e07ef99, type: 3}
       propertyPath: m_Layer
       value: 8

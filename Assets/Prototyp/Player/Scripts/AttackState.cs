@@ -27,15 +27,6 @@ public class AttackState : State
         timePassed = 0f;
         character.animator.SetTrigger("attack");
         character.animator.SetFloat("speed", 0f);
-
-
-        
-
-        /*
-        float newYRotation = character.cameraTransform.rotation.eulerAngles.y;
-        // Set the player's rotation to match the camera's y-axis rotation
-        character.transform.rotation = Quaternion.Euler(0f, newYRotation, 0f);
-        */
     }
 
     public override void HandleInput()

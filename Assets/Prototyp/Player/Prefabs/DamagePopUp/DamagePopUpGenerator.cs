@@ -20,7 +20,7 @@ public class DamagePopUpGenerator : MonoBehaviour
     {
         var popup = Instantiate(prefab, position, Quaternion.identity);
         var temp = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        temp.text = "-" + text;
+        temp.text =  text;
         DamagePopUpAnimation popupScript = popup.transform.GetComponent<DamagePopUpAnimation>();
         popupScript.color = color;
         

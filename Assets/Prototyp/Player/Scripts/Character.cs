@@ -1,6 +1,8 @@
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+
 public class Character : MonoBehaviour
 {
     [Header("Controls")]
@@ -65,8 +67,12 @@ public class Character : MonoBehaviour
     public bool blockBroken = false;
 
     [Header("SpecialAttackActions")] 
-    public string currentSpecialAttackAction;
-    public string fireBall = "spellThrow";
+    public string currentSpecialAttackTrigger;
+    public float currentSpecialAttackCooldown;
+    public bool currentSpecialAttackisReady = false;
+    public float currentSpecialAttackTimePassed = 0f;
+    
+    
     
     //dash coolDownCalculator
     public float dashTimePassed;
@@ -115,6 +121,8 @@ public class Character : MonoBehaviour
         }
 
         dashTimePassed += Time.deltaTime;
+        
+        UpdateSpecialAttackActionCoolDown();
     }
 
     private void FixedUpdate()
@@ -129,5 +137,18 @@ public class Character : MonoBehaviour
 
         // Move the character using the CharacterController
         controller.Move(movement);
+    }
+
+    private void UpdateSpecialAttackActionCoolDown()
+    {
+        if (currentSpecialAttackCooldown <= currentSpecialAttackTimePassed)
+        {
+            currentSpecialAttackisReady = true;
+        }
+        else
+        {
+            currentSpecialAttackisReady = false;
+        }
+        currentSpecialAttackTimePassed += Time.deltaTime;
     }
 }
