@@ -152,6 +152,7 @@ public class HealthSystem : MonoBehaviour
         Character character = GetComponent<Character>();
         character.enabled = false;
         //deathUIPopUp.SetActive(true);
+        animator.SetBool("dead", true);
         animator.SetTrigger("death");
         //Instantiate(ragdoll, transform.position, transform.rotation);
         //Destroy(playerDestroy);

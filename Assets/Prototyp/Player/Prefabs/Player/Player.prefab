@@ -277,6 +277,8 @@ MonoBehaviour:
   blockIsUgraded: 1
   _blockBreaker: {fileID: 4510063061906293845}
   blockBroken: 0
+  currentSpecialAttackAction: 
+  fireBall: spellThrow
   dashTimePassed: 0
 --- !u!114 &2995673596906374288
 MonoBehaviour:
@@ -1146,7 +1148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5780551416583312942, guid: ec1c0a5add10c6649a3c53dee6e0bb70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6512278245100835317, guid: ec1c0a5add10c6649a3c53dee6e0bb70, type: 3}
       propertyPath: m_Layer
