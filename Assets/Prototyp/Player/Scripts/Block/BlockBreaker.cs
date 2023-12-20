@@ -1,19 +1,31 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BlockBreaker : MonoBehaviour
 {
-    [Header("gameplay")] public bool blocking;
+    [Header("gameplay")] 
+    public bool blocking;
     public int maxNumberOfBlocks = 3;
+    public int upgradedMaxNumberOfBlocks = 5;
     public int blockableAttacks = 0; // Total number of blockable attacks
     public Character character;
+    public GameObject blockBrokenVFX;
+    public DamagePopUpGenerator popUpGenerator;
 
+    private bool numberOfBlockIncreased = false;
+    
     [SerializeField] public float blockRegenerationRate = 1.0f; // Time for regeneration in seconds
     public float blockRegenerationTimer = 0.0f; // Timer for block regeneration
 
     [SerializeField] public float blockBreakCooldownTime = 1.0f; // Time for block break cooldown in seconds
     public float blockBreakTimer = 0.0f;
+
+    private void Start()
+    {
+        popUpGenerator = FindObjectOfType<DamagePopUpGenerator>();
+    }
 
     private void Update()
     {
@@ -42,6 +54,13 @@ public class BlockBreaker : MonoBehaviour
                 blockBreakTimer = 0f;
             }
         }
+        
+        //Upgrade number of blocks with the block upgrade
+        if (character.blockIsUgraded && !numberOfBlockIncreased)
+        {
+            maxNumberOfBlocks = upgradedMaxNumberOfBlocks;
+            numberOfBlockIncreased = true;
+        }
     }
 
     public void BlockAttackCounter()
@@ -59,6 +78,7 @@ public class BlockBreaker : MonoBehaviour
 
     private void BlockBreak()
     {
+        popUpGenerator.CreatePopUp(character.gameObject.transform.position, "Shield Broken", Color.red);
         Debug.Log("Block Break!");
         character.blockBroken = true;
     }

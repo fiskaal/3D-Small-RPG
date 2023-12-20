@@ -68,9 +68,10 @@ public class CombatState : State
 
         if (specialAttackSlotAction.triggered)
         {
-            if (character.currentSpecialAttackAction != null)
+            if (character.currentSpecialAttackTrigger != null && character.currentSpecialAttackisReady)
             {
-                character.animator.SetTrigger(character.currentSpecialAttackAction);
+                character.animator.SetTrigger(character.currentSpecialAttackTrigger);
+                character.currentSpecialAttackTimePassed = 0f;
             }
         }
 
