@@ -42,10 +42,13 @@ public class Enemy : MonoBehaviour
     private bool enemyIsInRange;
     private bool isAttacking;
 
+    private float encounterTimer = 0f;
     public bool firstEncounter = false;
+    public bool pursuingPlayer;
     private Vector3 originalPosition;
     [SerializeField]private float timeSinceLastSighting = 0f;
     [SerializeField]private float chillingDelay = 10f;
+    [SerializeField]private float playerNotInRangeGiveUpTime = 10f;
 
     private HealthSystem playerHealthSystem;
     [SerializeField] private DamagePopUpGenerator _damagePopUpGenerator;
@@ -55,6 +58,9 @@ public class Enemy : MonoBehaviour
     
     //ocko projectile
     private OckoProjectile _ockoProjectile;
+
+    private float agentSpeedRegular;
+    private float agentSpeedPatrol;
     
     void Start()
     {
@@ -85,11 +91,16 @@ public class Enemy : MonoBehaviour
         {
             _ockoProjectile = GetComponent<OckoProjectile>();
         }
+
+        agentSpeedRegular = agent.speed;
+        agentSpeedPatrol = agent.speed / 2;
     }
 
     void Update()
     {
-        animator.SetFloat("speed", agent.velocity.magnitude / agent.speed);
+        float normalizedSpeed = Mathf.InverseLerp(agentSpeedPatrol, agentSpeedRegular, agent.speed);
+        float currentSpeed = Mathf.Lerp(0.5f, 1.0f, normalizedSpeed);
+        animator.SetFloat("speed", currentSpeed);
 
         if (player == null)
         {
@@ -98,13 +109,25 @@ public class Enemy : MonoBehaviour
 
         if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
         {
+            agent.speed = agentSpeedRegular;
+            pursuingPlayer = true;
+            
             enemyIsInRange = true;
             timeSinceLastSighting = 0f; // Reset timer since the player is spotted
             
             if (!firstEncounter)
             {
-                firstEncounter = true;
                 animator.SetTrigger("enemySpotted");
+
+                if (encounterTimer >= animator.GetCurrentAnimatorClipInfo(0).Length)
+                {
+                    firstEncounter = true;
+                    encounterTimer = 0f;
+                }
+                else
+                {
+                    encounterTimer += Time.deltaTime;
+                }
             }
         }
         else
@@ -120,7 +143,7 @@ public class Enemy : MonoBehaviour
                 if (timeSinceLastSighting >= chillingDelay)
                 {
                     // Check if the enemy reached its original position
-                    if (Vector3.Distance(transform.position, originalPosition) < 2f)
+                    if (Vector3.Distance(transform.position, originalPosition) < 3f)
                     {
                         // Trigger chilling animation when back to original position
                         animator.SetTrigger("chilling");
@@ -132,7 +155,18 @@ public class Enemy : MonoBehaviour
                         agent.SetDestination(originalPosition);
                     }
                 }
+                
+                if (timeSinceLastSighting >= playerNotInRangeGiveUpTime)
+                {
+                    pursuingPlayer = false;
+                }
+                else
+                {
+                    pursuingPlayer = true;
+                }
             }
+            
+            
         }
 
         if (firstEncounter)
@@ -196,8 +230,7 @@ public class Enemy : MonoBehaviour
 
             timePassed += Time.deltaTime;
 
-            if (newDestinationCD <= 0 &&
-                Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
+            if (newDestinationCD <= 0 && pursuingPlayer && !dead)
             {
                 newDestinationCD = 0.5f;
                 agent.SetDestination(player.transform.position);
@@ -219,7 +252,7 @@ public class Enemy : MonoBehaviour
                 }
             }
             //enemy roam
-            if (!dead && !enemyIsInRange)
+            if (!dead && !enemyIsInRange && !pursuingPlayer)
             {
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
@@ -228,6 +261,8 @@ public class Enemy : MonoBehaviour
                     {
                         Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                         agent.SetDestination(point);
+                        
+                        agent.speed = agentSpeedPatrol;
                     }
                 }
             }
@@ -271,6 +306,15 @@ public class Enemy : MonoBehaviour
 
         result = Vector3.zero;
         return false;
+    }
+
+    public void pursuePlayer()
+    {
+        agent.ResetPath();
+        agent.SetDestination(player.transform.position);
+        timeSinceLastSighting = 0f;
+        pursuingPlayer = true;
+        agent.speed = agentSpeedRegular;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -326,7 +370,7 @@ public class Enemy : MonoBehaviour
             }
             _enemyHpBar.SetHP(health);
 
-            agent.SetDestination(player.transform.position);
+            pursuePlayer();
             
             if (health <= 0)
             {
