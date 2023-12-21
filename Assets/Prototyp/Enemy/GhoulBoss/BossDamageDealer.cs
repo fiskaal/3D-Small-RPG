@@ -42,22 +42,20 @@ public class BossDamageDealer : MonoBehaviour
 
     void CastCircularArea()
     {
-        float angleStep = 360f / rayCount;
-
-        for (int i = 0; i < rayCount; i++)
+        if (canDealDamage)
         {
-            float angle = i * angleStep;
-            Vector3 direction = Quaternion.AngleAxis(angle, transform.up) * -transform.forward;
-
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, direction, out hit, circleRadius))
+            Collider[] colliders = Physics.OverlapSphere(transform.position, circleRadius);
+            foreach (Collider collider in colliders)
             {
-                // Deal damage to enemies within the circular area
-                if (hit.transform.TryGetComponent(out HealthSystem player) && !hasDealtDamage.Contains(hit.transform.gameObject))
+                HealthSystem player = collider.GetComponent<HealthSystem>();
+                if (collider.CompareTag("Player") || player != null)
                 {
-                    player.TakeDamage(attackDamage, transform, hit.transform, heavyDamage);
-                    player.HitVFX(hit.point);
-                    hasDealtDamage.Add(hit.transform.gameObject);
+                    if (player != null && !hasDealtDamage.Contains(player.transform.gameObject))
+                    {
+                        player.TakeDamage(attackDamage, transform, collider.transform, heavyDamage);
+                        player.HitVFX(collider.ClosestPointOnBounds(transform.position));
+                        hasDealtDamage.Add(player.transform.gameObject);
+                    }
                 }
             }
         }
