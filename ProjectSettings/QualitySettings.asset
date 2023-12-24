@@ -188,25 +188,25 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Ultra
-    pixelLightCount: 4
+    pixelLightCount: 2
     shadows: 2
-    shadowResolution: 2
+    shadowResolution: 1
     shadowProjection: 1
-    shadowCascades: 4
-    shadowDistance: 100
-    shadowNearPlaneOffset: 5
-    shadowCascade2Split: 0.04119841
-    shadowCascade4Split: {x: 0.050871227, y: 0.15135118, z: 0.49897704}
-    shadowmaskMode: 0
+    shadowCascades: 2
+    shadowDistance: 12.21
+    shadowNearPlaneOffset: 0
+    shadowCascade2Split: 0.61515737
+    shadowCascade4Split: {x: 0.049255483, y: 0.14327213, z: 0.49736238}
+    shadowmaskMode: 1
     skinWeights: 4
-    textureQuality: 0
+    textureQuality: 1
     anisotropicTextures: 2
-    antiAliasing: 2
+    antiAliasing: 4
     softParticles: 1
     softVegetation: 1
-    realtimeReflectionProbes: 1
-    billboardsFaceCameraPosition: 1
-    vSyncCount: 1
+    realtimeReflectionProbes: 0
+    billboardsFaceCameraPosition: 0
+    vSyncCount: 0
     lodBias: 2
     maximumLODLevel: 0
     streamingMipmapsActive: 0
