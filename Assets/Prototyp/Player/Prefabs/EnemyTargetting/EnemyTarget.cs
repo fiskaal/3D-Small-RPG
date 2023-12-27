@@ -55,11 +55,13 @@ public class EnemyTarget : MonoBehaviour
                 if (currentTarget != null)
                 {
                     currentTarget.GetComponentInChildren<Outline>().SetOutlineWidth(5);
+                    currentTarget.GetComponentInChildren<EnemyHpBar>().SetHealthBarVisible();
                 }
 
                 if (lastTarget != null)
                 {
                     lastTarget.GetComponentInChildren<Outline>().SetOutlineWidth(0);
+                    lastTarget.GetComponentInChildren<EnemyHpBar>().SetHealthBarInvisible();
                 }
             }
             
@@ -73,6 +75,7 @@ public class EnemyTarget : MonoBehaviour
             if (lastTarget != null)
             {
                 lastTarget.GetComponentInChildren<Outline>().SetOutlineWidth(0);
+                lastTarget.GetComponentInChildren<EnemyHpBar>().SetHealthBarInvisible();
             }
 
             lastTarget = null;
