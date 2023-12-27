@@ -5309,6 +5309,51 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3079997757383284049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1223970189805153511}
+  - component: {fileID: 4840214402114031219}
+  m_Layer: 0
+  m_Name: DamagePopUpGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1223970189805153511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079997757383284049}
+  m_LocalRotation: {x: -0, y: 0.6081839, z: -0, w: 0.7937962}
+  m_LocalPosition: {x: -18.885681, y: -1.0726672, z: 12.247936}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6066036713447361459}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4840214402114031219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079997757383284049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2d404ce198ffc44965999884238d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7600665716340468273, guid: 8852b7c18d372154db25fbb40cba69c9, type: 3}
 --- !u!1 &3707336501575548587
 GameObject:
   m_ObjectHideFlags: 0
@@ -5545,6 +5590,7 @@ Transform:
   - {fileID: 4353086688930205153}
   - {fileID: 3389892815946862188}
   - {fileID: 3793246461098871579}
+  - {fileID: 1223970189805153511}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5557,8 +5603,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6069518944448052115}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 12c7284b94a962a44a112a958da058b5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 23fcc600c2d32be4380640d34506f4aa, type: 2}
+  m_Avatar: {fileID: 9000000, guid: f80d432de30b0c84d99cad0b0c8bd308, type: 3}
+  m_Controller: {fileID: 9100000, guid: 4144714ffd2b7224c96640685545f3ae, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5595,7 +5641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1202655828833710869, guid: 39e6eb700f5320b46b4ae466d51d107c, type: 3}
-  projectileSpeed: 10
+  projectileSpeed: 20
   desiredTargetHeight: 1
   projectileHolder: {fileID: 3389892815946862188}
   boneProjectileHolderCopy: {fileID: 7338494448559484648}
@@ -5633,12 +5679,13 @@ MonoBehaviour:
   - {x: 0, y: 2}
   - {x: 0, y: 2}
   player: {fileID: 0}
+  isAttacking: 0
   firstEncounter: 0
   pursuingPlayer: 0
   timeSinceLastSighting: 0
   chillingDelay: 10
   playerNotInRangeGiveUpTime: 10
-  _damagePopUpGenerator: {fileID: 0}
+  _damagePopUpGenerator: {fileID: 4840214402114031219}
   _enemyHpBar: {fileID: 2022550808892930241}
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
   damageDealers: []
@@ -5892,6 +5939,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f80d432de30b0c84d99cad0b0c8bd308, type: 3}
+--- !u!1 &1363678492321523393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f80d432de30b0c84d99cad0b0c8bd308, type: 3}
+  m_PrefabInstance: {fileID: 2174582817145953168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &661229609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363678492321523393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &1848467000504515707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f80d432de30b0c84d99cad0b0c8bd308, type: 3}

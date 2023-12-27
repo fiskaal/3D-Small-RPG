@@ -6,6 +6,7 @@ public class ProjectileDamage : MonoBehaviour
     public GameObject HitVFX;
     public Transform shooterTransform;
     [SerializeField] private float damage = 1f;
+    private GameObject player;
 
     private void Start()
     {
@@ -53,4 +54,6 @@ public class ProjectileDamage : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    
 }

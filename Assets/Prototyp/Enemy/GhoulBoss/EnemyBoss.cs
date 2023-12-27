@@ -273,8 +273,7 @@ public class EnemyBoss : MonoBehaviour
                         currentAttackDamage = 0;
                         _bossDamageDealer.heavyDamage = false;
                         Attack("attackSpit");
-                        OckoProjectile projectile = GetComponent<OckoProjectile>();
-                        //projectile.FireProjectile(player.transform.position, transform);
+                        agent.ResetPath();
                     }
                     else if (attackCooldown == jumpAttackCD)
                     {
