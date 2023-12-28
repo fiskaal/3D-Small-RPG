@@ -6,13 +6,16 @@ public class HealthBar : MonoBehaviour
     public Slider healthSlider; // Reference to the UI Slider representing the health bar
     public HealthSystem healthSystem; // Reference to the PlayerHP script
 
+    public float sliderSpeed = 25f; // Adjust the speed of the slider movement
+
     void Update()
     {
         // Ensure the healthSlider and playerHP references are not null
         if (healthSlider != null && healthSystem != null)
         {
-            // Update the slider value based on the player's health
-            healthSlider.value = MapHealthToSliderValue(healthSystem.health);
+            // Update the slider value smoothly based on the player's health
+            float targetSliderValue = MapHealthToSliderValue(healthSystem.health);
+            healthSlider.value = Mathf.Lerp(healthSlider.value, targetSliderValue, Time.deltaTime * sliderSpeed);
         }
     }
 

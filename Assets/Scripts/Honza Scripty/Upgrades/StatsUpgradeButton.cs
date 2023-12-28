@@ -6,7 +6,7 @@ public class StatsUpgradeButton : MonoBehaviour
     public DamageOfEverything damageScript;
     public HealthSystem playerHealthScript;
 
-    public float healthIncreaseAmount = 10f;
+    public float maxHealthIncreaseAmount = 10f; // Change the variable name
     public float weaponDamageIncreaseAmount = 5f;
     public float lightningStrikeDamageIncreaseAmount = 5f;
     public float fireEnchantDamageBonusIncreaseAmount = 2f;
@@ -21,10 +21,16 @@ public class StatsUpgradeButton : MonoBehaviour
 
     public void IncreaseAllStats()
     {
-        playerHealthScript.health += healthIncreaseAmount;
+        // Increase maxHealth instead of health
+        playerHealthScript.maxHealth += maxHealthIncreaseAmount;
 
-        playerHealthScript.health = Mathf.Clamp(playerHealthScript.health, 0f, 100);
+        // Add the increased maxHealth to the actual health
+        playerHealthScript.health += maxHealthIncreaseAmount;
 
+        // Ensure that health remains within the valid range [0, maxHealth]
+        playerHealthScript.health = Mathf.Clamp(playerHealthScript.health, 0f, playerHealthScript.maxHealth);
+
+        // Increase other damage stats
         damageScript.weaponDamage += weaponDamageIncreaseAmount;
         damageScript.lightingStrikeDamage += lightningStrikeDamageIncreaseAmount;
         damageScript.fireEnchantDamageBonus += fireEnchantDamageBonusIncreaseAmount;
