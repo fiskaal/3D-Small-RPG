@@ -3368,7 +3368,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-226170
+  m_Name: pb_Mesh-7080
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10041,6 +10041,10 @@ MonoBehaviour:
     isBought: 0
     boughtObjectName: SwordSpecial_EQUIP
     notBoughtObjectName: SwordSpecial_LOCKED
+  - PlayerPrefsKey: 9
+    isBought: 0
+    boughtObjectName: SHIELD_BOUGHT
+    notBoughtObjectName: SHIELD_BUY
 --- !u!4 &1615058504
 Transform:
   m_ObjectHideFlags: 0
@@ -10878,6 +10882,7 @@ MonoBehaviour:
   fireEnchantDamageBonus: 0
   lightningEnchantDamageBonus: 0
   enchantedWeaponDamage: 0
+  MagicShield: 0
 --- !u!4 &1727409227
 Transform:
   m_ObjectHideFlags: 0
@@ -17409,6 +17414,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -25
       objectReference: {fileID: 0}
+    - target: {fileID: 8409610726192061979, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
+      propertyPath: shopArrayIndex
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8607205147345965328, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
       propertyPath: m_Name
       value: Canvas_BuildingsMenu
@@ -17541,6 +17550,7 @@ PrefabInstance:
     - {fileID: 5812917058745888672, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
     - {fileID: 2000580685748825793, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
     - {fileID: 2700871864025380263, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
+    - {fileID: 3478114663956242247, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
 --- !u!1001 &7577411520900682105
 PrefabInstance:

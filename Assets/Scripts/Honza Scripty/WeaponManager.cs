@@ -35,6 +35,8 @@ public class WeaponManager : MonoBehaviour
     public float lightningEnchantDamageBonus;
     public float enchantedWeaponDamage;
 
+    public bool MagicShield;
+
     // PlayerPrefs keys
     //šedivý, protože WeaponHolderKey SheathHolderKey se nemìní, nejsou referencovaný, zustavají stejny, 2 liny vespod nepotøebné
     private const string WeaponHolderKey = "WeaponHolder";
@@ -94,6 +96,7 @@ public class WeaponManager : MonoBehaviour
         FindHolders();
 
         // Load saved values or set defaults
+       LoadValues();
     }
 
     public void EquipWeapon(string newWeaponName)
@@ -180,6 +183,7 @@ public class WeaponManager : MonoBehaviour
 
         //LoadValues();
         FindHolders();
+        UpdateCharacterBlockIsUpgraded();
     }
 
     private GameObject FindObjectInHierarchyByName(Transform parent, string objectName)
@@ -231,6 +235,8 @@ public class WeaponManager : MonoBehaviour
         PlayerPrefs.SetFloat(LightningEnchantDamageBonusKey, lightningEnchantDamageBonus);
         PlayerPrefs.SetFloat(EnchantedWeaponDamageKey, enchantedWeaponDamage);
 
+        PlayerPrefs.SetInt("MagicShield", MagicShield ? 1 : 0);
+
         PlayerPrefs.Save();
     }
 
@@ -246,6 +252,9 @@ public class WeaponManager : MonoBehaviour
         fireEnchantDamageBonus = PlayerPrefs.GetFloat(FireEnchantDamageBonusKey, 0f); // Default to 0 if not present
         lightningEnchantDamageBonus = PlayerPrefs.GetFloat(LightningEnchantDamageBonusKey, 0f); // Default to 0 if not present
         enchantedWeaponDamage = PlayerPrefs.GetFloat(EnchantedWeaponDamageKey, 0f); // Default to 0 if not present
+
+        MagicShield = PlayerPrefs.GetInt("MagicShield", 0) == 1;
+        UpdateCharacterBlockIsUpgraded();
 
         FindHolders();
     }
@@ -279,5 +288,33 @@ public class WeaponManager : MonoBehaviour
         // Set default value for the player tag
         playerTag = "Player"; // Set your default value here
     }
+
+    public void UpdateCharacterBlockIsUpgraded()
+    {
+        // Find the Player GameObject by tag
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        // Check if the Player GameObject exists and has the Character script
+        if (player != null)
+        {
+            Character characterScript = player.GetComponent<Character>();
+
+            // Check if the Character script is found
+            if (characterScript != null)
+            {
+                // Update blockIsUgraded in Character script based on MagicShield
+                characterScript.blockIsUgraded = MagicShield;
+            }
+            else
+            {
+                Debug.LogWarning("Character script not found on the Player GameObject.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Player not found. Make sure the player has the tag: Player");
+        }
+    }
+
 
 }
