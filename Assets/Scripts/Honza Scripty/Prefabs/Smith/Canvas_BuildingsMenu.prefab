@@ -3744,6 +3744,7 @@ GameObject:
   - component: {fileID: 8550955521835884284}
   - component: {fileID: 3554277963712797630}
   - component: {fileID: 7163529380530251933}
+  - component: {fileID: 1591826119155929668}
   m_Layer: 5
   m_Name: Button_Next
   m_TagString: Untagged
@@ -3903,6 +3904,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggleButton: {fileID: 8550955521835884284}
   isWizardCompleteInitialState: 1
+--- !u!114 &1591826119155929668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188748106473204561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55090b8daed23be44bf1d534628aec18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  lootItems:
+  - {fileID: 4440475420537621230, guid: 9c2fb36324d1ded459edf53b82312231, type: 3}
+  lootQuantities:
+  - {x: 50, y: 50}
+  lootButton: {fileID: 8550955521835884284}
+  minSpawnDistance: 6
+  maxSpawnDistance: 7
 --- !u!1 &1256462910937478378
 GameObject:
   m_ObjectHideFlags: 0
