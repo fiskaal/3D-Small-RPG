@@ -32,6 +32,12 @@ public class Chest : MonoBehaviour
     // Drop loot when the chest is looted
     private void DropLoot()
     {
+        // Check if the chest has already been looted
+        if (chestLooted)
+        {
+            return; // Exit the function if already looted
+        }
+
         for (int i = 0; i < lootItems.Length; i++)
         {
             int quantity = Random.Range((int)lootQuantities[i].x, (int)lootQuantities[i].y + 1);
@@ -48,14 +54,21 @@ public class Chest : MonoBehaviour
                 }
 
                 Instantiate(lootItems[i], spawnPosition, Quaternion.identity);
+                particleSystemObject.gameObject.SetActive(false);
             }
         }
+
+        // Mark the chest as looted
+        chestLooted = true;
+
+        // Deactivate SpriteE after looting
+        SpriteE.SetActive(false);
     }
 
     private void Update()
     {
-        // Check if the player is pressing the "E" key and isOpen is true
-        if (isOpen && Input.GetKeyDown(interactKey))
+        // Check if the player is pressing the "E" key, isOpen is true, and the chest is not looted
+        if (isOpen && Input.GetKeyDown(interactKey) && !chestLooted)
         {
             // Trigger the chest opening animation
             if (chestAnimation != null)
@@ -64,16 +77,8 @@ public class Chest : MonoBehaviour
             }
 
             // The chest is looted when the player presses "E"
-            chestLooted = true;
-
             // Drop loot when the chest is looted
             DropLoot();
-        }
-
-        // If chestLooted is true, deactivate the SpriteE
-        if (chestLooted)
-        {
-            SpriteE.SetActive(false);
         }
     }
 }
