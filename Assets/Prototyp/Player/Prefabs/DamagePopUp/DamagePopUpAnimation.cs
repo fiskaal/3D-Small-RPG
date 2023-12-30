@@ -20,12 +20,7 @@ public class DamagePopUpAnimation : MonoBehaviour
         tmp = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         origin = transform.position;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
