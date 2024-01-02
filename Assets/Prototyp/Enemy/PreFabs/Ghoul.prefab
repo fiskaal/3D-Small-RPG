@@ -508,7 +508,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ef71fb53ed68fd4180e64d11bb0de5b, type: 2}
+  - {fileID: 2100000, guid: ad4cd67b3e4d0d14794b6b4f1df6b191, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1474,11 +1474,15 @@ MonoBehaviour:
   - {fileID: 4440475420537621230, guid: 9c2fb36324d1ded459edf53b82312231, type: 3}
   lootQuantities:
   - {x: 1, y: 4}
-  - {x: 0, y: 2}
+  - {x: 0, y: 0}
   - {x: 3, y: 5}
+  player: {fileID: 0}
+  isAttacking: 0
   firstEncounter: 0
+  pursuingPlayer: 0
   timeSinceLastSighting: 0
   chillingDelay: 30
+  playerNotInRangeGiveUpTime: 10
   _damagePopUpGenerator: {fileID: 0}
   _enemyHpBar: {fileID: 4557142051372080319}
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}

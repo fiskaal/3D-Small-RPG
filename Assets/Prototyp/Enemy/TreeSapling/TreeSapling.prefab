@@ -10563,8 +10563,8 @@ MonoBehaviour:
   hitVFX: {fileID: 6823200998282874702, guid: 8f8fe12323625f5499b2853dd2ad3e58, type: 3}
   hitVFX1: {fileID: 219217740888041541, guid: c01593394d44d1b44b4d11beff1c4eb6, type: 3}
   ragdoll: {fileID: 0}
-  health: 5
-  attackCD: 4
+  health: 10
+  attackCD: 3
   attackRange: 2
   aggroRange: 10
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
@@ -10577,7 +10577,7 @@ MonoBehaviour:
   - {fileID: 4440475420537621230, guid: 9c2fb36324d1ded459edf53b82312231, type: 3}
   lootQuantities:
   - {x: 1, y: 4}
-  - {x: 0, y: 2}
+  - {x: 0, y: 0}
   - {x: 0, y: 2}
   player: {fileID: 0}
   isAttacking: 0
@@ -10876,7 +10876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 1
   outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 5.02
+  outlineWidth: 0
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []

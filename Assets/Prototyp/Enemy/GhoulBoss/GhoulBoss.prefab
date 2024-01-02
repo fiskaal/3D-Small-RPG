@@ -158,9 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c4f2411270499478642bf5cdd48a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  legAttackDamage: 10
-  handAttackDamage: 15
-  fallImpactAttackDamage: 40
+  legAttackDamage: 30
+  handAttackDamage: 40
+  fallImpactAttackDamage: 60
   currentAttackDamage: 0
   legAttackRadius: 1
   handAttackRadius: 1.2
@@ -170,7 +170,7 @@ MonoBehaviour:
   hitVFX1: {fileID: 219217740888041541, guid: c01593394d44d1b44b4d11beff1c4eb6, type: 3}
   toxicSmoke: {fileID: 7958341603830991569}
   fallImpactVFX: {fileID: 1589242962888738191, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
-  health: 50
+  health: 100
   basAttackCd: 3
   stompAttackCd: 4
   basicAttackRange: 2
@@ -200,7 +200,7 @@ MonoBehaviour:
   - {fileID: 3137243803196037569, guid: 0d07bb37d703542469e7378e37038601, type: 3}
   lootQuantities:
   - {x: 1, y: 4}
-  - {x: 0, y: 2}
+  - {x: 0, y: 0}
   - {x: 8, y: 20}
   - {x: 1, y: 1}
   player: {fileID: 0}
