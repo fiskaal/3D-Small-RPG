@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
     private bool firstTimeSpotted;
     private float screamTimePassed = 0;
     private bool enemyIsInRange;
-    private bool isAttacking;
+    public bool isAttacking;
 
     private float encounterTimer = 0f;
     public bool firstEncounter = false;
@@ -100,6 +100,13 @@ public class Enemy : MonoBehaviour
     {
         float normalizedSpeed = Mathf.InverseLerp(agentSpeedPatrol, agentSpeedRegular, agent.speed);
         float currentSpeed = Mathf.Lerp(0.5f, 1.0f, normalizedSpeed);
+        
+        // Check if the agent's speed is zero
+        if (agent.velocity.magnitude == 0f) 
+        {
+            currentSpeed = 0f; // Set currentSpeed to 0 if the speed is zero
+        }
+        
         animator.SetFloat("speed", currentSpeed);
 
         if (player == null)
@@ -107,7 +114,7 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
+        if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !isAttacking)
         {
             agent.speed = agentSpeedRegular;
             pursuingPlayer = true;
@@ -153,6 +160,7 @@ public class Enemy : MonoBehaviour
                     else
                     {
                         agent.SetDestination(originalPosition);
+                        animator.ResetTrigger("enemySpotted");
                     }
                 }
                 
@@ -190,6 +198,7 @@ public class Enemy : MonoBehaviour
                         {
                             isAttacking = true;
                             animator.applyRootMotion = true;
+                            agent.ResetPath();
 
                             if (hasMoreAttacks)
                             {
@@ -423,6 +432,7 @@ public class Enemy : MonoBehaviour
         foreach (var dealer in damageDealers)
         {
             dealer.EndDealDamage();
+            OnAttackAnimationEnd();
         }
     }
 

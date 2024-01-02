@@ -4,39 +4,84 @@ using System.Collections.Generic;
 using Cinemachine.Utility;
 using UnityEngine;
 
+
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private BlockBreaker _blockBreaker;
-    [SerializeField] public float health = 100;
+    [SerializeField] public float maxHealth = 100f; // Maximum health value
+    public float health = 100;
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject deathVFX;
 
     Animator animator;
-    
+
     //shield spell
     private PlayerShield _playerShield;
     private Character _character;
-    
-    //damage pupup
+
+    //damage popup
     [SerializeField] private DamagePopUpGenerator _damagePopUpGenerator;
 
-    [Header("Block")] 
-    [SerializeField]private BlockVFX blockVFXScript;
+    [Header("Block")]
+    [SerializeField] private BlockVFX blockVFXScript;
 
-    [Header("Damgage Quest")] 
+    [Header("Damage Quest")]
     private LvlQuestManager _lvlQuestManager;
 
-    
-    
+    // Array of ArmorItem instances
+    [SerializeField] private ArmorItem[] armorItems;
+
+    // Previous total armor bonus
+    private float previousTotalArmorBonus = 0f;
+
     void Start()
     {
         _lvlQuestManager = FindObjectOfType<LvlQuestManager>();
         animator = GetComponent<Animator>();
-        
+
         //shield spell
         _playerShield = gameObject.GetComponentInChildren<PlayerShield>();
-
         _character = GetComponent<Character>();
+
+        // Apply armor bonus to max health
+        UpdateHealthWithArmor();
+
+        // Set the initial health to be equal to maxHealth
+        health = maxHealth;
+    }
+
+    void Update()
+    {
+        // Check for changes in equipped armor and update health accordingly
+        UpdateHealthWithArmor();
+    }
+
+    private void UpdateHealthWithArmor()
+    {
+        float totalArmorBonus = 0f;
+
+        // Calculate the total armor bonus from active armor items
+        foreach (var armorItem in armorItems)
+        {
+            // Check if the armor item is active before applying its bonus
+            if (armorItem.gameObject.activeSelf)
+            {
+                totalArmorBonus += armorItem.GetArmorBonus();
+            }
+        }
+
+        // Deduct the previous total armor bonus from maxHealth
+        maxHealth -= previousTotalArmorBonus;
+
+        // Update maxHealth with the new total armor bonus
+        maxHealth += totalArmorBonus;
+
+        // Ensure that health is within the valid range [0, maxHealth]
+        health = Mathf.Clamp(health, 0f, maxHealth);
+
+        // Update the previous total armor bonus for the next frame
+        previousTotalArmorBonus = totalArmorBonus;
+
     }
 
 
@@ -46,7 +91,6 @@ public class HealthSystem : MonoBehaviour
         _playerShield = gameObject.GetComponentInChildren<PlayerShield>();
         Transform highestParentTransform = GetHighestParentTransform(enemyTransform);
 
-        
         // Get the direction from the player to the enemy
         Vector3 directionToEnemy = (highestParentTransform.position - transform.position).normalized;
 
@@ -56,9 +100,6 @@ public class HealthSystem : MonoBehaviour
         // Calculate the dot product between the player's forward direction and the direction to the enemy
         float dotProduct = Vector3.Dot(directionToEnemy, playerForward);
 
-        // Define the angle threshold for the front area (e.g., 150 degrees)
-        //float angleThreshold = 150f;
-        
         if (_playerShield != null)
         {
             _playerShield.TakeDamage(1);
@@ -75,14 +116,12 @@ public class HealthSystem : MonoBehaviour
                     {
                         animator.SetTrigger("damage");
                         _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
-                        //CameraShake.Instance.ShakeCamera(2f, 0.2f);
                     }
                     else
                     {
                         animator.applyRootMotion = true;
                         animator.SetTrigger("heavyDamage");
                         _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
-                        //CameraShake.Instance.ShakeCamera(2f, 0.2f);
                     }
 
                     //quest
@@ -107,14 +146,12 @@ public class HealthSystem : MonoBehaviour
                 {
                     animator.SetTrigger("damage");
                     _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
-                    //CameraShake.Instance.ShakeCamera(2f, 0.2f);
                 }
                 else
                 {
                     animator.applyRootMotion = true;
                     animator.SetTrigger("heavyDamage");
                     _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
-                    //CameraShake.Instance.ShakeCamera(2f, 0.2f);
                 }
 
                 //quest
@@ -122,15 +159,15 @@ public class HealthSystem : MonoBehaviour
                 {
                     _lvlQuestManager.UpdateDamageQuest(damageAmount);
                 }
-                
+
                 if (health <= 0)
                 {
                     Die();
-                } 
+                }
             }
         }
     }
-    
+
     private Transform GetHighestParentTransform(Transform childTransform)
     {
         Transform parent = childTransform;
@@ -141,12 +178,11 @@ public class HealthSystem : MonoBehaviour
         return parent;
     }
 
-    [Header("Death PopUp")] 
-    [SerializeField]private GameObject deathUIPopUp;
+    [Header("Death PopUp")]
+    [SerializeField] private GameObject deathUIPopUp;
     [SerializeField] private GameObject playerDestroy;
     [SerializeField] private Transform deathVFXHolder;
 
-    
     void Die()
     {
         Character character = GetComponent<Character>();
@@ -159,11 +195,12 @@ public class HealthSystem : MonoBehaviour
         StartCoroutine(FreezeGameAfterDelay(5f));
         Instantiate(deathVFX, deathVFXHolder);
     }
+
     public void HitVFX(Vector3 hitPosition)
     {
         if (_character.blockingStateActive)
         {
-            
+
         }
         else
         {
@@ -187,11 +224,12 @@ public class HealthSystem : MonoBehaviour
     {
         _character.enabled = false;
     }
+
     public void HeavyDamageOut()
     {
         _character.enabled = true;
     }
-    
+
     [SerializeField] private float visualizationDistance = 2f;
 
     private void OnDrawGizmos()
@@ -212,6 +250,4 @@ public class HealthSystem : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + leftRayDirection * visualizationDistance);
         Gizmos.DrawLine(transform.position, transform.position + rightRayDirection * visualizationDistance);
     }
-    
-    
 }

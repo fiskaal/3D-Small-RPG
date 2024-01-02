@@ -767,7 +767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageScript: {fileID: 0}
   playerHealthScript: {fileID: 0}
-  healthIncreaseAmount: 30
+  maxHealthIncreaseAmount: 20
   weaponDamageIncreaseAmount: 0
   lightningStrikeDamageIncreaseAmount: 0
   fireEnchantDamageBonusIncreaseAmount: 0
@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageScript: {fileID: 0}
   playerHealthScript: {fileID: 0}
-  healthIncreaseAmount: 0
+  maxHealthIncreaseAmount: 0
   weaponDamageIncreaseAmount: 1
   lightningStrikeDamageIncreaseAmount: 0
   fireEnchantDamageBonusIncreaseAmount: 0
@@ -1468,7 +1468,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HEAL + 30 HP
+  m_Text: + 20 MAX HP
 --- !u!1 &3121921975343406173
 GameObject:
   m_ObjectHideFlags: 0

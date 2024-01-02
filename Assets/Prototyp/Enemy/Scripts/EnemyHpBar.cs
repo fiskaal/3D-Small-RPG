@@ -11,7 +11,12 @@ public class EnemyHpBar : MonoBehaviour
     public TextMeshProUGUI hpText;
     private float numberMaxHp;
     private float numberCurrentHp;
-    
+
+    private void Start()
+    {
+        SetHealthBarInvisible();
+    }
+
     public void SetMaxHP(float maxHP)
     {
         slider.maxValue = maxHP; // Set the maximum HP value.

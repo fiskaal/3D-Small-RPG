@@ -152,6 +152,7 @@ MonoBehaviour:
   - {x: 0, y: 2}
   - {x: 8, y: 14}
   player: {fileID: 0}
+  isAttacking: 0
   firstEncounter: 0
   pursuingPlayer: 0
   timeSinceLastSighting: 0
@@ -5465,7 +5466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad070c6b2a6ee24298a974e7ab8df6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponLength: 1.02
+  weaponLength: 1.5
   weaponDamage: 10
 --- !u!1 &6655180340856344898
 GameObject:
@@ -5492,7 +5493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6655180340856344898}
   m_LocalRotation: {x: 0.24034372, y: -0.05161843, z: 0.1522505, w: 0.9572828}
-  m_LocalPosition: {x: -0.00108, y: 0.0012, z: 0.00092}
+  m_LocalPosition: {x: -0.00344, y: 0.00744, z: 0.00423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5511,7 +5512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad070c6b2a6ee24298a974e7ab8df6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponLength: 1
+  weaponLength: 1.5
   weaponDamage: 10
 --- !u!1 &6942461466450950872
 GameObject:

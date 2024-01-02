@@ -41,19 +41,25 @@ public class OckoProjectile : MonoBehaviour
 
     public void SpawnProjectile()
     {
+        projectile = Instantiate(projectilePrefab, projectileHolder.position, Quaternion.identity, projectileHolder);
+        projectile.transform.localScale = projectilePrefab.transform.localScale;
+        
         if (_enemy != null)
         {
             targetPosition = _enemy.player.transform.position;
             shooterTransform = _enemy.transform;
+            
+            Vector3 playerpos = _enemy.player.transform.position;
+            playerpos.y = 0;
+            projectile.transform.LookAt(playerpos);
         }
         else if (_enemyBoss != null)
         {
             targetPosition = _enemyBoss.player.transform.position;
             shooterTransform = _enemyBoss.transform;
+            
+            //projectile.transform.LookAt(playerpos);
         }
-        
-        projectile = Instantiate(projectilePrefab, projectileHolder.position, Quaternion.identity, projectileHolder);
-        projectile.transform.localScale = projectilePrefab.transform.localScale;
     }
 
     public void FireProjectile()
@@ -85,6 +91,11 @@ public class OckoProjectile : MonoBehaviour
         if (rb != null)
         {
             rb.velocity = direction * projectileSpeed;
+        }
+
+        if (_enemy != null)
+        {
+            _enemy.isAttacking = false;
         }
     }
 }
