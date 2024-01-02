@@ -52,6 +52,14 @@ public class Enemy : MonoBehaviour
 
     private HealthSystem playerHealthSystem;
     [SerializeField] private DamagePopUpGenerator _damagePopUpGenerator;
+    
+    //keeps distance after attack
+    public bool stepBackAfterAttack = false; // Toggle for stepping back after attack
+    public float safeDistance = 5f; // Distance to maintain after stepping back
+
+    // Track the last time the enemy attacked
+    private float lastAttackTime;
+    private bool isSteppingBack;
 
     //HpBar
     [SerializeField] private EnemyHpBar _enemyHpBar;
@@ -217,7 +225,7 @@ public class Enemy : MonoBehaviour
                             {
                                 animator.SetTrigger("attack");
                             }
-
+                            
                             Instantiate(preAttackWarningPrefab, transform);
                             timePassed = 0;
 
@@ -237,9 +245,21 @@ public class Enemy : MonoBehaviour
                 }
             }
 
+            if (stepBackAfterAttack)
+            {
+                if (timePassed < attackCD && !dead && !isAttacking)
+                {
+                    StepBack();
+                }
+                else
+                {
+                    isSteppingBack = false;
+                }
+            }
+
             timePassed += Time.deltaTime;
 
-            if (newDestinationCD <= 0 && pursuingPlayer && !dead)
+            if (newDestinationCD <= 0 && pursuingPlayer && !dead && !isSteppingBack)
             {
                 newDestinationCD = 0.5f;
                 agent.SetDestination(player.transform.position);
@@ -247,7 +267,7 @@ public class Enemy : MonoBehaviour
 
             newDestinationCD -= Time.deltaTime;
 
-            if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
+            if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead && !isSteppingBack)
             {
                 // Calculate the direction from the enemy to the player
                 //its done up there
@@ -261,7 +281,7 @@ public class Enemy : MonoBehaviour
                 }
             }
             //enemy roam
-            if (!dead && !enemyIsInRange && !pursuingPlayer)
+            if (!dead && !enemyIsInRange && !pursuingPlayer && !isSteppingBack)
             {
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
@@ -287,7 +307,7 @@ public class Enemy : MonoBehaviour
             timePassedAfterDeath += Time.deltaTime;
         }
     }
-    
+
     IEnumerator TriggerAttackAfterDelay()
     {
         float delay = 0.5f; // Time delay before triggering the attack
@@ -324,6 +344,18 @@ public class Enemy : MonoBehaviour
         timeSinceLastSighting = 0f;
         pursuingPlayer = true;
         agent.speed = agentSpeedRegular;
+    }
+
+    public void StepBack()
+    {
+        // Move the enemy away from the player to maintain a safe distance
+        Vector3 directionToPlayer = transform.position - player.transform.position;
+        Vector3 safePosition = transform.position + directionToPlayer.normalized * safeDistance;
+        agent.SetDestination(safePosition);
+        
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+            Quaternion.LookRotation(safePosition), rotationSpeed * Time.deltaTime);
+        isSteppingBack = true;
     }
 
     private void OnCollisionEnter(Collision collision)
