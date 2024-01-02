@@ -8662,11 +8662,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432758481611307136, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.2702754
+      value: 0.5882419
       objectReference: {fileID: 0}
     - target: {fileID: 5432758481611307136, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -7.44161
+      value: -7.700218
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482399881941, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8718,11 +8718,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482956459362, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.2702754
+      value: 0.5882419
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482956459362, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -7.44161
+      value: -7.700218
       objectReference: {fileID: 0}
     - target: {fileID: 5432758483043720840, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8734,7 +8734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432758483043720840, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5432758483043720840, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.z
@@ -8742,11 +8742,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432758483094948221, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.2702754
+      value: 0.5882419
       objectReference: {fileID: 0}
     - target: {fileID: 5432758483094948221, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -7.44161
+      value: -7.700218
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
@@ -10171,6 +10171,7 @@ MonoBehaviour:
   fireEnchantDamageBonus: 0
   lightningEnchantDamageBonus: 0
   enchantedWeaponDamage: 0
+  MagicShield: 0
 --- !u!4 &1727409227
 Transform:
   m_ObjectHideFlags: 0
