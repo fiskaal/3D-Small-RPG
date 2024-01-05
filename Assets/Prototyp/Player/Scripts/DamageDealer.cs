@@ -75,9 +75,13 @@ public class DamageDealer : MonoBehaviour
             finalDamage = _damageOfEverything.weaponDamage;
             finalDamage = damageAmplification * finalDamage;
         }
-        else
+        else if (_damageOfEverything != null)
         {
             finalDamage = _damageOfEverything.weaponDamage;
+        }
+        else
+        {
+            finalDamage = weaponDamage;
         }
         
         
