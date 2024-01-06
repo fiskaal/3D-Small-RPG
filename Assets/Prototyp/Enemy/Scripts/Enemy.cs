@@ -70,6 +70,13 @@ public class Enemy : MonoBehaviour
     private float agentSpeedRegular;
     private float agentSpeedPatrol;
     
+    //quick attack
+    private float quickAttacktimer;
+    public bool hasQuickAttack = false;
+
+    public bool bigTreeWhipAttackKnocksDown = false;
+    
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -196,54 +203,71 @@ public class Enemy : MonoBehaviour
             float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
             // Define a threshold angle, for instance, 5 degrees
 
-            if (angleToPlayer < angleThreshold)
-            {
+            
                 if (timePassed >= attackCD && !dead)
                 {
-                    if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
-                    {
-                        if (playerHealthSystem.health > 0)
+                    
+                        if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
                         {
-                            isAttacking = true;
-                            animator.applyRootMotion = true;
-                            agent.ResetPath();
-
-                            if (hasMoreAttacks)
+                            if (playerHealthSystem.health > 0)
                             {
-                                //choose random one attack
-                                float randomValue = Random.value;
-                                if (randomValue > 0.5f)
+                                if (angleToPlayer < angleThreshold)
                                 {
-                                    animator.SetTrigger("attack");
-                                }
-                                else
-                                {
-                                    animator.SetTrigger("attack1");
-                                }
-                            }
-                            else
-                            {
-                                animator.SetTrigger("attack");
-                            }
-                            
-                            Instantiate(preAttackWarningPrefab, transform);
-                            timePassed = 0;
 
-                            if (_ockoProjectile != null)
-                            {
-                                //_ockoProjectile.FireProjectile(player.transform.position, transform);
+                                    isAttacking = true;
+                                    animator.applyRootMotion = true;
+                                    agent.ResetPath();
 
-                                float randomValue = Random.value;
-                                attackChance = 0.5f;
-                                if (randomValue <= attackChance)
-                                {
-                                    StartCoroutine(TriggerAttackAfterDelay());
+                                    if (hasMoreAttacks)
+                                    {
+                                        //choose random one attack
+                                        float randomValue = Random.value;
+                                        if (randomValue > 0.5f)
+                                        {
+                                            animator.SetTrigger("attack");
+                                        }
+                                        else
+                                        {
+                                            animator.SetTrigger("attack1");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        animator.SetTrigger("attack");
+                                    }
+
+                                    Instantiate(preAttackWarningPrefab, transform);
+                                    timePassed = 0;
+
+                                    if (_ockoProjectile != null)
+                                    {
+                                        //_ockoProjectile.FireProjectile(player.transform.position, transform);
+
+                                        float randomValue = Random.value;
+                                        attackChance = 0.5f;
+                                        if (randomValue <= attackChance)
+                                        {
+                                            StartCoroutine(TriggerAttackAfterDelay());
+                                        }
+                                    }
                                 }
+                                else if (quickAttacktimer >= 2f && hasQuickAttack)
+                                {
+                                    isAttacking = true;
+                                    animator.applyRootMotion = true;
+                                    agent.ResetPath();
+                                    QuickAttack(directionToPlayer);
+                                    quickAttacktimer = 0f;
+                                    timePassed = 0f;
+                                }
+
+                                quickAttacktimer += Time.deltaTime;
                             }
                         }
-                    }
+                    
+
                 }
-            }
+            
 
             if (stepBackAfterAttack)
             {
@@ -308,6 +332,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void QuickAttack(Vector3 directionToPlayer)
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+            Quaternion.LookRotation(directionToPlayer), 1000 * Time.deltaTime);
+        animator.SetTrigger("attack");
+    }
+
     IEnumerator TriggerAttackAfterDelay()
     {
         float delay = 0.5f; // Time delay before triggering the attack
@@ -350,7 +381,7 @@ public class Enemy : MonoBehaviour
     {
         // Move the enemy away from the player to maintain a safe distance
         Vector3 directionToPlayer = transform.position - player.transform.position;
-        Vector3 safePosition = transform.position + directionToPlayer.normalized * safeDistance;
+        Vector3 safePosition = transform.position + directionToPlayer.normalized * (safeDistance + attackRange);
         agent.SetDestination(safePosition);
         
         transform.rotation = Quaternion.Slerp(transform.rotation,
