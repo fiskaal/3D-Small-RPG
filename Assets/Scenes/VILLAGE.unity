@@ -285,6 +285,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 17.95895, y: 13.356304, z: 5.121873}
   m_Center: {x: -0.2695403, y: 7.710932, z: -7.6149287}
+--- !u!1 &70426818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4303359067171082592, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
+  m_PrefabInstance: {fileID: 7393866419905555623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &74570286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4897,6 +4902,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 41f43001efd01f040a399cbc8bb7f649, type: 3}
   m_PrefabInstance: {fileID: 563591999}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &853564736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5050659200255218722, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
+  m_PrefabInstance: {fileID: 7393866419905555623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &858122911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8255,6 +8265,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1430988954756330382, guid: 68ec650a9113982449239062459a8dd3, type: 3}
+      propertyPath: rotationControlTag
+      value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430988954756330382, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: objectsToCheckRotation.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -8725,6 +8739,14 @@ PrefabInstance:
       value: -7.700218
       objectReference: {fileID: 0}
     - target: {fileID: 5432758483043720840, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432758483043720840, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432758483043720840, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.99629086
       objectReference: {fileID: 0}
@@ -9188,6 +9210,10 @@ MonoBehaviour:
     isBought: 0
     boughtObjectName: SwordSpecial_EQUIP
     notBoughtObjectName: SwordSpecial_LOCKED
+  - PlayerPrefsKey: 9
+    isBought: 0
+    boughtObjectName: SHIELD_BOUGHT
+    notBoughtObjectName: SHIELD_BUY
 --- !u!4 &1615058504
 Transform:
   m_ObjectHideFlags: 0
@@ -15976,6 +16002,14 @@ PrefabInstance:
       propertyPath: wizardNotCompletedObjects.Array.data[1]
       value: 
       objectReference: {fileID: 975838116}
+    - target: {fileID: 3478114663956242247, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
+      propertyPath: ObjectActivate
+      value: 
+      objectReference: {fileID: 853564736}
+    - target: {fileID: 3478114663956242247, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
+      propertyPath: ObjectDeactivate
+      value: 
+      objectReference: {fileID: 70426818}
     - target: {fileID: 3679194227622656063, guid: e0119f8578de85d438fbe5a77b90d459, type: 3}
       propertyPath: sheathNameInput
       value: SwordSpecial

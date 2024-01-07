@@ -285,6 +285,8 @@ public class WeaponManager : MonoBehaviour
         weaponHolderNameToFind = "SwordHolder"; // Set your default value here
         sheathHolderNameToFind = "SheathHolder"; // Set your default value here
 
+        MagicShield = false; // deactivating the magic shield bought status
+
         // Set default value for the player tag
         playerTag = "Player"; // Set your default value here
     }
