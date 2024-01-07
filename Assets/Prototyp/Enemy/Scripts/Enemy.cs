@@ -75,6 +75,16 @@ public class Enemy : MonoBehaviour
     public bool hasQuickAttack = false;
 
     public bool bigTreeWhipAttackKnocksDown = false;
+
+
+    //path patroling
+    public bool patrolPath = false;
+    public Transform[] waypoints; // Array to hold the waypoints
+    public float patrolSpeed = 3.5f;
+    public float waypointWaitTime = 2f;
+
+    private int currentWaypointIndex = 0;
+    private bool isWaiting;
     
     
     void Start()
@@ -84,7 +94,6 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealthSystem = player.GetComponent<HealthSystem>();
 
-        animator.SetTrigger("chilling");
         originalPosition = transform.position;
         
         animator.applyRootMotion = false;
@@ -109,12 +118,25 @@ public class Enemy : MonoBehaviour
 
         agentSpeedRegular = agent.speed;
         agentSpeedPatrol = agent.speed / 2;
+        
+        //patrol
+        if (patrolPath)
+        {
+            MoveToNextWaypoint();
+        }
+        else
+        {
+            animator.SetTrigger("chilling");
+        }
     }
 
     void Update()
     {
-        float normalizedSpeed = Mathf.InverseLerp(agentSpeedPatrol, agentSpeedRegular, agent.speed);
-        float currentSpeed = Mathf.Lerp(0.5f, 1.0f, normalizedSpeed);
+        //float normalizedSpeed = Mathf.InverseLerp(agentSpeedPatrol, agentSpeedRegular, agent.speed);
+        //float currentSpeed = Mathf.Lerp(0.5f, 1.0f, normalizedSpeed);
+        
+        float currentSpeed = agent.velocity.magnitude/agent.speed;
+        animator.SetFloat("speed", currentSpeed);
         
         // Check if the agent's speed is zero
         if (agent.velocity.magnitude == 0f) 
@@ -165,17 +187,23 @@ public class Enemy : MonoBehaviour
                 if (timeSinceLastSighting >= chillingDelay)
                 {
                     // Check if the enemy reached its original position
-                    if (Vector3.Distance(transform.position, originalPosition) < 3f)
+                    if (Vector3.Distance(transform.position, originalPosition) < 3f && !patrolPath)
                     {
                         // Trigger chilling animation when back to original position
                         animator.SetTrigger("chilling");
                         timeSinceLastSighting = 0f; // Reset timer after triggering "chilling"
                         firstEncounter = false;
                     }
-                    else
+                    else if (!patrolPath)
                     {
                         agent.SetDestination(originalPosition);
                         animator.ResetTrigger("enemySpotted");
+                    }
+                    else
+                    {
+                        MoveToNextWaypoint();
+                        firstEncounter = false;
+                        timeSinceLastSighting = 0f; // Reset timer after triggering "chilling"
                     }
                 }
                 
@@ -190,6 +218,14 @@ public class Enemy : MonoBehaviour
             }
             
             
+        }
+
+        if (patrolPath && !firstEncounter)
+        {
+            if (!agent.pathPending && agent.remainingDistance < 0.1f && !isWaiting)
+            {
+                StartCoroutine(WaitAtWaypoint());
+            }
         }
 
         if (firstEncounter)
@@ -337,6 +373,23 @@ public class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation,
             Quaternion.LookRotation(directionToPlayer), 1000 * Time.deltaTime);
         animator.SetTrigger("attack");
+    }
+    
+    IEnumerator WaitAtWaypoint()
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(waypointWaitTime);
+        isWaiting = false;
+        MoveToNextWaypoint();
+    }
+    
+    void MoveToNextWaypoint()
+    {
+        if (waypoints.Length == 0) return;
+
+        agent.destination = waypoints[currentWaypointIndex].position;
+        currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+        agent.speed = agentSpeedPatrol;
     }
 
     IEnumerator TriggerAttackAfterDelay()

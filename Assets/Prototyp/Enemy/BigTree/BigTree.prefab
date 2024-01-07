@@ -132,13 +132,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasMoreAttacks: 1
-  hitVFX: {fileID: 2476692309955958946, guid: 0a3856a1d321c2b42a6131b3d277a058, type: 3}
+  hitVFX: {fileID: 2476692309955958946, guid: d967babc85fd4e64fbbff5f53f13a39b, type: 3}
   hitVFX1: {fileID: 219217740888041541, guid: c01593394d44d1b44b4d11beff1c4eb6, type: 3}
   ragdoll: {fileID: 0}
-  health: 30
+  health: 60
   attackCD: 3
   attackRange: 2.5
-  aggroRange: 10
+  aggroRange: 15
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
   rotationSpeed: 4
   angleThreshold: 5
@@ -162,6 +162,12 @@ MonoBehaviour:
   stepBackAfterAttack: 0
   safeDistance: 5
   _enemyHpBar: {fileID: 7269930113305113873}
+  hasQuickAttack: 0
+  bigTreeWhipAttackKnocksDown: 0
+  patrolPath: 0
+  waypoints: []
+  patrolSpeed: 3.5
+  waypointWaitTime: 2
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
   damageDealers: []
 --- !u!195 &347307941461644028
@@ -5469,7 +5475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLength: 1.5
-  weaponDamage: 15
+  weaponDamage: 30
 --- !u!1 &6655180340856344898
 GameObject:
   m_ObjectHideFlags: 0
@@ -5515,7 +5521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLength: 1.5
-  weaponDamage: 20
+  weaponDamage: 40
 --- !u!1 &6942461466450950872
 GameObject:
   m_ObjectHideFlags: 0
