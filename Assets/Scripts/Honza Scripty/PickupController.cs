@@ -6,6 +6,12 @@ public class PickupController : MonoBehaviour
     public string woodPickupTag = "wood pickup"; // Tag for the wood pickups
     public string ironPickupTag = "iron pickup"; // Tag for the iron pickups
     public string soulPickupTag = "soul pickup"; // Tag for the soul pickups
+    private Animator soulAnimator;
+
+    private void Start()
+    {
+        soulAnimator = FindObjectOfType<ManagerPickups>()._soulAnimator;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,6 +38,12 @@ public class PickupController : MonoBehaviour
             // Increment soul count using InventoryManager static variable
             ManagerPickups.soul += 1;
             Destroy(other.gameObject); // Destroy the collected soul object
+
+              // Trigger animation
+            if (soulAnimator != null)
+            {
+                soulAnimator.Play("TextBounce", 0, 0f);
+            }
         }
     }
 
