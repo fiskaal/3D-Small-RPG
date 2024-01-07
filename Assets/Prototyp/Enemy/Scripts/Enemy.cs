@@ -52,6 +52,14 @@ public class Enemy : MonoBehaviour
 
     private HealthSystem playerHealthSystem;
     [SerializeField] private DamagePopUpGenerator _damagePopUpGenerator;
+    
+    //keeps distance after attack
+    public bool stepBackAfterAttack = false; // Toggle for stepping back after attack
+    public float safeDistance = 5f; // Distance to maintain after stepping back
+
+    // Track the last time the enemy attacked
+    private float lastAttackTime;
+    private bool isSteppingBack;
 
     //HpBar
     [SerializeField] private EnemyHpBar _enemyHpBar;
@@ -62,6 +70,23 @@ public class Enemy : MonoBehaviour
     private float agentSpeedRegular;
     private float agentSpeedPatrol;
     
+    //quick attack
+    private float quickAttacktimer;
+    public bool hasQuickAttack = false;
+
+    public bool bigTreeWhipAttackKnocksDown = false;
+
+
+    //path patroling
+    public bool patrolPath = false;
+    public Transform[] waypoints; // Array to hold the waypoints
+    public float patrolSpeed = 3.5f;
+    public float waypointWaitTime = 2f;
+
+    private int currentWaypointIndex = 0;
+    private bool isWaiting;
+    
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -69,7 +94,6 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealthSystem = player.GetComponent<HealthSystem>();
 
-        animator.SetTrigger("chilling");
         originalPosition = transform.position;
         
         animator.applyRootMotion = false;
@@ -94,12 +118,25 @@ public class Enemy : MonoBehaviour
 
         agentSpeedRegular = agent.speed;
         agentSpeedPatrol = agent.speed / 2;
+        
+        //patrol
+        if (patrolPath)
+        {
+            MoveToNextWaypoint();
+        }
+        else
+        {
+            animator.SetTrigger("chilling");
+        }
     }
 
     void Update()
     {
-        float normalizedSpeed = Mathf.InverseLerp(agentSpeedPatrol, agentSpeedRegular, agent.speed);
-        float currentSpeed = Mathf.Lerp(0.5f, 1.0f, normalizedSpeed);
+        //float normalizedSpeed = Mathf.InverseLerp(agentSpeedPatrol, agentSpeedRegular, agent.speed);
+        //float currentSpeed = Mathf.Lerp(0.5f, 1.0f, normalizedSpeed);
+        
+        float currentSpeed = agent.velocity.magnitude/agent.speed;
+        animator.SetFloat("speed", currentSpeed);
         
         // Check if the agent's speed is zero
         if (agent.velocity.magnitude == 0f) 
@@ -150,17 +187,23 @@ public class Enemy : MonoBehaviour
                 if (timeSinceLastSighting >= chillingDelay)
                 {
                     // Check if the enemy reached its original position
-                    if (Vector3.Distance(transform.position, originalPosition) < 3f)
+                    if (Vector3.Distance(transform.position, originalPosition) < 3f && !patrolPath)
                     {
                         // Trigger chilling animation when back to original position
                         animator.SetTrigger("chilling");
                         timeSinceLastSighting = 0f; // Reset timer after triggering "chilling"
                         firstEncounter = false;
                     }
-                    else
+                    else if (!patrolPath)
                     {
                         agent.SetDestination(originalPosition);
                         animator.ResetTrigger("enemySpotted");
+                    }
+                    else
+                    {
+                        MoveToNextWaypoint();
+                        firstEncounter = false;
+                        timeSinceLastSighting = 0f; // Reset timer after triggering "chilling"
                     }
                 }
                 
@@ -177,6 +220,14 @@ public class Enemy : MonoBehaviour
             
         }
 
+        if (patrolPath && !firstEncounter)
+        {
+            if (!agent.pathPending && agent.remainingDistance < 0.1f && !isWaiting)
+            {
+                StartCoroutine(WaitAtWaypoint());
+            }
+        }
+
         if (firstEncounter)
         {
 
@@ -188,58 +239,87 @@ public class Enemy : MonoBehaviour
             float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
             // Define a threshold angle, for instance, 5 degrees
 
-            if (angleToPlayer < angleThreshold)
-            {
+            
                 if (timePassed >= attackCD && !dead)
                 {
-                    if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
-                    {
-                        if (playerHealthSystem.health > 0)
+                    
+                        if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
                         {
-                            isAttacking = true;
-                            animator.applyRootMotion = true;
-                            agent.ResetPath();
-
-                            if (hasMoreAttacks)
+                            if (playerHealthSystem.health > 0)
                             {
-                                //choose random one attack
-                                float randomValue = Random.value;
-                                if (randomValue > 0.5f)
+                                if (angleToPlayer < angleThreshold)
                                 {
-                                    animator.SetTrigger("attack");
+
+                                    isAttacking = true;
+                                    animator.applyRootMotion = true;
+                                    agent.ResetPath();
+
+                                    if (hasMoreAttacks)
+                                    {
+                                        //choose random one attack
+                                        float randomValue = Random.value;
+                                        if (randomValue > 0.5f)
+                                        {
+                                            animator.SetTrigger("attack");
+                                        }
+                                        else
+                                        {
+                                            animator.SetTrigger("attack1");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        animator.SetTrigger("attack");
+                                    }
+
+                                    Instantiate(preAttackWarningPrefab, transform);
+                                    timePassed = 0;
+
+                                    if (_ockoProjectile != null)
+                                    {
+                                        //_ockoProjectile.FireProjectile(player.transform.position, transform);
+
+                                        float randomValue = Random.value;
+                                        attackChance = 0.5f;
+                                        if (randomValue <= attackChance)
+                                        {
+                                            StartCoroutine(TriggerAttackAfterDelay());
+                                        }
+                                    }
                                 }
-                                else
+                                else if (quickAttacktimer >= 2f && hasQuickAttack)
                                 {
-                                    animator.SetTrigger("attack1");
+                                    isAttacking = true;
+                                    animator.applyRootMotion = true;
+                                    agent.ResetPath();
+                                    QuickAttack(directionToPlayer);
+                                    quickAttacktimer = 0f;
+                                    timePassed = 0f;
                                 }
-                            }
-                            else
-                            {
-                                animator.SetTrigger("attack");
-                            }
 
-                            Instantiate(preAttackWarningPrefab, transform);
-                            timePassed = 0;
-
-                            if (_ockoProjectile != null)
-                            {
-                                //_ockoProjectile.FireProjectile(player.transform.position, transform);
-
-                                float randomValue = Random.value;
-                                attackChance = 0.5f;
-                                if (randomValue <= attackChance)
-                                {
-                                    StartCoroutine(TriggerAttackAfterDelay());
-                                }
+                                quickAttacktimer += Time.deltaTime;
                             }
                         }
-                    }
+                    
+
+                }
+            
+
+            if (stepBackAfterAttack)
+            {
+                if (timePassed < attackCD && !dead && !isAttacking)
+                {
+                    StepBack();
+                }
+                else
+                {
+                    isSteppingBack = false;
                 }
             }
 
             timePassed += Time.deltaTime;
 
-            if (newDestinationCD <= 0 && pursuingPlayer && !dead)
+            if (newDestinationCD <= 0 && pursuingPlayer && !dead && !isSteppingBack)
             {
                 newDestinationCD = 0.5f;
                 agent.SetDestination(player.transform.position);
@@ -247,7 +327,7 @@ public class Enemy : MonoBehaviour
 
             newDestinationCD -= Time.deltaTime;
 
-            if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead)
+            if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange && !dead && !isSteppingBack)
             {
                 // Calculate the direction from the enemy to the player
                 //its done up there
@@ -261,7 +341,7 @@ public class Enemy : MonoBehaviour
                 }
             }
             //enemy roam
-            if (!dead && !enemyIsInRange && !pursuingPlayer)
+            if (!dead && !enemyIsInRange && !pursuingPlayer && !isSteppingBack)
             {
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
@@ -287,7 +367,31 @@ public class Enemy : MonoBehaviour
             timePassedAfterDeath += Time.deltaTime;
         }
     }
+
+    private void QuickAttack(Vector3 directionToPlayer)
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+            Quaternion.LookRotation(directionToPlayer), 1000 * Time.deltaTime);
+        animator.SetTrigger("attack");
+    }
     
+    IEnumerator WaitAtWaypoint()
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(waypointWaitTime);
+        isWaiting = false;
+        MoveToNextWaypoint();
+    }
+    
+    void MoveToNextWaypoint()
+    {
+        if (waypoints.Length == 0) return;
+
+        agent.destination = waypoints[currentWaypointIndex].position;
+        currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+        agent.speed = agentSpeedPatrol;
+    }
+
     IEnumerator TriggerAttackAfterDelay()
     {
         float delay = 0.5f; // Time delay before triggering the attack
@@ -324,6 +428,18 @@ public class Enemy : MonoBehaviour
         timeSinceLastSighting = 0f;
         pursuingPlayer = true;
         agent.speed = agentSpeedRegular;
+    }
+
+    public void StepBack()
+    {
+        // Move the enemy away from the player to maintain a safe distance
+        Vector3 directionToPlayer = transform.position - player.transform.position;
+        Vector3 safePosition = transform.position + directionToPlayer.normalized * (safeDistance + attackRange);
+        agent.SetDestination(safePosition);
+        
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+            Quaternion.LookRotation(safePosition), rotationSpeed * Time.deltaTime);
+        isSteppingBack = true;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class ManagerPickups : MonoBehaviour
 {
@@ -8,10 +8,12 @@ public class ManagerPickups : MonoBehaviour
     public static int iron = 0; // Number of iron collected
     public static int soul = 200; // Number of souls collected
 
-    public Text woodText; // Reference to the UI Text component displaying wood count
-    public Text stoneText; // Reference to the UI Text component displaying stone count
-    public Text ironText; // Reference to the UI Text component displaying iron count
-    public Text soulText; // Reference to the UI Text component displaying soul count
+    public TextMeshProUGUI woodText; // Reference to the UI TextMeshProUGUI component displaying wood count
+    public TextMeshProUGUI stoneText; // Reference to the UI TextMeshProUGUI component displaying stone count
+    public TextMeshProUGUI ironText; // Reference to the UI TextMeshProUGUI component displaying iron count
+    public TextMeshProUGUI soulText; // Reference to the UI TextMeshProUGUI component displaying soul count
+
+    [SerializeField] public Animator _soulAnimator; // Exposed in the Unity Editor
 
     private static ManagerPickups instance;
 
@@ -28,13 +30,15 @@ public class ManagerPickups : MonoBehaviour
         }
     }
 
+
     void Update()
     {
-        // Update UI Text components based on wood, stone, iron, and soul counts
-        woodText.text = wood.ToString();
-        stoneText.text = stone.ToString();
-        ironText.text = iron.ToString();
-        soulText.text = soul.ToString();
+        // Update UI TextMeshProUGUI components based on wood, stone, iron, and soul counts
+        // woodText.text = wood.ToString();
+        // stoneText.text = stone.ToString();
+        // ironText.text = iron.ToString();
+         soulText.text = soul.ToString();
+       // soulText.SetText(soul.ToString());
     }
 
     // Methods to update wood, stone, iron, and soul counts
@@ -56,5 +60,6 @@ public class ManagerPickups : MonoBehaviour
     public static void UpdateSoulCount(int amount)
     {
         soul += amount;
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Cinemachine;
 
 public class EnemyTarget : MonoBehaviour
 {
@@ -12,10 +13,16 @@ public class EnemyTarget : MonoBehaviour
 
     public GameObject currentTarget;
     private GameObject lastTarget;
+    
+    public CinemachineVirtualCamera virtualCamera;
+
 
     private void Start()
     {
         cameraTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        
+        virtualCamera = GameObject.FindObjectOfType<CinemachineVirtualCamera>();
+
     }
 
     void Update()
@@ -56,6 +63,9 @@ public class EnemyTarget : MonoBehaviour
                 {
                     currentTarget.GetComponentInChildren<Outline>().SetOutlineWidth(5);
                     currentTarget.GetComponentInChildren<EnemyHpBar>().SetHealthBarVisible();
+                    
+                    //virtualCamera.Follow = currentTarget.transform;
+                    //virtualCamera.LookAt = currentTarget.transform;
                 }
 
                 if (lastTarget != null)

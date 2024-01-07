@@ -10560,11 +10560,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasMoreAttacks: 0
-  hitVFX: {fileID: 6823200998282874702, guid: 8f8fe12323625f5499b2853dd2ad3e58, type: 3}
+  hitVFX: {fileID: 2476692309955958946, guid: d967babc85fd4e64fbbff5f53f13a39b, type: 3}
   hitVFX1: {fileID: 219217740888041541, guid: c01593394d44d1b44b4d11beff1c4eb6, type: 3}
   ragdoll: {fileID: 0}
-  health: 5
-  attackCD: 4
+  health: 10
+  attackCD: 3
   attackRange: 2
   aggroRange: 10
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
@@ -10577,7 +10577,7 @@ MonoBehaviour:
   - {fileID: 4440475420537621230, guid: 9c2fb36324d1ded459edf53b82312231, type: 3}
   lootQuantities:
   - {x: 1, y: 4}
-  - {x: 0, y: 2}
+  - {x: 0, y: 0}
   - {x: 0, y: 2}
   player: {fileID: 0}
   isAttacking: 0
@@ -10587,7 +10587,15 @@ MonoBehaviour:
   chillingDelay: 60
   playerNotInRangeGiveUpTime: 10
   _damagePopUpGenerator: {fileID: 8724438938487375597}
+  stepBackAfterAttack: 1
+  safeDistance: 5
   _enemyHpBar: {fileID: 1314441013549286561}
+  hasQuickAttack: 0
+  bigTreeWhipAttackKnocksDown: 0
+  patrolPath: 0
+  waypoints: []
+  patrolSpeed: 3.5
+  waypointWaitTime: 2
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
   damageDealers: []
 --- !u!195 &6389567481400583902
@@ -10862,7 +10870,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a6ca582eb2a1254687f5d1f3280d886, type: 3}
   m_PrefabInstance: {fileID: 7520063953518508534}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4660751131505931971
+--- !u!114 &2679453328700568137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

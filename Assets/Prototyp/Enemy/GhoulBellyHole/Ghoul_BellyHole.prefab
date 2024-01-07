@@ -138,8 +138,8 @@ MonoBehaviour:
   hitVFX: {fileID: 6823200998282874702, guid: 8f8fe12323625f5499b2853dd2ad3e58, type: 3}
   hitVFX1: {fileID: 219217740888041541, guid: c01593394d44d1b44b4d11beff1c4eb6, type: 3}
   ragdoll: {fileID: 0}
-  health: 8
-  attackCD: 3
+  health: 15
+  attackCD: 2
   attackRange: 1.5
   aggroRange: 20
   preAttackWarningPrefab: {fileID: 5151965196124053916, guid: 031c4bf682bdb2d4ba377c1462b96dbc, type: 3}
@@ -152,13 +152,21 @@ MonoBehaviour:
   - {fileID: 4440475420537621230, guid: 9c2fb36324d1ded459edf53b82312231, type: 3}
   lootQuantities:
   - {x: 1, y: 4}
-  - {x: 0, y: 2}
+  - {x: 0, y: 0}
   - {x: 3, y: 5}
+  player: {fileID: 0}
+  isAttacking: 0
   firstEncounter: 0
+  pursuingPlayer: 0
   timeSinceLastSighting: 0
   chillingDelay: 50
+  playerNotInRangeGiveUpTime: 10
   _damagePopUpGenerator: {fileID: 4935039642630556227}
+  stepBackAfterAttack: 0
+  safeDistance: 5
   _enemyHpBar: {fileID: 1394658461581507824}
+  hasQuickAttack: 0
+  bigTreeWhipAttackKnocksDown: 0
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
   damageDealers: []
 --- !u!195 &1031062533482400861
