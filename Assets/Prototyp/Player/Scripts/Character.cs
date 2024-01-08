@@ -71,7 +71,9 @@ public class Character : MonoBehaviour
     public float currentSpecialAttackCooldown;
     public bool currentSpecialAttackisReady = false;
     public float currentSpecialAttackTimePassed = 0f;
-    
+
+    [Header("Sprint")] 
+    public bool isSprinting;
     
     
     //dash coolDownCalculator

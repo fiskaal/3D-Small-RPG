@@ -93,7 +93,18 @@ public class DashState : State
         
         // Calculate the dash direction based on input
         Vector2 input = moveAction.ReadValue<Vector2>();
-        dashDirection = character.cameraTransform.forward * input.y + character.cameraTransform.right * input.x;
+        
+        
+            
+        if (input != Vector2.zero)
+        {
+            dashDirection = character.cameraTransform.forward * input.y + character.cameraTransform.right * input.x;
+        }
+        else
+        {
+            dashDirection = character.transform.forward;
+        }
+
         dashDirection.y = 0f;
         dashDirection.Normalize();
 

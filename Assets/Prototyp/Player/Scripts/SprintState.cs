@@ -19,6 +19,8 @@ public class SprintState : State
     {
         base.Enter();
 
+        character.isSprinting = true;
+        
         sprint = false;
         sprintJump = false;
         input = Vector2.zero;
@@ -39,7 +41,7 @@ public class SprintState : State
 
         velocity = velocity.x * character.cameraTransform.right.normalized + velocity.z * character.cameraTransform.forward.normalized;
         velocity.y = 0f;
-        if (sprintAction.triggered || input.sqrMagnitude == 0f)
+        if (input.sqrMagnitude == 0f)
         {
             sprint = false;
         }
@@ -47,10 +49,16 @@ public class SprintState : State
         {
             sprint = true;
         }
+        
+        if (sprintOutAction.triggered)
+        {
+            sprint = false;
+            character.isSprinting = false;
+        }
+        
 		if (jumpAction.triggered)
 		{
             sprintJump = true;
-
         }
 
     }
@@ -65,9 +73,10 @@ public class SprintState : State
 		{
             stateMachine.ChangeState(character.standing);
         }
+        
 		if (sprintJump)
 		{
-            stateMachine.ChangeState(character.sprintjumping);
+            stateMachine.ChangeState(character.jumping);
         }
     }
 
@@ -89,5 +98,12 @@ public class SprintState : State
         {
             character.transform.rotation = Quaternion.Slerp(character.transform.rotation, Quaternion.LookRotation(velocity), character.rotationDampTime);
         }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        //character.isSprinting = false;
     }
 }

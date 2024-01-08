@@ -69,9 +69,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Sprint",
+                    "name": "SprintIn",
                     "type": "Button",
                     "id": "0e565dff-bb29-48e2-81fb-6c216a4482c3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SprintOut",
+                    "type": "Button",
+                    "id": "dfe54b7f-1765-4849-9961-023018fc0fb7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -267,10 +276,10 @@
                     "name": "",
                     "id": "4eeaee01-7d71-423e-a19b-1d04e69bebac",
                     "path": "<Keyboard>/shift",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Sprint",
+                    "action": "SprintIn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -348,6 +357,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "HeavyAttack1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2905428-a306-4371-b674-db5068852c4f",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SprintOut",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

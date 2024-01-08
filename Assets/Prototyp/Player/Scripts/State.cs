@@ -14,7 +14,8 @@ public class State
     public InputAction lookAction;
     public InputAction jumpAction;
     public InputAction crouchAction;
-    public InputAction sprintAction;
+    public InputAction sprintInAction;
+    public InputAction sprintOutAction;
     public InputAction drawWeaponAction;
     public InputAction attackAction;
     public InputAction specialAttackSlotAction;
@@ -33,7 +34,8 @@ public class State
         lookAction = character.playerInput.actions["Look"];
         jumpAction = character.playerInput.actions["Jump"];
         crouchAction = character.playerInput.actions["Crouch"];
-        sprintAction = character.playerInput.actions["Sprint"];
+        sprintInAction = character.playerInput.actions["SprintIn"];
+        sprintOutAction = character.playerInput.actions["SprintOut"];
         drawWeaponAction = character.playerInput.actions["DrawWeapon"];
         attackAction = character.playerInput.actions["Attack"];
         specialAttackSlotAction = character.playerInput.actions["HeavyAttack"];
@@ -52,7 +54,7 @@ public class State
             Debug.Log("MoveTriggered");
         }
         
-        if (sprintAction.triggered)
+        if (sprintInAction.triggered)
         {
             Debug.Log("SprintTriggered");
         }

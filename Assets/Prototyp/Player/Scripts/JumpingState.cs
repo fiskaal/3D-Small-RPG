@@ -14,6 +14,8 @@ public class JumpingState:State
     private float clipSpeed;
     private float timePassed;
     private float jumpingTime;
+
+    private bool sprint;
     
     public JumpingState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
 	{
@@ -37,12 +39,19 @@ public class JumpingState:State
 
         timePassed = 0f;
         jumpingTime = 0.7f;
+
+        sprint = false;
 	}
 	public override void HandleInput()
 	{
 		base.HandleInput();
 
         input = moveAction.ReadValue<Vector2>();
+
+        if (sprintOutAction.triggered)
+        {
+	        character.isSprinting = false;
+        }
     }
 
 	public override void LogicUpdate()
@@ -58,7 +67,14 @@ public class JumpingState:State
             }
             else
             {
-	            stateMachine.ChangeState(character.standing);
+	            if (!character.isSprinting)
+	            {
+		            stateMachine.ChangeState(character.standing);
+	            }
+	            else
+	            {
+		            stateMachine.ChangeState(character.sprinting);
+	            }
             }
 
             character.animator.SetTrigger("land");
@@ -90,6 +106,11 @@ public class JumpingState:State
             airVelocity.y = 0f;
             character.controller.Move(gravityVelocity * Time.deltaTime+ (airVelocity*character.airControl+velocity*(1- character.airControl))*playerSpeed*Time.deltaTime);
         }
+		
+		if (velocity.sqrMagnitude > 0)
+		{
+			character.transform.rotation = Quaternion.Slerp(character.transform.rotation, Quaternion.LookRotation(velocity), character.rotationDampTime);
+		}
 
         gravityVelocity.y += gravityValue * Time.deltaTime;
         grounded = character.controller.isGrounded;

@@ -615,7 +615,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   playerVelocity: {x: 0, y: 0, z: 0}
   blockingStateActive: 0
-  dashCooldownTime: 2
+  dashCooldownTime: 4
   dashIsReady: 0
   blockVFX: {fileID: 375733746039442924}
   blockVFXScript: {fileID: 410327260356725852}
@@ -724,7 +724,7 @@ MonoBehaviour:
   character: {fileID: 2995673596906374303}
   blockBrokenVFX: {fileID: 0}
   popUpGenerator: {fileID: 0}
-  blockRegenerationRate: 2
+  blockRegenerationRate: 6
   blockRegenerationTimer: 0
   blockBreakCooldownTime: 20
   blockBreakTimer: 0

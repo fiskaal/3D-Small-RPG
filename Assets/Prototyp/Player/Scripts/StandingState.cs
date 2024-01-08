@@ -62,7 +62,7 @@ public class StandingState: State
 		{
             crouch = true;
 		}
-		if (sprintAction.triggered)
+		if (sprintInAction.triggered)
 		{
             sprint = true;
 		}
