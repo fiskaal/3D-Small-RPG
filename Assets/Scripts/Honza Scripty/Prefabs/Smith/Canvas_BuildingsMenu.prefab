@@ -2104,7 +2104,6 @@ GameObject:
   - component: {fileID: 9043818391277134116}
   - component: {fileID: 1717638406180352212}
   - component: {fileID: 4745299716713633581}
-  - component: {fileID: 8841073743393236520}
   m_Layer: 5
   m_Name: FIRESWORD_BUY
   m_TagString: Untagged
@@ -2229,23 +2228,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &8841073743393236520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599184126323593058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67886bf97fd7b244799d7289d6c14e7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soulCost: 10
-  warningMessage: {fileID: 0}
-  ObjectDeactivate: {fileID: 0}
-  ObjectActivate: {fileID: 0}
-  shopArrayIndex: 9
 --- !u!1 &602694831128386465
 GameObject:
   m_ObjectHideFlags: 0
@@ -9983,9 +9965,8 @@ GameObject:
   - component: {fileID: 8183640192773911633}
   - component: {fileID: 7516096436775669983}
   - component: {fileID: 4858896647717222273}
-  - component: {fileID: 8293653608597343639}
   - component: {fileID: 6912414958996195787}
-  - component: {fileID: 6049792136369252775}
+  - component: {fileID: 4792949532536390170}
   m_Layer: 5
   m_Name: Button_Yes
   m_TagString: Untagged
@@ -10052,23 +10033,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8293653608597343639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3921427340606918243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67886bf97fd7b244799d7289d6c14e7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soulCost: 10
-  warningMessage: {fileID: 0}
-  ObjectDeactivate: {fileID: 599184126323593058}
-  ObjectActivate: {fileID: 7849916665422380709}
-  shopArrayIndex: 10
 --- !u!114 &6912414958996195787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10125,9 +10089,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 8293653608597343639}
-        m_TargetAssemblyTypeName: MagicShieldButton, Assembly-CSharp
-        m_MethodName: OnMagicShieldButtonClick
+      - m_Target: {fileID: 4792949532536390170}
+        m_TargetAssemblyTypeName: SpellBuyButton, Assembly-CSharp
+        m_MethodName: OnSpellBuyButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10137,7 +10101,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &6049792136369252775
+--- !u!114 &4792949532536390170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10146,11 +10110,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3921427340606918243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6697e2988c9105a45966be3f48df04cf, type: 3}
+  m_Script: {fileID: 11500000, guid: fe545979b2226f2488fc227735c0ab39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soulCost: 0
+  soulCost: 10
   warningMessage: {fileID: 0}
+  ObjectDeactivate: {fileID: 599184126323593058}
+  ObjectActivate: {fileID: 7849916665422380709}
+  shopArrayIndex: 10
   spellArrayIndex: 4
 --- !u!1 &3936338127911365434
 GameObject:
@@ -11104,7 +11071,6 @@ GameObject:
   - component: {fileID: 6167312981824946936}
   - component: {fileID: 165133017277680016}
   - component: {fileID: 6044728938002541431}
-  - component: {fileID: 3478114663956242247}
   m_Layer: 5
   m_Name: SHIELD_BUY
   m_TagString: Untagged
@@ -11229,23 +11195,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &3478114663956242247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4303359067171082592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67886bf97fd7b244799d7289d6c14e7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soulCost: 10
-  warningMessage: {fileID: 0}
-  ObjectDeactivate: {fileID: 0}
-  ObjectActivate: {fileID: 0}
-  shopArrayIndex: 9
 --- !u!1 &4342605982553233881
 GameObject:
   m_ObjectHideFlags: 0
