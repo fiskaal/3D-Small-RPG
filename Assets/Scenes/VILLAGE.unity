@@ -2496,6 +2496,8 @@ MonoBehaviour:
     spellBought: 0
   - childObjectName: Panel_Spell_Lightning
     spellBought: 0
+  - childObjectName: Panel_Spell_FireSword
+    spellBought: 0
   targetTag: Spells
   targetObjectName: LevelUpArray
 --- !u!1001 &356977041
@@ -9816,11 +9818,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430988954756330383, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000034225764
+      value: 0.000000034225764
       objectReference: {fileID: 0}
     - target: {fileID: 1430988954756330383, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000035827075
+      value: -0.0000000035827075
       objectReference: {fileID: 0}
     - target: {fileID: 1430988954756330383, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10214,15 +10216,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482399881941, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12218327
+      value: 0.12218325
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482399881941, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017077465
+      value: 0.000000017077465
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482399881941, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000021023319
+      value: -0.0000000021023316
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482605771653, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LookAt
@@ -10238,11 +10240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482605771658, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001711288
+      value: 0.00000001711288
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482605771658, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000001791354
+      value: -0.000000001791354
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482956459362, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_FollowOffset.y
@@ -10270,7 +10272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432758483043720840, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 5432758483043720840, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.z
@@ -11044,6 +11046,10 @@ MonoBehaviour:
     isBought: 0
     boughtObjectName: SHIELD_BOUGHT
     notBoughtObjectName: SHIELD_BUY
+  - PlayerPrefsKey: 10
+    isBought: 0
+    boughtObjectName: FIRESWORD_BOUGHT
+    notBoughtObjectName: FIRESWORD_BUY
 --- !u!4 &1615058504
 Transform:
   m_ObjectHideFlags: 0
