@@ -14622,8 +14622,8 @@ GameObject:
   - component: {fileID: 4440475420537621218}
   - component: {fileID: 4440475420537621219}
   - component: {fileID: 4440475420537621216}
-  - component: {fileID: 4440475420537621217}
   - component: {fileID: 1096785821955810468}
+  - component: {fileID: 6390272814153913840}
   m_Layer: 2
   m_Name: MonsterCore
   m_TagString: MonsterCore
@@ -14699,19 +14699,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4440475420537621217
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4440475420537621230}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.5476565, y: 7.581626, z: 3.4920151}
-  m_Center: {x: -0.11122862, y: -0.26781794, z: -0.053355098}
 --- !u!114 &1096785821955810468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14727,6 +14714,20 @@ MonoBehaviour:
   magnetRange: 7
   magnetSpeed: 1
   maxSpeed: 10
+--- !u!136 &6390272814153913840
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440475420537621230}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 3.24
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 4.76, z: 0}
 --- !u!1 &4963145837875814656
 GameObject:
   m_ObjectHideFlags: 0
@@ -24557,7 +24558,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 9.87e-43, y: -39230.625, z: 9.87e-43, w: 1.72e-43}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
