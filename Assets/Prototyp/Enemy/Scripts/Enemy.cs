@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealthSystem = player.GetComponent<HealthSystem>();
+        playerHealthSystem = FindObjectOfType<HealthSystem>();
 
         originalPosition = transform.position;
         

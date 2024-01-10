@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections; // Add this line for IEnumerator
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -34,16 +35,10 @@ public class EquipmentManager : MonoBehaviour
 
     void Start()
     {
-        // Find the player GameObject using the "Player" tag
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-
-        // Get the PlayerEquipment script attached to the player GameObject
-        playerEquipment = playerObject.GetComponent<PlayerEquipment>();
+        playerEquipment = FindObjectOfType<PlayerEquipment>();
 
         if (playerEquipment == null)
-        {
-            Debug.LogError("PlayerEquipment script not found on the player GameObject.");
-        }
+            Debug.LogError("PlayerEquipment script not found in the scene.");
     }
 
     void Update()
@@ -90,16 +85,10 @@ public class EquipmentManager : MonoBehaviour
 
     void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Find the player GameObject using the "Player" tag
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-
-        // Get the PlayerEquipment script attached to the player GameObject
-        playerEquipment = playerObject.GetComponent<PlayerEquipment>();
+        playerEquipment = FindObjectOfType<PlayerEquipment>();
 
         if (playerEquipment == null)
-        {
-            Debug.LogError("PlayerEquipment script not found on the player GameObject.");
-        }
+            Debug.LogError("PlayerEquipment script not found in the scene.");
     }
 
     void OnDestroy()
@@ -115,4 +104,8 @@ public class EquipmentManager : MonoBehaviour
         public bool activateEquipment; // Bool to determine whether to activate or deactivate the variable in PlayerEquipment
         // Other fields if needed
     }
+
+  
+
+
 }

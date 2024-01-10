@@ -15,8 +15,19 @@ public class StatsUpgradeButton : MonoBehaviour
 
     void Start()
     {
-        damageScript = GameObject.FindGameObjectWithTag("Player").GetComponent<DamageOfEverything>();
-        playerHealthScript = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
+        // Instead of using GameObject.FindGameObjectWithTag, use FindObjectOfType
+        damageScript = FindObjectOfType<DamageOfEverything>();
+        playerHealthScript = FindObjectOfType<HealthSystem>();
+
+        if (damageScript == null)
+        {
+            Debug.LogError("DamageOfEverything not found in the scene.");
+        }
+
+        if (playerHealthScript == null)
+        {
+            Debug.LogError("HealthSystem not found in the scene.");
+        }
     }
 
     public void IncreaseAllStats()
@@ -36,5 +47,7 @@ public class StatsUpgradeButton : MonoBehaviour
         damageScript.fireEnchantDamageBonus += fireEnchantDamageBonusIncreaseAmount;
         damageScript.lightningEnchantDamageBonus += lightningEnchantDamageBonusIncreaseAmount;
         damageScript.enchantedWeaponDamage += enchantedWeaponDamageIncreaseAmount;
+
+        Time.timeScale = 1f;
     }
 }

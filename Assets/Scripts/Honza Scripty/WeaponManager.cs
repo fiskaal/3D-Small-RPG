@@ -73,21 +73,19 @@ public class WeaponManager : MonoBehaviour
             return;
         }
 
-        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
-
-        if (player != null)
         {
-            damageScript = player.GetComponent<DamageOfEverything>();
+            damageScript = FindObjectOfType<DamageOfEverything>();
 
             if (damageScript == null)
             {
-                Debug.LogError("DamageOfEverything script not found on the player GameObject.");
+                Debug.LogError("DamageOfEverything script not found in the scene.");
+            }
+            else
+            {
+                // Do something with the found damageScript instance
             }
         }
-        else
-        {
-            Debug.LogError("Player not found. Make sure the player has the tag: " + playerTag);
-        }
+
     }
 
     private void Start()
@@ -165,20 +163,15 @@ public class WeaponManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+        damageScript = FindObjectOfType<DamageOfEverything>();
 
-        if (player != null)
+        if (damageScript == null)
         {
-            damageScript = player.GetComponent<DamageOfEverything>();
-
-            if (damageScript == null)
-            {
-                Debug.LogError("DamageOfEverything script not found on the player GameObject.");
-            }
+            Debug.LogError("DamageOfEverything script not found in the scene.");
         }
         else
         {
-            Debug.LogError("Player not found. Make sure the player has the tag: " + playerTag);
+            // Do something with the found damageScript instance
         }
 
         //LoadValues();
