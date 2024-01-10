@@ -61,7 +61,7 @@ public class EnemyTarget : MonoBehaviour
             {
                 if (currentTarget != null)
                 {
-                    currentTarget.GetComponentInChildren<Outline>().SetOutlineWidth(5);
+                    currentTarget.GetComponentInChildren<Outline>().SetOutlineWidth(2.5f);
                     currentTarget.GetComponentInChildren<EnemyHpBar>().SetHealthBarVisible();
                     
                     //virtualCamera.Follow = currentTarget.transform;
