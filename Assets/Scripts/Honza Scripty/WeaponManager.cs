@@ -110,7 +110,7 @@ public class WeaponManager : MonoBehaviour
 
     public void FindHolders()
     {
-        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+        GameObject player = GameObject.Find("Player");
 
         if (player != null)
         {
@@ -310,6 +310,7 @@ public class WeaponManager : MonoBehaviour
             Debug.LogWarning("Player not found. Make sure the player has the tag: Player");
         }
     }
+
 
 
 }
