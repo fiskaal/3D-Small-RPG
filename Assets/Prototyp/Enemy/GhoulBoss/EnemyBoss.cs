@@ -118,7 +118,7 @@ public class EnemyBoss : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealthSystem = player.GetComponent<HealthSystem>();
+        playerHealthSystem = FindObjectOfType<HealthSystem>();
 
         animator.applyRootMotion = false;
         dead = false;
