@@ -34,6 +34,8 @@ public class HealthSystem : MonoBehaviour
     // Previous total armor bonus
     private float previousTotalArmorBonus = 0f;
 
+    public PlayerAudioScript audioScript;
+
     void Start()
     {
         _lvlQuestManager = FindObjectOfType<LvlQuestManager>();
@@ -116,12 +118,14 @@ public class HealthSystem : MonoBehaviour
                     {
                         animator.SetTrigger("damage");
                         _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
+                        audioScript.PlayHit();
                     }
                     else
                     {
                         animator.applyRootMotion = true;
                         animator.SetTrigger("heavyDamage");
                         _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
+                        audioScript.PlayHit();
                     }
 
                     //quest
@@ -137,6 +141,7 @@ public class HealthSystem : MonoBehaviour
                     blockVFXScript.Damage();
                     _blockBreaker.BlockAttackCounter();
                     _damagePopUpGenerator.CreatePopUp(hit.position, "Blocked", Color.cyan);
+                    audioScript.PlayBlock();
                 }
             }
             else
@@ -146,12 +151,14 @@ public class HealthSystem : MonoBehaviour
                 {
                     animator.SetTrigger("damage");
                     _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
+                    audioScript.PlayHit();
                 }
                 else
                 {
                     animator.applyRootMotion = true;
                     animator.SetTrigger("heavyDamage");
                     _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.red);
+                    audioScript.PlayHit();
                 }
 
                 //quest
