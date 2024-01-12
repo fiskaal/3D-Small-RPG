@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CartoonFX;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.ProBuilder;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
@@ -100,6 +101,11 @@ public class EnemyBoss : MonoBehaviour
     private DamagePopUpGenerator _damagePopUpGenerator;
     
     
+    float targetScale = 1.5f;
+    float startScale = 1f;
+    float scaleTransitionDuration = 5f; // Duration in seconds
+    float scaleStartTime;
+    
     // Health bar
     [SerializeField] private EnemyHpBar _enemyHpBar;
 
@@ -112,7 +118,7 @@ public class EnemyBoss : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealthSystem = player.GetComponent<HealthSystem>();
+        playerHealthSystem = FindObjectOfType<HealthSystem>();
 
         animator.applyRootMotion = false;
         dead = false;
@@ -130,13 +136,14 @@ public class EnemyBoss : MonoBehaviour
         startTime = Time.time;
         particleStartTime = Time.time;
 
+
+        scaleStartTime = Time.time;
         
         // Set max HP for the health bar
         _enemyHpBar.SetMaxHP(health);
         
         _damagePopUpGenerator = FindObjectOfType<DamagePopUpGenerator>();
-
-
+        
         // Ocko projectile
         if (GetComponent<OckoProjectile>() != null)
         {
@@ -167,6 +174,8 @@ public class EnemyBoss : MonoBehaviour
             float lerpFactor = Mathf.Clamp01((Time.time - startTime) / transitionDuration);
             Color lerpedColor = Color.Lerp(startColor, endColor, lerpFactor);
             bossMaterial.color = lerpedColor;
+            
+            StartCoroutine(ScaleOverTime());
 
             // Particle system color change
             float particleLerpFactor = Mathf.Clamp01((Time.time - particleStartTime) / particleTransitionDuration);
@@ -219,6 +228,20 @@ public class EnemyBoss : MonoBehaviour
     private void UpdateCoolDown(ref float timePassed)
     {
         timePassed += Time.deltaTime;
+    }
+    
+    IEnumerator ScaleOverTime()
+    {
+        while (Time.time < startTime + transitionDuration)
+        {
+            float scaleLerpFactor = Mathf.Clamp01((Time.time - startTime) / transitionDuration);
+            float lerpedScale = Mathf.Lerp(startScale, targetScale, scaleLerpFactor);
+            transform.localScale = new Vector3(lerpedScale, lerpedScale, lerpedScale);
+            yield return null; // Wait for the next frame
+        }
+
+        // Ensure reaching the target scale at the end of the transition
+        transform.localScale = new Vector3(targetScale, targetScale, targetScale);
     }
     
     private void UpdateAttackState(float attackCooldown, float currentAttackRange, ref float timePassed)

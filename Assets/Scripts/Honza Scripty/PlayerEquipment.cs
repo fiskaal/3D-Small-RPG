@@ -2,6 +2,16 @@ using UnityEngine;
 
 public class PlayerEquipment : MonoBehaviour
 {
+    public static PlayerEquipment Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+
     // Define equipment items
     public PlayerArmorEquipmentItem KnightHelmet;
     public PlayerArmorEquipmentItem KnightChestplate;

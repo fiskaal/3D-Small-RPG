@@ -27,8 +27,9 @@ public class DamageDealer : MonoBehaviour
         
         canDealDamage = false;
         hasDealtDamage = new List<GameObject>();
+
         
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = FindObjectOfType<HealthSystem>().gameObject;
         closestEnemy = null;
         attackedEnemySelected = false;
 

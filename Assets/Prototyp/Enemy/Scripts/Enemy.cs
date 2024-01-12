@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealthSystem = player.GetComponent<HealthSystem>();
+        playerHealthSystem = FindObjectOfType<HealthSystem>();
 
         originalPosition = transform.position;
         
@@ -222,7 +222,8 @@ public class Enemy : MonoBehaviour
 
         if (patrolPath && !firstEncounter)
         {
-            if (!agent.pathPending && agent.remainingDistance < 0.1f && !isWaiting)
+            float allowedDistance = agent.stoppingDistance + 0.1f;
+            if (!agent.pathPending && agent.remainingDistance < allowedDistance && !isWaiting)
             {
                 StartCoroutine(WaitAtWaypoint());
             }
