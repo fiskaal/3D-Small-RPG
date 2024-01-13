@@ -22,6 +22,8 @@ public class BlockBreaker : MonoBehaviour
     [SerializeField] public float blockBreakCooldownTime = 1.0f; // Time for block break cooldown in seconds
     public float blockBreakTimer = 0.0f;
 
+
+    public PlayerAudioScript playerAudioScript;
     private void Start()
     {
         popUpGenerator = FindObjectOfType<DamagePopUpGenerator>();
@@ -81,5 +83,7 @@ public class BlockBreaker : MonoBehaviour
         popUpGenerator.CreatePopUp(character.gameObject.transform.position, "Shield Broken", Color.red);
         Debug.Log("Block Break!");
         character.blockBroken = true;
+        
+        playerAudioScript.PlayBlockBreak();
     }
 }

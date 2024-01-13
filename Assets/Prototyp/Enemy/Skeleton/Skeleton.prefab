@@ -4867,7 +4867,7 @@ GameObject:
   - component: {fileID: 4412588302926589234}
   - component: {fileID: 879738051399139677}
   - component: {fileID: 3707509536511887358}
-  - component: {fileID: 3707509536511887357}
+  - component: {fileID: 8269665863158048903}
   m_Layer: 9
   m_Name: Skeleton
   m_TagString: Enemy
@@ -4973,6 +4973,11 @@ MonoBehaviour:
   _enemyHpBar: {fileID: 2671940343012573446}
   hasQuickAttack: 0
   bigTreeWhipAttackKnocksDown: 0
+  patrolPath: 0
+  waypoints: []
+  patrolSpeed: 3.5
+  waypointWaitTime: 2
+  audioScript: {fileID: 0}
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
   damageDealers: []
 --- !u!195 &4412588302926589234
@@ -5109,7 +5114,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3707509536511887357
+--- !u!114 &8269665863158048903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5118,13 +5123,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4577901483304520735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d00ecf709b899b41bcdd38df41af5e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f83dbf2841670c42aa141ade68343c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClips:
-  - {fileID: 8300000, guid: 5a631b2fa51dbf94d9f880fc66044504, type: 3}
-  - {fileID: 8300000, guid: f5327ac2d7949f649a464aa8411c19c1, type: 3}
-  - {fileID: 8300000, guid: b398b56a81efc0d46a60ab825dd78f1f, type: 3}
+  volumeSteps: 0.8
+  volumeHit: 0.2
+  volumeAttack: 0.5
+  audioSource: {fileID: 3707509536511887358}
+  hit: {fileID: 8300000, guid: 8236edea92c9fcd4e8bab4f92c3fef7c, type: 3}
+  attackWhoosh: {fileID: 8300000, guid: b31281003468736478a61ce8a25cf476, type: 3}
+  steps:
+  - {fileID: 8300000, guid: 82b853e1df9f6214a90caf3fcdca2484, type: 3}
+  - {fileID: 8300000, guid: 79c5f425ecb5e8c488ff96f52e3fb76c, type: 3}
+  - {fileID: 8300000, guid: 3aa7e5e86d631ed469b17a918c60bd65, type: 3}
 --- !u!1 &6896546181641600809
 GameObject:
   m_ObjectHideFlags: 0

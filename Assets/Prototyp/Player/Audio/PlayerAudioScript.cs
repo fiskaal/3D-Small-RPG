@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerAudioScript : MonoBehaviour
 {
@@ -13,14 +14,23 @@ public class PlayerAudioScript : MonoBehaviour
 
     public AudioClip[] hitAu;
     public AudioClip blockHit;
+    [FormerlySerializedAs("blocBreak")] public AudioClip blockBreak;
 
     public AudioClip slash0;
     public AudioClip slash1;
     public AudioClip slash2;
     public AudioClip slash2Impact;
 
+    public AudioClip pickUp;
 
 
+    public void PlayPickUp()
+    {
+        audioSource.clip = pickUp;
+        audioSource.volume = 0.2f;
+        audioSource.Play();
+    }
+    
     public void PlayFootStep()
     {
         PlayRandomStoneFootStep();
@@ -50,6 +60,13 @@ public class PlayerAudioScript : MonoBehaviour
     public void PlayBlock()
     {
         audioSource.clip = blockHit;
+        audioSource.volume = 0.4f;
+        audioSource.Play();
+    }
+    
+    public void PlayBlockBreak()
+    {
+        audioSource.clip = blockBreak;
         audioSource.volume = 0.4f;
         audioSource.Play();
     }

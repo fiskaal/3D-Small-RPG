@@ -8,6 +8,8 @@ public class PickupController : MonoBehaviour
     public string soulPickupTag = "soul pickup"; // Tag for the soul pickups
     private Animator soulAnimator;
 
+    public PlayerAudioScript playerAudioScript;
+
     private void Start()
     {
         soulAnimator = FindObjectOfType<ManagerPickups>()._soulAnimator;
@@ -20,24 +22,31 @@ public class PickupController : MonoBehaviour
             // Update stone count directly using InventoryManager static variable
             ManagerPickups.stone += 1;
             Destroy(other.gameObject); // Destroy the collected stone object
+            playerAudioScript.PlayPickUp();
         }
         else if (other.CompareTag(woodPickupTag))
         {
             // Update wood count directly using InventoryManager static variable
             ManagerPickups.wood += 1;
             Destroy(other.gameObject); // Destroy the collected wood object
+            playerAudioScript.PlayPickUp();
+
         }
         else if (other.CompareTag(ironPickupTag))
         {
             // Increment iron count using InventoryManager static variable
             ManagerPickups.iron += 1;
             Destroy(other.gameObject); // Destroy the collected iron object
+            playerAudioScript.PlayPickUp();
+
         }
         else if (other.CompareTag(soulPickupTag))
         {
             // Increment soul count using InventoryManager static variable
             ManagerPickups.soul += 1;
             Destroy(other.gameObject); // Destroy the collected soul object
+            playerAudioScript.PlayPickUp();
+
 
               // Trigger animation
             if (soulAnimator != null)
