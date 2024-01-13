@@ -72,6 +72,8 @@ public class DashState : State
     private float dashDuration = 0.6f; // Adjust the dash duration as needed
     private float dashTimer = 0f;
     private Vector3 dashDirection = Vector3.zero;
+
+    private bool jump;
     
     float gravityValue;
     bool grounded;
@@ -86,6 +88,8 @@ public class DashState : State
     {
         base.Enter();
 
+        jump = false;
+        
         character.animator.SetTrigger("dash");
         
         //reset dash coolDownTimePassed
@@ -119,6 +123,11 @@ public class DashState : State
     public override void HandleInput()
     {
         base.HandleInput();
+
+        if (jumpAction.triggered)
+        {
+            jump = true;
+        }
     }
 
     public override void LogicUpdate()
@@ -136,6 +145,12 @@ public class DashState : State
         {
             stateMachine.ChangeState(character.combatting); // Change to another state when the dash is complete
             character.animator.SetTrigger("move");
+        }
+
+        if (jump)
+        {
+            stateMachine.ChangeState(character.jumping); // Change to another state when the dash is complete
+            character.animator.SetTrigger("jump");
         }
     }
 }

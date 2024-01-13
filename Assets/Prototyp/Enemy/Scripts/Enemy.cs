@@ -86,6 +86,9 @@ public class Enemy : MonoBehaviour
     private int currentWaypointIndex = 0;
     private bool isWaiting;
     
+    //audio
+    public AudioScript audioScript;
+    
     
     void Start()
     {
@@ -101,7 +104,12 @@ public class Enemy : MonoBehaviour
         timePassedAfterDeath = 0f;
         firstTimeSpotted = true;
         timePassed = attackCD;
-        
+
+        if (GetComponent<AudioScript>() != null)
+        {
+            audioScript = GetComponent<AudioScript>();
+        }
+
         //hpBar
         _enemyHpBar.SetMaxHP(health);
         _enemyHpBar.SetHP(health);
@@ -487,7 +495,11 @@ public class Enemy : MonoBehaviour
         if (!dead)
         {
             _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.white);
-            
+            if (audioScript != null)
+            {
+                audioScript.PlayHit();
+            }
+
             health -= damageAmount;
             animator.applyRootMotion = true;
             if (!isAttacking)
