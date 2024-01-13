@@ -2591,7 +2591,10 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: b31281003468736478a61ce8a25cf476, type: 3}
   fallImpact: {fileID: 8300000, guid: 412f943e01a02844fa28a2638cd8cafe, type: 3}
   dash: {fileID: 8300000, guid: 5daec886ffdd7a445b89bd8f7711d70f, type: 3}
-  hitAu: {fileID: 8300000, guid: 0a60d38a605955f43bb14f05937d3678, type: 3}
+  hitAu:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   blockHit: {fileID: 8300000, guid: bbc2a9ba45ff46f43974a62ac527e921, type: 3}
   slash0: {fileID: 8300000, guid: 22642fcecb71b7d42bc38a7ecdfbced1, type: 3}
   slash1: {fileID: 8300000, guid: 1ca73f82ee75ed7498c102c33b2dd08e, type: 3}
@@ -5821,7 +5824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &757194973273595586
 Transform:
   m_ObjectHideFlags: 0
@@ -5865,7 +5868,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2682491c5433cc142b072ae202c6fe78, type: 2}
+  - {fileID: 2100000, guid: d422bd01d969b1f478d1a0efb4859840, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

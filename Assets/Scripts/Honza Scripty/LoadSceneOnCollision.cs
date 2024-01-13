@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class LoadSceneOnCollision : MonoBehaviour
 {
     // The name of the scene you want to load
-    public string sceneName;
+    public string sceneName = "TUTORIAL_level";
 
     // The spawn coordinates for the player
     public Vector3 spawnCoordinates;
