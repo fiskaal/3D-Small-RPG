@@ -55,7 +55,7 @@ public class PetBehaviour : MonoBehaviour
                 randomDestination = GetRandomPointAroundPlayer();
                 agent.SetDestination(randomDestination);
                 isChilling = false;
-            }/*
+            }
             else
             {
                 Collider[] hitColliders = Physics.OverlapSphere(transform.position, playerRange, enemyLayer);
@@ -77,14 +77,16 @@ public class PetBehaviour : MonoBehaviour
 
                 if (closestEnemy.gameObject != gameObject && closestEnemy != null) // Ensure the pet doesn't attack itself
                 {
+                    
+                    float enemuDDistance = Vector3.Distance(transform.position, closestEnemy.transform.position);
                         
-                    if (closestDistance <= attackRange && !isAttacking)
+                    if (enemuDDistance <= attackRange && !isAttacking)
                     {
                                 anim.SetTrigger("attack");
                                 lastAttackTime = 0;
                                 isAttacking = true;
                     }
-                    else if (closestDistance <= playerRange/2)
+                    else if (enemuDDistance <= playerRange/2)
                     {
                         agent.SetDestination(closestEnemy.transform.position);
                     }
@@ -100,7 +102,7 @@ public class PetBehaviour : MonoBehaviour
                 isAttacking = false;
             }
             lastAttackTime += Time.deltaTime;
-*/
+
             if (anim.GetFloat("speed") == 0f)
             {
                 idleActionTimer += Time.deltaTime;
