@@ -1804,8 +1804,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f83dbf2841670c42aa141ade68343c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSteps: 0.4
+  volumeHit: 0.2
+  volumeAttack: 1
   audioSource: {fileID: 2908387697208588068}
   hit: {fileID: 8300000, guid: 8236edea92c9fcd4e8bab4f92c3fef7c, type: 3}
+  attackWhoosh: {fileID: 8300000, guid: a6973b45dd40f8148b06d6b62a01eeac, type: 3}
+  attackWhoosh1: {fileID: 8300000, guid: 46f0a46aea222ce46adfafa11454b949, type: 3}
+  steps:
+  - {fileID: 8300000, guid: de620725b97ac7b43a1781c5f3779c99, type: 3}
+  - {fileID: 8300000, guid: 8efc8839d121c9d44bd28184eab2fade, type: 3}
+  - {fileID: 8300000, guid: 67377e70a26c243418853aca88f9b92a, type: 3}
+  - {fileID: 8300000, guid: a1132665ec2fdd64181b34a142feba88, type: 3}
+  - {fileID: 8300000, guid: 19ddce81cc4df7d47b935fe55e37f6fd, type: 3}
+  - {fileID: 8300000, guid: 22286efc0f4147e4d95f3b49129a19ad, type: 3}
 --- !u!82 &2908387697208588068
 AudioSource:
   m_ObjectHideFlags: 0

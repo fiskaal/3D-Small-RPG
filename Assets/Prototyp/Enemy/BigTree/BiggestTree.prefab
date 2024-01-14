@@ -5938,9 +5938,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f83dbf2841670c42aa141ade68343c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSteps: 0.8
+  volumeHit: 0.2
+  volumeAttack: 1.8
   audioSource: {fileID: 77028922}
   hit: {fileID: 8300000, guid: 1afec3db01924c2459356fe840a0571d, type: 3}
   attackWhoosh: {fileID: 8300000, guid: 771cef51ef80d35499e57327d21f68d4, type: 3}
+  attackWhoosh1: {fileID: 8300000, guid: 12520acded6226a45808a4f5ae50abfc, type: 3}
+  steps:
+  - {fileID: 8300000, guid: bb553692258146f4d8b71871a830d517, type: 3}
+  - {fileID: 8300000, guid: 011d4485e1f7cb342ab2fe3d3c22901f, type: 3}
+  - {fileID: 8300000, guid: 7fe3ae363f3b9d6439898b93f1525f99, type: 3}
+  - {fileID: 8300000, guid: 3c32a4fc0d66b73449a0e348cf8e3fce, type: 3}
+  - {fileID: 8300000, guid: 010236d178b015341ae67305423f39fd, type: 3}
+  - {fileID: 8300000, guid: 6b65ee0cbeb2d0a44b885fb84a0504ad, type: 3}
 --- !u!1 &5615448128980457932
 GameObject:
   m_ObjectHideFlags: 0

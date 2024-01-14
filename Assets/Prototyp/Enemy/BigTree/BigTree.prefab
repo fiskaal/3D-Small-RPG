@@ -223,9 +223,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f83dbf2841670c42aa141ade68343c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSteps: 0.4
+  volumeHit: 0.2
+  volumeAttack: 1
   audioSource: {fileID: 125369487}
   hit: {fileID: 8300000, guid: 1afec3db01924c2459356fe840a0571d, type: 3}
   attackWhoosh: {fileID: 8300000, guid: 771cef51ef80d35499e57327d21f68d4, type: 3}
+  attackWhoosh1: {fileID: 8300000, guid: 12520acded6226a45808a4f5ae50abfc, type: 3}
+  steps:
+  - {fileID: 8300000, guid: 10404cd09bf3bed4191e910e8a64aef4, type: 3}
+  - {fileID: 8300000, guid: b755b6ea2edc0ba41b50c14b72a8b726, type: 3}
+  - {fileID: 8300000, guid: b761d7e26d4611843977d04cd312900d, type: 3}
+  - {fileID: 8300000, guid: de7c591f9bbe4234a9f32cbc4da0c104, type: 3}
+  - {fileID: 8300000, guid: 5660546e98c2a4a44bd041e66b00e383, type: 3}
+  - {fileID: 8300000, guid: 9f72f26e263c247478134d1de1c294b4, type: 3}
 --- !u!82 &125369487
 AudioSource:
   m_ObjectHideFlags: 0

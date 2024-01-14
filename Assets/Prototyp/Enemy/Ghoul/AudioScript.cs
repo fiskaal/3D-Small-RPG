@@ -14,6 +14,7 @@ public class AudioScript : MonoBehaviour
 
     public AudioClip hit;
     public AudioClip attackWhoosh;
+    public AudioClip attackWhoosh1;
     public AudioClip[] steps;
     
     
@@ -68,6 +69,17 @@ public class AudioScript : MonoBehaviour
             return;
         }
         audioSource.clip = attackWhoosh;
+        audioSource.volume = volumeAttack;
+        audioSource.Play();
+    }
+    
+    public void PlayAttack1()
+    {
+        if (audioSource == null)
+        { 
+            return;
+        }
+        audioSource.clip = attackWhoosh1;
         audioSource.volume = volumeAttack;
         audioSource.Play();
     }
