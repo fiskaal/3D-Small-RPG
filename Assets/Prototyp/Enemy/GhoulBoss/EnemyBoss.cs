@@ -114,7 +114,6 @@ public class EnemyBoss : MonoBehaviour
 
     void Start()
     {
-        
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -163,20 +162,19 @@ public class EnemyBoss : MonoBehaviour
         if (health <= halfOfHealth && !rage && !isAttacking)
         {
             rage = true;
-            agent.SetDestination(transform.position);
             agent.ResetPath();
             RageModeActive();
         }
 
         if (rageMode)
         {
+            StartCoroutine(ScaleOverTime());
+            
             // Material color change
             float lerpFactor = Mathf.Clamp01((Time.time - startTime) / transitionDuration);
             Color lerpedColor = Color.Lerp(startColor, endColor, lerpFactor);
             bossMaterial.color = lerpedColor;
             
-            StartCoroutine(ScaleOverTime());
-
             // Particle system color change
             float particleLerpFactor = Mathf.Clamp01((Time.time - particleStartTime) / particleTransitionDuration);
             Color particleLerpedColor = Color.Lerp(particleStartColor, endColor, particleLerpFactor);
@@ -188,6 +186,8 @@ public class EnemyBoss : MonoBehaviour
             // Modify emission rate
             var emissionModule = rageSmoke.emission;
             emissionModule.rateOverTime = emissionRate;
+            
+            rageMode = false;
         }
       
         UpdateCoolDown(ref timePassedAttackCD);
@@ -232,9 +232,10 @@ public class EnemyBoss : MonoBehaviour
     
     IEnumerator ScaleOverTime()
     {
-        while (Time.time < startTime + transitionDuration)
+        float tansitionTime= 4f;        
+        while ((scaleStartTime += Time.deltaTime) < scaleStartTime + tansitionTime)
         {
-            float scaleLerpFactor = Mathf.Clamp01((Time.time - startTime) / transitionDuration);
+            float scaleLerpFactor = Mathf.Clamp01((scaleStartTime += Time.deltaTime) / tansitionTime);
             float lerpedScale = Mathf.Lerp(startScale, targetScale, scaleLerpFactor);
             transform.localScale = new Vector3(lerpedScale, lerpedScale, lerpedScale);
             yield return null; // Wait for the next frame
@@ -342,6 +343,7 @@ public class EnemyBoss : MonoBehaviour
         Attack("roar");
         isAttacking = true;
         attackingTime = animator.GetCurrentAnimatorClipInfo(0).Length;
+        _enemyHpBar.SetHP(health);
     }
 
     public void RageModeParticleChange()

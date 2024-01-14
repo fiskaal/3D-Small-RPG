@@ -109,6 +109,7 @@ Transform:
   - {fileID: 1466689605842985010}
   - {fileID: 6479079410199976859}
   - {fileID: 5307197778108475525}
+  - {fileID: 5425809203408733254}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,7 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc98cedec904c24291a23a8ef03aa66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handAttackVFX: {fileID: 0}
+  handAttackVFX: {fileID: 8775738970790750172, guid: b1a046d556a8ce1459910ad8a764e97c, type: 3}
+  handAttackVFXHolder: {fileID: 5425809203408733254}
   legAttackVFX: {fileID: 1837992651369066725, guid: da212c8b85fe14f4aa1ef9ce670d9ebe, type: 3}
   prelegAttackVFX: {fileID: 0}
   fallAttackVFX: {fileID: 1589242962888738191, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
@@ -310,6 +312,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponLength: 2
   weaponDamage: 1
+--- !u!1 &2832559424266558912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5425809203408733254}
+  m_Layer: 0
+  m_Name: HandAttackVFXHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5425809203408733254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2832559424266558912}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 396852111793391569}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6672261384085247701
 GameObject:
   m_ObjectHideFlags: 0

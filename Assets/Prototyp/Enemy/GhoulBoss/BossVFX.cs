@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossVFX : MonoBehaviour
 {
     [SerializeField] private GameObject handAttackVFX;
+    [SerializeField] private Transform handAttackVFXHolder;
+
     [SerializeField] private GameObject legAttackVFX;
     [SerializeField] private GameObject prelegAttackVFX;
     [SerializeField] private GameObject fallAttackVFX;
@@ -18,7 +20,8 @@ public class BossVFX : MonoBehaviour
 
     public void HandAttackPlayVFX()
     {
-        Instantiate(handAttackVFX, transform);
+        GameObject vfx = Instantiate(handAttackVFX, handAttackVFXHolder);
+        vfx.transform.SetParent(null);
     }
     
     public void LegAttackPlayVFX()
