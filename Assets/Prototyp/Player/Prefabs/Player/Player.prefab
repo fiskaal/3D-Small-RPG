@@ -2164,7 +2164,6 @@ GameObject:
   - component: {fileID: 6368506783640550396}
   - component: {fileID: 5038354994267134333}
   - component: {fileID: 8954405761681989590}
-  - component: {fileID: 847428480}
   - component: {fileID: 9160373370948827649}
   - component: {fileID: 3054176856221966654}
   - component: {fileID: 4916586418786001857}
@@ -2327,6 +2326,7 @@ MonoBehaviour:
   blockIsUgraded: 0
   _blockBreaker: {fileID: 4510063061906293845}
   blockBroken: 0
+  fireBallIsActive: 0
   currentSpecialAttackTrigger: 
   currentSpecialAttackCooldown: 0
   currentSpecialAttackisReady: 0
@@ -2519,14 +2519,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectTags:
   - Menu
---- !u!81 &847428480
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2995673596906374298}
-  m_Enabled: 1
 --- !u!114 &9160373370948827649
 MonoBehaviour:
   m_ObjectHideFlags: 0

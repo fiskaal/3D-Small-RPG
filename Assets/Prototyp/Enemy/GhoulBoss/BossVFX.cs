@@ -8,6 +8,9 @@ public class BossVFX : MonoBehaviour
     [SerializeField] private Transform handAttackVFXHolder;
 
     [SerializeField] private GameObject legAttackVFX;
+    [SerializeField] private Transform LegLeftAttackVFXHolder;
+    [SerializeField] private Transform LegRighttAttackVFXHolder;
+
     [SerializeField] private GameObject prelegAttackVFX;
     [SerializeField] private GameObject fallAttackVFX;
     [SerializeField] private GameObject PreFallAttackVFX;
@@ -24,14 +27,18 @@ public class BossVFX : MonoBehaviour
         vfx.transform.SetParent(null);
     }
     
-    public void LegAttackPlayVFX()
+    public void LegLeftAttackPlayVFX()
     {
-        Instantiate(legAttackVFX, transform);
+        GameObject vfx = Instantiate(legAttackVFX, LegLeftAttackVFXHolder);
+        vfx.transform.SetParent(null);
     }
-    public void PreLegAttackPlayVFX()
+    
+    public void LegRighttAttackPlayVFX()
     {
-        Instantiate(prelegAttackVFX, transform);
+        GameObject vfx = Instantiate(legAttackVFX, LegRighttAttackVFXHolder);
+        vfx.transform.SetParent(null);
     }
+    
     
     public void FallAttackPlayVFX()
     {
