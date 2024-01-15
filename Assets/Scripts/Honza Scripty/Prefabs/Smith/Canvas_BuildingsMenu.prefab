@@ -302,7 +302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 66.59558, y: 163.94257}
+  m_AnchoredPosition: {x: 23.3, y: 147.6}
   m_SizeDelta: {x: 342.05487, y: -59.2578}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7428357695370418571
@@ -757,7 +757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 200
+  m_text: 80
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04b0904e3e2fd0c42b8f34ce54930de9, type: 2}
   m_sharedMaterial: {fileID: 3099449172689877973, guid: 04b0904e3e2fd0c42b8f34ce54930de9, type: 2}
@@ -2255,6 +2255,7 @@ GameObject:
   - component: {fileID: 9043818391277134116}
   - component: {fileID: 1717638406180352212}
   - component: {fileID: 4745299716713633581}
+  - component: {fileID: 1127600100868917191}
   m_Layer: 5
   m_Name: FIRESWORD_BUY
   m_TagString: Untagged
@@ -2379,6 +2380,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &1127600100868917191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599184126323593058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defabadaead7bb84f836e281fb6a03ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToMove: {fileID: 9059365161063745357}
+  targetObject: {fileID: 6917848481380818562}
 --- !u!1 &602694831128386465
 GameObject:
   m_ObjectHideFlags: 0
@@ -4039,6 +4054,7 @@ GameObject:
   - component: {fileID: 9015466783293079891}
   - component: {fileID: 8887288853420717190}
   - component: {fileID: 224799796656480528}
+  - component: {fileID: 6788258449537529199}
   m_Layer: 5
   m_Name: LIGHTNING_BUY
   m_TagString: Untagged
@@ -4163,6 +4179,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &6788258449537529199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970974236871048062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defabadaead7bb84f836e281fb6a03ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToMove: {fileID: 49599511704190027}
+  targetObject: {fileID: 6917848481380818562}
 --- !u!1 &989227207347257298
 GameObject:
   m_ObjectHideFlags: 0
@@ -8001,7 +8031,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 200
+  m_text: 30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04b0904e3e2fd0c42b8f34ce54930de9, type: 2}
   m_sharedMaterial: {fileID: 3099449172689877973, guid: 04b0904e3e2fd0c42b8f34ce54930de9, type: 2}
@@ -8515,8 +8545,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 149, y: 175}
-  m_SizeDelta: {x: 51.631, y: 51.6313}
+  m_AnchoredPosition: {x: 157.9, y: 184.2}
+  m_SizeDelta: {x: 35.668, y: 35.6683}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4814138790645564152
 CanvasRenderer:
@@ -8546,7 +8576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2de5830788e5986458e42a81153257ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae9d424893767e745bc5698d16c4f50e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9487,6 +9517,7 @@ GameObject:
   - component: {fileID: 3667822968265392156}
   - component: {fileID: 3894450121466965142}
   - component: {fileID: 8263543882974025096}
+  - component: {fileID: 6482920735107369061}
   m_Layer: 5
   m_Name: FIREBALL_BUY
   m_TagString: Untagged
@@ -9611,6 +9642,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &6482920735107369061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3127749043861863197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defabadaead7bb84f836e281fb6a03ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToMove: {fileID: 1133935766998752002}
+  targetObject: {fileID: 6917848481380818562}
 --- !u!1 &3133545811336477210
 GameObject:
   m_ObjectHideFlags: 0
@@ -10530,7 +10575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatedObject: {fileID: 543517913714262153}
   deactivatedObject: {fileID: 30809271096495494}
-  soulCost: 120
+  soulCost: 80
   warningMessage: {fileID: 0}
   shopArrayIndex: 4
 --- !u!1 &3537344542858516622
@@ -12556,6 +12601,7 @@ GameObject:
   - component: {fileID: 6167312981824946936}
   - component: {fileID: 165133017277680016}
   - component: {fileID: 6044728938002541431}
+  - component: {fileID: 6712654915243811765}
   m_Layer: 5
   m_Name: SHIELD_BUY
   m_TagString: Untagged
@@ -12680,6 +12726,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &6712654915243811765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4303359067171082592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defabadaead7bb84f836e281fb6a03ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToMove: {fileID: 903694728014931897}
+  targetObject: {fileID: 6917848481380818562}
 --- !u!1 &4342605982553233881
 GameObject:
   m_ObjectHideFlags: 0
@@ -27090,8 +27150,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 109.17999, y: 166.99995}
-  m_SizeDelta: {x: 51.631, y: 51.6313}
+  m_AnchoredPosition: {x: 105.2, y: 179}
+  m_SizeDelta: {x: 36.1749, y: 36.1751}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2124464980827920070
 CanvasRenderer:
@@ -27121,7 +27181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2de5830788e5986458e42a81153257ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae9d424893767e745bc5698d16c4f50e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27995,7 +28055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 200
+  m_text: 150
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04b0904e3e2fd0c42b8f34ce54930de9, type: 2}
   m_sharedMaterial: {fileID: 3099449172689877973, guid: 04b0904e3e2fd0c42b8f34ce54930de9, type: 2}
@@ -28502,7 +28562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatedObject: {fileID: 3537344542858516622}
   deactivatedObject: {fileID: 9158134906225265979}
-  soulCost: 200
+  soulCost: 150
   warningMessage: {fileID: 0}
   shopArrayIndex: 4
 --- !u!1 &7887580000694270188
