@@ -36,6 +36,7 @@ public class WeaponManager : MonoBehaviour
     public float enchantedWeaponDamage;
 
     public bool MagicShield;
+    public bool Fireball;
 
     // PlayerPrefs keys
     //šedivý, protože WeaponHolderKey SheathHolderKey se nemìní, nejsou referencovaný, zustavají stejny, 2 liny vespod nepotøebné
@@ -177,6 +178,7 @@ public class WeaponManager : MonoBehaviour
         //LoadValues();
         FindHolders();
         UpdateCharacterBlockIsUpgraded();
+        UpdateFireballIsUpgraded();
     }
 
     private GameObject FindObjectInHierarchyByName(Transform parent, string objectName)
@@ -229,6 +231,7 @@ public class WeaponManager : MonoBehaviour
         PlayerPrefs.SetFloat(EnchantedWeaponDamageKey, enchantedWeaponDamage);
 
         PlayerPrefs.SetInt("MagicShield", MagicShield ? 1 : 0);
+        PlayerPrefs.SetInt("Fireball", Fireball ? 1 : 0);
 
         PlayerPrefs.Save();
     }
@@ -247,7 +250,9 @@ public class WeaponManager : MonoBehaviour
         enchantedWeaponDamage = PlayerPrefs.GetFloat(EnchantedWeaponDamageKey, 0f); // Default to 0 if not present
 
         MagicShield = PlayerPrefs.GetInt("MagicShield", 0) == 1;
+        Fireball = PlayerPrefs.GetInt("Fireball", 0) == 1;
         UpdateCharacterBlockIsUpgraded();
+        UpdateFireballIsUpgraded();
 
         FindHolders();
     }
@@ -279,6 +284,7 @@ public class WeaponManager : MonoBehaviour
         sheathHolderNameToFind = "SheathHolder"; // Set your default value here
 
         MagicShield = false; // deactivating the magic shield bought status
+        Fireball = false;
 
         // Set default value for the player tag
         playerTag = "Player"; // Set your default value here
@@ -299,6 +305,33 @@ public class WeaponManager : MonoBehaviour
             {
                 // Update blockIsUgraded in Character script based on MagicShield
                 characterScript.blockIsUgraded = MagicShield;
+            }
+            else
+            {
+                Debug.LogWarning("Character script not found on the Player GameObject.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Player not found. Make sure the player has the tag: Player");
+        }
+    }
+
+    public void UpdateFireballIsUpgraded()
+    {
+        // Find the Player GameObject by tag
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        // Check if the Player GameObject exists and has the Character script
+        if (player != null)
+        {
+            Character characterScript = player.GetComponent<Character>();
+
+            // Check if the Character script is found
+            if (characterScript != null)
+            {
+                // Update blockIsUgraded in Character script based on MagicShield
+                characterScript.fireBallIsActive = Fireball;
             }
             else
             {
