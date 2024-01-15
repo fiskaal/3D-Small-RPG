@@ -17,7 +17,7 @@ public class ExperiencePickup : MonoBehaviour
             {
                 // Increase the player's currentExperience by the experienceAmount
                 levelSystem.GainExperience(experienceAmount);
-
+                
                 // Optionally, you can play a pickup sound, deactivate the pickup object, or perform other actions.
 
                 // Destroy the pickup object after it has been collected

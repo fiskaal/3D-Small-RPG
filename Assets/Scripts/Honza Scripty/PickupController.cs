@@ -54,6 +54,10 @@ public class PickupController : MonoBehaviour
                 soulAnimator.Play("TextBounce", 0, 0f);
             }
         }
+        else if (other.CompareTag("PickUp"))
+        {
+            playerAudioScript.PlayPickUp();
+        }
     }
 
 }
