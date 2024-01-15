@@ -67,6 +67,7 @@ public class Character : MonoBehaviour
     public bool blockBroken = false;
 
     [Header("SpecialAttackActions")] 
+    public bool fireBallIsActive = false;
     public string currentSpecialAttackTrigger;
     public float currentSpecialAttackCooldown;
     public bool currentSpecialAttackisReady = false;
