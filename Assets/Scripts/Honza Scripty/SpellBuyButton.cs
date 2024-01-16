@@ -36,6 +36,8 @@ public class SpellBuyButton : MonoBehaviour
             // Check if the WeaponManager is found
             if (weaponManager != null)
             {
+                // Deduct the soul cost from the resources
+                ManagerPickups.UpdateSoulCount(-soulCost);
 
                 // Optionally, you can save the updated value to PlayerPrefs
                 weaponManager.SaveValues();
