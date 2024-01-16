@@ -1,21 +1,36 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FireballBuyButton : MonoBehaviour
 {
-    private WeaponManager weaponManager;
+    // Reference to the game object to activate when the player has enough souls
+    public GameObject activatedObject;
+
+    // Reference to the game object to deactivate when the player has enough souls
+    public GameObject deactivatedObject;
+
+    // Reference to the button component
+    private Button button;
 
     // Soul cost required for activation
     public int soulCost = 10;
 
     // Reference to the warning message game object
     public GameObject warningMessage;
-    public GameObject ObjectDeactivate;
-    public GameObject ObjectActivate;
+
     // Index of the shop to set the bought status
     public int shopArrayIndex;
 
+    private WeaponManager weaponManager;
+
     private void Start()
     {
+        // Get the Button component on this GameObject
+        button = GetComponent<Button>();
+
+        // Attach the method to be called when the button is clicked
+        button.onClick.AddListener(OnFireballBuyButtonClick);
+
         // Find the WeaponManager at the start to avoid repeated Find calls
         weaponManager = FindObjectOfType<WeaponManager>();
 
@@ -25,37 +40,37 @@ public class FireballBuyButton : MonoBehaviour
         }
     }
 
-    public void OnFireballBuyButtonClick()
+    // Method to be called when the button is clicked
+    private void OnFireballBuyButtonClick()
     {
         // Check if the player has enough souls to activate
         if (ManagerPickups.soul >= soulCost)
         {
-            // Check if the WeaponManager is found
-            if (weaponManager != null)
+            // Deduct the soul cost from the resources
+            ManagerPickups.UpdateSoulCount(-soulCost);
+
+            if (activatedObject != null)
             {
-                // Set the MagicShield bool to true
-                weaponManager.Fireball = true;
+                activatedObject.SetActive(true);
+            }
 
-                // Optionally, you can save the updated value to PlayerPrefs
-                weaponManager.SaveValues();
-                weaponManager.LoadValues();
-                ObjectDeactivate.SetActive(false);
-                ObjectActivate.SetActive(true);
+            // Deactivate the specified game object
+            if (deactivatedObject != null)
+            {
+                deactivatedObject.SetActive(false);
+            }
 
-                // Set the bought status using the specified index
-                ShopManager shopManager = FindObjectOfType<ShopManager>();
-                if (shopManager != null)
-                {
-                    shopManager.SetSwordBoughtStatus(shopArrayIndex, true);
-                }
-                else
-                {
-                    Debug.LogError("ShopManager not found in the scene");
-                }
+            weaponManager.Fireball = true;
+
+            // Set the bought status using the specified index
+            ShopManager shopManager = FindObjectOfType<ShopManager>();
+            if (shopManager != null)
+            {
+                shopManager.SetSwordBoughtStatus(shopArrayIndex, true);
             }
             else
             {
-                Debug.LogWarning("WeaponManager not found. Make sure WeaponManager is in the scene.");
+                Debug.LogError("ShopManager not found in the scene");
             }
         }
         else
