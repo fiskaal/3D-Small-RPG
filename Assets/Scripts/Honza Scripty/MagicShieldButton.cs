@@ -36,6 +36,8 @@ public class MagicShieldButton : MonoBehaviour
                 // Set the MagicShield bool to true
                 weaponManager.MagicShield = true;
 
+                ManagerPickups.UpdateSoulCount(-soulCost);
+
                 // Optionally, you can save the updated value to PlayerPrefs
                 weaponManager.SaveValues();
                 weaponManager.LoadValues();
