@@ -14708,7 +14708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4795697792202548024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.951, z: 0}
+  m_LocalPosition: {x: 0, y: 1.275, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14727,7 +14727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f502ea8656775204785dc5d0f13ca579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponLength: 2.6
+  weaponLength: 9
   weaponDamage: 2
   _enemyTarget: {fileID: 0}
 --- !u!1 &5130283139397495327
@@ -14952,8 +14952,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6111056962727787357}
-  m_LocalRotation: {x: 0.006272048, y: 0.05666708, z: -0.108508445, w: 0.99245936}
-  m_LocalPosition: {x: 0.083, y: -0.064, z: -0.011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14961,7 +14961,7 @@ Transform:
   - {fileID: 1393340409413815531}
   m_Father: {fileID: 1112619497266334407}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 1.418, y: 6.382, z: -12.4}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4817935408561602159
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -15214,7 +15214,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.3
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -15599,7 +15599,7 @@ ParticleSystem:
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
-    placementMode: 0
+    placementMode: 2
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
     m_MeshSpawn:
@@ -15658,7 +15658,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    m_Mesh: {fileID: 4300000, guid: 28ede36dccb55964482c9195b4eb2a91, type: 3}
+    m_Mesh: {fileID: 5180132650269143456, guid: 0e91fe6da2449d242ae95e1e0beaad55, type: 3}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
     m_Sprite: {fileID: 0}
@@ -15673,7 +15673,7 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 1
+    randomDirectionAmount: 0
     sphericalDirectionAmount: 1
     randomPositionAmount: 0
     radius:
@@ -20014,15 +20014,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7838806999274353047}
-  m_LocalRotation: {x: 0.9942267, y: -0.097276464, z: -0.03984526, w: 0.021515911}
-  m_LocalPosition: {x: -0.13351308, y: -0.67488676, z: 0.016048774}
-  m_LocalScale: {x: 1.478774, y: 1.4787717, z: 1.4787664}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2372421480725051122}
   m_Father: {fileID: 3434403760429944407}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 266.635, y: -93.502014, z: -85.46701}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8638714642153350896
 GameObject:
   m_ObjectHideFlags: 0
