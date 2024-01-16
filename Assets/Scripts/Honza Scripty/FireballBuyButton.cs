@@ -61,6 +61,7 @@ public class FireballBuyButton : MonoBehaviour
             }
 
             weaponManager.Fireball = true;
+            weaponManager.UpdateFireballIsUpgraded();
 
             // Set the bought status using the specified index
             ShopManager shopManager = FindObjectOfType<ShopManager>();
