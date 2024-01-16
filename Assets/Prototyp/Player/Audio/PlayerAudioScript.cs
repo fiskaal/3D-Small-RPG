@@ -163,6 +163,7 @@ public class PlayerAudioScript : MonoBehaviour
             // Assign the selected AudioClip to the AudioSource
             audioSource.clip = randomFootstep;
 
+            audioSource.volume = 0.4f;
             // Play the assigned AudioClip
             audioSource.Play();
         }
