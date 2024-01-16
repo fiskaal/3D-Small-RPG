@@ -19655,10 +19655,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad00e54007df17148b73989d9db27333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activatedObject: {fileID: 0}
+  deactivatedObject: {fileID: 0}
   soulCost: 50
   warningMessage: {fileID: 0}
-  ObjectDeactivate: {fileID: 3127749043861863197}
-  ObjectActivate: {fileID: 6701861923897971810}
   shopArrayIndex: 11
 --- !u!1 &6374653861365369805
 GameObject:
@@ -30708,7 +30708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50
+  m_text: 200
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04b0904e3e2fd0c42b8f34ce54930de9, type: 2}
   m_sharedMaterial: {fileID: 3099449172689877973, guid: 04b0904e3e2fd0c42b8f34ce54930de9, type: 2}
