@@ -55,7 +55,7 @@ public class EnemyHpBar : MonoBehaviour
         numberCurrentHp = currentHP;
         SetHPText();
         */
-        StartCoroutine(SmoothSliderValueChange(currentHP, 1f));
+        StartCoroutine(SmoothSliderValueChange(currentHP, 0.5f));
     }
 
     public void SetHPText()
