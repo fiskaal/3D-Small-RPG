@@ -3686,7 +3686,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2320110
+  m_Name: pb_Mesh-5960
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9896,11 +9896,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430988954756330383, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000034225764
+      value: 0.00000003422576
       objectReference: {fileID: 0}
     - target: {fileID: 1430988954756330383, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000035827075
+      value: -0.0000000035827072
       objectReference: {fileID: 0}
     - target: {fileID: 1430988954756330383, guid: 68ec650a9113982449239062459a8dd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10176,6 +10176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CM FreeLook1
       objectReference: {fileID: 0}
+    - target: {fileID: 5432758481319851636, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5432758481319851637, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_Follow
       value: 
@@ -10294,15 +10298,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482399881941, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12218325
+      value: 0.12218327
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482399881941, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017077465
+      value: -0.000000017077465
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482399881941, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000021023316
+      value: 0.0000000021023319
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482605771653, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LookAt
@@ -10318,11 +10322,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482605771658, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001711288
+      value: 0.000000017112876
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482605771658, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000001791354
+      value: -0.0000000017913536
       objectReference: {fileID: 0}
     - target: {fileID: 5432758482956459362, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
       propertyPath: m_FollowOffset.y
@@ -11128,6 +11132,10 @@ MonoBehaviour:
     isBought: 0
     boughtObjectName: FIRESWORD_BOUGHT
     notBoughtObjectName: FIRESWORD_BUY
+  - PlayerPrefsKey: 11
+    isBought: 0
+    boughtObjectName: FIREBALL_BOUGHT
+    notBoughtObjectName: FIREBALL_BUY
 --- !u!4 &1615058504
 Transform:
   m_ObjectHideFlags: 0
@@ -12293,6 +12301,7 @@ MonoBehaviour:
   lightningEnchantDamageBonus: 0
   enchantedWeaponDamage: 0
   MagicShield: 0
+  Fireball: 0
 --- !u!4 &1727409227
 Transform:
   m_ObjectHideFlags: 0
