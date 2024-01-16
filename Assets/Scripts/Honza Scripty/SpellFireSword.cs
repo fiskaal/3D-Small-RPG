@@ -43,6 +43,9 @@ public class SpellFireSword : MonoBehaviour
     // Reference to TextMeshPro UI for displaying cooldown duration countdown
     public TextMeshProUGUI cooldownDurationText;
 
+    public AudioClip myMp3Sound;
+    public AudioSource audioSource;
+
     private SpellState currentState = SpellState.Idle;
 
     void Start()
@@ -53,6 +56,7 @@ public class SpellFireSword : MonoBehaviour
 
         // Set initial state game object active
         SetStateGameObjectActive(currentState);
+
     }
 
     void Update()
@@ -136,6 +140,9 @@ public class SpellFireSword : MonoBehaviour
 
                     // Activate the found child
                     child.gameObject.SetActive(true);
+
+                    audioSource.clip = myMp3Sound;
+                    audioSource.Play();
 
                     // Add the bonus to weaponDamage if not already applied
                     if (!bonusApplied)

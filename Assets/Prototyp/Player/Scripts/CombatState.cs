@@ -16,7 +16,7 @@ public class CombatState : State
     private bool block;
 
     Vector3 cVelocity;
-
+    
     public CombatState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
     {
         character = _character;
@@ -99,12 +99,12 @@ public class CombatState : State
         
         character.animator.SetFloat("speed", input.magnitude, character.speedDampTime, Time.deltaTime);
 
-        if (sheateWeapon)
+        if (sheateWeapon )
         {
             character.animator.SetTrigger("sheatWeapon");
             stateMachine.ChangeState(character.standing);
         }
-
+            
         if (attack)
         {
             //character.animator.SetTrigger("attack");

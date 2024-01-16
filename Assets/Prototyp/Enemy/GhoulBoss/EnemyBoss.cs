@@ -58,6 +58,7 @@ public class EnemyBoss : MonoBehaviour
     [SerializeField] private float rageModeBonusHealth = 20f;
     [SerializeField] private bool rageMode = false;
     [SerializeField] private bool rage = false;
+    [SerializeField] private bool rag = false;
     [SerializeField] private ParticleSystem rageSmoke;
     [SerializeField] private float halfOfHealth;
     // color change
@@ -108,6 +109,9 @@ public class EnemyBoss : MonoBehaviour
     
     // Health bar
     [SerializeField] private EnemyHpBar _enemyHpBar;
+    
+    //Audio 
+    public BossAudioScript _bossAudioScript;
 
     // Ocko projectile
     private OckoProjectile _ockoProjectile;
@@ -159,14 +163,15 @@ public class EnemyBoss : MonoBehaviour
             return;
         }
 
-        if (health <= halfOfHealth && !rage && !isAttacking)
+        if (health <= halfOfHealth && !rag && !isAttacking)
         {
+            rag = true;
             rage = true;
             agent.ResetPath();
             RageModeActive();
         }
 
-        if (rageMode)
+        if (rage)
         {
             StartCoroutine(ScaleOverTime());
             
@@ -187,7 +192,7 @@ public class EnemyBoss : MonoBehaviour
             var emissionModule = rageSmoke.emission;
             emissionModule.rateOverTime = emissionRate;
             
-            rageMode = false;
+            rage = false;
         }
       
         UpdateCoolDown(ref timePassedAttackCD);
@@ -335,6 +340,7 @@ public class EnemyBoss : MonoBehaviour
 
     public void RageModeActive()
     {
+        rageMode = true;
         health = health + rageModeBonusHealth;
         isIdle = false;
         currentAttackDamage = handAttackDamage;
@@ -350,7 +356,7 @@ public class EnemyBoss : MonoBehaviour
     {
         if (rageSmoke != null)
         {
-            rageMode = true;
+            //rageMode = true;
         }
     }
 
@@ -433,6 +439,7 @@ public class EnemyBoss : MonoBehaviour
         isIdle = false;
         if (!dead)
         {
+            _bossAudioScript.PlayHit();
             _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.white);
             health -= damageAmount;
             animator.applyRootMotion = true;

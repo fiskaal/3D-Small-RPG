@@ -2164,7 +2164,6 @@ GameObject:
   - component: {fileID: 6368506783640550396}
   - component: {fileID: 5038354994267134333}
   - component: {fileID: 8954405761681989590}
-  - component: {fileID: 847428480}
   - component: {fileID: 9160373370948827649}
   - component: {fileID: 3054176856221966654}
   - component: {fileID: 4916586418786001857}
@@ -2327,6 +2326,7 @@ MonoBehaviour:
   blockIsUgraded: 0
   _blockBreaker: {fileID: 4510063061906293845}
   blockBroken: 0
+  fireBallIsActive: 0
   currentSpecialAttackTrigger: 
   currentSpecialAttackCooldown: 0
   currentSpecialAttackisReady: 0
@@ -2519,14 +2519,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectTags:
   - Menu
---- !u!81 &847428480
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2995673596906374298}
-  m_Enabled: 1
 --- !u!114 &9160373370948827649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2598,6 +2590,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c9c17c15de702114c961a68019a8eb93, type: 3}
   blockHit: {fileID: 8300000, guid: bbc2a9ba45ff46f43974a62ac527e921, type: 3}
   blockBreak: {fileID: 8300000, guid: 53629b6d1f27c124897f08896da76a41, type: 3}
+  swordDraw:
+  - {fileID: 8300000, guid: 6d463e0ac9c32844eab7d18e764ed695, type: 3}
+  - {fileID: 8300000, guid: ef2cb2245ca69ac4f85fada7deab6904, type: 3}
+  - {fileID: 8300000, guid: e939f417dc1606c4e846fb0439d4c024, type: 3}
+  - {fileID: 8300000, guid: c9b67b53d0608ce48bad195919e1d9c6, type: 3}
+  - {fileID: 8300000, guid: 83418a8514a423d44916bca660e04b7d, type: 3}
+  - {fileID: 8300000, guid: b78b7e2fdbaa8704a909b0588aff7c5f, type: 3}
   slash0: {fileID: 8300000, guid: 22642fcecb71b7d42bc38a7ecdfbced1, type: 3}
   slash1: {fileID: 8300000, guid: 1ca73f82ee75ed7498c102c33b2dd08e, type: 3}
   slash2: {fileID: 8300000, guid: e9b20de65d7b7a142b7b376e4ddf2f58, type: 3}
@@ -6799,6 +6798,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 656376474042774977}
+  - component: {fileID: 8041551371488964167}
   m_Layer: 8
   m_Name: SwordHolder
   m_TagString: Player
@@ -6825,6 +6825,102 @@ Transform:
   m_Father: {fileID: 4067584750770825113}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -85.951, y: 25.593, z: -65.956}
+--- !u!82 &8041551371488964167
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7814343517359269243}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7819390949434964108
 GameObject:
   m_ObjectHideFlags: 0
@@ -9173,6 +9269,8 @@ MonoBehaviour:
   cooldownGameObject: {fileID: 3831323444485188299}
   effectDurationText: {fileID: 3547161413620168785}
   cooldownDurationText: {fileID: 2629857881783503238}
+  myMp3Sound: {fileID: 8300000, guid: a7fbf454f05b7c541b80b8569dbc7226, type: 3}
+  audioSource: {fileID: 8041551371488964167}
 --- !u!114 &8100095831474196398 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7652868209075765794, guid: 2b1ab78846088f649960ca9b2e07ef99, type: 3}
