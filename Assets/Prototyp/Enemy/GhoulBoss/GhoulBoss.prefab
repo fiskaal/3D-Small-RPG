@@ -71,6 +71,37 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!1 &317907553034416953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623391625115326650}
+  m_Layer: 0
+  m_Name: LegLeftAttackVFXHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &623391625115326650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317907553034416953}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.28, y: 0, z: 1.053}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 396852111793391569}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &402018793525180401
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +117,8 @@ GameObject:
   - component: {fileID: 8844394836401865451}
   - component: {fileID: 6670631028866693609}
   - component: {fileID: 517651707450840796}
+  - component: {fileID: 2490375582536255087}
+  - component: {fileID: 2492839316005501048}
   m_Layer: 9
   m_Name: GhoulBoss
   m_TagString: Enemy
@@ -110,6 +143,8 @@ Transform:
   - {fileID: 6479079410199976859}
   - {fileID: 5307197778108475525}
   - {fileID: 5425809203408733254}
+  - {fileID: 623391625115326650}
+  - {fileID: 6255996346074616254}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -165,7 +200,7 @@ MonoBehaviour:
   currentAttackDamage: 0
   legAttackRadius: 1
   handAttackRadius: 1.2
-  jumpImpactAttackRadius: 5
+  jumpImpactAttackRadius: 7.5
   currentAttackRadius: 0
   hitVFX: {fileID: 4047385913798380573, guid: 1283d85035ecf224fb9c2a2bd4f82c5f, type: 3}
   hitVFX1: {fileID: 219217740888041541, guid: c01593394d44d1b44b4d11beff1c4eb6, type: 3}
@@ -185,6 +220,7 @@ MonoBehaviour:
   rageModeBonusHealth: 50
   rageMode: 0
   rage: 0
+  rag: 0
   rageSmoke: {fileID: 4555962804809651388}
   halfOfHealth: 0
   bossMaterial: {fileID: 2100000, guid: 8cacca7986ab18f46ae62be8ec05f3ea, type: 2}
@@ -206,6 +242,7 @@ MonoBehaviour:
   - {x: 1, y: 1}
   player: {fileID: 0}
   _enemyHpBar: {fileID: 3756692676918908178}
+  _bossAudioScript: {fileID: 2490375582536255087}
 --- !u!114 &8844394836401865451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +276,8 @@ MonoBehaviour:
   handAttackVFX: {fileID: 8775738970790750172, guid: b1a046d556a8ce1459910ad8a764e97c, type: 3}
   handAttackVFXHolder: {fileID: 5425809203408733254}
   legAttackVFX: {fileID: 1837992651369066725, guid: da212c8b85fe14f4aa1ef9ce670d9ebe, type: 3}
+  LegLeftAttackVFXHolder: {fileID: 623391625115326650}
+  LegRighttAttackVFXHolder: {fileID: 6255996346074616254}
   prelegAttackVFX: {fileID: 0}
   fallAttackVFX: {fileID: 1589242962888738191, guid: a9f64ac20f63ed24fb4cd31338c2511b, type: 3}
   PreFallAttackVFX: {fileID: 5858718436440280155, guid: 070c19815f31f0247824475753cbdfa6, type: 3}
@@ -266,6 +305,163 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2490375582536255087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402018793525180401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5297e968906aaf74c9cc8b8407fcc496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSteps: 0.8
+  volumeHit: 0.2
+  volumeAttack: 0.8
+  volumeRoar: 10
+  audioSource: {fileID: 2492839316005501048}
+  hit: {fileID: 8300000, guid: 8236edea92c9fcd4e8bab4f92c3fef7c, type: 3}
+  handAttackSound: {fileID: 0}
+  handAttackImpactSound: {fileID: 8300000, guid: b4d53aac82242f047ae751c5cd3a5d7d, type: 3}
+  legAttackSound: {fileID: 0}
+  legAttackImpactSound: {fileID: 8300000, guid: f287233e78bbe184ead0f84301eaac39, type: 3}
+  fallAttackSound: {fileID: 8300000, guid: ff0c78bb72b009d4abaa38d03cf7868a, type: 3}
+  fallAttackImpactSound: {fileID: 8300000, guid: ff0c78bb72b009d4abaa38d03cf7868a, type: 3}
+  roarSound: {fileID: 8300000, guid: c484ae92cfb76f74b8c4a725d7d6bed1, type: 3}
+  steps:
+  - {fileID: 8300000, guid: 51099ee9c1ecb3f40aaf79ae927d02c3, type: 3}
+  - {fileID: 8300000, guid: 113620a920245ab4a91b474dbcab376e, type: 3}
+  - {fileID: 8300000, guid: c3221456791f21047b18d6415d6fdffe, type: 3}
+  - {fileID: 8300000, guid: 3173724166afbc5429b2a4615e8553d8, type: 3}
+--- !u!82 &2492839316005501048
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402018793525180401}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 10
+  Pan2D: 0.5
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.09810791
+      value: 1.0111122
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.1111112
+      outSlope: -1.1111112
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &446212029992367637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6255996346074616254}
+  m_Layer: 0
+  m_Name: LegRightAttackVFXHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6255996346074616254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446212029992367637}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.28, y: 0, z: 1.053}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 396852111793391569}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1056598307995449704
 GameObject:
   m_ObjectHideFlags: 0

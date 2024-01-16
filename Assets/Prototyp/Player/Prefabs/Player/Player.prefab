@@ -2164,7 +2164,6 @@ GameObject:
   - component: {fileID: 6368506783640550396}
   - component: {fileID: 5038354994267134333}
   - component: {fileID: 8954405761681989590}
-  - component: {fileID: 847428480}
   - component: {fileID: 9160373370948827649}
   - component: {fileID: 3054176856221966654}
   - component: {fileID: 4916586418786001857}
@@ -2520,14 +2519,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectTags:
   - Menu
---- !u!81 &847428480
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2995673596906374298}
-  m_Enabled: 1
 --- !u!114 &9160373370948827649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2599,6 +2590,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c9c17c15de702114c961a68019a8eb93, type: 3}
   blockHit: {fileID: 8300000, guid: bbc2a9ba45ff46f43974a62ac527e921, type: 3}
   blockBreak: {fileID: 8300000, guid: 53629b6d1f27c124897f08896da76a41, type: 3}
+  swordDraw:
+  - {fileID: 8300000, guid: 6d463e0ac9c32844eab7d18e764ed695, type: 3}
+  - {fileID: 8300000, guid: ef2cb2245ca69ac4f85fada7deab6904, type: 3}
+  - {fileID: 8300000, guid: e939f417dc1606c4e846fb0439d4c024, type: 3}
+  - {fileID: 8300000, guid: c9b67b53d0608ce48bad195919e1d9c6, type: 3}
+  - {fileID: 8300000, guid: 83418a8514a423d44916bca660e04b7d, type: 3}
+  - {fileID: 8300000, guid: b78b7e2fdbaa8704a909b0588aff7c5f, type: 3}
   slash0: {fileID: 8300000, guid: 22642fcecb71b7d42bc38a7ecdfbced1, type: 3}
   slash1: {fileID: 8300000, guid: 1ca73f82ee75ed7498c102c33b2dd08e, type: 3}
   slash2: {fileID: 8300000, guid: e9b20de65d7b7a142b7b376e4ddf2f58, type: 3}
