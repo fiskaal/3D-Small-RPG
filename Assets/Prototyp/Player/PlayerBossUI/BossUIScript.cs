@@ -13,12 +13,11 @@ public class BossUIScript : MonoBehaviour
     [SerializeField]private AnimationClip hideAnim;
     [SerializeField] public EnemyHpBar _enemyHpBar;
     
-    private bool isShow = true;
-    private bool isHidden = false;
+    private bool isShow = false;
+    private bool isHidden = true;
 
     private void Start()
     {
-        HideBar();
     }
 
     public void ShowBar()
