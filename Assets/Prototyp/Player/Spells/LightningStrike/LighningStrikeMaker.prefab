@@ -4964,6 +4964,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5859106833986492596}
     m_Modifications:
+    - target: {fileID: 1117179275250069519, guid: 3204f178bc88c74479136668bff9b3ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.28
+      objectReference: {fileID: 0}
     - target: {fileID: 6764226827367070507, guid: 3204f178bc88c74479136668bff9b3ba, type: 3}
       propertyPath: m_Name
       value: LightningStrikeFromPlayer
@@ -5012,40 +5016,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6764226829050762660, guid: 3204f178bc88c74479136668bff9b3ba, type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6764226829050762660, guid: 3204f178bc88c74479136668bff9b3ba, type: 3}
-      propertyPath: ShapeModule.type
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6764226829050762660, guid: 3204f178bc88c74479136668bff9b3ba, type: 3}
-      propertyPath: ShapeModule.m_Rotation.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6764226829050762660, guid: 3204f178bc88c74479136668bff9b3ba, type: 3}
-      propertyPath: ShapeModule.m_Rotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6764226829050762660, guid: 3204f178bc88c74479136668bff9b3ba, type: 3}
-      propertyPath: ShapeModule.radiusThickness
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6764226829050762660, guid: 3204f178bc88c74479136668bff9b3ba, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6877481422412274791, guid: 3204f178bc88c74479136668bff9b3ba, type: 3}
       propertyPath: m_Intensity
-      value: 2.3478131
-      objectReference: {fileID: 0}
-    - target: {fileID: 7764804391710512973, guid: 3204f178bc88c74479136668bff9b3ba, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7764804391710512973, guid: 3204f178bc88c74479136668bff9b3ba, type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
