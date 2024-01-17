@@ -36,11 +36,17 @@ public class SprintState : State
     public override void HandleInput()
     {
         base.Enter();
+            
+        if (jumpAction.triggered)
+        {
+            sprintJump = true;
+        }
+        
         input = moveAction.ReadValue<Vector2>();
         velocity = new Vector3(input.x, 0, input.y);
-
         velocity = velocity.x * character.cameraTransform.right.normalized + velocity.z * character.cameraTransform.forward.normalized;
         velocity.y = 0f;
+        
         if (input.sqrMagnitude == 0f)
         {
             sprint = false;
@@ -55,12 +61,6 @@ public class SprintState : State
             sprint = false;
             character.isSprinting = false;
         }
-        
-		if (jumpAction.triggered)
-		{
-            sprintJump = true;
-        }
-
     }
 
     public override void LogicUpdate()
@@ -104,6 +104,12 @@ public class SprintState : State
     {
         base.Exit();
 
-        //character.isSprinting = false;
+        gravityVelocity.y = 0f;
+        character.playerVelocity = new Vector3(input.x, 0, input.y);
+
+        if (velocity.sqrMagnitude > 0)
+        {
+            character.transform.rotation = Quaternion.LookRotation(velocity);
+        }
     }
 }

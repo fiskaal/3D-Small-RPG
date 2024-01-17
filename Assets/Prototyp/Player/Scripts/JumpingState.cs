@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class JumpingState:State
@@ -30,7 +31,16 @@ public class JumpingState:State
 		grounded = false;
         gravityValue = character.gravityValue;
         jumpHeight = character.jumpHeight;
-        playerSpeed = character.playerSpeed;
+
+        if (character.isSprinting)
+        {
+	        playerSpeed = character.sprintSpeed;
+        }
+        else
+        {
+	        playerSpeed = character.playerSpeed;
+        }
+
         gravityVelocity.y = 0;
 
         character.animator.SetFloat("speed", 0);
@@ -41,6 +51,7 @@ public class JumpingState:State
         jumpingTime = 0.7f;
 
         sprint = false;
+        
 	}
 	public override void HandleInput()
 	{
@@ -96,7 +107,6 @@ public class JumpingState:State
         base.PhysicsUpdate();
 		if (!grounded)
 		{
-
             velocity = character.playerVelocity;
             airVelocity = new Vector3(input.x, 0, input.y);
 

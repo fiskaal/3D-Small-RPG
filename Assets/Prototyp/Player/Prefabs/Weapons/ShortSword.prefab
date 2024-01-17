@@ -23,15 +23,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26667653909791895}
-  m_LocalRotation: {x: 0.03642976, y: 0.94398564, z: -0.026152557, w: -0.32692546}
-  m_LocalPosition: {x: 0.02418713, y: 0.5759463, z: -0.07700598}
-  m_LocalScale: {x: 1.188491, y: 1.1884897, z: 1.1884845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2587784987959873195}
   m_Father: {fileID: 2234000832102406628}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 266.635, y: -93.502014, z: -85.46701}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &851977926511309421
 GameObject:
   m_ObjectHideFlags: 0
@@ -5187,16 +5187,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9166527586017819207}
-  m_LocalRotation: {x: 0.000000056810656, y: 0.00000020861619, z: -0.057955973, w: 0.9983192}
-  m_LocalPosition: {x: 0.045, y: -0.292, z: 0}
-  m_LocalScale: {x: 0.5227, y: 0.5227, z: 0.5227}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4962742194071309504}
   - {fileID: 8989736259401356965}
   m_Father: {fileID: 3871040191977089959}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -6.645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &3311467919064047228
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5449,7 +5449,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -5834,7 +5834,7 @@ ParticleSystem:
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
-    placementMode: 0
+    placementMode: 2
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
     m_MeshSpawn:

@@ -10,6 +10,7 @@ public class LightningStrike : MonoBehaviour
     private GameObject closestEnemy;
 
     [SerializeField] private GameObject lightningPrefab;
+    [SerializeField] private GameObject lightningPrefabFromPlayer;
     
     [SerializeField] private float aggroRange; 
 
@@ -79,6 +80,8 @@ public class LightningStrike : MonoBehaviour
                 float distance = Vector3.Distance(this.transform.position, closestEnemy.transform.position);
                 if (distance <= aggroRange)
                 {
+                    //GameObject pref = Instantiate(lightningPrefabFromPlayer, transform);
+                    //pref.transform.SetParent(null);
                     Instantiate(lightningPrefab, closestEnemy.transform);
                     timePassed = 0f;
                 }

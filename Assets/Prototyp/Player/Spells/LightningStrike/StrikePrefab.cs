@@ -55,10 +55,24 @@ public class StrikePrefab : MonoBehaviour
             }
         }
     }*/
+    private Enemy enemy;
+    private EnemyBoss enemyBoss;
 
     private void DealDamage()
     {
-        Enemy enemy = gameObject.GetComponentInParent<Enemy>();
+        if (gameObject.GetComponentInParent<Enemy>() != null)
+        {
+            enemy = gameObject.GetComponentInParent<Enemy>();
+        }
+        else if (gameObject.GetComponentInParent<EnemyBoss>() != null)
+        {
+            enemyBoss = gameObject.GetComponentInParent<EnemyBoss>();
+        }
+        else
+        {
+            return;
+        }
+
         Transform parentTransform = gameObject.GetComponentInParent<Transform>();
 
         if (parentTransform != null)
@@ -74,6 +88,14 @@ public class StrikePrefab : MonoBehaviour
                     enemy.HitVFX(hitPoint);
                     hasDealtDamage.Add(parentTransform.gameObject);
                 }
+                else if (enemyBoss != null)
+                {
+                    float knockBackForce = 0f;
+                    enemyBoss.TakeDamage(_damageOfEverything.lightingStrikeDamage, parentTransform);
+                    enemyBoss.HitVFX(hitPoint);
+                    hasDealtDamage.Add(parentTransform.gameObject);
+                }
+                
             }
         }
     }
