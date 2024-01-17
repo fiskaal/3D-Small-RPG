@@ -166,12 +166,12 @@ public class HealthSystem : MonoBehaviour
                 {
                     _lvlQuestManager.UpdateDamageQuest(damageAmount);
                 }
-
-                if (health <= 0)
-                {
-                    Die();
-                }
             }
+        }
+        
+        if (health <= 0)
+        {
+            Die();
         }
     }
 

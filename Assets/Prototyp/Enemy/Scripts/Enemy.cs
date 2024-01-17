@@ -365,16 +365,6 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-        
-        if (dead)
-        {
-            if (timePassedAfterDeath >= 1f)
-            {
-                Die();
-            }
-
-            timePassedAfterDeath += Time.deltaTime;
-        }
     }
 
     private void QuickAttack(Vector3 directionToPlayer)
@@ -459,12 +449,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Die()
-    {
-        DropLoot();
-        Destroy(this.gameObject);
-    }
-
     void DropLoot()
     {
         for (int i = 0; i < lootItems.Length; i++)
@@ -512,9 +496,8 @@ public class Enemy : MonoBehaviour
             
             if (health <= 0)
             {
-                animator.SetTrigger("death");
-                dead = true;
-
+                StartCoroutine(Death());
+                
                 if (deathVFX != null)
                 {
                     GameObject death = Instantiate(deathVFX, transform);
@@ -529,7 +512,22 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+    IEnumerator Death()
+    {
+        dead = true;
+        animator.SetTrigger("death");
+        DropLoot();
+        
+        yield return new WaitForSeconds(3f);
+        
+        Die();
+    }
     
+    void Die()
+    {
+        Destroy(this.gameObject);
+    }
 
 
 /*
