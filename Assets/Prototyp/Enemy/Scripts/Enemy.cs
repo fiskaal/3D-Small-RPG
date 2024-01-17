@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviour
 
     private HealthSystem playerHealthSystem;
     [SerializeField] private DamagePopUpGenerator _damagePopUpGenerator;
+    private CapsuleCollider _collider;
     
     //keeps distance after attack
     public bool stepBackAfterAttack = false; // Toggle for stepping back after attack
@@ -136,6 +137,11 @@ public class Enemy : MonoBehaviour
         {
             animator.SetTrigger("chilling");
         }
+
+        _collider = GetComponent<CapsuleCollider>();
+
+        maxHp = health;
+        currentHp = health;
     }
 
     void Update()
@@ -394,7 +400,7 @@ public class Enemy : MonoBehaviour
     IEnumerator TriggerAttackAfterDelay()
     {
         float delay = 0.5f; // Time delay before triggering the attack
-
+        
         yield return new WaitForSeconds(delay);
 
         // Trigger the attack after the delay
@@ -473,6 +479,9 @@ public class Enemy : MonoBehaviour
 
 
     public GameObject deathVFX;
+
+    public float maxHp;
+    public float currentHp;
     
     public void TakeDamage(float damageAmount, Transform hit)
     {
@@ -485,6 +494,7 @@ public class Enemy : MonoBehaviour
             }
 
             health -= damageAmount;
+            currentHp = health;
             animator.applyRootMotion = true;
             if (!isAttacking)
             {
@@ -518,6 +528,13 @@ public class Enemy : MonoBehaviour
         dead = true;
         animator.SetTrigger("death");
         DropLoot();
+        
+        _enemyHpBar.SetHealthBarInvisible();
+        _enemyHpBar.gameObject.SetActive(false);
+        Outline outline =  GetComponentInChildren<Outline>();
+        outline.SetOutlineWidth(0f);
+        outline.enabled = false;
+        _collider.enabled = false;
         
         yield return new WaitForSeconds(3f);
         

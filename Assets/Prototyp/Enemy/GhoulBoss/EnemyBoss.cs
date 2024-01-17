@@ -116,6 +116,9 @@ public class EnemyBoss : MonoBehaviour
     // Ocko projectile
     private OckoProjectile _ockoProjectile;
 
+    public float maxHp;
+    public float currentHp;
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -152,6 +155,9 @@ public class EnemyBoss : MonoBehaviour
         {
             _ockoProjectile = GetComponent<OckoProjectile>();
         }
+
+        maxHp = health;
+        currentHp = health;
     }
 
     void Update()
@@ -442,6 +448,7 @@ public class EnemyBoss : MonoBehaviour
             _bossAudioScript.PlayHit();
             _damagePopUpGenerator.CreatePopUp(hit.position, damageAmount.ToString(), Color.white);
             health -= damageAmount;
+            currentHp = health;
             animator.applyRootMotion = true;
             if (isIdle)
             {
