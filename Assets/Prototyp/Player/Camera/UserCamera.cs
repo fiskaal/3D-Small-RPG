@@ -37,6 +37,7 @@ public class UserCamera : MonoBehaviour
 	public bool inFirstPerson;
 
 	public GameObject[] objectsToCheckRotation; // Array of objects to check for activity
+	
 
 	void Start () { 
 
@@ -140,7 +141,7 @@ public class UserCamera : MonoBehaviour
 		if (angle > 360)
 			angle -= 360;
 
-		yDeg = Mathf.Clamp(angle, -60, 80);
+		yDeg = Mathf.Clamp(angle, yMinLimit, yMaxLimit);
 	}
 
 }
