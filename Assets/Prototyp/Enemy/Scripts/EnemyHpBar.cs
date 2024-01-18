@@ -12,9 +12,13 @@ public class EnemyHpBar : MonoBehaviour
     private float numberMaxHp;
     private float numberCurrentHp;
 
+    public bool invisibleOnStart = true;
     private void Start()
     {
-        SetHealthBarInvisible();
+        if (invisibleOnStart)
+        {
+            SetHealthBarInvisible();
+        }
     }
 
     public void SetMaxHP(float maxHP)
