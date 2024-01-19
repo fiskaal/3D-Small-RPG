@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 2578054597482018711}
   hpText: {fileID: 2362111515220315161}
+  invisibleOnStart: 1
 --- !u!114 &8389696992066489487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,8 +652,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 04b0904e3e2fd0c42b8f34ce54930de9, type: 2}
+  m_sharedMaterial: {fileID: 3099449172689877973, guid: 04b0904e3e2fd0c42b8f34ce54930de9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -676,8 +677,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 10.31
+  m_fontSizeBase: 10.31
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
