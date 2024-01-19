@@ -75,6 +75,9 @@ public class Character : MonoBehaviour
 
     [Header("Sprint")] 
     public bool isSprinting;
+
+    [Header("EquipmentApperance")] 
+    public EquipmentSystem _equipmentSystem;
     
     
     //dash coolDownCalculator

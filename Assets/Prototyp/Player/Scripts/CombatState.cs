@@ -26,7 +26,7 @@ public class CombatState : State
     public override void Enter()
     {
         base.Enter();
-
+        
         block = false;
         jump = false;
         sheateWeapon = false;
@@ -99,13 +99,14 @@ public class CombatState : State
         
         character.animator.SetFloat("speed", input.magnitude, character.speedDampTime, Time.deltaTime);
 
-        if (sheateWeapon )
+        if (sheateWeapon)
         {
+            character.animator.SetBool("inCombat", false);
             character.animator.SetTrigger("sheatWeapon");
             stateMachine.ChangeState(character.standing);
         }
             
-        if (attack)
+        if (attack && !sheateWeapon)
         {
             //character.animator.SetTrigger("attack");
             stateMachine.ChangeState(character.attacking); 
@@ -117,7 +118,7 @@ public class CombatState : State
             //stateMachine.ChangeState(character.heavyAttacking);
         }
 
-        if (dash && character.dashIsReady)
+        if (dash && character.dashIsReady && !sheateWeapon)
         {
             character.animator.SetTrigger(("dash"));
             stateMachine.ChangeState(character.dashing);
@@ -133,10 +134,11 @@ public class CombatState : State
             stateMachine.ChangeState(character.jumping);
         }
 
-        if (block)
+        if (block && !sheateWeapon)
         {
             if (!character.blockBroken)
             {
+                character.animator.SetBool("blocking", true);
                 character.animator.SetTrigger("block");
                 stateMachine.ChangeState(character.blocking);
             }

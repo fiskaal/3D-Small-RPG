@@ -126,6 +126,8 @@ public class BlockingState : State
     {
         base.Exit();
 
+        character.animator.SetBool("blocking", false);
+        
         if (character.blockIsUgraded)
         {
             character.blockVFXScript.DisableAfterAnimation();

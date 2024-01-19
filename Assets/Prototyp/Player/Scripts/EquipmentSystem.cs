@@ -44,4 +44,15 @@ public class EquipmentSystem : MonoBehaviour
         weaponHolder.GetComponentInChildren<DamageDealer>().EndDealDamage();
         //currentWeaponInHand.GetComponentInChildren<DamageDealer>().EndDealDamage();
     }
+    
+    
+    // for character script to secure weapon visibility
+    public void AttackShowWeaponInHand()
+    {
+        if (!weaponHolder.activeSelf)
+        {
+            weaponSheath.SetActive(false);
+            weaponHolder.SetActive(true);
+        }
+    }
 }
