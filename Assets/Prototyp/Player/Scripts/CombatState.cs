@@ -45,6 +45,7 @@ public class CombatState : State
         gravityValue = character.gravityValue;
         
         character.animator.SetBool("inCombat", true);
+        character.animator.SetBool("blocking", false);
     }
 
     public override void HandleInput()
