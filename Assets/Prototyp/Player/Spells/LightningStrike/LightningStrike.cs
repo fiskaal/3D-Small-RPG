@@ -20,13 +20,14 @@ public class LightningStrike : MonoBehaviour
     
     private void Start()
     {
-        timePassed = 0f;
+        timePassed = coolDownTime;
+        FindAndAddEnemies();
     }
     
     void FindAndAddEnemies()
     {
         GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-
+        
         for (int i = 0; i < allEnemies.Length; i++)
         {
             if (!foundEnemies.Contains(allEnemies[i]))
@@ -64,6 +65,8 @@ public class LightningStrike : MonoBehaviour
                 {
                     closestDistance = distance;
                     closestEnemy = foundEnemies[i];
+                    Debug.Log("Closest Enemy " + closestEnemy);
+
                 }
             }
         }
@@ -73,7 +76,6 @@ public class LightningStrike : MonoBehaviour
     {
         if (coolDownTime <= timePassed)
         {
-            FindAndAddEnemies();
             FindClosestEnemy();
             if (closestEnemy != null)
             {
@@ -83,11 +85,22 @@ public class LightningStrike : MonoBehaviour
                     //GameObject pref = Instantiate(lightningPrefabFromPlayer, transform);
                     //pref.transform.SetParent(null);
                     Instantiate(lightningPrefab, closestEnemy.transform);
-                    timePassed = 0f;
+                    Debug.Log("Lighning Strike Fired");
                 }
             }
+            timePassed = 0f;
         }
 
         timePassed += Time.deltaTime;
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("Lighning Strike is Enabled");
+    }
+    
+    private void OnDisable()
+    {
+        Debug.Log("Lighning Strike is Diableddw");
     }
 }

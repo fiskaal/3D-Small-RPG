@@ -4277,7 +4277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDamage: 1
   knockBackForce: 0
-  lightingStrikeDamage: 5
+  lightingStrikeDamage: 1
   fireEnchantDamageBonus: 2
   lightningEnchantDamageBonus: 1
   enchantedWeaponDamage: 0
@@ -15364,10 +15364,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2995673596906374300}
     m_Modifications:
-    - target: {fileID: 5037088017629392613, guid: d1ac8d5fbd3ff104f8512af943ec866d, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 5859106833986492596, guid: d1ac8d5fbd3ff104f8512af943ec866d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -15417,20 +15413,8 @@ PrefabInstance:
       value: LighningStrikeMaker
       objectReference: {fileID: 0}
     - target: {fileID: 5859106833986492598, guid: d1ac8d5fbd3ff104f8512af943ec866d, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5859106833986492598, guid: d1ac8d5fbd3ff104f8512af943ec866d, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5859106833986492599, guid: d1ac8d5fbd3ff104f8512af943ec866d, type: 3}
-      propertyPath: coolDownTime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6142684183707136044, guid: d1ac8d5fbd3ff104f8512af943ec866d, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1ac8d5fbd3ff104f8512af943ec866d, type: 3}
