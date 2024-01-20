@@ -118,6 +118,8 @@ public class EnemyBoss : MonoBehaviour
 
     public float maxHp;
     public float currentHp;
+
+    public BossUiColliderScript bossUiColliderScript;
     
     void Start()
     {
@@ -213,10 +215,12 @@ public class EnemyBoss : MonoBehaviour
             UpdateRotation(5);
             
             Vector3 directionToPlayer = player.transform.position - transform.position;
+            directionToPlayer.y = 0;
             // Calculate the angle between the enemy's forward direction and the direction to the player
             float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
             // Define a threshold angle, for instance, 5 degrees
             float angleThreshold = 10f;
+            
 
             if (angleToPlayer < angleThreshold)
             {
@@ -348,6 +352,7 @@ public class EnemyBoss : MonoBehaviour
     {
         rageMode = true;
         health = health + rageModeBonusHealth;
+        currentHp = health;
         isIdle = false;
         currentAttackDamage = handAttackDamage;
         currentAttackRadius = handAttackRadius;
@@ -356,6 +361,7 @@ public class EnemyBoss : MonoBehaviour
         isAttacking = true;
         attackingTime = animator.GetCurrentAnimatorClipInfo(0).Length;
         _enemyHpBar.SetHP(health);
+        bossUiColliderScript.UpdateHpBar();
     }
 
     public void RageModeParticleChange()
@@ -455,6 +461,7 @@ public class EnemyBoss : MonoBehaviour
                 animator.SetTrigger("damage");
             }
             _enemyHpBar.SetHP(health);
+            bossUiColliderScript.UpdateHpBar();
 
             if (health <= 0)
             {

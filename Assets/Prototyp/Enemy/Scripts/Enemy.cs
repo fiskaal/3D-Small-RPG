@@ -90,6 +90,8 @@ public class Enemy : MonoBehaviour
     //audio
     public AudioScript audioScript;
     
+    public BossUiColliderScript bossUiColliderScript;
+    
     
     void Start()
     {
@@ -501,6 +503,10 @@ public class Enemy : MonoBehaviour
                 animator.SetTrigger("damage");
             }
             _enemyHpBar.SetHP(health);
+            if (bossUiColliderScript != null)
+            {
+                bossUiColliderScript.UpdateHpBar();
+            }
 
             pursuePlayer();
             

@@ -78,6 +78,9 @@ public class Character : MonoBehaviour
 
     [Header("EquipmentApperance")] 
     public EquipmentSystem _equipmentSystem;
+
+    [Header("Audio")] 
+    public PlayerAudioScript playerAudioScript;
     
     
     //dash coolDownCalculator

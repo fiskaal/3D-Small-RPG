@@ -12,6 +12,8 @@ public class EnemyHpBar : MonoBehaviour
     private float numberMaxHp;
     private float numberCurrentHp;
 
+    private Coroutine smoothChangeCoroutine;
+    
     public bool invisibleOnStart = true;
     private void Start()
     {
@@ -49,17 +51,22 @@ public class EnemyHpBar : MonoBehaviour
         slider.value = targetValue;
         numberCurrentHp = targetValue;
         SetHPText();
+
+        // Coroutine finished, set the reference to null
+        smoothChangeCoroutine = null;
     }
 
     public void SetHP(float currentHP)
     {
-        /*
-        slider.value = currentHP; // Update the current HP value on the UI.
+        
+        // Stop the existing coroutine if it's running
+        if (smoothChangeCoroutine != null)
+        {
+            StopCoroutine(smoothChangeCoroutine);
+        }
 
-        numberCurrentHp = currentHP;
-        SetHPText();
-        */
-        StartCoroutine(SmoothSliderValueChange(currentHP, 0.1f));
+        // Start a new coroutine
+        smoothChangeCoroutine = StartCoroutine(SmoothSliderValueChange(currentHP, 0.1f));
     }
 
     public void SetHPText()

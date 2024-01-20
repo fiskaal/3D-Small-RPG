@@ -137,6 +137,7 @@ public class JumpingState:State
     {
 	    base.Exit();
 	    character.animator.SetBool("jumping", false);
+	    character.playerAudioScript.PlayFallImpact();
     }
 
 }

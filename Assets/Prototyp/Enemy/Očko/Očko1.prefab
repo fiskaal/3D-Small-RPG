@@ -4953,6 +4953,8 @@ MonoBehaviour:
   waypointWaitTime: 2
   audioScript: {fileID: 0}
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
+  maxHp: 0
+  currentHp: 0
   damageDealers: []
 --- !u!195 &5114797098418043381
 NavMeshAgent:
@@ -5100,8 +5102,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f83dbf2841670c42aa141ade68343c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSteps: 10
+  volumeHit: 0.2
+  volumeAttack: 1
   audioSource: {fileID: 7529369247266163961}
   hit: {fileID: 8300000, guid: 8236edea92c9fcd4e8bab4f92c3fef7c, type: 3}
+  attackWhoosh: {fileID: 0}
+  attackWhoosh1: {fileID: 0}
+  steps:
+  - {fileID: 8300000, guid: ae0e4fc30bc95e94a9c3a3dfc30c7b6e, type: 3}
+  - {fileID: 8300000, guid: a37250b17cbde8e46bd6ca86ed186290, type: 3}
+  - {fileID: 8300000, guid: 325b813d9d1663b409fc12a7ede6fab6, type: 3}
+  - {fileID: 8300000, guid: cc981fe29ff74e144afc94f228a79298, type: 3}
+  - {fileID: 8300000, guid: 4431583d21755f44e9c78d43b4ca748d, type: 3}
+  - {fileID: 8300000, guid: f05ed5f57fcf37643891d7e9d044587a, type: 3}
 --- !u!1 &5913567629345516754
 GameObject:
   m_ObjectHideFlags: 0
