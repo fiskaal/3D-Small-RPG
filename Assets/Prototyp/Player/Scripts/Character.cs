@@ -132,11 +132,6 @@ public class Character : MonoBehaviour
         dashTimePassed += Time.deltaTime;
         
         UpdateSpecialAttackActionCoolDown();
-
-        if (fireBallIsActive)
-        {
-            Debug.Log("FireBall Is Active");
-        }
     }
 
     private void FixedUpdate()
