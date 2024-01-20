@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1432965297611109992}
   - component: {fileID: 1857419364772511444}
   - component: {fileID: 4037163845652308862}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: 'Image '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,8 +298,9 @@ GameObject:
   - component: {fileID: 3121921973498116186}
   - component: {fileID: 3121921973498116184}
   - component: {fileID: 3121921973498116187}
-  - component: {fileID: 8197868358377497917}
-  m_Layer: 5
+  - component: {fileID: 517700034}
+  - component: {fileID: 4880230956301571052}
+  m_Layer: 8
   m_Name: Panel_Damage
   m_TagString: Menu
   m_Icon: {fileID: 0}
@@ -326,7 +327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 750.6312, y: -540}
+  m_AnchoredPosition: {x: 1378.7375, y: -540}
   m_SizeDelta: {x: 313.9695, y: 490.6762}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3121921973498116184
@@ -367,7 +368,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8197868358377497917
+--- !u!114 &517700034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -380,6 +381,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellBought: 0
+--- !u!114 &4880230956301571052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121921973498116189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bde980cf7f853f44987c98389bb9357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 7.209374
+      outSlope: 7.209374
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09750573
+    - serializedVersion: 3
+      time: 0.18713239
+      value: 0.9015243
+      inSlope: 2.1261044
+      outSlope: 2.1261044
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.20389165
+      outWeight: 0.13506366
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: -0.40347692
+      outSlope: -0.40347692
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4539789
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationSpeed: 2
 --- !u!1 &3121921973516933464
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +439,7 @@ GameObject:
   - component: {fileID: 3121921973516933463}
   - component: {fileID: 3121921973516933462}
   - component: {fileID: 3121921973516933465}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas_LevelUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +543,7 @@ GameObject:
   - component: {fileID: 4713809723405573646}
   - component: {fileID: 1443154145184577275}
   - component: {fileID: 5960878820273654232}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Button_Upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,8 +653,32 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 4713809723405573646}
-        m_TargetAssemblyTypeName: DeactivateChildren, Assembly-CSharp
+        m_TargetAssemblyTypeName: DeactivateGrandparentChildren, Assembly-CSharp
         m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
@@ -666,7 +737,7 @@ GameObject:
   - component: {fileID: 3121921973951372823}
   - component: {fileID: 3121921973951372821}
   - component: {fileID: 1688520075369438172}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -801,7 +872,7 @@ GameObject:
   - component: {fileID: 3121921974167406480}
   - component: {fileID: 3121921974167406478}
   - component: {fileID: 3121921974167406481}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +956,7 @@ GameObject:
   - component: {fileID: 606495844152105024}
   - component: {fileID: 351233387216925957}
   - component: {fileID: 3468001486871561093}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Button_Upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1074,7 +1145,7 @@ GameObject:
   - component: {fileID: 3121921974220478869}
   - component: {fileID: 3121921974220478867}
   - component: {fileID: 3121921974220478866}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1158,7 +1229,7 @@ GameObject:
   - component: {fileID: 3697234568129284861}
   - component: {fileID: 4035261671981372118}
   - component: {fileID: 818888830469510395}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Button_Upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1346,9 +1417,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3121921974378227399}
   - component: {fileID: 3121921974378227396}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: LevelUpArray
-  m_TagString: Untagged
+  m_TagString: Spells
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1414,7 +1485,7 @@ GameObject:
   - component: {fileID: 3121921974579516705}
   - component: {fileID: 3121921974579516767}
   - component: {fileID: 3121921974579516766}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1494,8 +1565,9 @@ GameObject:
   - component: {fileID: 3121921975164039296}
   - component: {fileID: 3121921975164039358}
   - component: {fileID: 3121921975164039297}
-  - component: {fileID: 8124900177099053888}
-  m_Layer: 5
+  - component: {fileID: 2467610615483522335}
+  - component: {fileID: 510748720}
+  m_Layer: 8
   m_Name: Panel_HP
   m_TagString: Menu
   m_Icon: {fileID: 0}
@@ -1512,7 +1584,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3121921974198483786}
   - {fileID: 3121921975324815236}
@@ -1522,7 +1594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 331.89374, y: -540}
+  m_AnchoredPosition: {x: 960, y: -540}
   m_SizeDelta: {x: 313.9695, y: 490.6762}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3121921975164039358
@@ -1563,7 +1635,53 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8124900177099053888
+--- !u!114 &2467610615483522335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121921975164039299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bde980cf7f853f44987c98389bb9357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 7.209374
+      outSlope: 7.209374
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09750573
+    - serializedVersion: 3
+      time: 0.18713239
+      value: 0.9015243
+      inSlope: 2.1261044
+      outSlope: 2.1261044
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.20389165
+      outWeight: 0.13506366
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: -0.40347692
+      outSlope: -0.40347692
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4539789
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationSpeed: 2
+--- !u!114 &510748720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1587,7 +1705,7 @@ GameObject:
   - component: {fileID: 3121921975239282671}
   - component: {fileID: 3121921975239282669}
   - component: {fileID: 8898075589469461486}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1722,7 +1840,7 @@ GameObject:
   - component: {fileID: 3121921975324815236}
   - component: {fileID: 3121921975324815234}
   - component: {fileID: 570504094296477232}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1857,8 +1975,9 @@ GameObject:
   - component: {fileID: 3121921975343406170}
   - component: {fileID: 3121921975343406168}
   - component: {fileID: 3121921975343406171}
-  - component: {fileID: 1174297292205850592}
-  m_Layer: 5
+  - component: {fileID: 129942110}
+  - component: {fileID: 6022560865648859769}
+  m_Layer: 8
   m_Name: Panel_Spell_Lightning
   m_TagString: Menu
   m_Icon: {fileID: 0}
@@ -1886,7 +2005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1169.3688, y: -540}
+  m_AnchoredPosition: {x: 1518.3167, y: -540}
   m_SizeDelta: {x: 313.9695, y: 490.6762}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3121921975343406168
@@ -1927,7 +2046,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1174297292205850592
+--- !u!114 &129942110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1940,6 +2059,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellBought: 0
+--- !u!114 &6022560865648859769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121921975343406173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bde980cf7f853f44987c98389bb9357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 7.209374
+      outSlope: 7.209374
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09750573
+    - serializedVersion: 3
+      time: 0.18713239
+      value: 0.9015243
+      inSlope: 2.1261044
+      outSlope: 2.1261044
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.20389165
+      outWeight: 0.13506366
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: -0.40347692
+      outSlope: -0.40347692
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4539789
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationSpeed: 2
 --- !u!1 &3854328697551461708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,6 +2242,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6104032398611150850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2125,7 +2314,7 @@ GameObject:
   - component: {fileID: 1320856609685050956}
   - component: {fileID: 2737487988121196609}
   - component: {fileID: 8304519912129286017}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: 'Image '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2472,6 +2661,7 @@ GameObject:
   - component: {fileID: 3036958716246138572}
   - component: {fileID: 5708356781308489555}
   - component: {fileID: 1747262775837256969}
+  - component: {fileID: 2656008893946570825}
   m_Layer: 5
   m_Name: Panel_Spell_FireSword
   m_TagString: Menu
@@ -2500,7 +2690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -540}
+  m_AnchoredPosition: {x: 1588.1061, y: -540}
   m_SizeDelta: {x: 313.9695, y: 490.6762}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3036958716246138572
@@ -2554,6 +2744,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellBought: 0
+--- !u!114 &2656008893946570825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489755458827944678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bde980cf7f853f44987c98389bb9357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 7.209374
+      outSlope: 7.209374
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09750573
+    - serializedVersion: 3
+      time: 0.18713239
+      value: 0.9015243
+      inSlope: 2.1261044
+      outSlope: 2.1261044
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.20389165
+      outWeight: 0.13506366
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: -0.40347692
+      outSlope: -0.40347692
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4539789
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationSpeed: 2
 --- !u!1 &8560904113697607108
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,7 +2801,7 @@ GameObject:
   - component: {fileID: 9100406238969163976}
   - component: {fileID: 8132762149633058718}
   - component: {fileID: 5191267544277227017}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
