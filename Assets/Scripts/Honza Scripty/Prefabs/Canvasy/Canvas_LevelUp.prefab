@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 3121921973498116187}
   - component: {fileID: 517700034}
   - component: {fileID: 4880230956301571052}
+  - component: {fileID: 8891508320760824220}
   m_Layer: 8
   m_Name: Panel_Damage
   m_TagString: Menu
@@ -380,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88fd9d731fcaaac46ab60b7e10e52c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellBought: 0
+  spellBought: 1
 --- !u!114 &4880230956301571052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,7 +427,46 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animationSpeed: 2
+  animationSpeed: 3
+  delay: 0
+--- !u!114 &8891508320760824220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121921973498116189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2edeb4d2d6046d488e95122aedf7ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationSpeed: 10
+  delay: 0
 --- !u!1 &3121921973516933464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,6 +1607,7 @@ GameObject:
   - component: {fileID: 3121921975164039297}
   - component: {fileID: 2467610615483522335}
   - component: {fileID: 510748720}
+  - component: {fileID: 7755975520671429947}
   m_Layer: 8
   m_Name: Panel_HP
   m_TagString: Menu
@@ -1680,7 +1721,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animationSpeed: 2
+  animationSpeed: 3
+  delay: 0
 --- !u!114 &510748720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1693,7 +1735,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88fd9d731fcaaac46ab60b7e10e52c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellBought: 0
+  spellBought: 1
+--- !u!114 &7755975520671429947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121921975164039299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2edeb4d2d6046d488e95122aedf7ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationSpeed: 10
+  delay: 0
 --- !u!1 &3121921975239282670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1977,6 +2057,7 @@ GameObject:
   - component: {fileID: 3121921975343406171}
   - component: {fileID: 129942110}
   - component: {fileID: 6022560865648859769}
+  - component: {fileID: 7605658903151900874}
   m_Layer: 8
   m_Name: Panel_Spell_Lightning
   m_TagString: Menu
@@ -2104,7 +2185,46 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animationSpeed: 2
+  animationSpeed: 3
+  delay: 0
+--- !u!114 &7605658903151900874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121921975343406173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2edeb4d2d6046d488e95122aedf7ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationSpeed: 10
+  delay: 0
 --- !u!1 &3854328697551461708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2662,6 +2782,7 @@ GameObject:
   - component: {fileID: 5708356781308489555}
   - component: {fileID: 1747262775837256969}
   - component: {fileID: 2656008893946570825}
+  - component: {fileID: 3820411059410275631}
   m_Layer: 5
   m_Name: Panel_Spell_FireSword
   m_TagString: Menu
@@ -2789,7 +2910,46 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animationSpeed: 2
+  animationSpeed: 3
+  delay: 0
+--- !u!114 &3820411059410275631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489755458827944678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2edeb4d2d6046d488e95122aedf7ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationSpeed: 10
+  delay: 0
 --- !u!1 &8560904113697607108
 GameObject:
   m_ObjectHideFlags: 0

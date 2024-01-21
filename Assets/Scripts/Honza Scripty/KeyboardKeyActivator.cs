@@ -7,20 +7,40 @@ public class KeyboardKeyActivator : MonoBehaviour
     [SerializeField]
     private KeyCode activationKey = KeyCode.Y; // Default activation key is Y
 
+    private bool gameObjectIsAcite = false;
+
     void Update()
     {
         // Check if the specified button is pressed
         if (Input.GetKeyDown(activationKey))
         {
-            // Check if the GameObject reference is not null
-            if (objectToActivate != null)
+            if (!gameObjectIsAcite)
             {
-                // Activate the specified GameObject
-                objectToActivate.SetActive(true);
+                // Check if the GameObject reference is not null
+                if (objectToActivate != null)
+                {
+                    // Activate the specified GameObject
+                    objectToActivate.SetActive(true);
+                    gameObjectIsAcite = true;
+                }
+                else
+                {
+                    Debug.LogWarning("Please assign a GameObject to be activated in the inspector.");
+                }
             }
             else
             {
-                Debug.LogWarning("Please assign a GameObject to be activated in the inspector.");
+                // Check if the GameObject reference is not null
+                if (objectToActivate != null)
+                {
+                    // Activate the specified GameObject
+                    objectToActivate.SetActive(false);
+                    gameObjectIsAcite = false;
+                }
+                else
+                {
+                    Debug.LogWarning("Please assign a GameObject to be activated in the inspector.");
+                }
             }
         }
     }
