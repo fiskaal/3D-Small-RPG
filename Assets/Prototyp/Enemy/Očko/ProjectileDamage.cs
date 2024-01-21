@@ -34,12 +34,16 @@ public class ProjectileDamage : MonoBehaviour
         // Check if collided with an object that is not the projectile's parent
         if (other.gameObject != gameObject)
         {
-            // Check if the collided object is not the enemy and not in the Ignore Raycast layer
-            if (other.gameObject != shooterTransform.gameObject && other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast") && CompareTag("Enemy"))
+            if (other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
             {
-                // Spawn a hit visual effect and destroy the projectile
-                InstantiateHitVFX();
-                DestroyProjectile();
+                if (other.gameObject.layer != LayerMask.NameToLayer("UICollider"))
+                {
+                    if (!other.CompareTag("Enemy"))
+                    {
+                        InstantiateHitVFX();
+                        Destroy(gameObject);
+                    }
+                }
             }
         }
     }

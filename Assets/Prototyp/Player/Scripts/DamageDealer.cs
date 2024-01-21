@@ -13,7 +13,7 @@ public class DamageDealer : MonoBehaviour
     private GameObject closestEnemy;
     private bool attackedEnemySelected;
 
-    private GameObject player;
+    public GameObject player;
     private DamageOfEverything _damageOfEverything;
 
     private bool enemyTargetted;
@@ -28,8 +28,11 @@ public class DamageDealer : MonoBehaviour
         canDealDamage = false;
         hasDealtDamage = new List<GameObject>();
 
-        
-        player = FindObjectOfType<HealthSystem>().gameObject;
+        if (player == null)
+        {
+            player = FindObjectOfType<HealthSystem>().gameObject;
+        }
+
         closestEnemy = null;
         attackedEnemySelected = false;
 

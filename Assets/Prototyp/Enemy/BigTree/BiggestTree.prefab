@@ -5794,6 +5794,7 @@ MonoBehaviour:
   patrolSpeed: 3.5
   waypointWaitTime: 2
   audioScript: {fileID: 0}
+  bossUiColliderScript: {fileID: 8751290653560851085}
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
   maxHp: 0
   currentHp: 0
@@ -5952,12 +5953,10 @@ MonoBehaviour:
   attackWhoosh: {fileID: 8300000, guid: 771cef51ef80d35499e57327d21f68d4, type: 3}
   attackWhoosh1: {fileID: 8300000, guid: 12520acded6226a45808a4f5ae50abfc, type: 3}
   steps:
-  - {fileID: 8300000, guid: bb553692258146f4d8b71871a830d517, type: 3}
-  - {fileID: 8300000, guid: 011d4485e1f7cb342ab2fe3d3c22901f, type: 3}
-  - {fileID: 8300000, guid: 7fe3ae363f3b9d6439898b93f1525f99, type: 3}
-  - {fileID: 8300000, guid: 3c32a4fc0d66b73449a0e348cf8e3fce, type: 3}
-  - {fileID: 8300000, guid: 010236d178b015341ae67305423f39fd, type: 3}
-  - {fileID: 8300000, guid: 6b65ee0cbeb2d0a44b885fb84a0504ad, type: 3}
+  - {fileID: 8300000, guid: 51099ee9c1ecb3f40aaf79ae927d02c3, type: 3}
+  - {fileID: 8300000, guid: 113620a920245ab4a91b474dbcab376e, type: 3}
+  - {fileID: 8300000, guid: c3221456791f21047b18d6415d6fdffe, type: 3}
+  - {fileID: 8300000, guid: 3173724166afbc5429b2a4615e8553d8, type: 3}
 --- !u!1 &5615448128980457932
 GameObject:
   m_ObjectHideFlags: 0
@@ -6214,6 +6213,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ae134697ac819d429a669e53351b43c, type: 3}
+--- !u!114 &8751290653560851085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1981868389623232902, guid: 5ae134697ac819d429a669e53351b43c, type: 3}
+  m_PrefabInstance: {fileID: 7130278718146196235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cc354e1a2ee694aa312fa7bf1fc235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8990831438003804937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2176944210874214402, guid: 5ae134697ac819d429a669e53351b43c, type: 3}

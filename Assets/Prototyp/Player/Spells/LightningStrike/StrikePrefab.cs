@@ -5,6 +5,7 @@ using UnityEngine;
 public class StrikePrefab : MonoBehaviour
 {
     private Animation _animation;
+    private GameObject player;
 
     [SerializeField]private float animationTime = 1f;
     private float timepassed;
@@ -16,7 +17,7 @@ public class StrikePrefab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player = FindObjectOfType<HealthSystem>().gameObject;
         _damageOfEverything = player.GetComponent<DamageOfEverything>();
         hasDealtDamage = new List<GameObject>();
         

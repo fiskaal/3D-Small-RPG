@@ -51,7 +51,6 @@ public class BlockingState : State
         Vector3 cameraForward = character.cameraTransform.forward;
         cameraForward.y = 0; // Set the Y component to zero
         character.transform.rotation = Quaternion.Slerp(character.transform.rotation, Quaternion.LookRotation(cameraForward),50 * Time.deltaTime);
-
     }
 
     public override void HandleInput()
@@ -126,6 +125,8 @@ public class BlockingState : State
     {
         base.Exit();
 
+        character.animator.SetBool("blocking", false);
+        
         if (character.blockIsUgraded)
         {
             character.blockVFXScript.DisableAfterAnimation();

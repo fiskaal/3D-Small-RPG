@@ -44,16 +44,15 @@ public class PetBehaviour : MonoBehaviour
         if (player != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-
-            Vector3 directionToPlayer = player.transform.position - transform.position;
-            directionToPlayer.y = 0f;
-            directionToPlayer = directionToPlayer.normalized;
             
             if (distanceToPlayer > playerRange)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation.normalized, Quaternion.LookRotation(directionToPlayer), 20 * Time.deltaTime);
                 randomDestination = GetRandomPointAroundPlayer();
                 agent.SetDestination(randomDestination);
+                // Calculate the direction from the enemy to the player
+                Vector3 directionRandomPoint = player.transform.position - transform.position;
+                directionRandomPoint.y = 0f; // Set the Y component to zero to avoid rotation in the Y-axis
+                transform.rotation = Quaternion.Slerp(transform.rotation.normalized, Quaternion.LookRotation(directionRandomPoint), 50 * Time.deltaTime);
                 isChilling = false;
             }
             else
@@ -64,9 +63,14 @@ public class PetBehaviour : MonoBehaviour
                 {
                     float distanceToEnemy = Vector3.Distance(transform.position, collider.transform.position);
 
+                    if (hitColliders.Length <= 1)
+                    {
+                        closestDistance = distanceToEnemy;
+                    }
+
                     if (distanceToEnemy <= playerRange / 2)
                     {
-                        if (distanceToEnemy < closestDistance)
+                        if (distanceToEnemy <= closestDistance)
                         {
                             closestDistance = distanceToEnemy;
                             closestEnemy = collider.gameObject;
@@ -77,14 +81,18 @@ public class PetBehaviour : MonoBehaviour
 
                 if (closestEnemy.gameObject != gameObject && closestEnemy != null) // Ensure the pet doesn't attack itself
                 {
+                    Vector3 directionToEnemy = closestEnemy.transform.position - transform.position;
+                    directionToEnemy.y = 0f;
+                    directionToEnemy = directionToEnemy.normalized;
+                    transform.rotation = Quaternion.Slerp(transform.rotation.normalized, Quaternion.LookRotation(directionToEnemy), 50 * Time.deltaTime);
                     
                     float enemuDDistance = Vector3.Distance(transform.position, closestEnemy.transform.position);
                         
                     if (enemuDDistance <= attackRange && !isAttacking)
                     {
-                                anim.SetTrigger("attack");
-                                lastAttackTime = 0;
-                                isAttacking = true;
+                        anim.SetTrigger("attack");
+                        lastAttackTime = 0;
+                        isAttacking = true;
                     }
                     else if (enemuDDistance <= playerRange/2)
                     {

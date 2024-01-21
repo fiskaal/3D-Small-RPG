@@ -26,9 +26,12 @@ public class FireBall : MonoBehaviour
         {
             if (other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
             {
-                if (!other.CompareTag("Player"))
+                if (other.gameObject.layer != LayerMask.NameToLayer("UICollider"))
                 {
-                    Destroy(gameObject);
+                    if (!other.CompareTag("Player"))
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
         }

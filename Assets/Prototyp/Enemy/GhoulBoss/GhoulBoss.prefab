@@ -246,6 +246,7 @@ MonoBehaviour:
   _bossAudioScript: {fileID: 2490375582536255087}
   maxHp: 0
   currentHp: 0
+  bossUiColliderScript: {fileID: 7321257792885985657}
 --- !u!114 &8844394836401865451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5892,3 +5893,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2176944210874214402, guid: 5ae134697ac819d429a669e53351b43c, type: 3}
   m_PrefabInstance: {fileID: 9086953295101487359}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7321257792885985657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1981868389623232902, guid: 5ae134697ac819d429a669e53351b43c, type: 3}
+  m_PrefabInstance: {fileID: 9086953295101487359}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cc354e1a2ee694aa312fa7bf1fc235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

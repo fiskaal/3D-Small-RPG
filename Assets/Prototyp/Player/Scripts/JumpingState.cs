@@ -27,6 +27,8 @@ public class JumpingState:State
     public override void Enter()
 	{
 		base.Enter();
+		
+		character.animator.SetBool("jumping", true);
 
 		grounded = false;
         gravityValue = character.gravityValue;
@@ -129,6 +131,13 @@ public class JumpingState:State
     void Jump()
     {
         gravityVelocity.y += Mathf.Sqrt(jumpHeight * -4.0f * gravityValue);
+    }
+
+    public override void Exit()
+    {
+	    base.Exit();
+	    character.animator.SetBool("jumping", false);
+	    character.playerAudioScript.PlayFallImpact();
     }
 
 }

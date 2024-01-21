@@ -54,7 +54,7 @@ public class BossUiColliderScript : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void UpdateHpBar()
     {
         if (enemyBoss != null && ghoulBoss)
         {

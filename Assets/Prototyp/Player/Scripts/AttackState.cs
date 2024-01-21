@@ -20,6 +20,8 @@ public class AttackState : State
     {
         base.Enter();
 
+        character._equipmentSystem.AttackShowWeaponInHand();
+        
         block = false;
         attack = false;
         dash = false;
@@ -71,9 +73,13 @@ public class AttackState : State
         
         if (block)
         {
-            character.animator.SetTrigger("block");
-            stateMachine.ChangeState(character.blocking);
-            attackNumber = 0;
+            if (!character.blockBroken)
+            {
+                character.animator.SetBool("blocking", true);
+                character.animator.SetTrigger("block");
+                stateMachine.ChangeState(character.blocking);
+                attackNumber = 0;
+            }
         }
 
         
