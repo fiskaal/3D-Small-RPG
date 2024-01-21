@@ -9,7 +9,14 @@ using UnityEngine.UI;
 public class UiShowUpAnim : MonoBehaviour
 {
     public AnimationCurve scaleCurve;
-    public float animationSpeed = 2f; // You can adjust this speed factor
+    public float animationSpeed = 3f; // You can adjust this speed factor
+
+    private Vector3 desiredScale;
+
+    private void Awake()
+    {
+        desiredScale = gameObject.transform.localScale;
+    }
 
     private void OnEnable()
     {
@@ -23,12 +30,12 @@ public class UiShowUpAnim : MonoBehaviour
         while (timer <= 1f)
         {
             float curveTime = scaleCurve.Evaluate(timer);
-            transform.localScale = Vector3.one * curveTime;
+            transform.localScale = desiredScale * curveTime;
 
             timer += Time.unscaledDeltaTime * animationSpeed / scaleCurve.length; // Adjusting the timer based on speed and curve length
             yield return null;
         }
 
-        transform.localScale = Vector3.one; // Ensure the final scale is precise
+        transform.localScale = desiredScale; // Ensure the final scale is precise
     }
 }
