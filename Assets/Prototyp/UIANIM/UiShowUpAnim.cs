@@ -10,7 +10,7 @@ public class UiShowUpAnim : MonoBehaviour
 {
     public AnimationCurve scaleCurve;
     public float animationSpeed = 3f; // You can adjust this speed factor
-
+    public float delay;
     private Vector3 desiredScale;
 
     private void Awake()
@@ -18,13 +18,22 @@ public class UiShowUpAnim : MonoBehaviour
         desiredScale = gameObject.transform.localScale;
     }
 
+    public void Start()
+    {
+        //transform.localScale = Vector3.zero;
+    }
+
     private void OnEnable()
     {
+        transform.localScale = Vector3.zero;
         StartCoroutine(ScaleOverTime());
     }
 
     IEnumerator ScaleOverTime()
     {
+        
+        yield return new WaitForSeconds(delay);
+
         float timer = 0f;
 
         while (timer <= 1f)
