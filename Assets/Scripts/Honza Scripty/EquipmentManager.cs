@@ -39,6 +39,9 @@ public class EquipmentManager : MonoBehaviour
 
         if (playerEquipment == null)
             Debug.LogError("PlayerEquipment script not found in the scene.");
+
+        StartCoroutine(SaveEquipmentStatesCoroutine()); // Start the coroutine to save equipment states
+        LoadEquipmentStates();
     }
 
     void Update()
@@ -83,6 +86,30 @@ public class EquipmentManager : MonoBehaviour
         return externalItems;
     }
 
+    // Coroutine to save equipment states every 5 seconds
+    private IEnumerator SaveEquipmentStatesCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3f); // Wait for 5 seconds
+
+            SaveEquipmentStates(); // Save equipment states to PlayerPrefs
+        }
+    }
+
+    // Save equipment states to PlayerPrefs
+    private void SaveEquipmentStates()
+    {
+        ArmorEquipmentItem[] externalItems = GetAllExternalItems();
+
+        foreach (ArmorEquipmentItem externalItem in externalItems)
+        {
+            PlayerPrefs.SetInt(externalItem.variableName, externalItem.activateEquipment ? 1 : 0);
+        }
+
+        PlayerPrefs.Save();
+    }
+
     void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
         playerEquipment = FindObjectOfType<PlayerEquipment>();
@@ -105,7 +132,15 @@ public class EquipmentManager : MonoBehaviour
         // Other fields if needed
     }
 
-  
+    // Load equipment states from PlayerPrefs
+    private void LoadEquipmentStates()
+    {
+        ArmorEquipmentItem[] externalItems = GetAllExternalItems();
 
-
+        foreach (ArmorEquipmentItem externalItem in externalItems)
+        {
+            int savedState = PlayerPrefs.GetInt(externalItem.variableName, 0);
+            externalItem.activateEquipment = (savedState == 1);
+        }
+    }
 }

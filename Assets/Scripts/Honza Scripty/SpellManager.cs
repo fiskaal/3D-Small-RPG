@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
 
 [System.Serializable]
 public class SpellInfo
@@ -11,32 +12,25 @@ public class SpellInfo
 
 public class SpellManager : MonoBehaviour
 {
-    // Static reference to the SpellManager instance
     private static SpellManager instance;
-
-    // List of spell info
     public List<SpellInfo> spellInfoList = new List<SpellInfo>();
-
     public string targetTag = "YourTargetTag";
     public string targetObjectName = "YourTargetObjectName";
 
     // Make childObjectName public
     public static string childObjectName;
 
+    private const string PlayerPrefsKey = "SpellInfoList";
+
     void Awake()
     {
-        // Check if an instance already exists
         if (instance == null)
         {
-            // If not, set the instance to this
             instance = this;
-
-            // Make the object persistent between scenes
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            // If an instance already exists, destroy this one
             Destroy(gameObject);
         }
     }
@@ -44,8 +38,11 @@ public class SpellManager : MonoBehaviour
     void Start()
     {
         LocateGameObject();
-
+        LoadSpellInfoFromPlayerPrefs(); // Load saved data on start
         SetInitialSpellBoughtStatus();
+
+        // Start the coroutine to save data every 5 seconds
+        StartCoroutine(SaveDataCoroutine());
     }
 
     void LocateGameObject()
@@ -114,10 +111,10 @@ public class SpellManager : MonoBehaviour
 
     public void SetSpellBoughtStatus(int spellIndex, bool isBought)
     {
-        // Check if the spellIndex is within the valid range
         if (spellIndex >= 0 && spellIndex < spellInfoList.Count)
         {
             spellInfoList[spellIndex].spellBought = isBought;
+            SaveSpellInfoToPlayerPrefs(); // Save the updated data
         }
         else
         {
@@ -133,5 +130,48 @@ public class SpellManager : MonoBehaviour
         // You can add more lines to set other indices as needed
     }
 
+    // Save spellInfoList to PlayerPrefs
+    void SaveSpellInfoToPlayerPrefs()
+    {
+        string json = JsonUtility.ToJson(new SerializableSpellInfoList(spellInfoList));
+        PlayerPrefs.SetString(PlayerPrefsKey, json);
+        PlayerPrefs.Save();
+    }
 
+    // Load spellInfoList from PlayerPrefs
+    void LoadSpellInfoFromPlayerPrefs()
+    {
+        if (PlayerPrefs.HasKey(PlayerPrefsKey))
+        {
+            string json = PlayerPrefs.GetString(PlayerPrefsKey);
+            SerializableSpellInfoList serializedSpellInfoList = JsonUtility.FromJson<SerializableSpellInfoList>(json);
+
+            if (serializedSpellInfoList != null)
+            {
+                spellInfoList = serializedSpellInfoList.spellInfoList;
+            }
+        }
+    }
+
+    // Coroutine to save data every 5 seconds
+    IEnumerator SaveDataCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3f);
+            SaveSpellInfoToPlayerPrefs();
+        }
+    }
+
+    // Helper class for serialization
+    [System.Serializable]
+    private class SerializableSpellInfoList
+    {
+        public List<SpellInfo> spellInfoList;
+
+        public SerializableSpellInfoList(List<SpellInfo> spellInfoList)
+        {
+            this.spellInfoList = spellInfoList;
+        }
+    }
 }
