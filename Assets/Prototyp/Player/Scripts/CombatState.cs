@@ -26,6 +26,7 @@ public class CombatState : State
     public override void Enter()
     {
         base.Enter();
+        character.animator.ResetTrigger("move");
         
         block = false;
         jump = false;
