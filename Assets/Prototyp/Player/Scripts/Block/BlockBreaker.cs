@@ -22,6 +22,7 @@ public class BlockBreaker : MonoBehaviour
     [SerializeField] public float blockBreakCooldownTime = 1.0f; // Time for block break cooldown in seconds
     public float blockBreakTimer = 0.0f;
 
+    public BlockUI blockUI;
 
     public PlayerAudioScript playerAudioScript;
     private void Start()
@@ -41,6 +42,10 @@ public class BlockBreaker : MonoBehaviour
                 if (blockableAttacks < maxNumberOfBlocks)
                 {
                     blockableAttacks++;
+                    if (blockUI != null && !character.blockBroken)
+                    {
+                        blockUI.UpdateNumberOfShieldImages();
+                    }
                 }
             }
         }
@@ -52,6 +57,10 @@ public class BlockBreaker : MonoBehaviour
             if (blockBreakTimer >= blockBreakCooldownTime)
             {
                 character.blockBroken = false;
+                if (blockUI != null)
+                {
+                    blockUI.UpdateNumberOfShieldImages();
+                }
                 Debug.Log("Block is ready!");
                 blockBreakTimer = 0f;
             }
@@ -70,6 +79,11 @@ public class BlockBreaker : MonoBehaviour
         if (blocking)
         {
             blockableAttacks--;
+
+            if (blockUI != null)
+            {
+                blockUI.UpdateNumberOfShieldImages();
+            }
             // Check if the consecutive blocked attacks exceed the threshold
             if (blockableAttacks < 1)
             {
