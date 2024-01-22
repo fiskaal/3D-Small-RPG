@@ -292,13 +292,8 @@ public class WeaponManager : MonoBehaviour
 
     public void UpdateCharacterBlockIsUpgraded()
     {
-        // Find the Player GameObject by tag
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        // Check if the Player GameObject exists and has the Character script
-        if (player != null)
-        {
-            Character characterScript = player.GetComponent<Character>();
+            Character characterScript = FindObjectOfType<Character>();
 
             // Check if the Character script is found
             if (characterScript != null)
@@ -310,11 +305,7 @@ public class WeaponManager : MonoBehaviour
             {
                 Debug.LogWarning("Character script not found on the Player GameObject.");
             }
-        }
-        else
-        {
-            Debug.LogWarning("Player not found. Make sure the player has the tag: Player");
-        }
+
     }
 
     public void UpdateFireballIsUpgraded()
