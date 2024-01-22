@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,46 +8,69 @@ public class BlockUI : MonoBehaviour
     public int blockIndex; // Assign a unique index to each block UI element
     public TextMeshProUGUI timerText; // Reference to the UI text element for the timer
     [SerializeField] private Image cooldownImage;
+    
+    [SerializeField] private GameObject[] Shields;
+    [SerializeField] private TextMeshProUGUI BlockBrokenText;
 
     
     // Reference to the BlockBreaker script
     public BlockBreaker blockBreaker;
 
-    private void Update()
+    private void Start()
     {
-        if (!blockBreaker.character.blockBroken)
-        {
-           
-            
-            // Calculate the fill amount based on the remaining cooldown time
-            float fillAmount = 0 + (blockBreaker.blockRegenerationRate / blockBreaker.blockRegenerationTimer);
-            cooldownImage.fillAmount = fillAmount;
-
-            float remainingTime = blockBreaker.blockableAttacks;
-            UpdateTimerText(remainingTime);
-            
-        }
-        else
-        {
-            // Calculate the fill amount based on the remaining cooldown time
-            float fillAmount = 0 + (blockBreaker.blockBreakCooldownTime / blockBreaker.blockBreakTimer);
-            cooldownImage.fillAmount = fillAmount;
-
-            float remainingTime = blockBreaker.blockBreakCooldownTime - blockBreaker.blockBreakTimer;
-            UpdateBlockBreakTimerText(remainingTime);
-        }
-
-
+        UpdateNumberOfShieldImages();
     }
 
-    private void UpdateTimerText(float remainingTime)
+    private void Update()
     {
-        // Display the timer text and update the countdown
-        timerText.text = remainingTime.ToString("F0") + "/" + blockBreaker.maxNumberOfBlocks; // Format the time display as desired
+        UpdateShieldBreakUi();
     }
 
     private void UpdateBlockBreakTimerText(float remainingTime)
     {
-        timerText.text = remainingTime.ToString("F0");
+        BlockBrokenText.text = "Block broken " + remainingTime.ToString("F0");
+    }
+
+    public void UpdateNumberOfShieldImages()
+    {
+        int totalShields = Shields.Length;
+
+        for (int i = 0; i < totalShields; i++)
+        {
+            if (i < blockBreaker.blockableAttacks)
+            {
+                // Activate shields up to blockableAttacks
+                Shields[i].SetActive(true);
+            }
+            else
+            {
+                // Deactivate shields beyond blockableAttacks
+                Shields[i].SetActive(false);
+            }
+        }
+    }
+
+    public void UpdateShieldBreakUi()
+    {
+        if (blockBreaker.character.blockBroken)
+        {
+            //show text block broken + cooldown
+            if (BlockBrokenText.gameObject.activeSelf != true)
+            {
+                BlockBrokenText.gameObject.SetActive(true);
+            }
+            
+            //UpdateText
+            float remainingTime = blockBreaker.blockBreakCooldownTime - blockBreaker.blockBreakTimer;
+            UpdateBlockBreakTimerText(remainingTime);
+        }
+        else
+        {
+            // Turn off block broken text
+            if (BlockBrokenText.gameObject.activeSelf != false)
+            {
+                BlockBrokenText.gameObject.SetActive(false);
+            }
+        }
     }
 }

@@ -87,9 +87,11 @@ public class PetBehaviour : MonoBehaviour
                     transform.rotation = Quaternion.Slerp(transform.rotation.normalized, Quaternion.LookRotation(directionToEnemy), 50 * Time.deltaTime);
                     
                     float enemuDDistance = Vector3.Distance(transform.position, closestEnemy.transform.position);
-                        
-                    if (enemuDDistance <= attackRange && !isAttacking)
+
+                    float realAttackRange = attackRange + closestEnemy.GetComponent<CapsuleCollider>().radius;
+                    if (enemuDDistance <= realAttackRange && !isAttacking)
                     {
+                        agent.ResetPath();
                         anim.SetTrigger("attack");
                         lastAttackTime = 0;
                         isAttacking = true;
