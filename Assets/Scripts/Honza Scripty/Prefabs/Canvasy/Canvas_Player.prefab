@@ -12055,6 +12055,7 @@ GameObject:
   - component: {fileID: 7294814079423988706}
   - component: {fileID: 7294814079423988709}
   - component: {fileID: 4613648065665883364}
+  - component: {fileID: 5482637121043611033}
   m_Layer: 8
   m_Name: Canvas_Player
   m_TagString: Untagged
@@ -12169,6 +12170,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitPopUp: {fileID: 503687004072007954}
+--- !u!114 &5482637121043611033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294814079423988711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be79cd869a3efd948892510edb3b39af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Shop
+  objectToActivateDeactivate: {fileID: 8862073914763452899}
 --- !u!1 &7294814079560166973
 GameObject:
   m_ObjectHideFlags: 0
