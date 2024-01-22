@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using Unity.UI;
 using System;
 
-public class LoadSceneOnCollision : MonoBehaviour
+public class LoadingPageOnCollision : MonoBehaviour
 {
     // The name of the scene you want to load
     public string sceneName = "TUTORIAL_level";
