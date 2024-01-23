@@ -143,4 +143,18 @@ public class EquipmentManager : MonoBehaviour
             externalItem.activateEquipment = (savedState == 1);
         }
     }
+
+    public void DeactivateAllExternalItems()
+    {
+        ArmorEquipmentItem[] externalItems = GetAllExternalItems();
+
+        foreach (ArmorEquipmentItem externalItem in externalItems)
+        {
+            // Deactivate the equipment by setting activateEquipment to false
+            externalItem.activateEquipment = false;
+
+            // Update the PlayerEquipment script with the new state
+            EquipExternalItem(externalItem);
+        }
+    }
 }
