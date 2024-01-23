@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
-using Unity.UI;
+//using Unity.UI;
 using System;
 
 public class LoadingPageOnCollision : MonoBehaviour
