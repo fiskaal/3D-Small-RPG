@@ -1,12 +1,13 @@
 using UnityEngine;
 using TMPro;
+using System.Collections; // Add this line for IEnumerator
 
 public class ManagerPickups : MonoBehaviour
 {
     public static int wood = 0; // Number of wood collected
     public static int stone = 0; // Number of stones collected
     public static int iron = 0; // Number of iron collected
-    public static int soul = 250; // Number of souls collected
+    public static int soul = 0; // Number of souls collected
 
     public TextMeshProUGUI woodText; // Reference to the UI TextMeshProUGUI component displaying wood count
     public TextMeshProUGUI stoneText; // Reference to the UI TextMeshProUGUI component displaying stone count
@@ -28,6 +29,12 @@ public class ManagerPickups : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        LoadSoulCount();
+        StartCoroutine(SaveSoulsCoroutine()); // Start the coroutine to save equipment states
     }
 
 
@@ -61,5 +68,26 @@ public class ManagerPickups : MonoBehaviour
     {
         soul += amount;
 
+    }
+
+    public void SaveSouls()
+    {
+        PlayerPrefs.SetInt("SoulCount", soul);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadSoulCount()
+    {
+        soul = PlayerPrefs.GetInt("SoulCount", 0);
+    }
+
+    private IEnumerator SaveSoulsCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3f); // Wait for 5 seconds
+
+            SaveSouls(); // Save equipment states to PlayerPrefs
+        }
     }
 }
