@@ -8,8 +8,10 @@ public class Chest : MonoBehaviour
     public Animation chestAnimation; // Reference to the Animation component of the chest
     public ParticleSystem particleSystemObject; // Reference to the Particle System component
     public KeyCode interactKey = KeyCode.E;
+    public Collider interactionCollider;
     private bool isOpen = false;
     private bool chestLooted = false;
+    private Collider playerCollider;
 
     public GameObject[] lootItems; // Array of loot items to spawn
     public Vector2[] lootQuantities; // Array of loot quantities as a range (min, max)
@@ -25,8 +27,6 @@ public class Chest : MonoBehaviour
             particleSystemObject.gameObject.SetActive(true);
         }
 
-        // Activate SpriteE if isOpen is true, deactivate if isOpen is false
-        SpriteE.SetActive(isOpen && !chestLooted);
     }
 
     // Drop loot when the chest is looted
@@ -61,14 +61,13 @@ public class Chest : MonoBehaviour
         // Mark the chest as looted
         chestLooted = true;
 
-        // Deactivate SpriteE after looting
-        SpriteE.SetActive(false);
+
     }
 
     private void Update()
     {
         // Check if the player is pressing the "E" key, isOpen is true, and the chest is not looted
-        if (isOpen && Input.GetKeyDown(interactKey) && !chestLooted)
+        if (isOpen && Input.GetKeyDown(interactKey) && !chestLooted && IsPlayerInRange())
         {
             // Trigger the chest opening animation
             if (chestAnimation != null)
@@ -80,5 +79,42 @@ public class Chest : MonoBehaviour
             // Drop loot when the chest is looted
             DropLoot();
         }
+
+        if (chestLooted == false)
+        {
+            if (isOpen)
+            {
+                if (IsPlayerInRange())
+                {
+                    SpriteE.SetActive(true);
+                }
+                else
+                {
+                    SpriteE.SetActive(false);
+                }
+            }
+        }
+        else
+        {
+            SpriteE.SetActive(false);
+        }
+    }
+
+    private bool IsPlayerInRange()
+    {
+        // Find the player object by tag
+        GameObject playerObject = GameObject.FindWithTag("Player");
+
+        if (playerObject != null)
+        {
+            // Get the player's collider
+            playerCollider = playerObject.GetComponent<Collider>();
+        }
+        else
+        {
+            Debug.LogError("Player object not found. Make sure it has the 'Player' tag.");
+        }
+        // Check if the player is within the range of the collider
+        return interactionCollider.bounds.Contains(playerCollider.bounds.center);
     }
 }
