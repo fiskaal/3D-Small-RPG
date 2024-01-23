@@ -26,6 +26,7 @@ public class CombatState : State
     public override void Enter()
     {
         base.Enter();
+        character.animator.ResetTrigger("move");
         
         block = false;
         jump = false;
@@ -109,6 +110,7 @@ public class CombatState : State
             
         if (attack && !sheateWeapon)
         {
+            character.animator.SetBool("moveBool", false);
             //character.animator.SetTrigger("attack");
             stateMachine.ChangeState(character.attacking); 
         }
