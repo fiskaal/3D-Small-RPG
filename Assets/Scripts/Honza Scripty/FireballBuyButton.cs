@@ -28,8 +28,6 @@ public class FireballBuyButton : MonoBehaviour
         // Get the Button component on this GameObject
         button = GetComponent<Button>();
 
-        // Attach the method to be called when the button is clicked
-        button.onClick.AddListener(OnFireballBuyButtonClick);
 
         // Find the WeaponManager at the start to avoid repeated Find calls
         weaponManager = FindObjectOfType<WeaponManager>();
