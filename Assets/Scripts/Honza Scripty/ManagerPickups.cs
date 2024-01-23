@@ -7,7 +7,7 @@ public class ManagerPickups : MonoBehaviour
     public static int wood = 0; // Number of wood collected
     public static int stone = 0; // Number of stones collected
     public static int iron = 0; // Number of iron collected
-    public static int soul = 0; // Number of souls collected
+    public static int soul = 100; // Number of souls collected
 
     public TextMeshProUGUI woodText; // Reference to the UI TextMeshProUGUI component displaying wood count
     public TextMeshProUGUI stoneText; // Reference to the UI TextMeshProUGUI component displaying stone count
@@ -85,7 +85,7 @@ public class ManagerPickups : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3f); // Wait for 5 seconds
+            yield return new WaitForSeconds(2f); // Wait for 5 seconds
 
             SaveSouls(); // Save equipment states to PlayerPrefs
         }
