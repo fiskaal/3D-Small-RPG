@@ -38,6 +38,7 @@ public class ClearSave : MonoBehaviour
         WeaponManager.Instance.ClearPlayerPrefs();
         armorScript.DeactivateAllExternalItems();
         ManagerPickups.soul = 0;
+        TutorialManager.LoadPlayerPrefs();
         PlayerPrefs.Save();
         spellScript.LoadSpellInfoFromPlayerPrefs();
 
