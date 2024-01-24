@@ -10,6 +10,7 @@ public class CageReleasePetController : MonoBehaviour
     public bool keyGotten = false;
 
     private Collider playerCollider;
+    public Animator animator;
 
     // Define the specific 3D collider
     public Collider interactionCollider;
@@ -70,6 +71,12 @@ public class CageReleasePetController : MonoBehaviour
         // Set petReleased to true when the player releases the pet
         petReleased = true;
         cageHighlightObject.SetActive(false);
+
+        if (animator != null)
+        {
+            animator.enabled = true;
+        }
+
         Debug.Log("Pet released!");
     }
 
