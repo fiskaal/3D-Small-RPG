@@ -110,6 +110,7 @@ public class CombatState : State
             
         if (attack && !sheateWeapon)
         {
+            character.animator.SetBool("moveBool", false);
             //character.animator.SetTrigger("attack");
             stateMachine.ChangeState(character.attacking); 
         }

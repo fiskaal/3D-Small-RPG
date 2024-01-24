@@ -265,6 +265,7 @@ public class WeaponManager : MonoBehaviour
         // Save PlayerPrefs after clearing keys
         PlayerPrefs.Save();
         SetDefaultValues();
+        LoadValues();
     }
 
     public void SetDefaultValues()

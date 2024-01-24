@@ -68,6 +68,7 @@ public class AttackState : State
         {
             stateMachine.ChangeState(character.combatting);
             character.animator.SetTrigger("move");
+            character.animator.SetBool("moveBool", true);
             attackNumber = 0;
         }
         

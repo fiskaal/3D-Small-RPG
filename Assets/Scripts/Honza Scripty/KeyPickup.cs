@@ -3,6 +3,7 @@ using UnityEngine;
 public class KeyPickup : MonoBehaviour
 {
     private bool hasKey = false;
+    private CageReleasePetController cageScript;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,8 +29,22 @@ public class KeyPickup : MonoBehaviour
                     }
                 }
             }
+
+            {
+                cageScript = FindObjectOfType<CageReleasePetController>();
+                if (cageScript != null)
+                {
+                    cageScript.keyGotten = true;
+                    cageScript.CageToUnlockAnim();
+                }
+            }
+
+
         }
+
     }
+
+    
 
     public bool HasKey()
     {

@@ -11,6 +11,8 @@ public class BlockUI : MonoBehaviour
     
     [SerializeField] private GameObject[] Shields;
     [SerializeField] private TextMeshProUGUI BlockBrokenText;
+    [SerializeField] private GameObject BlockBrokenParent;
+
 
     
     // Reference to the BlockBreaker script
@@ -50,14 +52,14 @@ public class BlockUI : MonoBehaviour
         }
     }
 
-    public void UpdateShieldBreakUi()
+    public void UpdateShieldBreakUi() 
     {
         if (blockBreaker.character.blockBroken)
         {
             //show text block broken + cooldown
-            if (BlockBrokenText.gameObject.activeSelf != true)
+            if (BlockBrokenParent.activeSelf != true)
             {
-                BlockBrokenText.gameObject.SetActive(true);
+                BlockBrokenParent.SetActive(true);
             }
             
             //UpdateText
@@ -67,9 +69,9 @@ public class BlockUI : MonoBehaviour
         else
         {
             // Turn off block broken text
-            if (BlockBrokenText.gameObject.activeSelf != false)
+            if (BlockBrokenParent.activeSelf != false)
             {
-                BlockBrokenText.gameObject.SetActive(false);
+                BlockBrokenParent.SetActive(false);
             }
         }
     }

@@ -34,6 +34,7 @@ public class StrikePrefab : MonoBehaviour
         if (animationTime <= timepassed)
         {
             Destroy(this);
+            hasDealtDamage = null;
         }
 
         timepassed += Time.deltaTime;

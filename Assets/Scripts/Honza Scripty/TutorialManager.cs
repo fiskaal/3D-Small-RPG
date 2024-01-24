@@ -33,7 +33,7 @@ public class TutorialManager : MonoBehaviour
     }
 
     // Load the state of the boolean variables from PlayerPrefs
-    private static void LoadPlayerPrefs()
+    public static void LoadPlayerPrefs()
     {
         // If the keys do not exist, PlayerPrefs.GetInt returns 0 (false) by default
         isSmithComplete = PlayerPrefs.GetInt("IsSmithComplete", 0) == 1;

@@ -136,10 +136,11 @@ public class SpellManager : MonoBehaviour
         string json = JsonUtility.ToJson(new SerializableSpellInfoList(spellInfoList));
         PlayerPrefs.SetString(PlayerPrefsKey, json);
         PlayerPrefs.Save();
+        LoadSpellInfoFromPlayerPrefs();
     }
 
     // Load spellInfoList from PlayerPrefs
-    void LoadSpellInfoFromPlayerPrefs()
+    public void LoadSpellInfoFromPlayerPrefs()
     {
         if (PlayerPrefs.HasKey(PlayerPrefsKey))
         {
@@ -158,7 +159,7 @@ public class SpellManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
             SaveSpellInfoToPlayerPrefs();
         }
     }
@@ -173,5 +174,11 @@ public class SpellManager : MonoBehaviour
         {
             this.spellInfoList = spellInfoList;
         }
+    }
+
+    public void RestartSpellStates()
+    {
+        SetSpellBoughtStatus(3, false);
+        SetSpellBoughtStatus(4, false);
     }
 }
