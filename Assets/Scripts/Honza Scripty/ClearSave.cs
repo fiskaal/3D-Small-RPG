@@ -6,6 +6,7 @@ public class ClearSave : MonoBehaviour
     public Button clearPrefsButton;
     private SpellManager spellScript;
     private EquipmentManager armorScript;
+    private PetStateController petStateController;
 
     private void Start()
     {
@@ -13,6 +14,7 @@ public class ClearSave : MonoBehaviour
         clearPrefsButton.onClick.AddListener(ClearPrefsButtonClick);
         spellScript = FindObjectOfType<SpellManager>();
         armorScript = FindObjectOfType<EquipmentManager>();
+        petStateController = FindObjectOfType<PetStateController>();
         clearPrefsButton.onClick.AddListener(ClearEverything);
         //clearPrefsButton.onClick.AddListener(RestartSpells);
     }
@@ -39,6 +41,7 @@ public class ClearSave : MonoBehaviour
         armorScript.DeactivateAllExternalItems();
         ManagerPickups.soul = 0;
         TutorialManager.LoadPlayerPrefs();
+        petStateController.SetPetFreedFalse();
         PlayerPrefs.Save();
         spellScript.LoadSpellInfoFromPlayerPrefs();
 

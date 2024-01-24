@@ -10,6 +10,7 @@ public class CageReleasePetController : MonoBehaviour
     public bool keyGotten = false;
 
     private Collider playerCollider;
+    private PetStateController petControlScript;
     public Animator animator;
 
     // Define the specific 3D collider
@@ -75,6 +76,19 @@ public class CageReleasePetController : MonoBehaviour
         if (animator != null)
         {
             animator.enabled = true;
+        }
+
+        petControlScript = FindObjectOfType<PetStateController>();
+        if (petControlScript != null)
+        {
+            petControlScript.petFreed = true;
+            petControlScript.SavePetState();
+            petControlScript.LoadPetState();
+
+        }
+        else
+        {
+            Debug.LogError("script PetStateController is not in the scene");
         }
 
         Debug.Log("Pet released!");
