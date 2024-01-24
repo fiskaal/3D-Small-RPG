@@ -13,6 +13,8 @@ public class UiShowUpAnim : MonoBehaviour
     public float delay;
     private Vector3 desiredScale;
 
+    private bool isAnimating = false;
+
     private void Awake()
     {
         desiredScale = gameObject.transform.localScale;
@@ -48,3 +50,4 @@ public class UiShowUpAnim : MonoBehaviour
         transform.localScale = desiredScale; // Ensure the final scale is precise
     }
 }
+

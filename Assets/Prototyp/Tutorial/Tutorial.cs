@@ -16,6 +16,7 @@ public class Tutorial : MonoBehaviour
     private bool sPressed;
     private bool dPressed;
     private bool spaceBarPressed;
+    private bool shiftRunPressed;
 
     
     public UiScaleUpAndDown wUI;
@@ -23,18 +24,24 @@ public class Tutorial : MonoBehaviour
     public UiScaleUpAndDown sUI;
     public UiScaleUpAndDown dUI;
     public UiScaleUpAndDown spaceBarUI;
+    public UiScaleUpAndDown shiftRunUI;
+
 
 
     // Combat UI dismiss
     private bool leftMousePressed;
     private bool rightMousePressed;
-    private bool shiftPressed;
+    private bool shiftDodgePressed;
     private bool rPressed;
     
     public UiScaleUpAndDown lMouse;
     public UiScaleUpAndDown RMouse;
     public UiScaleUpAndDown shift;
     public UiScaleUpAndDown r;
+    
+    // ui bars
+    public UiScaleUpAndDown blockBar;
+    public UiScaleUpAndDown dashBar;
 
 
 
@@ -67,6 +74,12 @@ public class Tutorial : MonoBehaviour
         // Move UI dismiss
         if (moveUI.activeSelf)
         {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                shiftRunPressed = true;
+                shiftRunUI.PlayAnimation();
+            }
+            
             if (Input.GetKey(KeyCode.W))
             {
                 wPressed = true;
@@ -97,7 +110,7 @@ public class Tutorial : MonoBehaviour
                 spaceBarUI.PlayAnimation();
             }
 
-            if (wPressed && aPressed && sPressed && dPressed && spaceBarPressed)
+            if (wPressed && aPressed && sPressed && dPressed && spaceBarPressed && shiftRunPressed)
             {
                 moveUI.SetActive(false);
             }
@@ -108,20 +121,22 @@ public class Tutorial : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                leftMousePressed = true;
-                lMouse.PlayAnimation();
-            }
-
-            if (Input.GetMouseButtonDown(1))
-            {
                 rightMousePressed = true;
                 RMouse.PlayAnimation();
             }
 
+            if (Input.GetMouseButtonDown(1))
+            {
+                leftMousePressed = true;
+                lMouse.PlayAnimation();
+                blockBar.PlayAnimation();
+            }
+
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                shiftPressed = true;
+                shiftDodgePressed = true;
                 shift.PlayAnimation();
+                dashBar.PlayAnimation();
             }
 
             if (Input.GetKey(KeyCode.R))
@@ -130,7 +145,7 @@ public class Tutorial : MonoBehaviour
                 r.PlayAnimation();
             }
 
-            if (leftMousePressed && rightMousePressed && shiftPressed && rPressed)
+            if (leftMousePressed && rightMousePressed && shiftDodgePressed && rPressed)
             {
                 combatUI.SetActive(false);
             }
