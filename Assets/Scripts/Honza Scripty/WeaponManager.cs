@@ -39,7 +39,7 @@ public class WeaponManager : MonoBehaviour
     public bool Fireball;
 
     // PlayerPrefs keys
-    //šedivý, protože WeaponHolderKey SheathHolderKey se nemìní, nejsou referencovaný, zustavají stejny, 2 liny vespod nepotøebné
+    //ï¿½edivï¿½, protoï¿½e WeaponHolderKey SheathHolderKey se nemï¿½nï¿½, nejsou referencovanï¿½, zustavajï¿½ stejny, 2 liny vespod nepotï¿½ebnï¿½
     private const string WeaponHolderKey = "WeaponHolder";
     private const string SheathHolderKey = "SheathHolder";
 
@@ -273,7 +273,7 @@ public class WeaponManager : MonoBehaviour
         // Set default values for weapon-related variables
         weaponDamage = 1.0f;
         knockBackForce = 0.0f; // Set your default value here
-        lightingStrikeDamage = 3.0f; // Set your default value here
+        lightingStrikeDamage = 1.0f; // Set your default value here
         fireEnchantDamageBonus = 0.0f; // Set your default value here
         lightningEnchantDamageBonus = 0.0f; // Set your default value here
         enchantedWeaponDamage = 0.0f; // Set your default value here
