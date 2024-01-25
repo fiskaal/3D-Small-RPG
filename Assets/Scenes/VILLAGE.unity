@@ -7345,6 +7345,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5463666507717680215, guid: 9065edfad8d21384d850156bf051ea63, type: 3}
   m_PrefabInstance: {fileID: 5463666508613632371}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &870391043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 870391045}
+  - component: {fileID: 870391044}
+  m_Layer: 0
+  m_Name: PetStateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &870391044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870391043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4131e85a466e644b858577c90abed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  petFreed: 0
+--- !u!4 &870391045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870391043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -108.79507, y: 7.8882866, z: 49.501976}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 60
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &876474193 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5432758481319851637, guid: a86cdeaffb02cf24a8bb4bc532231846, type: 3}
@@ -9116,7 +9161,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7996
+  m_Name: pb_Mesh-4673570
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17061,7 +17106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd18969cffa7c34e9ac40ffb85f4c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: TUTORIAL_level
+  sceneName: 2_TUTORIAL
   LoadingPage: {fileID: 13962061}
   slider: {fileID: 782017528}
   spawnCoordinates: {x: 0, y: 0, z: 0}
@@ -23096,6 +23141,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8727559427985155676, guid: 441ece747fbdef84c970b7c991c5004e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.3187027
+      objectReference: {fileID: 0}
     - target: {fileID: 8727559428381447502, guid: 441ece747fbdef84c970b7c991c5004e, type: 3}
       propertyPath: m_Name
       value: TutorialCanvas
@@ -23198,6 +23247,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8727559428381447507, guid: 441ece747fbdef84c970b7c991c5004e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727559429188578355, guid: 441ece747fbdef84c970b7c991c5004e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727559429437574345, guid: 441ece747fbdef84c970b7c991c5004e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
