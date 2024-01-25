@@ -47,8 +47,11 @@ public class Tutorial : MonoBehaviour
 
 
 
+
     public void Start()
     {
+        tutorialComleted = PlayerPrefs.GetInt("TutorialCompleted", 0) == 1;
+
         if (!tutorialComleted)
         {
             moveUI.SetActive(true);
@@ -158,6 +161,8 @@ public class Tutorial : MonoBehaviour
                 {
                     combatUI.SetActive(false);
                     tutorialComleted = true;
+                    PlayerPrefs.SetInt("TutorialCompleted", 1); 
+                    PlayerPrefs.Save(); 
                 }
             }
         }
