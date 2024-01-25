@@ -69,6 +69,7 @@ public class Tutorial : MonoBehaviour
         {
             // Player is close to the scarecrow particle
             combatUI.SetActive(true);
+            moveUI.SetActive(false);
         }
 
         // Move UI dismiss
