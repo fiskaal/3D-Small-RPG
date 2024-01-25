@@ -150,10 +150,6 @@ public class WeaponManager : MonoBehaviour
     {
         damageScript.weaponDamage = weaponDamage;
         damageScript.knockBackForce = knockBackForce;
-        damageScript.lightingStrikeDamage = lightingStrikeDamage;
-        damageScript.fireEnchantDamageBonus = fireEnchantDamageBonus;
-        damageScript.lightningEnchantDamageBonus = lightningEnchantDamageBonus;
-        damageScript.enchantedWeaponDamage = enchantedWeaponDamage;
     }
 
     private void OnDestroy()
@@ -225,10 +221,6 @@ public class WeaponManager : MonoBehaviour
 
         PlayerPrefs.SetFloat(WeaponDamageKey, weaponDamage);
         PlayerPrefs.SetFloat(KnockBackForceKey, knockBackForce);
-        PlayerPrefs.SetFloat(LightingStrikeDamageKey, lightingStrikeDamage);
-        PlayerPrefs.SetFloat(FireEnchantDamageBonusKey, fireEnchantDamageBonus);
-        PlayerPrefs.SetFloat(LightningEnchantDamageBonusKey, lightningEnchantDamageBonus);
-        PlayerPrefs.SetFloat(EnchantedWeaponDamageKey, enchantedWeaponDamage);
 
         PlayerPrefs.SetInt("MagicShield", MagicShield ? 1 : 0);
         PlayerPrefs.SetInt("Fireball", Fireball ? 1 : 0);
@@ -244,10 +236,6 @@ public class WeaponManager : MonoBehaviour
 
         weaponDamage = PlayerPrefs.GetFloat(WeaponDamageKey, 1f);
         knockBackForce = PlayerPrefs.GetFloat(KnockBackForceKey, 0f); // Default to 0 if not present
-        lightingStrikeDamage = PlayerPrefs.GetFloat(LightingStrikeDamageKey, 0f); // Default to 0 if not present
-        fireEnchantDamageBonus = PlayerPrefs.GetFloat(FireEnchantDamageBonusKey, 0f); // Default to 0 if not present
-        lightningEnchantDamageBonus = PlayerPrefs.GetFloat(LightningEnchantDamageBonusKey, 0f); // Default to 0 if not present
-        enchantedWeaponDamage = PlayerPrefs.GetFloat(EnchantedWeaponDamageKey, 0f); // Default to 0 if not present
 
         MagicShield = PlayerPrefs.GetInt("MagicShield", 0) == 1;
         Fireball = PlayerPrefs.GetInt("Fireball", 0) == 1;
@@ -273,10 +261,6 @@ public class WeaponManager : MonoBehaviour
         // Set default values for weapon-related variables
         weaponDamage = 1.0f;
         knockBackForce = 0.0f; // Set your default value here
-        lightingStrikeDamage = 3.0f; // Set your default value here
-        fireEnchantDamageBonus = 0.0f; // Set your default value here
-        lightningEnchantDamageBonus = 0.0f; // Set your default value here
-        enchantedWeaponDamage = 0.0f; // Set your default value here
 
         // Set default values for weapon names and holders
         EquippedWeaponName = "Hatchet";
