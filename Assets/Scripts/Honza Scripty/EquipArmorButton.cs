@@ -38,8 +38,25 @@ public class EquipArmorButton : MonoBehaviour
     }
 
     // Method to be called when the button is clicked
-    void OnClickEquipItem()
+    public void OnClickEquipItem()
     {
+
+        // Automatically find the EquipmentManager instance in the scene
+        equipmentManager = FindObjectOfType<EquipmentManager>();
+
+        if (equipmentManager != null)
+        {
+            // Find the button in the scene
+            Button button = GetComponent<Button>();
+
+            // Add a listener to the button click event
+            button.onClick.AddListener(OnClickEquipItem);
+        }
+        else
+        {
+            Debug.LogError("EquipmentManager instance not found in the scene!");
+        }
+
         if (equipmentManager != null)
         {
             // Set the selected equipment item to true based on the enum

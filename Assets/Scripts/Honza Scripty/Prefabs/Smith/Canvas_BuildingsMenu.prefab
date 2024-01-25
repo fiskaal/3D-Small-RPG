@@ -3146,7 +3146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef191cbe403a3949ad6842e9c4257dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 5
+  weaponDamage: 7
   knockBackForce: 0
   lightingStrikeDamage: 3
   fireEnchantDamageBonus: 0
@@ -5177,8 +5177,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15.0000105, y: 1.0999858}
-  m_SizeDelta: {x: 30.3179, y: 30.3179}
+  m_AnchoredPosition: {x: -17.7, y: -0.4}
+  m_SizeDelta: {x: 20.1, y: 20.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2684461729511745248
 CanvasRenderer:
@@ -5208,7 +5208,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d666355dace064649972813280bd2a7f, type: 3}
+  m_Sprite: {fileID: -1211651764, guid: 112002451481c3f43ae2f880a5cbec09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10614,6 +10614,8 @@ MonoBehaviour:
   activatedObject: {fileID: 543517913714262153}
   deactivatedObject: {fileID: 30809271096495494}
   soulCost: 80
+  weaponEquipButtonObject: {fileID: 0}
+  equipArmorButton: {fileID: 6802428353840013987}
   warningMessage: {fileID: 0}
   shopArrayIndex: 4
 --- !u!1 &3537344542858516622
@@ -11036,8 +11038,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.599997, y: 1.0999858}
-  m_SizeDelta: {x: 30.3179, y: 30.3179}
+  m_AnchoredPosition: {x: -17.7, y: -0.4}
+  m_SizeDelta: {x: 20.1, y: 20.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6318347215895292138
 CanvasRenderer:
@@ -11067,7 +11069,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d666355dace064649972813280bd2a7f, type: 3}
+  m_Sprite: {fileID: -1211651764, guid: 112002451481c3f43ae2f880a5cbec09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11172,6 +11174,8 @@ MonoBehaviour:
   activatedObject: {fileID: 6791290833544396127}
   deactivatedObject: {fileID: 970974236871048062}
   soulCost: 50
+  weaponEquipButtonObject: {fileID: 0}
+  equipArmorButton: {fileID: 0}
   warningMessage: {fileID: 0}
   shopArrayIndex: 3
 --- !u!114 &7261885818984073660
@@ -11280,8 +11284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15, y: 1.1}
-  m_SizeDelta: {x: 30.3179, y: 30.3179}
+  m_AnchoredPosition: {x: -17.7, y: -0.4}
+  m_SizeDelta: {x: 20.1, y: 20.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3846109648759528726
 CanvasRenderer:
@@ -11311,7 +11315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d666355dace064649972813280bd2a7f, type: 3}
+  m_Sprite: {fileID: -1211651764, guid: 112002451481c3f43ae2f880a5cbec09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12234,6 +12238,8 @@ MonoBehaviour:
   activatedObject: {fileID: 1118124143567088504}
   deactivatedObject: {fileID: 6061174252703391415}
   soulCost: 30
+  weaponEquipButtonObject: {fileID: 0}
+  equipArmorButton: {fileID: 6746908101482007229}
   warningMessage: {fileID: 0}
   shopArrayIndex: 4
 --- !u!1 &4187259572120615629
@@ -15841,8 +15847,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15.000005, y: 1.0999858}
-  m_SizeDelta: {x: 30.3179, y: 30.3179}
+  m_AnchoredPosition: {x: -17.7, y: -0.4}
+  m_SizeDelta: {x: 20.1, y: 20.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7987374390716686418
 CanvasRenderer:
@@ -15872,7 +15878,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d666355dace064649972813280bd2a7f, type: 3}
+  m_Sprite: {fileID: -1211651764, guid: 112002451481c3f43ae2f880a5cbec09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17415,8 +17421,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15.000012, y: 1.0999858}
-  m_SizeDelta: {x: 30.3179, y: 30.3179}
+  m_AnchoredPosition: {x: -17.7, y: -0.4}
+  m_SizeDelta: {x: 20.1, y: 20.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1980855161724718344
 CanvasRenderer:
@@ -17446,7 +17452,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d666355dace064649972813280bd2a7f, type: 3}
+  m_Sprite: {fileID: -1211651764, guid: 112002451481c3f43ae2f880a5cbec09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20530,6 +20536,62 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6647466300756559408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8676776180894169378}
+  - component: {fileID: 3297309108841346349}
+  m_Layer: 5
+  m_Name: Cheat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8676776180894169378
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6647466300756559408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8607205147345965335}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3297309108841346349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6647466300756559408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e935e303bf2a24e4b8ab85abab8a1737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  lootItems:
+  - {fileID: 4440475420537621230, guid: 9c2fb36324d1ded459edf53b82312231, type: 3}
+  lootQuantities:
+  - {x: 10, y: 10}
+  minSpawnDistance: 5
+  maxSpawnDistance: 5
 --- !u!1 &6667487562566094624
 GameObject:
   m_ObjectHideFlags: 0
@@ -23223,8 +23285,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.999959, y: 1.0999858}
-  m_SizeDelta: {x: 30.3179, y: 30.3179}
+  m_AnchoredPosition: {x: -17.7, y: -0.4}
+  m_SizeDelta: {x: 20.1, y: 20.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6802244891890007026
 CanvasRenderer:
@@ -23254,7 +23316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d666355dace064649972813280bd2a7f, type: 3}
+  m_Sprite: {fileID: -1211651764, guid: 112002451481c3f43ae2f880a5cbec09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24117,6 +24179,8 @@ MonoBehaviour:
   activatedObject: {fileID: 6150839156324091050}
   deactivatedObject: {fileID: 7393866421287975063}
   soulCost: 150
+  weaponEquipButtonObject: {fileID: 6547756468381206968}
+  equipArmorButton: {fileID: 0}
   warningMessage: {fileID: 0}
   shopArrayIndex: 2
 --- !u!1 &7393866419913222407
@@ -25406,6 +25470,8 @@ MonoBehaviour:
   activatedObject: {fileID: 5573593585836219103}
   deactivatedObject: {fileID: 7393866420241101917}
   soulCost: 50
+  weaponEquipButtonObject: {fileID: 6829841930586351040}
+  equipArmorButton: {fileID: 0}
   warningMessage: {fileID: 0}
   shopArrayIndex: 1
 --- !u!1 &7393866420434872580
@@ -28674,6 +28740,8 @@ MonoBehaviour:
   activatedObject: {fileID: 3537344542858516622}
   deactivatedObject: {fileID: 9158134906225265979}
   soulCost: 150
+  weaponEquipButtonObject: {fileID: 0}
+  equipArmorButton: {fileID: 4529400456976185533}
   warningMessage: {fileID: 0}
   shopArrayIndex: 4
 --- !u!1 &7887580000694270188
@@ -30136,6 +30204,7 @@ RectTransform:
   - {fileID: 8607205147873563836}
   - {fileID: 5590069599639620966}
   - {fileID: 6917848481380818562}
+  - {fileID: 8676776180894169378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -31805,6 +31874,8 @@ MonoBehaviour:
   activatedObject: {fileID: 454506737784962325}
   deactivatedObject: {fileID: 4587481261432703228}
   soulCost: 30
+  weaponEquipButtonObject: {fileID: 0}
+  equipArmorButton: {fileID: 6019025826104731973}
   warningMessage: {fileID: 0}
   shopArrayIndex: 4
 --- !u!1 &8978760990307449383

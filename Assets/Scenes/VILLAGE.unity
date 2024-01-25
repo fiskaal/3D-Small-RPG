@@ -9161,7 +9161,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4673570
+  m_Name: pb_Mesh-8198
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10268,6 +10268,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.4935484, y: 13.458069, z: 19.240112}
   m_Center: {x: 6.3925033, y: 7.611499, z: -0.5450673}
+--- !u!1 &1304437680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3321052638961206242, guid: 27e547a66a7aaa043a4e1def3735ec13, type: 3}
+  m_PrefabInstance: {fileID: 1415423755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1308555816
 GameObject:
   m_ObjectHideFlags: 0
@@ -18253,6 +18258,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f469bb5d4878e0545be36504442967ff, type: 3}
+--- !u!1 &2127555596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2127555598}
+  - component: {fileID: 2127555597}
+  m_Layer: 0
+  m_Name: PetActivator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2127555597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127555596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9128d45c298a2014a988a3590bda6201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PetBramburek: {fileID: 1304437680}
+--- !u!4 &2127555598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127555596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.125227, y: 21.60984, z: -11.512575}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 61
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2135879230
 PrefabInstance:
   m_ObjectHideFlags: 0

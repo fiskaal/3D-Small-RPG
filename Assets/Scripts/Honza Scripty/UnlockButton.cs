@@ -11,15 +11,20 @@ public class UnlockButton : MonoBehaviour
 
     // Reference to the button component
     private Button button;
+    private ShopButton equipScript;
 
     // Soul cost required for activation
     public int soulCost = 10;
+
+    public GameObject weaponEquipButtonObject;
+    public GameObject equipArmorButton;
 
     // Reference to the warning message game object
     public GameObject warningMessage;
 
     // Index of the shop to set the bought status
     public int shopArrayIndex;
+
 
     private void Start()
     {
@@ -60,11 +65,62 @@ public class UnlockButton : MonoBehaviour
             {
                 Debug.LogError("ShopManager not found in the scene");
             }
+
+            if (weaponEquipButtonObject != null)
+            {
+                EquipSword();
+            }
+
+            if (equipArmorButton != null)
+            {
+                EquipArmor();
+            }
+
         }
         else
         {
             // Not enough souls, activate the warning message
             warningMessage.SetActive(true);
+        }
+    }
+
+    void EquipSword()
+    {
+        // equip the actual weapon object using reference to the equip button
+        equipScript = weaponEquipButtonObject.GetComponent<ShopButton>();
+        if (equipScript != null)
+        {
+            equipScript.Equip();
+        }
+        else
+        {
+            Debug.LogWarning("ShopButton, the actual equip script not found");
+        }
+
+        // Find the WeaponManager in the scene
+        WeaponManager weaponManager = FindObjectOfType<WeaponManager>();
+
+        // If the weaponManager is found, call the FindHolders method
+        if (weaponManager != null)
+        {
+            weaponManager.FindHolders();
+        }
+        else
+        {
+            Debug.LogError("WeaponManager not found. Make sure the script is attached to a GameObject with WeaponManager.");
+        }
+    }
+
+    void EquipArmor()
+    {
+        EquipArmorButton equipArmorScript = equipArmorButton.GetComponent<EquipArmorButton>();
+        if (equipArmorScript != null)
+        {
+            equipArmorScript.OnClickEquipItem();
+        }
+        else
+        {
+            Debug.LogError("EquipArmorButton script was not found ");
         }
     }
 }
