@@ -534,6 +534,7 @@ public class Enemy : MonoBehaviour
         dead = true;
         animator.ResetTrigger("attack");
         animator.ResetTrigger("attack1");
+        EndDealDamage();
         animator.SetTrigger("death");
         DropLoot();
         
