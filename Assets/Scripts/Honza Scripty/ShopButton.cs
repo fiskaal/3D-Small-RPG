@@ -40,7 +40,7 @@ public class ShopButton : MonoBehaviour
     }
 
     // Method to be called when the button is clicked
-    private void Equip()
+    public void Equip()
     {
         // Check if the player has enough souls to activate
         if (ManagerPickups.soul >= soulCost)
