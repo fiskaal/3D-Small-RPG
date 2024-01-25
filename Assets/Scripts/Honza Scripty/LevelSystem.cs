@@ -3,6 +3,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class LevelSystem : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class LevelSystem : MonoBehaviour
     public float experienceThreshold = 100f;
     public float currentExperience = 0f;
     public GameObject upgradePanels;
-    public Text levelText;
+    public TextMeshProUGUI levelText;
 
     // Update this list to have unique keys for each BooleanSpell
     public List<string> booleanSpellKeys;

@@ -6,10 +6,6 @@ public class ShopButton : MonoBehaviour
     // Public fields for the weapon attributes in the shop button
     public float weaponDamage;
     public float knockBackForce;
-    public float lightingStrikeDamage;
-    public float fireEnchantDamageBonus;
-    public float lightningEnchantDamageBonus;
-    public float enchantedWeaponDamage;
 
     // Public fields for the weapon and sheath names
     public string weaponNameInput;
@@ -51,10 +47,6 @@ public class ShopButton : MonoBehaviour
             // Set the values directly in the WeaponManager.Instance
             WeaponManager.Instance.weaponDamage = weaponDamage;
             WeaponManager.Instance.knockBackForce = knockBackForce;
-            WeaponManager.Instance.lightingStrikeDamage = lightingStrikeDamage;
-            WeaponManager.Instance.fireEnchantDamageBonus = fireEnchantDamageBonus;
-            WeaponManager.Instance.lightningEnchantDamageBonus = lightningEnchantDamageBonus;
-            WeaponManager.Instance.enchantedWeaponDamage = enchantedWeaponDamage;
 
             // Set the weapon and sheath names
             WeaponManager.Instance.EquippedWeaponName = weaponNameInput;
@@ -63,13 +55,8 @@ public class ShopButton : MonoBehaviour
             // Optional: Log a message to indicate that the values have been set
             Debug.Log("ShopButton values set: " +
                 "WeaponDamage: " + weaponDamage +
-                ", KnockBackForce: " + knockBackForce +
-                ", LightingStrikeDamage: " + lightingStrikeDamage +
-                ", FireEnchantDamageBonus: " + fireEnchantDamageBonus +
-                ", LightningEnchantDamageBonus: " + lightningEnchantDamageBonus +
-                ", EnchantedWeaponDamage: " + enchantedWeaponDamage +
-                ", WeaponNameInput: " + weaponNameInput +
-                ", SheathNameInput: " + sheathNameInput);
+                ", KnockBackForce: " + knockBackForce);
+;
 
             if (activatedObject != null)
             {
