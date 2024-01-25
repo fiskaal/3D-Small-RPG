@@ -12,6 +12,11 @@ public class CagePetActivatorController : MonoBehaviour
 
     private PetStateController petState;
 
+    private void Start()
+    {
+        ActivateCorrectCageAndPet();
+    }
+
     public void ActivateCorrectCageAndPet()
     {
         petState = FindObjectOfType<PetStateController>();
