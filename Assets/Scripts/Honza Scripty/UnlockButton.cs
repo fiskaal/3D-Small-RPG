@@ -80,7 +80,7 @@ public class UnlockButton : MonoBehaviour
         else
         {
             // Not enough souls, activate the warning message
-            warningMessage.SetActive(true);
+            GameObject newWarningMessage = Instantiate(warningMessage, transform.position, Quaternion.identity);
         }
     }
 

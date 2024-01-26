@@ -55,6 +55,11 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+
+    }
+
     void ActivateSword(string boughtObjectName, string notBoughtObjectName)
     {
         GameObject boughtObject = GameObject.Find(boughtObjectName);
@@ -140,5 +145,16 @@ public class ShopManager : MonoBehaviour
 
         // Save changes
         PlayerPrefs.Save();
+    }
+
+    public void ResetSwordStatus()
+    {
+        foreach (var sword in swordsInfo)
+        {
+            sword.isBought = false;
+        }
+
+        // Save the updated sword status to PlayerPrefs
+        SaveSwordStatus();
     }
 }
