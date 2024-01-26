@@ -8555,6 +8555,7 @@ GameObject:
   - component: {fileID: 4814138790645564152}
   - component: {fileID: 4425515948035785482}
   - component: {fileID: 6414528043904006704}
+  - component: {fileID: 2653825989069645972}
   m_Layer: 5
   m_Name: Button_Close
   m_TagString: Untagged
@@ -8610,7 +8611,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ae9d424893767e745bc5698d16c4f50e, type: 3}
+  m_Sprite: {fileID: -142777291, guid: 5d50b9e36a9984a429932a1dd4ecff7e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8676,6 +8677,44 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2653825989069645972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2775006007352159725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2edeb4d2d6046d488e95122aedf7ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationSpeed: 10
+  delay: 0
 --- !u!1 &2809173846065176749
 GameObject:
   m_ObjectHideFlags: 0
@@ -24866,6 +24905,7 @@ GameObject:
   - component: {fileID: 7393866420241101915}
   - component: {fileID: 7393866420241101913}
   - component: {fileID: 6396473612796972908}
+  - component: {fileID: 5222318887293552562}
   m_Layer: 5
   m_Name: ShortSword_BUY
   m_TagString: Untagged
@@ -25004,6 +25044,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 7393866420183368445}
   targetObject: {fileID: 6917848481380818562}
+--- !u!114 &5222318887293552562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393866420241101917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2edeb4d2d6046d488e95122aedf7ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationSpeed: 10
+  delay: 0
 --- !u!1 &7393866420351873512
 GameObject:
   m_ObjectHideFlags: 0
@@ -27251,6 +27329,7 @@ GameObject:
   - component: {fileID: 2124464980827920070}
   - component: {fileID: 365751447055896519}
   - component: {fileID: 1480908460128791892}
+  - component: {fileID: 5348740808103705680}
   m_Layer: 5
   m_Name: Button_Close
   m_TagString: Untagged
@@ -27275,7 +27354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 105.2, y: 179}
+  m_AnchoredPosition: {x: 114.46, y: 177.7}
   m_SizeDelta: {x: 36.1749, y: 36.1751}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2124464980827920070
@@ -27306,7 +27385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ae9d424893767e745bc5698d16c4f50e, type: 3}
+  m_Sprite: {fileID: -142777291, guid: 5d50b9e36a9984a429932a1dd4ecff7e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27372,6 +27451,44 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5348740808103705680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395152280669067146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2edeb4d2d6046d488e95122aedf7ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationSpeed: 10
+  delay: 0
 --- !u!1 &7426587518828509087
 GameObject:
   m_ObjectHideFlags: 0
