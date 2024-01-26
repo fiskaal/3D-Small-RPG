@@ -7,6 +7,7 @@ public class ClearSave : MonoBehaviour
     private SpellManager spellScript;
     private EquipmentManager armorScript;
     private PetStateController petStateController;
+    private ShopManager shopScript;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class ClearSave : MonoBehaviour
         armorScript = FindObjectOfType<EquipmentManager>();
         petStateController = FindObjectOfType<PetStateController>();
         clearPrefsButton.onClick.AddListener(ClearEverything);
+        shopScript = FindObjectOfType<ShopManager>();
         //clearPrefsButton.onClick.AddListener(RestartSpells);
     }
 
@@ -42,6 +44,7 @@ public class ClearSave : MonoBehaviour
         ManagerPickups.soul = 0;
         TutorialManager.LoadPlayerPrefs();
         petStateController.SetPetFreedFalse();
+        shopScript.ResetSwordStatus();
         PlayerPrefs.Save();
         spellScript.LoadSpellInfoFromPlayerPrefs();
 

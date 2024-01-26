@@ -20,7 +20,7 @@ public class ImageFade : MonoBehaviour
         SetInitialAlpha(textMeshPro);
 
         // Start the fading process after the specified delay
-        StartCoroutine(StartFading());
+        StartCoroutine(FadeAllComponents());
     }
 
     private void SetInitialAlpha(Graphic component)
@@ -29,43 +29,58 @@ public class ImageFade : MonoBehaviour
         component.color = new Color(component.color.r, component.color.g, component.color.b, 1f);
     }
 
-    private IEnumerator StartFading()
+    private IEnumerator FadeAllComponents()
     {
         // Wait for the specified delay before starting the fading effect
         yield return new WaitForSeconds(delayBeforeFade);
 
-        // Fade the first Image component
-        yield return FadeComponent(image1);
+        // Create an array of components to fade
+        Graphic[] componentsToFade = { image1, image2, textMeshPro };
 
-        // Fade the second Image component
-        yield return FadeComponent(image2);
-
-        // Fade the TextMeshProUGUI component
-        yield return FadeComponent(textMeshPro);
-
-        // Deactivate the GameObject after all fading effects are complete
-        gameObject.SetActive(false);
-    }
-
-    private IEnumerator FadeComponent(Graphic component)
-    {
-        // Calculate the initial alpha value
-        float alpha = component.color.a;
-
-        // Loop until alpha becomes 0
-        while (alpha > 0)
+        // Get the initial alpha values
+        float[] initialAlphas = new float[componentsToFade.Length];
+        for (int i = 0; i < componentsToFade.Length; i++)
         {
-            // Reduce alpha gradually over time
-            alpha -= Time.deltaTime / fadeDuration;
+            initialAlphas[i] = componentsToFade[i].color.a;
+        }
 
-            // Update the component's color with the new alpha value
-            component.color = new Color(component.color.r, component.color.g, component.color.b, alpha);
+        // Loop until alpha becomes 0 for all components
+        float elapsedTime = 0f;
+        while (elapsedTime < fadeDuration)
+        {
+            // Calculate the normalized time
+            float normalizedTime = elapsedTime / fadeDuration;
+
+            // Update alpha for all components
+            for (int i = 0; i < componentsToFade.Length; i++)
+            {
+                componentsToFade[i].color = new Color(
+                    componentsToFade[i].color.r,
+                    componentsToFade[i].color.g,
+                    componentsToFade[i].color.b,
+                    Mathf.Lerp(initialAlphas[i], 0f, normalizedTime)
+                );
+            }
 
             // Wait for the next frame
             yield return null;
+
+            // Update elapsed time
+            elapsedTime += Time.deltaTime;
         }
 
-        // Ensure the alpha is exactly 0
-        component.color = new Color(component.color.r, component.color.g, component.color.b, 0);
+        // Ensure the alpha is exactly 0 for all components
+        for (int i = 0; i < componentsToFade.Length; i++)
+        {
+            componentsToFade[i].color = new Color(
+                componentsToFade[i].color.r,
+                componentsToFade[i].color.g,
+                componentsToFade[i].color.b,
+                0f
+            );
+        }
+
+        // Deactivate the GameObject after all fading effects are complete
+        Destroy(gameObject);
     }
 }
