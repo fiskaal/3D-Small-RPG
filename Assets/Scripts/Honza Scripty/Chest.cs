@@ -103,7 +103,7 @@ public class Chest : MonoBehaviour
     private bool IsPlayerInRange()
     {
         // Find the player object by tag
-        GameObject playerObject = GameObject.FindWithTag("Player");
+        HealthSystem playerObject = FindObjectOfType<HealthSystem>();
 
         if (playerObject != null)
         {
