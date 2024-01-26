@@ -8785,7 +8785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8799002920689488334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10819,6 +10819,7 @@ GameObject:
   - component: {fileID: 793763464749261668}
   - component: {fileID: 5295100048680615023}
   - component: {fileID: 2167653423312257984}
+  - component: {fileID: 1979491946052229905}
   m_Layer: 8
   m_Name: Button
   m_TagString: Untagged
@@ -10968,7 +10969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86dfe9d9ba58a4a488188881332b1632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: VILLAGE
+  sceneName: MainMenu
   LoadingPage: {fileID: 0}
 --- !u!114 &2167653423312257984
 MonoBehaviour:
@@ -11008,6 +11009,19 @@ MonoBehaviour:
     m_RotationOrder: 4
   animationSpeed: 10
   delay: 0
+--- !u!114 &1979491946052229905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294058487675867855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d550373336f7d4fbad731f684ef092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearPrefsButton: {fileID: 611148081048680737}
 --- !u!1 &6366766415391833201
 GameObject:
   m_ObjectHideFlags: 0

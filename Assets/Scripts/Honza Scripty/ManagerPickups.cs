@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
-using System.Collections; // Add this line for IEnumerator
+using System.Collections;
+using UnityEngine.SceneManagement; // Add this line for IEnumerator
 
 public class ManagerPickups : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class ManagerPickups : MonoBehaviour
     [SerializeField] public Animator _soulAnimator; // Exposed in the Unity Editor
 
     private static ManagerPickups instance;
+
+    public GameObject canvasSoulsUI;
 
     void Awake()
     {
@@ -46,6 +49,15 @@ public class ManagerPickups : MonoBehaviour
         // ironText.text = iron.ToString();
          soulText.text = soul.ToString();
        // soulText.SetText(soul.ToString());
+       
+       if (SceneManager.GetActiveScene().name == "MainMenu")
+       {
+           canvasSoulsUI.SetActive(false);
+       }
+       else if (canvasSoulsUI.activeSelf != true)
+       {
+           canvasSoulsUI.SetActive(true);
+       }
     }
 
     // Methods to update wood, stone, iron, and soul counts
