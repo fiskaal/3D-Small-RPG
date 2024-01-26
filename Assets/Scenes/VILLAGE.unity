@@ -184,11 +184,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad821f26b0d05e4590ecd9581028171, type: 3}
---- !u!1 &13962061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 13962061, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-  m_PrefabInstance: {fileID: 582028115}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &15620225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6520,17 +6515,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 45.187874, z: 16.790033}
   m_Center: {x: 0.00009996771, y: -13.476613, z: -8.52383}
---- !u!114 &782017528 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 782017528, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
-  m_PrefabInstance: {fileID: 582028115}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &783183225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13477,6 +13461,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 401752, guid: 9211b397ed1fec54fa30bd8c8b657e1f, type: 3}
   m_PrefabInstance: {fileID: 1516416686}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1526742387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5907592776856881804, guid: 41078090cec20ea45b4f026ac5847df7, type: 3}
+  m_PrefabInstance: {fileID: 1535446544}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1527113004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18146,8 +18135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 2_TUTORIAL
-  LoadingPage: {fileID: 13962061}
-  slider: {fileID: 782017528}
+  LoadingPage: {fileID: 0}
+  slider: {fileID: 0}
   spawnCoordinates: {x: 0, y: 0, z: 0}
 --- !u!65 &2016574684
 BoxCollider:
@@ -19677,6 +19666,10 @@ PrefabInstance:
       propertyPath: _soulAnimator
       value: 
       objectReference: {fileID: 6959136019820056527}
+    - target: {fileID: 4902528510879859278, guid: a5277caaa4770de45be44294eb586757, type: 3}
+      propertyPath: canvasSoulsUI
+      value: 
+      objectReference: {fileID: 1526742387}
     - target: {fileID: 4902528510879859279, guid: a5277caaa4770de45be44294eb586757, type: 3}
       propertyPath: m_RootOrder
       value: 31
