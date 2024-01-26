@@ -79,8 +79,28 @@ public class UnlockButton : MonoBehaviour
         }
         else
         {
-            // Not enough souls, activate the warning message
-            GameObject newWarningMessage = Instantiate(warningMessage, transform.position, Quaternion.identity);
+            // Not enough souls, instantiate the warning message
+            if (warningMessage != null)
+            {
+                // Get the Canvas component (adjust this line based on how your Canvas is set up)
+                Canvas canvas = FindObjectOfType<Canvas>();
+
+                if (canvas != null)
+                {
+                    // Instantiate the warning message as a child of the Canvas
+                    GameObject newWarningMessage = Instantiate(warningMessage, canvas.transform);
+                    // Optionally, you can set the local position within the Canvas
+                    // newWarningMessage.transform.localPosition = someLocalPosition;
+                }
+                else
+                {
+                    Debug.LogError("Canvas not found in the scene. Make sure you have a Canvas component.");
+                }
+            }
+            else
+            {
+                Debug.LogError("Warning message prefab not assigned to the UnlockButton script.");
+            }
         }
     }
 
