@@ -672,6 +672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3652420084333470073}
   - component: {fileID: 5478490178948380817}
+  - component: {fileID: 6706805328521997037}
   m_Layer: 8
   m_Name: ExitScreen
   m_TagString: Menu
@@ -751,6 +752,21 @@ MonoBehaviour:
     m_RotationOrder: 4
   animationSpeed: 3
   delay: 0
+--- !u!114 &6706805328521997037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503687004072007954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c24f453f8e9fb847b13312db91ba0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allUiWindows:
+  - {fileID: 503687004072007954}
+  - {fileID: 6379465208983545843}
 --- !u!1 &599781033276968421
 GameObject:
   m_ObjectHideFlags: 0
@@ -4722,6 +4738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1899711077578022592}
   - component: {fileID: 6606849528170299144}
+  - component: {fileID: 1124622436944469019}
   m_Layer: 8
   m_Name: DeathPopUp
   m_TagString: Menu
@@ -4800,6 +4817,22 @@ MonoBehaviour:
     m_RotationOrder: 4
   animationSpeed: 2
   delay: 0
+--- !u!114 &1124622436944469019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899711077578022599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c24f453f8e9fb847b13312db91ba0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allUiWindows:
+  - {fileID: 503687004072007954}
+  - {fileID: 6379465208983545843}
+  - {fileID: 1899711077578022599}
 --- !u!1 &1983600358791070009
 GameObject:
   m_ObjectHideFlags: 0
@@ -11896,6 +11929,7 @@ GameObject:
   - component: {fileID: 2107883305504611099}
   - component: {fileID: 4131578513433257970}
   - component: {fileID: 5635873408489972500}
+  - component: {fileID: 3981441463003243792}
   m_Layer: 8
   m_Name: Menu
   m_TagString: Menu
@@ -12011,6 +12045,21 @@ MonoBehaviour:
     m_RotationOrder: 4
   animationSpeed: 3
   delay: 0
+--- !u!114 &3981441463003243792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6379465208983545843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c24f453f8e9fb847b13312db91ba0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allUiWindows:
+  - {fileID: 6379465208983545843}
+  - {fileID: 503687004072007954}
 --- !u!1 &6419983220391851711
 GameObject:
   m_ObjectHideFlags: 0
@@ -14387,6 +14436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitPopUp: {fileID: 503687004072007954}
+  exitCloseAllWindowsScript: {fileID: 6706805328521997037}
 --- !u!114 &5482637121043611033
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class KeyboardKeyActivator : MonoBehaviour
         // Check if the specified button is pressed
         if (Input.GetKeyDown(activationKey))
         {
-            if (!gameObjectIsAcite)
+            if (objectToActivate.activeSelf != true)
             {
                 // Check if the GameObject reference is not null
                 if (objectToActivate != null)
@@ -41,6 +41,16 @@ public class KeyboardKeyActivator : MonoBehaviour
                 {
                     Debug.LogWarning("Please assign a GameObject to be activated in the inspector.");
                 }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (objectToActivate.activeSelf != null && objectToActivate != null)
+            {
+                // Activate the specified GameObject
+                objectToActivate.SetActive(false);
+                gameObjectIsAcite = false;
             }
         }
     }

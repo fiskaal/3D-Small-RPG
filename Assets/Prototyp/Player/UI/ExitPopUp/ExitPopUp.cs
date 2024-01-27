@@ -6,7 +6,9 @@ public class ExitPopUp : MonoBehaviour
 {
     public GameObject exitPopUp;
     private bool isPopupVisible = false;
+    public UIWindowsOnOpenCloseOthers exitCloseAllWindowsScript;
 
+    private bool canShow;
     void Start()
     {
         HidePopup(); // Ensure the popup is hidden initially
@@ -16,13 +18,29 @@ public class ExitPopUp : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPopupVisible)
+            for (int i = 0; i < exitCloseAllWindowsScript.allUiWindows.Length; i++)
             {
-                HidePopup();
+                if (exitCloseAllWindowsScript.allUiWindows[i].activeSelf == true && exitCloseAllWindowsScript.allUiWindows[i] != exitCloseAllWindowsScript.gameObject)
+                {
+                    canShow = false;
+                    return;
+                }
+                else
+                {
+                    canShow = true;
+                }
             }
-            else
+
+            if (canShow)
             {
-                ShowPopup();
+                if (exitPopUp.activeSelf == true)
+                {
+                    HidePopup();
+                }
+                else
+                {
+                    ShowPopup();
+                }
             }
         }
     }
