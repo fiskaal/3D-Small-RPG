@@ -47,6 +47,7 @@ public class CombatState : State
         
         character.animator.SetBool("inCombat", true);
         character.animator.SetBool("blocking", false);
+        character.animator.ResetTrigger("land");
     }
 
     public override void HandleInput()

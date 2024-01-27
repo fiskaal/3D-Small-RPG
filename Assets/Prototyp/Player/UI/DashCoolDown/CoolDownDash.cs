@@ -17,10 +17,14 @@ public class CoolDownDash : MonoBehaviour
             {
                 // If dash is ready, hide the cooldown visual
                 cooldownImage.fillAmount = 1;
-                timer.text = "";
+                timer.gameObject.SetActive(false);
             }
             else
             {
+                if (timer.gameObject.activeSelf != true)
+                {
+                    timer.gameObject.SetActive(true);
+                }
                 // Calculate the fill amount based on the remaining cooldown time
                 float fillAmount = 0 + (_character.dashTimePassed / _character.dashCooldownTime);
                 cooldownImage.fillAmount = fillAmount;
