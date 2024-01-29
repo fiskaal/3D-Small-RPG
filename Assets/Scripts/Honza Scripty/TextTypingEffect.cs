@@ -11,7 +11,7 @@ public class TextTypingEffect : MonoBehaviour
     private int currentCharIndex = 0;
     private bool isTyping = false;
 
-    public Text textComponent; // Use TMP_Text for TextMeshPro support, otherwise use Text
+    public TMP_Text textComponent; // Use TMP_Text for TextMeshPro support, otherwise use Text
 
     void OnEnable()
     {
