@@ -37,7 +37,14 @@ public class CanvasActivator : MonoBehaviour
         {
             if (targetGameObject != null)
             {
-                targetGameObject.SetActive(true);
+                if (targetGameObject.activeSelf != true)
+                {
+                    targetGameObject.SetActive(true);
+                }
+                else if (targetGameObject.activeSelf == true)
+                {
+                     targetGameObject.SetActive(false);
+                }
             }
         }
 
