@@ -1752,7 +1752,10 @@ MonoBehaviour:
   patrolSpeed: 3.5
   waypointWaitTime: 2
   audioScript: {fileID: 0}
+  bossUiColliderScript: {fileID: 0}
   deathVFX: {fileID: 5867787547731596602, guid: c52f51d217703c2438268ebd931e57b6, type: 3}
+  maxHp: 0
+  currentHp: 0
   damageDealers: []
 --- !u!195 &1435499926516851692
 NavMeshAgent:
@@ -1809,8 +1812,8 @@ MonoBehaviour:
   volumeAttack: 2
   audioSource: {fileID: 2908387697208588068}
   hit: {fileID: 8300000, guid: 8236edea92c9fcd4e8bab4f92c3fef7c, type: 3}
-  attackWhoosh: {fileID: 8300000, guid: a6973b45dd40f8148b06d6b62a01eeac, type: 3}
-  attackWhoosh1: {fileID: 8300000, guid: 46f0a46aea222ce46adfafa11454b949, type: 3}
+  attackWhoosh: {fileID: 8300000, guid: a700e75e4e8ab7440b2ff5cdb73d52b1, type: 3}
+  attackWhoosh1: {fileID: 8300000, guid: 66b1d2ceeadf37d4aac2695c33859722, type: 3}
   steps:
   - {fileID: 8300000, guid: de620725b97ac7b43a1781c5f3779c99, type: 3}
   - {fileID: 8300000, guid: 8efc8839d121c9d44bd28184eab2fade, type: 3}
