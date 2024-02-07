@@ -20779,6 +20779,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6488740546375697299, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488740546375697299, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488740546375697299, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 525189224}
+    - target: {fileID: 6488740546375697299, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488740546375697299, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: LoadLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488740546375697299, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: LPOnClick, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488740546375697299, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: VILLAGE
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488740546375697299, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9178692185875325878, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -20810,6 +20842,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525189221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 120d2e73c1d0f784e90bd56cb68500ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: VILLAGE
+  LoadingPage: {fileID: 1209277728}
+  slider: {fileID: 1852969830}
+  spawnCoordinates: {x: 0, y: 0, z: 0}
+--- !u!1 &525189223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7133504341711304463, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+  m_PrefabInstance: {fileID: 525189220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &525189224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525189223}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 120d2e73c1d0f784e90bd56cb68500ed, type: 3}
