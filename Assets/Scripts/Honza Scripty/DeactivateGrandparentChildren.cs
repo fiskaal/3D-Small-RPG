@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DeactivateGrandparentChildren : MonoBehaviour
 {
+    public GameObject backgound;
     // Function to deactivate all child objects of the grandparent
     void DeactivateGrandparentChildObjects(Transform grandparent)
     {
@@ -9,6 +10,8 @@ public class DeactivateGrandparentChildren : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
+        
+        deactivateBackgound();
     }
 
     // Callback function for the button click event
@@ -26,5 +29,10 @@ public class DeactivateGrandparentChildren : MonoBehaviour
         {
             Debug.LogWarning("Button does not have a grandparent object!");
         }
+    }
+
+    public void deactivateBackgound()
+    {
+        backgound.SetActive(false);
     }
 }

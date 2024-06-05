@@ -2835,6 +2835,21 @@ MonoBehaviour:
   currentExperience: 0
   upgradePanels: {fileID: 687303937199664012}
   levelText: {fileID: 5545723903920178584}
+  onLevelUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1771506349960538666}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   booleanSpellKeys: []
 --- !u!114 &8954405761681989590
 MonoBehaviour:
@@ -9460,6 +9475,11 @@ GameObject:
 --- !u!224 &687303937530336286 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3121921973516933460, guid: 1fe6b43cdc35e0542be2c1a50b035a9d, type: 3}
+  m_PrefabInstance: {fileID: 2511460705971965258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1771506349960538666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4201620507330652000, guid: 1fe6b43cdc35e0542be2c1a50b035a9d, type: 3}
   m_PrefabInstance: {fileID: 2511460705971965258}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2995673596880919771

@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.Events;
 
 public class LevelSystem : MonoBehaviour
 {
     public int playerLevel = 1;
     public float experienceThreshold = 100f;
     public float currentExperience = 0f;
+    public float maxExperienceMultiplier = 1.5f;
     public GameObject upgradePanels;
     public TextMeshProUGUI levelText;
-
+    public UnityEvent onLevelUp;
+    
     // Update this list to have unique keys for each BooleanSpell
     public List<string> booleanSpellKeys;
 
@@ -33,13 +36,17 @@ public class LevelSystem : MonoBehaviour
         experienceThreshold = CalculateExperienceThreshold();
         ActivateRandomUpgradePanels();
         UpdateLevelText();
+        if (onLevelUp != null)
+        {
+            onLevelUp.Invoke();
+        }
         Debug.Log("Level Up! New Level: " + playerLevel);
         Time.timeScale = 0f;
     }
 
     float CalculateExperienceThreshold()
     {
-        return experienceThreshold * 2f;
+        return experienceThreshold * maxExperienceMultiplier;
     }
 
     void ActivateRandomUpgradePanels()
