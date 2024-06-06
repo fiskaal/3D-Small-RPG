@@ -4353,6 +4353,10 @@ PrefabInstance:
       propertyPath: allUiWindows.Array.data[4]
       value: 
       objectReference: {fileID: 1596030820}
+    - target: {fileID: 1973864482555027972, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2062742644706137246, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4565,9 +4569,17 @@ PrefabInstance:
       propertyPath: allUiWindows.Array.data[4]
       value: 
       objectReference: {fileID: 1596030820}
+    - target: {fileID: 5371554567703104783, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5899482992320702115, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955606959533563491, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: healAmount
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 6171680044912316311, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4596,6 +4608,10 @@ PrefabInstance:
     - target: {fileID: 6962926133453532271, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672935258858273752, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
+      propertyPath: destroyTime
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 9178692185743609451, guid: ea5fed3d490371f4289a5e2765cb213a, type: 3}
       propertyPath: m_IsActive
@@ -8612,7 +8628,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-143464
+  m_Name: pb_Mesh-117006
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
