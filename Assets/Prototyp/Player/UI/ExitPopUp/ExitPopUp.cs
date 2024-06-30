@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ExitPopUp : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class ExitPopUp : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if ((Input.GetKeyDown(KeyCode.Escape)) || (Input.GetKeyDown(KeyCode.Joystick1Button9)))
         {
             for (int i = 0; i < exitCloseAllWindowsScript.allUiWindows.Length; i++)
             {

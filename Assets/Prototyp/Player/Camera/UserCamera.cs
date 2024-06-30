@@ -3,6 +3,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class UserCamera : MonoBehaviour
 {
@@ -37,10 +38,13 @@ public class UserCamera : MonoBehaviour
 	public bool inFirstPerson;
 
 	public GameObject[] objectsToCheckRotation; // Array of objects to check for activity
-	
 
-	void Start () { 
+	public PlayerInput playerInput;
+	[HideInInspector]
 
+
+	void Start () {
+		playerInput = GetComponent<PlayerInput>();
 		Vector3 angles = transform.eulerAngles; 
 		xDeg = angles.x; 
 		yDeg = angles.y; 

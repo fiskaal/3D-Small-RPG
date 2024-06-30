@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CanvasActivator : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class CanvasActivator : MonoBehaviour
     void Update()
     {
         // Check if the player is inside the collider and the "E" key is pressed
-        if (isPlayerInsideCollider && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerInsideCollider && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button1)))
         {
             if (targetGameObject != null)
             {
@@ -49,7 +50,7 @@ public class CanvasActivator : MonoBehaviour
         }
 
         // Check if the player presses the Escape key to close the targetGameObject
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if ((Input.GetKeyDown(KeyCode.Escape)) || (Input.GetKeyDown(KeyCode.Joystick1Button2)))
         {
             if (targetGameObject != null)
             {
